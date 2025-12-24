@@ -177,7 +177,7 @@ export function ApplicationModal({ isOpen, onClose, programName, hospitalName }:
                     Application Submitted!
                   </h3>
                   <p className="text-gray-600">
-                    We'll review your application and get back to you within 3-5 business days.
+                    We&apos;ll review your application and get back to you within 3-5 business days.
                   </p>
                 </motion.div>
               ) : (

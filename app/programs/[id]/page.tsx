@@ -4,11 +4,10 @@ import { hospitals, programs } from "@/lib/mockData";
 import Link from "next/link";
 import { useState } from "react";
 import { ApplicationModal } from "@/components/application-modal";
+import { use } from "react";
 
-export default async function ProgramDetail({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
+function ProgramContent({ id }: { id: string }) {
   const program = programs.find((p) => p.id === id);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   if (!program) return (
@@ -259,4 +258,9 @@ export default async function ProgramDetail({ params }: { params: Promise<{ id: 
       </div>
     </main>
   );
+}
+
+export default function ProgramDetail({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
+  return <ProgramContent id={id} />;
 }
