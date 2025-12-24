@@ -4,8 +4,6 @@ import { hospitals, programs } from "@/lib/mockData";
 import Link from "next/link";
 import { useState } from "react";
 import { ApplicationModal } from "@/components/application-modal";
-import { useState } from "react";
-import { ApplicationModal } from "@/components/application-modal";
 
 export default async function ProgramDetail({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
