@@ -1,9 +1,18 @@
+"use client"
+
 import { hospitals, programs } from "@/lib/mockData";
 import Link from "next/link";
+import { useState } from "react";
+import { ApplicationModal } from "@/components/application-modal";
+import { useState } from "react";
+import { ApplicationModal } from "@/components/application-modal";
 
 export default async function ProgramDetail({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const program = programs.find((p) => p.id === id);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   if (!program) return (
     <main className="min-h-screen bg-linear-to-br from-blue-50 via-white to-indigo-50 flex items-center justify-center">
       <div className="text-center animate-fade-in">
@@ -151,10 +160,21 @@ export default async function ProgramDetail({ params }: { params: Promise<{ id: 
 
         {/* Apply Button */}
         <div className="text-center animate-fade-in" style={{ animationDelay: '0.7s' }}>
-          <button className="btn-primary text-lg px-8 py-4 hover-scale">
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="btn-primary text-lg px-8 py-4 hover-scale"
+          >
             Apply for this Program →
           </button>
         </div>
+
+        {/* Application Modal */}
+        <ApplicationModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          programName={program.departmentName}
+          hospitalName={hospital?.name || ''}
+        />
       </div>
     </main>
   );

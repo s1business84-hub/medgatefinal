@@ -91,15 +91,15 @@ export function Pricing() {
   }, [])
 
   return (
-    <section className="py-24 sm:py-32 bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section className="py-16 sm:py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl"
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900"
           >
             Simple, transparent pricing
           </motion.h2>
@@ -108,14 +108,14 @@ export function Pricing() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="mt-6 text-lg leading-8 text-slate-600"
+            className="mt-4 sm:mt-6 text-base sm:text-lg leading-7 sm:leading-8 text-slate-600 max-w-xl mx-auto px-4"
           >
             Choose the plan that works best for your medical training journey.
             Upgrade or downgrade at any time.
           </motion.p>
         </div>
 
-        <div className="mx-auto mt-16 grid max-w-lg grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-3">
+        <div className="mx-auto mt-12 sm:mt-16 grid max-w-lg grid-cols-1 gap-6 sm:gap-8 lg:max-w-none lg:grid-cols-3">
           {plans.map((plan, index) => (
             <motion.div
               key={plan.name}
@@ -123,34 +123,35 @@ export function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className={`relative rounded-3xl p-8 shadow-sm ring-1 transition-all duration-300 hover:shadow-xl ${
+              className={`relative rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-sm ring-1 transition-all duration-300 hover:shadow-xl ${
                 plan.popular
                   ? "bg-white ring-blue-200 shadow-blue-100"
                   : "bg-white/60 backdrop-blur-sm ring-slate-200/50"
               }`}
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <div className="flex items-center rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-lg">
-                    <Star className="mr-1 h-4 w-4 fill-current" />
-                    Most Popular
+                <div className="absolute -top-3 sm:-top-4 left-1/2 -translate-x-1/2">
+                  <div className="flex items-center rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium text-white shadow-lg">
+                    <Star className="mr-1 h-3 w-3 sm:h-4 sm:w-4 fill-current" />
+                    <span className="hidden sm:inline">Most Popular</span>
+                    <span className="sm:hidden">Popular</span>
                   </div>
                 </div>
               )}
 
               <div className="text-center">
-                <h3 className="text-lg font-semibold text-slate-900">{plan.name}</h3>
-                <div className="mt-4 flex items-baseline justify-center">
-                  <span className="text-4xl font-bold tracking-tight text-slate-900">
+                <h3 className="text-base sm:text-lg font-semibold text-slate-900">{plan.name}</h3>
+                <div className="mt-3 sm:mt-4 flex items-baseline justify-center">
+                  <span className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">
                     {plan.price}
                   </span>
                   {plan.period && (
-                    <span className="ml-1 text-sm font-medium text-slate-600">
+                    <span className="ml-1 text-xs sm:text-sm font-medium text-slate-600">
                       {plan.period}
                     </span>
                   )}
                   {plan.trend && (
-                    <div className="ml-2 flex items-center text-xs">
+                    <div className="ml-2 flex items-center">
                       {plan.trend === "up" ? (
                         <TrendingUp className="h-3 w-3 text-red-500" />
                       ) : (
@@ -162,24 +163,25 @@ export function Pricing() {
                 {plan.lastUpdated && plan.basePrice !== 0 && plan.basePrice !== null && (
                   <div className="mt-1 flex items-center justify-center text-xs text-slate-500">
                     <Clock className="mr-1 h-3 w-3" />
-                    Updated {plan.lastUpdated}
+                    <span className="hidden sm:inline">Updated {plan.lastUpdated}</span>
+                    <span className="sm:hidden">Live</span>
                   </div>
                 )}
-                <p className="mt-4 text-sm text-slate-600">{plan.description}</p>
+                <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-slate-600">{plan.description}</p>
               </div>
 
-              <ul className="mt-8 space-y-3">
+              <ul className="mt-6 sm:mt-8 space-y-2 sm:space-y-3">
                 {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-center">
-                    <Check className="h-4 w-4 text-green-500 flex-shrink-0" />
-                    <span className="ml-3 text-sm text-slate-700">{feature}</span>
+                  <li key={feature} className="flex items-start">
+                    <Check className="h-4 w-4 text-green-500 flex-shrink-0 mt-0.5" />
+                    <span className="ml-3 text-xs sm:text-sm text-slate-700">{feature}</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="mt-8">
+              <div className="mt-6 sm:mt-8">
                 <Button
-                  className={`w-full ${
+                  className={`w-full py-3 text-sm sm:text-base ${
                     plan.popular
                       ? "bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg"
                       : ""

@@ -57,7 +57,7 @@ export function Features() {
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={{ once: true }}
             className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl"
           >
@@ -66,7 +66,7 @@ export function Features() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
             viewport={{ once: true }}
             className="mt-6 text-lg leading-8 text-slate-600"
           >
@@ -105,7 +105,7 @@ export function Features() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
           viewport={{ once: true }}
           className="mt-20 text-center"
         >
