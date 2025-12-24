@@ -79,7 +79,7 @@ export function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
             viewport={{ once: true }}
             className="mt-4 sm:mt-6 text-base sm:text-lg lg:text-xl leading-7 sm:leading-8 text-slate-600 max-w-2xl mx-auto px-4"
           >
@@ -91,7 +91,7 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
             viewport={{ once: true }}
             className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6"
           >
@@ -112,7 +112,7 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
             viewport={{ once: true }}
             className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 text-sm text-slate-600"
           >
@@ -129,7 +129,7 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
           className="mx-auto mt-16 sm:mt-20 max-w-7xl px-4"
         >
           <div className="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-3">
@@ -138,7 +138,7 @@ export function Hero() {
                 key={stat.label}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.6 + index * 0.1 }}
                 className="relative overflow-hidden rounded-2xl bg-white/60 backdrop-blur-sm p-6 sm:p-8 shadow-sm ring-1 ring-slate-200/50 hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex items-center">
