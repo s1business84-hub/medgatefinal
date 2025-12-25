@@ -1,0 +1,481 @@
+"use client"
+
+import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { X, CheckCircle, Upload, FileText, User, Mail, Phone } from "lucide-react"
+import { Button } from "@/components/ui/button"
+
+interface ApplicationModalProps {
+  isOpen: boolean
+  onClose: () => void
+  programName: string
+  hospitalName: string
+}
+
+export function ApplicationModal({ isOpen, onClose, programName, hospitalName }: ApplicationModalProps) {
+  const [step, setStep] = useState(1)
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    yearOfStudy: '',
+    university: '',
+    gpa: '',
+    experience: '',
+    motivation: '',
+    documents: [] as File[]
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({ ...prev, [name]: value }))
+  }
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files || [])
+    setFormData(prev => ({ ...prev, documents: [...prev.documents, ...files] }))
+  }
+
+  const removeDocument = (index: number) => {
+    setFormData(prev => ({
+      ...prev,
+      documents: prev.documents.filter((_, i) => i !== index)
+    }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 2000))
+
+    setIsSubmitting(false)
+    setIsSubmitted(true)
+
+    // Auto close after success
+    setTimeout(() => {
+      onClose()
+      setStep(1)
+      setIsSubmitted(false)
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        yearOfStudy: '',
+        university: '',
+        gpa: '',
+        experience: '',
+        motivation: '',
+        documents: []
+      })
+    }, 3000)
+  }
+
+  const nextStep = () => setStep(prev => Math.min(prev + 1, 3))
+  const prevStep = () => setStep(prev => Math.max(prev - 1, 1))
+
+  const isStepValid = () => {
+    switch (step) {
+      case 1:
+        return formData.firstName && formData.lastName && formData.email && formData.phone
+      case 2:
+        return formData.yearOfStudy && formData.university
+      case 3:
+        return formData.motivation.length > 50
+      default:
+        return false
+    }
+  }
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+          onClick={onClose}
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            className="relative w-full max-w-2xl max-h-[90vh] overflow-hidden bg-white rounded-2xl shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between p-6 border-b border-gray-200">
+              <div>
+                <h2 className="text-xl font-semibold text-gray-900">
+                  Apply for {programName}
+                </h2>
+                <p className="text-sm text-gray-600 mt-1">{hospitalName}</p>
+              </div>
+              <button
+                onClick={onClose}
+                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              >
+                <X className="w-5 h-5 text-gray-400" />
+              </button>
+            </div>
+
+            {/* Progress Bar */}
+            <div className="px-6 py-4 bg-gray-50 border-b border-gray-200">
+              <div className="flex items-center space-x-2">
+                {[1, 2, 3].map((stepNumber) => (
+                  <div key={stepNumber} className="flex items-center">
+                    <div
+                      className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors ${
+                        stepNumber <= step
+                          ? 'bg-blue-600 text-white'
+                          : 'bg-gray-200 text-gray-600'
+                      }`}
+                    >
+                      {stepNumber}
+                    </div>
+                    {stepNumber < 3 && (
+                      <div
+                        className={`w-12 h-0.5 mx-2 transition-colors ${
+                          stepNumber < step ? 'bg-blue-600' : 'bg-gray-200'
+                        }`}
+                      />
+                    )}
+                  </div>
+                ))}
+              </div>
+              <div className="flex justify-between mt-2 text-xs text-gray-600">
+                <span>Personal Info</span>
+                <span>Academic Details</span>
+                <span>Documents & Motivation</span>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="p-6 max-h-[60vh] overflow-y-auto">
+              {isSubmitted ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="text-center py-12"
+                >
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                    className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                  >
+                    <CheckCircle className="w-8 h-8 text-green-600" />
+                  </motion.div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    Application Submitted!
+                  </h3>
+                  <p className="text-gray-600">
+                    We&apos;ll review your application and get back to you within 3-5 business days.
+                  </p>
+                </motion.div>
+              ) : (
+                <form onSubmit={handleSubmit}>
+                  <AnimatePresence mode="wait">
+                    {step === 1 && (
+                      <motion.div
+                        key="step1"
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                        transition={{ duration: 0.3 }}
+                        className="space-y-4"
+                      >
+                        <div className="flex items-center mb-6">
+                          <User className="w-5 h-5 text-blue-600 mr-2" />
+                          <h3 className="text-lg font-medium text-gray-900">Personal Information</h3>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                              First Name *
+                            </label>
+                            <input
+                              type="text"
+                              name="firstName"
+                              value={formData.firstName}
+                              onChange={handleInputChange}
+                              className="form-input"
+                              required
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                              Last Name *
+                            </label>
+                            <input
+                              type="text"
+                              name="lastName"
+                              value={formData.lastName}
+                              onChange={handleInputChange}
+                              className="form-input"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Email Address *
+                          </label>
+                          <div className="relative">
+                            <Mail className="absolute left-3 top-3.5 h-5 w-5 text-gray-400" />
+                            <input
+                              type="email"
+                              name="email"
+                              value={formData.email}
+                              onChange={handleInputChange}
+                              className="form-input pl-10"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Phone Number *
+                          </label>
+                          <div className="relative">
+                            <Phone className="absolute left-3 top-3.5 h-5 w-5 text-gray-400" />
+                            <input
+                              type="tel"
+                              name="phone"
+                              value={formData.phone}
+                              onChange={handleInputChange}
+                              className="form-input pl-10"
+                              required
+                            />
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {step === 2 && (
+                      <motion.div
+                        key="step2"
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                        transition={{ duration: 0.3 }}
+                        className="space-y-4"
+                      >
+                        <div className="flex items-center mb-6">
+                          <FileText className="w-5 h-5 text-blue-600 mr-2" />
+                          <h3 className="text-lg font-medium text-gray-900">Academic Information</h3>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                              Year of Study *
+                            </label>
+                            <select
+                              name="yearOfStudy"
+                              value={formData.yearOfStudy}
+                              onChange={handleInputChange}
+                              className="form-select"
+                              required
+                            >
+                              <option value="">Select year</option>
+                              <option value="1">Year 1</option>
+                              <option value="2">Year 2</option>
+                              <option value="3">Year 3</option>
+                              <option value="4">Year 4</option>
+                              <option value="5">Year 5</option>
+                              <option value="6">Year 6</option>
+                            </select>
+                          </div>
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                              GPA (Optional)
+                            </label>
+                            <input
+                              type="text"
+                              name="gpa"
+                              value={formData.gpa}
+                              onChange={handleInputChange}
+                              placeholder="e.g., 3.8"
+                              className="form-input"
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            University/Institution *
+                          </label>
+                          <input
+                            type="text"
+                            name="university"
+                            value={formData.university}
+                            onChange={handleInputChange}
+                            placeholder="Enter your university name"
+                            className="form-input"
+                            required
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Relevant Experience (Optional)
+                          </label>
+                          <textarea
+                            name="experience"
+                            value={formData.experience}
+                            onChange={handleInputChange}
+                            placeholder="Describe any relevant clinical experience, volunteering, or research..."
+                            className="form-input resize-none"
+                            rows={3}
+                          />
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {step === 3 && (
+                      <motion.div
+                        key="step3"
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                        transition={{ duration: 0.3 }}
+                        className="space-y-4"
+                      >
+                        <div className="flex items-center mb-6">
+                          <Upload className="w-5 h-5 text-blue-600 mr-2" />
+                          <h3 className="text-lg font-medium text-gray-900">Documents & Motivation</h3>
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Why do you want to join this program? *
+                          </label>
+                          <textarea
+                            name="motivation"
+                            value={formData.motivation}
+                            onChange={handleInputChange}
+                            placeholder="Tell us about your interest in this program and what you hope to gain from the experience..."
+                            className="form-input resize-none"
+                            rows={4}
+                            required
+                          />
+                          <p className="text-xs text-gray-500 mt-1">
+                            Minimum 50 characters. {formData.motivation.length}/50
+                          </p>
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Upload Documents (Optional)
+                          </label>
+                          <div className="border-2 border-dashed border-gray-300 rounded-lg p-4">
+                            <input
+                              type="file"
+                              multiple
+                              accept=".pdf,.doc,.docx,.jpg,.png"
+                              onChange={handleFileChange}
+                              className="hidden"
+                              id="document-upload"
+                            />
+                            <label
+                              htmlFor="document-upload"
+                              className="cursor-pointer flex flex-col items-center justify-center py-4"
+                            >
+                              <Upload className="w-8 h-8 text-gray-400 mb-2" />
+                              <p className="text-sm text-gray-600 text-center">
+                                Click to upload CV, transcripts, or other documents
+                              </p>
+                              <p className="text-xs text-gray-500 mt-1">
+                                PDF, DOC, DOCX, JPG, PNG (max 10MB each)
+                              </p>
+                            </label>
+                          </div>
+
+                          {formData.documents.length > 0 && (
+                            <div className="mt-4 space-y-2">
+                              {formData.documents.map((file, index) => (
+                                <div key={index} className="flex items-center justify-between p-2 bg-gray-50 rounded-lg">
+                                  <div className="flex items-center">
+                                    <FileText className="w-4 h-4 text-gray-400 mr-2" />
+                                    <span className="text-sm text-gray-700 truncate">{file.name}</span>
+                                  </div>
+                                  <button
+                                    type="button"
+                                    onClick={() => removeDocument(index)}
+                                    className="text-red-500 hover:text-red-700"
+                                  >
+                                    <X className="w-4 h-4" />
+                                  </button>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </form>
+              )}
+            </div>
+
+            {/* Footer */}
+            {!isSubmitted && (
+              <div className="flex items-center justify-between p-6 border-t border-gray-200 bg-gray-50">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={step === 1 ? onClose : prevStep}
+                  disabled={isSubmitting}
+                >
+                  {step === 1 ? 'Cancel' : 'Previous'}
+                </Button>
+
+                <div className="flex items-center space-x-2">
+                  <span className="text-sm text-gray-500">
+                    Step {step} of 3
+                  </span>
+                  {step < 3 ? (
+                    <Button
+                      type="button"
+                      onClick={nextStep}
+                      disabled={!isStepValid() || isSubmitting}
+                      className="bg-blue-600 hover:bg-blue-700"
+                    >
+                      Next
+                    </Button>
+                  ) : (
+                    <Button
+                      onClick={handleSubmit}
+                      disabled={!isStepValid() || isSubmitting}
+                      className="bg-green-600 hover:bg-green-700 min-w-[120px]"
+                    >
+                      {isSubmitting ? (
+                        <div className="flex items-center">
+                          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
+                          Submitting...
+                        </div>
+                      ) : (
+                        'Submit Application'
+                      )}
+                    </Button>
+                  )}
+                </div>
+              </div>
+            )}
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  )
+}
