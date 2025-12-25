@@ -112,3 +112,10 @@ export const mockAuditLogs: AuditLog[] = [
     timestamp: "2024-02-02T14:00:00Z",
   },
 ];
+
+// Re-exports for backward compatibility
+export const hospitals = mockHospitals;
+export const programs = mockPrograms.map(p => ({
+  ...p,
+  hospital: mockHospitals.find(h => h.id === p.hospitalId)
+}));

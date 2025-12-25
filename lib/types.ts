@@ -12,6 +12,7 @@ export interface Student {
 
 export interface Program {
   id: string;
+  hospitalId?: string;
   name: string;
   description: string;
   requirements: string[];
@@ -30,7 +31,7 @@ export interface Application {
 export interface Document {
   id: string;
   applicationId: string;
-  type: "Passport" | "Medical Certificate" | "Academic Transcript" | "Other";
+  type: "Passport" | "Medical Certificate" | "Academic Transcript" | "Emirates ID" | "Medical Fitness Certificate" | "Police Clearance Certificate" | "Immunization Records" | "Nursing License" | "Specialty Certification" | "Other";
   fileName: string;
   fileUrl: string;
   uploadedAt: string;
@@ -61,3 +62,17 @@ export interface User {
   role: "student" | "admin";
   name: string;
 }
+
+export type Hospital = {
+  id: string;
+  name: string;
+  emirate: "Dubai" | "Abu Dhabi" | "Sharjah" | "Ajman" | "RAK" | "Fujairah" | "UAQ";
+  city: string;
+  type: "Hospital" | "Clinic";
+  accreditation: "DHA" | "DOH" | "MOH";
+  departments: string[];
+  programTypes: Array<"Observership" | "Hands-on" | "Internship" | "Residency" | "Elective">;
+  maxStudentsPerPeriod: number;
+  approvalSlaDays: number;
+  status: "Active" | "Inactive";
+};
