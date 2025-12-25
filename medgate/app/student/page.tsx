@@ -1,14 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { createStudent, getStudents, createApplication, getApplications, addDocument, getDocuments, createPayment, getPayments } from "@/lib/storage";
-import { mockPrograms } from "@/lib/mockData";
 import { useAuth } from "@/lib/auth-context";
-import { Student, Document } from "@/lib/types";
 import { Button } from "@/components/ui/button";
-import { Heart, Eye, Users, FileText, Upload, CheckCircle, ArrowLeft } from "lucide-react";
+import { Heart, Eye, Users, CheckCircle, Upload } from "lucide-react";
 
 export default function StudentPortal() {
   const { user, logout } = useAuth();
@@ -20,68 +17,6 @@ export default function StudentPortal() {
     { id: 'mission' as const, label: 'Mission & Vision' },
     { id: 'apply' as const, label: 'Apply for Programs' },
   ];
-
-  const [students, setStudents] = useState<Student[]>(getStudents());
-  const [applications, setApplications] = useState(getApplications());
-  const [documents, setDocuments] = useState(getDocuments());
-  const [payments, setPayments] = useState(getPayments());
-
-  const [showStudentForm, setShowStudentForm] = useState(false);
-  const [showApplicationForm, setShowApplicationForm] = useState(false);
-  const [showDocumentForm, setShowDocumentForm] = useState(false);
-
-  const [studentForm, setStudentForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    nationality: "",
-    university: "",
-    yearOfStudy: 1,
-  });
-
-  const [applicationForm, setApplicationForm] = useState({
-    studentId: "",
-    programId: "",
-  });
-
-  const [documentForm, setDocumentForm] = useState({
-    applicationId: "",
-    type: "Passport" as Document["type"],
-    fileName: "",
-    fileUrl: "",
-  });
-
-  const [paymentForm, setPaymentForm] = useState({
-    applicationId: "",
-    amount: 0,
-  });
-
-  const handleCreateStudent = () => {
-    const student = createStudent(studentForm);
-    setStudents([...students, student]);
-    setShowStudentForm(false);
-    setStudentForm({ name: "", email: "", phone: "", nationality: "", university: "", yearOfStudy: 1 });
-  };
-
-  const handleCreateApplication = () => {
-    const app = createApplication(applicationForm);
-    setApplications([...applications, app]);
-    setShowApplicationForm(false);
-    setApplicationForm({ studentId: "", programId: "" });
-  };
-
-  const handleAddDocument = () => {
-    const doc = addDocument(documentForm);
-    setDocuments([...documents, doc]);
-    setShowDocumentForm(false);
-    setDocumentForm({ applicationId: "", type: "Passport", fileName: "", fileUrl: "" });
-  };
-
-  const handleCreatePayment = () => {
-    const payment = createPayment(paymentForm);
-    setPayments([...payments, payment]);
-    setPaymentForm({ applicationId: "", amount: 0 });
-  };
 
   // If user is logged in and is a student, show full portal
   if (user && user.role === "student") {
