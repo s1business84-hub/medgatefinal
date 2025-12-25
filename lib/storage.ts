@@ -1,4 +1,4 @@
-import type { Student, Application, Document, Payment, AuditLog } from "./types";
+import type { Student, Application, Document, Payment, AuditLog, User } from "./types";
 
 const KEYS = {
   students: "medgate_students",
@@ -6,6 +6,8 @@ const KEYS = {
   documents: "medgate_documents",
   payments: "medgate_payments",
   audit: "medgate_audit",
+  users: "medgate_users",
+  currentUser: "medgate_current_user",
 };
 
 function readJSON<T>(key: string, fallback: T): T {
@@ -27,11 +29,12 @@ function newId(prefix: string) {
 }
 
 /* STUDENTS */
-export function createStudent(input: Omit<Student, "id" | "complianceStatus">): Student {
+export function createStudent(input: Omit<Student, "id" | "complianceStatus" | "createdAt">): Student {
   const students = readJSON<Student[]>(KEYS.students, []);
   const student: Student = {
     id: newId("stu"),
     complianceStatus: "Incomplete",
+    createdAt: new Date().toISOString(),
     ...input,
   };
   students.push(student);
@@ -92,12 +95,13 @@ export function setDocumentValidation(documentId: string, validationStatus: Docu
 }
 
 /* PAYMENTS (placeholder) */
-export function createPayment(input: Omit<Payment, "id" | "paymentStatus" | "currency">): Payment {
+export function createPayment(input: Omit<Payment, "id" | "paymentStatus" | "currency" | "createdAt">): Payment {
   const payments = readJSON<Payment[]>(KEYS.payments, []);
   const payment: Payment = {
     id: newId("pay"),
     currency: "AED",
     paymentStatus: "Unpaid",
+    createdAt: new Date().toISOString(),
     ...input,
   };
   payments.push(payment);
@@ -130,4 +134,45 @@ export function logAudit(entry: Omit<AuditLog, "id" | "timestamp">): AuditLog {
 
 export function getAudit(): AuditLog[] {
   return readJSON<AuditLog[]>(KEYS.audit, []);
+}
+
+/* USERS */
+export function createUser(input: Omit<User, "id">): User {
+  const users = readJSON<User[]>(KEYS.users, []);
+  const user: User = {
+    id: newId("usr"),
+    ...input,
+  };
+  users.push(user);
+  writeJSON(KEYS.users, users);
+  return user;
+}
+
+export function getUsers(): User[] {
+  return readJSON<User[]>(KEYS.users, []);
+}
+
+export function findUserByEmail(email: string): User | undefined {
+  const users = getUsers();
+  return users.find((user) => user.email === email);
+}
+
+export function loginUser(email: string, password: string): User | null {
+  const users = getUsers();
+  const user = users.find((u) => u.email === email);
+  if (user && password === "password") {
+    writeJSON(KEYS.currentUser, user);
+    return user;
+  }
+  return null;
+}
+
+export function logoutUser() {
+  if (typeof window !== "undefined") {
+    window.localStorage.removeItem(KEYS.currentUser);
+  }
+}
+
+export function getCurrentUser(): User | null {
+  return readJSON<User | null>(KEYS.currentUser, null);
 }

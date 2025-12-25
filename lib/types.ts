@@ -6,6 +6,8 @@ export interface Student {
   email: string;
   phone: string;
   nationality: string;
+  university?: string;
+  yearOfStudy?: number;
   complianceStatus: "Incomplete" | "Pending" | "Complete";
   createdAt: string;
 }
@@ -74,5 +76,5 @@ export type Hospital = {
   programTypes: Array<"Observership" | "Hands-on" | "Internship" | "Residency" | "Elective">;
   maxStudentsPerPeriod: number;
   approvalSlaDays: number;
-  status: "Active" | "Inactive";
+  status: "Active" | "Paused";
 };
