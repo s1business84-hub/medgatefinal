@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export default function VisionPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-emerald-50">
+    <div className="min-h-screen bg-linear-to-br from-green-50 via-white to-emerald-50">
       <div className="max-w-4xl mx-auto px-6 py-16">
         {/* Header */}
         <div className="flex items-center justify-between mb-12">
@@ -22,7 +22,7 @@ export default function VisionPage() {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Our <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Vision</span>
+            Our <span className="bg-linear-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Vision</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             To become the leading platform for medical education in the Middle East,
@@ -44,7 +44,7 @@ export default function VisionPage() {
               professional has the opportunity to achieve their dreams, regardless of geographical or
               socioeconomic barriers, through innovative, accessible, and comprehensive educational solutions.
             </p>
-            <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-xl">
+            <div className="bg-linear-to-r from-green-50 to-emerald-50 p-6 rounded-xl">
               <p className="text-lg text-green-800 text-center font-medium">
                 &quot;Empowering healthcare professionals worldwide through accessible, quality medical education.&quot;
               </p>
@@ -93,7 +93,7 @@ export default function VisionPage() {
 
         {/* Future Goals */}
         <section className="mb-16">
-          <div className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl p-8 md:p-12 text-white">
+          <div className="bg-linear-to-r from-green-600 to-emerald-600 rounded-2xl p-8 md:p-12 text-white">
             <div className="flex items-center justify-center mb-8">
               <Target className="w-12 h-12 text-white" />
             </div>
@@ -103,15 +103,15 @@ export default function VisionPage() {
                 <h3 className="text-xl font-semibold mb-4">2025-2027</h3>
                 <ul className="space-y-3 text-green-100">
                   <li className="flex items-start">
-                    <span className="w-2 h-2 bg-white rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span className="w-2 h-2 bg-white rounded-full mt-2 mr-3 shrink-0"></span>
                     Expand to 50+ partner hospitals across the Middle East
                   </li>
                   <li className="flex items-start">
-                    <span className="w-2 h-2 bg-white rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span className="w-2 h-2 bg-white rounded-full mt-2 mr-3 shrink-0"></span>
                     Launch AI-powered matching system for optimal placements
                   </li>
                   <li className="flex items-start">
-                    <span className="w-2 h-2 bg-white rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span className="w-2 h-2 bg-white rounded-full mt-2 mr-3 shrink-0"></span>
                     Develop comprehensive career tracking platform
                   </li>
                 </ul>
@@ -120,15 +120,15 @@ export default function VisionPage() {
                 <h3 className="text-xl font-semibold mb-4">2027-2030</h3>
                 <ul className="space-y-3 text-green-100">
                   <li className="flex items-start">
-                    <span className="w-2 h-2 bg-white rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span className="w-2 h-2 bg-white rounded-full mt-2 mr-3 shrink-0"></span>
                     Become the leading medical education platform globally
                   </li>
                   <li className="flex items-start">
-                    <span className="w-2 h-2 bg-white rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span className="w-2 h-2 bg-white rounded-full mt-2 mr-3 shrink-0"></span>
                     Establish research partnerships with top medical institutions
                   </li>
                   <li className="flex items-start">
-                    <span className="w-2 h-2 bg-white rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span className="w-2 h-2 bg-white rounded-full mt-2 mr-3 shrink-0"></span>
                     Create lifelong learning ecosystem for healthcare professionals
                   </li>
                 </ul>
@@ -147,7 +147,7 @@ export default function VisionPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/student">
-                <Button size="lg" className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700">
+                <Button size="lg" className="bg-linear-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700">
                   <Users className="w-5 h-5 mr-2" />
                   Explore Student Portal
                 </Button>

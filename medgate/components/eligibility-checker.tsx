@@ -188,9 +188,9 @@ export function EligibilityChecker() {
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div className="flex items-start sm:items-center">
                     {program.match ? (
-                      <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 sm:mt-0 flex-shrink-0" />
+                      <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 sm:mt-0 shrink-0" />
                     ) : (
-                      <XCircle className="w-5 h-5 text-red-600 mr-3 mt-0.5 sm:mt-0 flex-shrink-0" />
+                      <XCircle className="w-5 h-5 text-red-600 mr-3 mt-0.5 sm:mt-0 shrink-0" />
                     )}
                     <div className="min-w-0 flex-1">
                       <h5 className="font-medium text-slate-900 text-sm sm:text-base">{program.name}</h5>
@@ -231,7 +231,7 @@ export function EligibilityChecker() {
 
           <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
             <div className="flex flex-col sm:flex-row sm:items-start">
-              <FileText className="w-5 h-5 text-blue-600 mr-0 sm:mr-3 mb-3 sm:mb-0 mt-0.5 flex-shrink-0" />
+              <FileText className="w-5 h-5 text-blue-600 mr-0 sm:mr-3 mb-3 sm:mb-0 mt-0.5 shrink-0" />
               <div className="flex-1">
                 <h5 className="font-medium text-blue-900 text-sm sm:text-base">Need Help?</h5>
                 <p className="text-xs sm:text-sm text-blue-800 mt-1">

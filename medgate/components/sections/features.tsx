@@ -87,7 +87,7 @@ export function Features() {
                 className="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm ring-1 ring-slate-200/50 hover:shadow-xl hover:ring-slate-300/50 transition-all duration-300"
               >
                 <div className="flex items-center gap-x-3">
-                  <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-r ${feature.gradient} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                  <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-linear-to-r ${feature.gradient} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                     <feature.icon className="h-6 w-6 text-white" />
                   </div>
                   <h3 className="text-lg font-semibold text-slate-900">{feature.name}</h3>
@@ -95,7 +95,7 @@ export function Features() {
                 <p className="mt-4 text-sm leading-6 text-slate-600">{feature.description}</p>
 
                 {/* Hover effect background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-slate-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+                <div className="absolute inset-0 bg-linear-to-br from-slate-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
               </motion.div>
             ))}
           </div>

@@ -33,14 +33,14 @@ const features = [
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
+    <section className="relative overflow-hidden bg-linear-to-br from-slate-50 via-white to-blue-50/30">
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10" />
+      <div className="absolute inset-0 bg-grid-slate-100 mask-[linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10" />
       <div className="absolute top-0 right-0 -z-10">
-        <div className="h-96 w-96 rounded-full bg-gradient-to-br from-blue-100 to-indigo-100 opacity-40 blur-3xl" />
+        <div className="h-96 w-96 rounded-full bg-linear-to-br from-blue-100 to-indigo-100 opacity-40 blur-3xl" />
       </div>
       <div className="absolute bottom-0 left-0 -z-10">
-        <div className="h-96 w-96 rounded-full bg-gradient-to-tr from-indigo-100 to-purple-100 opacity-30 blur-3xl" />
+        <div className="h-96 w-96 rounded-full bg-linear-to-tr from-indigo-100 to-purple-100 opacity-30 blur-3xl" />
       </div>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-24 lg:px-8">
@@ -70,7 +70,7 @@ export function Hero() {
           >
             Find Your Perfect
             <br />
-            <span className="block bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="block bg-linear-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
               Medical Training
             </span>
           </motion.h1>
@@ -96,7 +96,7 @@ export function Hero() {
             className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6"
           >
             <Link href="/programs">
-              <Button size="lg" className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl transition-all duration-300 text-base px-6 py-3">
+              <Button size="lg" className="w-full sm:w-auto bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl transition-all duration-300 text-base px-6 py-3">
                 Browse Programs
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -118,7 +118,7 @@ export function Hero() {
           >
             {features.map((feature) => (
               <div key={feature} className="flex items-center justify-center sm:justify-start">
-                <CheckCircle className="mr-2 h-4 w-4 text-green-500 flex-shrink-0" />
+                <CheckCircle className="mr-2 h-4 w-4 text-green-500 shrink-0" />
                 <span className="text-center sm:text-left">{feature}</span>
               </div>
             ))}
@@ -142,7 +142,7 @@ export function Hero() {
                 className="relative overflow-hidden rounded-2xl bg-white/60 backdrop-blur-sm p-6 sm:p-8 shadow-sm ring-1 ring-slate-200/50 hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex items-center">
-                  <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-gradient-to-r from-blue-500 to-indigo-500 shadow-lg">
+                  <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-linear-to-r from-blue-500 to-indigo-500 shadow-lg">
                     <stat.icon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                   </div>
                   <div className="ml-3 sm:ml-4">
@@ -150,7 +150,7 @@ export function Hero() {
                     <div className="text-xs sm:text-sm text-slate-600">{stat.label}</div>
                   </div>
                 </div>
-                <div className="absolute -right-2 -top-2 sm:-right-4 sm:-top-4 h-16 w-16 sm:h-24 sm:w-24 rounded-full bg-gradient-to-br from-blue-100 to-indigo-100 opacity-20" />
+                <div className="absolute -right-2 -top-2 sm:-right-4 sm:-top-4 h-16 w-16 sm:h-24 sm:w-24 rounded-full bg-linear-to-br from-blue-100 to-indigo-100 opacity-20" />
               </motion.div>
             ))}
           </div>

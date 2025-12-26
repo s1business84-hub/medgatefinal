@@ -115,7 +115,7 @@ export function FAQ() {
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
-          <div className="rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 p-8">
+          <div className="rounded-2xl bg-linear-to-r from-blue-50 to-indigo-50 p-8">
             <h3 className="text-lg font-semibold text-slate-900 mb-2">
               Still have questions?
             </h3>
@@ -125,7 +125,7 @@ export function FAQ() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="mailto:support@medgate.com"
-                className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-3 text-sm font-medium text-white shadow-lg hover:shadow-xl transition-all duration-300"
+                className="inline-flex items-center justify-center rounded-lg bg-linear-to-r from-blue-600 to-indigo-600 px-6 py-3 text-sm font-medium text-white shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 Contact Support
               </a>

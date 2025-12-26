@@ -91,7 +91,7 @@ export function Pricing() {
   }, [])
 
   return (
-    <section className="py-16 sm:py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
+    <section className="py-16 sm:py-24 bg-linear-to-br from-slate-50 via-white to-blue-50/30">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <motion.h2
@@ -131,7 +131,7 @@ export function Pricing() {
             >
               {plan.popular && (
                 <div className="absolute -top-3 sm:-top-4 left-1/2 -translate-x-1/2">
-                  <div className="flex items-center rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium text-white shadow-lg">
+                  <div className="flex items-center rounded-full bg-linear-to-r from-blue-600 to-indigo-600 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium text-white shadow-lg">
                     <Star className="mr-1 h-3 w-3 sm:h-4 sm:w-4 fill-current" />
                     <span className="hidden sm:inline">Most Popular</span>
                     <span className="sm:hidden">Popular</span>
@@ -173,7 +173,7 @@ export function Pricing() {
               <ul className="mt-6 sm:mt-8 space-y-2 sm:space-y-3">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start">
-                    <Check className="h-4 w-4 text-green-500 flex-shrink-0 mt-0.5" />
+                    <Check className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />
                     <span className="ml-3 text-xs sm:text-sm text-slate-700">{feature}</span>
                   </li>
                 ))}
@@ -183,7 +183,7 @@ export function Pricing() {
                 <Button
                   className={`w-full py-3 text-sm sm:text-base ${
                     plan.popular
-                      ? "bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg"
+                      ? "bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg"
                       : ""
                   }`}
                   variant={plan.popular ? "default" : "outline"}
@@ -194,7 +194,7 @@ export function Pricing() {
 
               {/* Subtle background gradient */}
               {plan.popular && (
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-50/50 to-indigo-50/50 -z-10" />
+                <div className="absolute inset-0 rounded-3xl bg-linear-to-br from-blue-50/50 to-indigo-50/50 -z-10" />
               )}
             </motion.div>
           ))}

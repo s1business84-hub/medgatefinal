@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export default function MissionPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+    <div className="min-h-screen bg-linear-to-br from-blue-50 via-white to-indigo-50">
       <div className="max-w-4xl mx-auto px-6 py-16">
         {/* Header */}
         <div className="flex items-center justify-between mb-12">
@@ -22,7 +22,7 @@ export default function MissionPage() {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Our <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Mission & Vision</span>
+            Our <span className="bg-linear-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Mission & Vision</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Shaping the future of medical education in the UAE through innovation,
@@ -49,7 +49,7 @@ export default function MissionPage() {
 
         {/* Vision Statement */}
         <section className="mb-16">
-          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 md:p-12 text-white">
+          <div className="bg-linear-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 md:p-12 text-white">
             <div className="flex items-center justify-center mb-8">
               <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center">
                 <Eye className="w-10 h-10 text-white" />
@@ -163,7 +163,7 @@ export default function MissionPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/login">
-              <Button size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+              <Button size="lg" className="bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
                 Get Started Today
               </Button>
             </Link>

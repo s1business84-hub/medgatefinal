@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/lib/auth-context";
 import { Button } from "@/components/ui/button";
-import { getApplicationsByHospital, getStudents, getPayments, updateApplicationStatus, createNotification } from "@/lib/storage";
-import { Application, Student } from "@/lib/types";
+import { getApplicationsByHospital, getStudents, updateApplicationStatus, createNotification } from "@/lib/storage";
+import { Application } from "@/lib/types";
 import { CheckCircle, XCircle, FileText, Users, Clock } from "lucide-react";
 
 export default function HospitalPortal() {
@@ -27,8 +27,10 @@ export default function HospitalPortal() {
 
     // Load applications for this hospital
     const hospitalApps = getApplicationsByHospital(user.hospitalId || "");
-    setApplications(hospitalApps);
-    setLoading(false);
+    queueMicrotask(() => {
+      setApplications(hospitalApps);
+      setLoading(false);
+    });
   }, [user, router]);
 
   const getStudentName = (studentId: string): string => {
@@ -49,7 +51,6 @@ export default function HospitalPortal() {
     
     if (updated) {
       // Create notification for student
-      const studentEmail = getStudentEmail(updated.studentId);
       createNotification({
         userId: updated.studentId,
         type: "approval",
@@ -93,7 +94,7 @@ export default function HospitalPortal() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-50">
+      <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 to-indigo-50">
         <div className="text-center">
           <div className="w-12 h-12 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin mx-auto mb-4" />
           <p className="text-gray-600">Loading applications...</p>
@@ -103,7 +104,7 @@ export default function HospitalPortal() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+    <div className="min-h-screen bg-linear-to-br from-blue-50 via-white to-indigo-50">
       <div className="max-w-7xl mx-auto px-6 py-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-8 animate-fade-in">
