@@ -1,4 +1,4 @@
-import type { Student, Application, Document, Payment, AuditLog, User } from "./types";
+import type { Student, Application, Document, Payment, AuditLog, User, Notification } from "./types";
 
 const KEYS = {
   students: "medgate_students",
@@ -8,6 +8,7 @@ const KEYS = {
   audit: "medgate_audit",
   users: "medgate_users",
   currentUser: "medgate_current_user",
+  notifications: "medgate_notifications",
 };
 
 function readJSON<T>(key: string, fallback: T): T {
@@ -137,6 +138,30 @@ export function getAudit(): AuditLog[] {
   return readJSON<AuditLog[]>(KEYS.audit, []);
 }
 
+/* HOSPITAL-SPECIFIC FUNCTIONS */
+export function getApplicationsByHospital(hospitalId: string): Application[] {
+  const applications = readJSON<Application[]>(KEYS.applications, []);
+  return applications.filter(app => app.hospitalId === hospitalId);
+}
+
+export function updateApplicationStatus(applicationId: string, status: Application["status"], notes?: string): Application | null {
+  const applications = readJSON<Application[]>(KEYS.applications, []);
+  const appIndex = applications.findIndex(app => app.id === applicationId);
+  
+  if (appIndex === -1) return null;
+  
+  const updated = {
+    ...applications[appIndex],
+    status,
+    notes: notes || applications[appIndex].notes,
+  };
+  
+  applications[appIndex] = updated;
+  writeJSON(KEYS.applications, applications);
+  
+  return updated;
+}
+
 /* USERS */
 export function createUser(input: Omit<User, "id">): User {
   const users = readJSON<User[]>(KEYS.users, []);
@@ -177,4 +202,36 @@ export function logoutUser() {
 
 export function getCurrentUser(): User | null {
   return readJSON<User | null>(KEYS.currentUser, null);
+}
+
+/* NOTIFICATIONS */
+export function createNotification(input: Omit<Notification, "id" | "isRead" | "createdAt">): Notification {
+  const notifications = readJSON<Notification[]>(KEYS.notifications, []);
+  const notification: Notification = {
+    id: newId("notif"),
+    isRead: false,
+    createdAt: new Date().toISOString(),
+    ...input,
+  };
+  notifications.push(notification);
+  writeJSON(KEYS.notifications, notifications);
+  return notification;
+}
+
+export function getNotifications(): Notification[] {
+  return readJSON<Notification[]>(KEYS.notifications, []);
+}
+
+export function getUserNotifications(userId: string): Notification[] {
+  const notifications = getNotifications();
+  return notifications.filter(n => n.userId === userId);
+}
+
+export function markNotificationAsRead(notificationId: string): void {
+  const notifications = getNotifications();
+  const notification = notifications.find(n => n.id === notificationId);
+  if (notification) {
+    notification.isRead = true;
+    writeJSON(KEYS.notifications, notifications);
+  }
 }

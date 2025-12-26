@@ -23,6 +23,7 @@ export interface Application {
   id: string;
   studentId: string;
   programId: string;
+  hospitalId?: string;
   status: "Draft" | "Submitted" | "Under Review" | "Approved" | "Rejected";
   submissionDate: string;
   notes?: string;
@@ -59,8 +60,9 @@ export interface AuditLog {
 export interface User {
   id: string;
   email: string;
-  role: "student" | "admin";
+  role: "student" | "admin" | "hospital";
   name: string;
+  hospitalId?: string;
 }
 
 export type Hospital = {
@@ -76,3 +78,14 @@ export type Hospital = {
   approvalSlaDays: number;
   status: "Active" | "Paused";
 };
+
+export interface Notification {
+  id: string;
+  userId: string;
+  type: "approval" | "rejection" | "submission" | "update";
+  title: string;
+  message: string;
+  isRead: boolean;
+  createdAt: string;
+  relatedApplicationId?: string;
+}

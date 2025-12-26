@@ -1,0 +1,342 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { useAuth } from "@/lib/auth-context";
+import { Button } from "@/components/ui/button";
+import { getApplicationsByHospital, getStudents, getPayments, updateApplicationStatus, createNotification } from "@/lib/storage";
+import { Application, Student } from "@/lib/types";
+import { CheckCircle, XCircle, FileText, Users, Clock } from "lucide-react";
+
+export default function HospitalPortal() {
+  const { user, logout } = useAuth();
+  const router = useRouter();
+  const [applications, setApplications] = useState<Application[]>([]);
+  const [selectedApp, setSelectedApp] = useState<Application | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [actionInProgress, setActionInProgress] = useState(false);
+  const [rejectionReason, setRejectionReason] = useState("");
+  const [showRejectModal, setShowRejectModal] = useState(false);
+
+  useEffect(() => {
+    if (!user || user.role !== "hospital") {
+      router.push("/hospital-login");
+      return;
+    }
+
+    // Load applications for this hospital
+    const hospitalApps = getApplicationsByHospital(user.hospitalId || "");
+    setApplications(hospitalApps);
+    setLoading(false);
+  }, [user, router]);
+
+  const getStudentName = (studentId: string): string => {
+    const students = getStudents();
+    const student = students.find(s => s.id === studentId);
+    return student?.name || "Unknown Student";
+  };
+
+  const getStudentEmail = (studentId: string): string => {
+    const students = getStudents();
+    const student = students.find(s => s.id === studentId);
+    return student?.email || "Unknown";
+  };
+
+  const handleApproval = (appId: string) => {
+    setActionInProgress(true);
+    const updated = updateApplicationStatus(appId, "Approved", "Application approved by hospital");
+    
+    if (updated) {
+      // Create notification for student
+      const studentEmail = getStudentEmail(updated.studentId);
+      createNotification({
+        userId: updated.studentId,
+        type: "approval",
+        title: "Application Approved",
+        message: `Your observership application has been approved. Please complete your documentation and payment to confirm your participation.`,
+        relatedApplicationId: appId,
+      });
+
+      // Update local state
+      setApplications(applications.map(app => app.id === appId ? updated : app));
+      setSelectedApp(updated);
+    }
+    setActionInProgress(false);
+  };
+
+  const handleRejection = (appId: string) => {
+    setActionInProgress(true);
+    const updated = updateApplicationStatus(appId, "Rejected", rejectionReason || "Application rejected");
+    
+    if (updated) {
+      // Create notification for student
+      createNotification({
+        userId: updated.studentId,
+        type: "rejection",
+        title: "Application Status Update",
+        message: `Your observership application has been reviewed. Status: ${updated.status}. ${rejectionReason ? `Reason: ${rejectionReason}` : ""}`,
+        relatedApplicationId: appId,
+      });
+
+      setApplications(applications.map(app => app.id === appId ? updated : app));
+      setSelectedApp(updated);
+      setShowRejectModal(false);
+      setRejectionReason("");
+    }
+    setActionInProgress(false);
+  };
+
+  if (!user || user.role !== "hospital") {
+    return null;
+  }
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-50">
+        <div className="text-center">
+          <div className="w-12 h-12 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-gray-600">Loading applications...</p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+      <div className="max-w-7xl mx-auto px-6 py-8">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-8 animate-fade-in">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">Hospital Portal</h1>
+            <p className="text-gray-600">Manage observership applications</p>
+          </div>
+          <div className="flex gap-4">
+            <button
+              onClick={() => {
+                logout();
+                router.push("/");
+              }}
+              className="px-6 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition-colors font-medium"
+            >
+              Logout
+            </button>
+            <Link href="/" className="px-6 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition-colors font-medium">
+              ← Back to Home
+            </Link>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6 mb-8">
+          {/* Stats */}
+          <div className="bg-white rounded-lg shadow p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-gray-600 text-sm mb-2">Total Applications</p>
+                <p className="text-3xl font-bold text-gray-900">{applications.length}</p>
+              </div>
+              <Users className="w-12 h-12 text-blue-500 opacity-20" />
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg shadow p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-gray-600 text-sm mb-2">Pending Review</p>
+                <p className="text-3xl font-bold text-orange-600">
+                  {applications.filter(a => a.status === "Submitted").length}
+                </p>
+              </div>
+              <Clock className="w-12 h-12 text-orange-500 opacity-20" />
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg shadow p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-gray-600 text-sm mb-2">Approved</p>
+                <p className="text-3xl font-bold text-green-600">
+                  {applications.filter(a => a.status === "Approved").length}
+                </p>
+              </div>
+              <CheckCircle className="w-12 h-12 text-green-500 opacity-20" />
+            </div>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {/* Applications List */}
+          <div className="md:col-span-2">
+            <div className="bg-white rounded-lg shadow">
+              <div className="p-6 border-b border-gray-200">
+                <h2 className="text-xl font-bold text-gray-900">Applications</h2>
+              </div>
+
+              {applications.length === 0 ? (
+                <div className="p-12 text-center text-gray-500">
+                  <FileText className="w-12 h-12 mx-auto mb-4 opacity-30" />
+                  <p>No applications yet</p>
+                </div>
+              ) : (
+                <div className="divide-y">
+                  {applications.map((app) => (
+                    <div
+                      key={app.id}
+                      onClick={() => setSelectedApp(app)}
+                      className={`p-4 cursor-pointer hover:bg-gray-50 transition-colors ${
+                        selectedApp?.id === app.id ? "bg-indigo-50" : ""
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex-1">
+                          <p className="font-semibold text-gray-900">{getStudentName(app.studentId)}</p>
+                          <p className="text-sm text-gray-600">{getStudentEmail(app.studentId)}</p>
+                          <p className="text-xs text-gray-500 mt-1">
+                            {new Date(app.submissionDate).toLocaleDateString()}
+                          </p>
+                        </div>
+                        <div className="text-right">
+                          <span
+                            className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${
+                              app.status === "Approved"
+                                ? "bg-green-100 text-green-800"
+                                : app.status === "Rejected"
+                                ? "bg-red-100 text-red-800"
+                                : "bg-yellow-100 text-yellow-800"
+                            }`}
+                          >
+                            {app.status}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Details Panel */}
+          <div>
+            {selectedApp ? (
+              <div className="bg-white rounded-lg shadow sticky top-8">
+                <div className="p-6 border-b border-gray-200">
+                  <h3 className="text-lg font-bold text-gray-900">Application Details</h3>
+                </div>
+
+                <div className="p-6 space-y-4">
+                  <div>
+                    <p className="text-sm text-gray-600 mb-1">Student Name</p>
+                    <p className="font-semibold text-gray-900">{getStudentName(selectedApp.studentId)}</p>
+                  </div>
+
+                  <div>
+                    <p className="text-sm text-gray-600 mb-1">Email</p>
+                    <p className="font-semibold text-gray-900 break-all">{getStudentEmail(selectedApp.studentId)}</p>
+                  </div>
+
+                  <div>
+                    <p className="text-sm text-gray-600 mb-1">Submission Date</p>
+                    <p className="font-semibold text-gray-900">
+                      {new Date(selectedApp.submissionDate).toLocaleDateString()}
+                    </p>
+                  </div>
+
+                  <div>
+                    <p className="text-sm text-gray-600 mb-1">Status</p>
+                    <span
+                      className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${
+                        selectedApp.status === "Approved"
+                          ? "bg-green-100 text-green-800"
+                          : selectedApp.status === "Rejected"
+                          ? "bg-red-100 text-red-800"
+                          : "bg-yellow-100 text-yellow-800"
+                      }`}
+                    >
+                      {selectedApp.status}
+                    </span>
+                  </div>
+
+                  {selectedApp.notes && (
+                    <div>
+                      <p className="text-sm text-gray-600 mb-1">Notes</p>
+                      <p className="text-gray-900 text-sm">{selectedApp.notes}</p>
+                    </div>
+                  )}
+
+                  {/* Action Buttons */}
+                  {selectedApp.status === "Submitted" && (
+                    <div className="pt-4 border-t border-gray-200 space-y-2">
+                      <Button
+                        onClick={() => handleApproval(selectedApp.id)}
+                        disabled={actionInProgress}
+                        className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded-lg transition-colors"
+                      >
+                        <CheckCircle className="w-4 h-4 mr-2 inline" />
+                        Approve Application
+                      </Button>
+
+                      <Button
+                        onClick={() => setShowRejectModal(true)}
+                        disabled={actionInProgress}
+                        className="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-2 rounded-lg transition-colors"
+                      >
+                        <XCircle className="w-4 h-4 mr-2 inline" />
+                        Reject Application
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ) : (
+              <div className="bg-white rounded-lg shadow p-6 text-center text-gray-500">
+                <p>Select an application to view details</p>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Rejection Modal */}
+      {showRejectModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-lg shadow-lg max-w-md w-full p-6">
+            <h3 className="text-xl font-bold text-gray-900 mb-4">Reject Application</h3>
+
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Reason for Rejection
+              </label>
+              <textarea
+                value={rejectionReason}
+                onChange={(e) => setRejectionReason(e.target.value)}
+                placeholder="Enter reason (optional)"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                rows={4}
+              />
+            </div>
+
+            <div className="flex gap-3">
+              <Button
+                onClick={() => {
+                  setShowRejectModal(false);
+                  setRejectionReason("");
+                }}
+                className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium transition-colors"
+              >
+                Cancel
+              </Button>
+              <Button
+                onClick={() => selectedApp && handleRejection(selectedApp.id)}
+                disabled={actionInProgress}
+                className="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium transition-colors"
+              >
+                {actionInProgress ? "Processing..." : "Confirm Rejection"}
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

@@ -9,7 +9,8 @@ import {
   LayoutDashboard,
   Users,
   Settings,
-  Menu
+  Menu,
+  Building2
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -31,6 +32,11 @@ const navigation = [
     name: "Student Portal",
     href: "/student",
     icon: Users,
+  },
+  {
+    name: "Hospital Portal",
+    href: "/hospital-login",
+    icon: Building2,
   },
   {
     name: "Admin",

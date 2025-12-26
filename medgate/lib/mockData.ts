@@ -391,4 +391,25 @@ export const mockUsers = [
     role: "student" as const,
     name: "Maria Garcia",
   },
+  {
+    id: "h1_admin",
+    email: "hospital1@medgate.com",
+    role: "hospital" as const,
+    name: "Hospital Administrator",
+    hospitalId: "h1",
+  },
+  {
+    id: "h2_admin",
+    email: "hospital2@medgate.com",
+    role: "hospital" as const,
+    name: "Clinic Manager",
+    hospitalId: "h2",
+  },
+  {
+    id: "h3_admin",
+    email: "hospital3@medgate.com",
+    role: "hospital" as const,
+    name: "Medical Director",
+    hospitalId: "h3",
+  },
 ];

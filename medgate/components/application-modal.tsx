@@ -458,7 +458,7 @@ export function ApplicationModal({ isOpen, onClose, programName, hospitalName }:
                     <Button
                       onClick={handleSubmit}
                       disabled={!isStepValid() || isSubmitting}
-                      className="bg-green-600 hover:bg-green-700 min-w-[120px]"
+                      className="bg-green-600 hover:bg-green-700 min-w-30"
                     >
                       {isSubmitting ? (
                         <div className="flex items-center">
