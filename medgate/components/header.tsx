@@ -21,40 +21,26 @@ export function Header() {
           </Link>
 
           {/* Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {/* Company Section */}
-            <div className="flex items-center space-x-6">
-              <span className="text-sm font-medium text-gray-500 uppercase tracking-wide">Company</span>
-              <div className="flex items-center space-x-4">
-                <Link href="/about" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">
-                  About
-                </Link>
-                <span className="text-gray-300">|</span>
-                <Link href="/mission" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">
-                  Mission
-                </Link>
-                <span className="text-gray-300">|</span>
-                <Link href="/vision" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">
-                  Vision
-                </Link>
-              </div>
-            </div>
-
-            {/* Programs Section */}
-            <div className="flex items-center space-x-4">
-              <span className="text-sm font-medium text-gray-500 uppercase tracking-wide">Programs</span>
-              <Link href="/programs" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">
-                Programs
-              </Link>
-            </div>
-
-            {/* Student Portal Section */}
-            <div className="flex items-center space-x-4">
-              <span className="text-sm font-medium text-gray-500 uppercase tracking-wide">Student Portal</span>
-              <Link href="/student" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">
-                Student Portal
-              </Link>
-            </div>
+          <nav className="hidden md:flex items-center space-x-6">
+            <Link href="/about" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">
+              About
+            </Link>
+            <span className="text-gray-300">|</span>
+            <Link href="/mission" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">
+              Mission
+            </Link>
+            <span className="text-gray-300">|</span>
+            <Link href="/vision" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">
+              Vision
+            </Link>
+            <span className="text-gray-300">|</span>
+            <Link href="/programs" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">
+              Programs
+            </Link>
+            <span className="text-gray-300">|</span>
+            <Link href="/student" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">
+              Student Portal
+            </Link>
           </nav>
 
           {/* Auth Buttons */}
