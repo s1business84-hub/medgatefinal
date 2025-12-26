@@ -66,10 +66,22 @@ export function getApplications(): Application[] {
   return readJSON<Application[]>(KEYS.applications, []);
 }
 
-export function updateApplicationStatus(applicationId: string, status: Application["status"]) {
+export function updateApplicationStatus(applicationId: string, status: Application["status"], notes?: string): Application | null {
   const applications = readJSON<Application[]>(KEYS.applications, []);
-  const next = applications.map((a) => (a.id === applicationId ? { ...a, status } : a));
-  writeJSON(KEYS.applications, next);
+  const appIndex = applications.findIndex(a => a.id === applicationId);
+  
+  if (appIndex === -1) return null;
+  
+  const updated = {
+    ...applications[appIndex],
+    status,
+    notes: notes || applications[appIndex].notes,
+  };
+  
+  applications[appIndex] = updated;
+  writeJSON(KEYS.applications, applications);
+  
+  return updated;
 }
 
 /* DOCUMENTS */
@@ -142,24 +154,6 @@ export function getAudit(): AuditLog[] {
 export function getApplicationsByHospital(hospitalId: string): Application[] {
   const applications = readJSON<Application[]>(KEYS.applications, []);
   return applications.filter(app => app.hospitalId === hospitalId);
-}
-
-export function updateApplicationStatus(applicationId: string, status: Application["status"], notes?: string): Application | null {
-  const applications = readJSON<Application[]>(KEYS.applications, []);
-  const appIndex = applications.findIndex(app => app.id === applicationId);
-  
-  if (appIndex === -1) return null;
-  
-  const updated = {
-    ...applications[appIndex],
-    status,
-    notes: notes || applications[appIndex].notes,
-  };
-  
-  applications[appIndex] = updated;
-  writeJSON(KEYS.applications, applications);
-  
-  return updated;
 }
 
 /* USERS */
