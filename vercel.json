@@ -1,9 +1,8 @@
 {
   "version": 2,
-  "rootDirectory": "medgate",
-  "outputDirectory": ".next",
-  "framework": "nextjs",
-  "regions": ["iad1"],
   "buildCommand": "cd medgate && npm run build",
-  "installCommand": "npm install"
+  "installCommand": "npm install",
+  "outputDirectory": "medgate/.next",
+  "framework": "nextjs",
+  "regions": ["iad1"]
 }
