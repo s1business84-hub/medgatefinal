@@ -21,7 +21,7 @@ export default function StudentPortal() {
   // If user is logged in and is a student, show full portal
   if (user && user.role === "student") {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+      <div className="min-h-screen bg-linear-to-br from-blue-50 via-white to-indigo-50">
         <div className="max-w-7xl mx-auto px-6 py-8">
           {/* Header */}
           <div className="flex items-center justify-between mb-8 animate-fade-in">
@@ -143,7 +143,7 @@ export default function StudentPortal() {
               </p>
             </div>
 
-            <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white">
+            <div className="bg-linear-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white">
               <div className="flex items-center justify-center mb-6">
                 <Eye className="w-16 h-16 text-white" />
               </div>
@@ -166,7 +166,7 @@ export default function StudentPortal() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/login">
-                <Button size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+                <Button size="lg" className="bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
                   Login to Apply
                 </Button>
               </Link>
@@ -185,7 +185,7 @@ export default function StudentPortal() {
 
   // Public content for non-logged-in users
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+    <div className="min-h-screen bg-linear-to-br from-blue-50 via-white to-indigo-50">
       <div className="max-w-7xl mx-auto px-6 py-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-8 animate-fade-in">
@@ -238,19 +238,19 @@ export default function StudentPortal() {
                     <h3 className="text-xl font-semibold text-gray-900 mb-4">Our Commitment</h3>
                     <ul className="space-y-3 text-gray-700">
                       <li className="flex items-start">
-                        <svg className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-5 h-5 text-green-500 mr-3 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
                         Excellence in medical education
                       </li>
                       <li className="flex items-start">
-                        <svg className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-5 h-5 text-green-500 mr-3 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
                         Global partnerships with top institutions
                       </li>
                       <li className="flex items-start">
-                        <svg className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-5 h-5 text-green-500 mr-3 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
                         Personalized learning experiences
@@ -261,19 +261,19 @@ export default function StudentPortal() {
                     <h3 className="text-xl font-semibold text-gray-900 mb-4">Why Choose MedGate?</h3>
                     <ul className="space-y-3 text-gray-700">
                       <li className="flex items-start">
-                        <svg className="w-5 h-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-5 h-5 text-blue-500 mr-3 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
                         Accredited programs worldwide
                       </li>
                       <li className="flex items-start">
-                        <svg className="w-5 h-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-5 h-5 text-blue-500 mr-3 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
                         Comprehensive support services
                       </li>
                       <li className="flex items-start">
-                        <svg className="w-5 h-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-5 h-5 text-blue-500 mr-3 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
                         Career guidance and placement
@@ -289,7 +289,7 @@ export default function StudentPortal() {
             <div className="card">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Mission & Vision</h2>
               <div className="space-y-8">
-                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl">
+                <div className="bg-linear-to-r from-blue-50 to-indigo-50 p-8 rounded-xl">
                   <h3 className="text-2xl font-bold text-blue-900 mb-4">Our Mission</h3>
                   <p className="text-lg text-blue-800 leading-relaxed">
                     To empower aspiring healthcare professionals worldwide by providing unparalleled access to
@@ -298,7 +298,7 @@ export default function StudentPortal() {
                   </p>
                 </div>
 
-                <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-8 rounded-xl">
+                <div className="bg-linear-to-r from-green-50 to-emerald-50 p-8 rounded-xl">
                   <h3 className="text-2xl font-bold text-green-900 mb-4">Our Vision</h3>
                   <p className="text-lg text-green-800 leading-relaxed">
                     To be the global leader in healthcare education, creating a world where every aspiring medical
@@ -364,7 +364,7 @@ export default function StudentPortal() {
                 </div>
                 <div className="mt-8 p-6 bg-yellow-50 rounded-xl border border-yellow-200">
                   <div className="flex items-start">
-                    <svg className="w-6 h-6 text-yellow-600 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-6 h-6 text-yellow-600 mr-3 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                     </svg>
                     <div className="text-left">
