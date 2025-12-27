@@ -1,7 +1,5 @@
 {
   "version": 2,
-  "installCommand": "cd medgate && npm install",
-  "buildCommand": "cd medgate && npm run build",
   "framework": "nextjs",
   "regions": ["iad1"]
 }
