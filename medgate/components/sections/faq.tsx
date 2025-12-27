@@ -11,7 +11,7 @@ const faqs = [
   },
   {
     question: "What documents do I need to apply?",
-    answer: "Typically, you'll need your medical school transcripts, CV, recommendation letters, and proof of medical insurance. Specific requirements vary by program and hospital.",
+    answer: "Typically, you'll need your medical school transcripts, CV, recommendation letters, and valid Emirates ID. Specific requirements vary by program and hospital.",
   },
   {
     question: "Are the programs accredited?",
@@ -24,10 +24,6 @@ const faqs = [
   {
     question: "What if I get accepted to multiple programs?",
     answer: "Congratulations! You can choose which offer to accept. Our platform allows you to manage multiple acceptances and provides guidance on next steps.",
-  },
-  {
-    question: "Is there a fee for using MedGate?",
-    answer: "Basic browsing and applications are free. We offer premium features for enhanced support, priority applications, and document review services.",
   },
   {
     question: "How long does the application process take?",

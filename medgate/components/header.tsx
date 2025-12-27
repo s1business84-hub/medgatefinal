@@ -13,11 +13,14 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo and Brand */}
-          <Link href="/" className="flex items-center space-x-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-r from-blue-500 to-indigo-500">
-              <Stethoscope className="h-5 w-5 text-white" />
+          <Link href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-linear-to-r from-blue-600 to-indigo-600 shadow-lg hover:shadow-xl transition-shadow">
+              <Stethoscope className="h-6 w-6 text-white" />
             </div>
-            <span className="text-xl font-bold text-gray-900">MedGate</span>
+            <div>
+              <span className="text-2xl font-bold bg-linear-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">MedGate</span>
+              <p className="text-xs text-gray-500 font-medium">Medical Education Platform</p>
+            </div>
           </Link>
 
           {/* Navigation */}
