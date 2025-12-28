@@ -66,7 +66,15 @@ export function Header() {
                 <span className="text-gray-700 font-medium text-sm hidden sm:inline">
                   Welcome, {user.name}
                 </span>
-                <Link href={user.role === "admin" ? "/admin" : "/student"}>
+                <Link
+                  href={
+                    user.role === "admin"
+                      ? "/admin"
+                      : user.role === "hospital"
+                        ? "/hospital"
+                        : "/student"
+                  }
+                >
                   <Button variant="outline" size="sm" className="border-blue-300 text-blue-600 hover:bg-blue-50">
                     Dashboard
                   </Button>
