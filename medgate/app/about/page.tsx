@@ -68,47 +68,107 @@ export default function AboutPage() {
 
         {/* What We Do */}
         <section className="mb-16 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">What We Do</h2>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">What We Do</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Three pillars of excellence that define our mission
+            </p>
+          </div>
+          
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
                 icon: Users,
                 title: 'Connect Students',
-                description: 'We match medical students with observerships, electives, and clinical training programs that align with their career goals and interests.'
+                description: 'We match medical students with observerships, electives, and clinical training programs that align with their career goals and interests.',
+                gradient: 'from-blue-500 to-cyan-500',
+                bgGradient: 'from-blue-50 to-cyan-50',
+                number: '01'
               },
               {
                 icon: Target,
                 title: 'Streamline Applications',
-                description: 'Our platform simplifies the application process with real-time tracking, automated document verification, and direct hospital communication.'
+                description: 'Our platform simplifies the application process with real-time tracking, automated document verification, and direct hospital communication.',
+                gradient: 'from-purple-500 to-pink-500',
+                bgGradient: 'from-purple-50 to-pink-50',
+                number: '02'
               },
               {
                 icon: Award,
                 title: 'Enable Growth',
-                description: 'We provide the tools and support students need to succeed, from interview prep to onboarding and portfolio development.'
+                description: 'We provide the tools and support students need to succeed, from interview prep to onboarding and portfolio development.',
+                gradient: 'from-indigo-500 to-blue-500',
+                bgGradient: 'from-indigo-50 to-blue-50',
+                number: '03'
               }
             ].map((item, index) => (
-              <div key={item.title} className="group rounded-xl shadow-lg p-6 overflow-hidden backdrop-blur-xl bg-gradient-to-br from-white/40 via-white/20 to-white/10 border border-white/30 hover:shadow-2xl transition-all duration-300 animate-fade-in" style={{ animationDelay: `${0.3 + index * 0.1}s` }}>
+              <div 
+                key={item.title} 
+                className="group relative rounded-2xl overflow-hidden backdrop-blur-xl bg-gradient-to-br from-white/60 via-white/40 to-white/20 border border-white/40 hover:border-white/60 shadow-lg hover:shadow-2xl transition-all duration-300 animate-fade-in p-8"
+                style={{ animationDelay: `${0.3 + index * 0.1}s` }}
+              >
                 {/* Animated gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-400/10 via-transparent to-purple-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className={`absolute inset-0 bg-gradient-to-br ${item.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                 
                 {/* Liquid glass shine effect */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300">
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-300">
                   <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-to-br from-white to-transparent rounded-full blur-xl" />
                 </div>
-                
-                <div className="relative text-center">
-                  <div className="w-16 h-16 bg-linear-to-br from-blue-500 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">
-                    <item.icon className="w-8 h-8 text-white" />
+
+                {/* Number badge */}
+                <div className="absolute top-6 right-6 text-5xl font-bold text-gray-200 group-hover:text-gray-300 transition-colors">
+                  {item.number}
+                </div>
+
+                {/* Content */}
+                <div className="relative z-10">
+                  {/* Icon Container */}
+                  <div className="mb-6 inline-block">
+                    <div className={`p-4 rounded-xl bg-gradient-to-br ${item.gradient} shadow-lg group-hover:shadow-xl transform group-hover:scale-110 transition-all duration-300`}>
+                      <item.icon className="w-8 h-8 text-white" />
+                    </div>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
+
+                  {/* Title */}
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r transition-all duration-300"
+                      style={{
+                        backgroundImage: `linear-gradient(to right, var(--color))`,
+                      }}>
                     {item.title}
                   </h3>
-                  <p className="text-gray-600">
+
+                  {/* Description */}
+                  <p className="text-gray-600 group-hover:text-gray-700 transition-colors leading-relaxed">
                     {item.description}
                   </p>
+
+                  {/* Accent line */}
+                  <div className={`mt-6 h-1 bg-gradient-to-r ${item.gradient} rounded-full transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500`} />
                 </div>
+
+                {/* Floating elements for visual interest */}
+                <div className="absolute top-4 right-4 w-2 h-2 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse" />
+                <div className="absolute bottom-4 left-4 w-1.5 h-1.5 bg-purple-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ animationDelay: '0.5s' }} />
               </div>
             ))}
+          </div>
+
+          {/* Bottom highlight section */}
+          <div className="mt-12 rounded-2xl overflow-hidden backdrop-blur-xl bg-gradient-to-r from-blue-100/40 via-purple-100/40 to-pink-100/40 border border-white/30 p-8 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+            <div className="grid md:grid-cols-3 gap-6 text-center">
+              <div>
+                <div className="text-3xl font-bold bg-clip-text bg-gradient-to-r from-blue-600 to-blue-500 text-transparent mb-2">500+</div>
+                <p className="text-gray-700 font-medium">Programs Managed</p>
+              </div>
+              <div>
+                <div className="text-3xl font-bold bg-clip-text bg-gradient-to-r from-purple-600 to-purple-500 text-transparent mb-2">10k+</div>
+                <p className="text-gray-700 font-medium">Applications Processed</p>
+              </div>
+              <div>
+                <div className="text-3xl font-bold bg-clip-text bg-gradient-to-r from-pink-600 to-pink-500 text-transparent mb-2">24/7</div>
+                <p className="text-gray-700 font-medium">Support Available</p>
+              </div>
+            </div>
           </div>
         </section>
 
