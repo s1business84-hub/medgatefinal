@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/lib/auth-context";
 import { Button } from "@/components/ui/button";
-import { Building2, Mail, Lock } from "lucide-react";
+import { Building2, Mail, Lock, UserPlus } from "lucide-react";
 
 export default function HospitalLogin() {
   const [email, setEmail] = useState("hospital1@medgate.com");
@@ -102,14 +102,22 @@ export default function HospitalLogin() {
           </form>
 
           {/* Footer */}
-          <div className="px-8 py-6 bg-gray-50 border-t border-gray-200 text-center">
-            <p className="text-gray-600 text-sm mb-4">Not a hospital? </p>
-            <Link
-              href="/"
-              className="text-indigo-600 hover:text-indigo-700 font-semibold transition-colors"
-            >
-              ← Back to Home
-            </Link>
+          <div className="px-8 py-6 bg-gray-50 border-t border-gray-200 text-center space-y-3">
+            <Button asChild variant="outline" className="w-full flex items-center justify-center gap-2">
+              <Link href="/login?role=hospital">
+                <UserPlus className="w-4 h-4" />
+                Create Hospital Account
+              </Link>
+            </Button>
+            <div>
+              <p className="text-gray-600 text-sm mb-2">Not a hospital?</p>
+              <Link
+                href="/"
+                className="text-indigo-600 hover:text-indigo-700 font-semibold transition-colors"
+              >
+                ← Back to Home
+              </Link>
+            </div>
           </div>
         </div>
       </div>

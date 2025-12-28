@@ -8,7 +8,7 @@ import { createUser } from "@/lib/storage";
 
 function getInitialRole(searchParams: ReturnType<typeof useSearchParams>) {
   const roleParam = searchParams?.get("role");
-  return roleParam === "admin" ? "admin" : "student";
+  return roleParam === "hospital" ? "hospital" : "student";
 }
 
 export default function LoginForm() {
@@ -17,7 +17,7 @@ export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [role, setRole] = useState<"student" | "admin">(() => getInitialRole(searchParams));
+  const [role, setRole] = useState<"student" | "hospital">(() => getInitialRole(searchParams));
   const [error, setError] = useState("");
   const { login } = useAuth();
   const router = useRouter();
@@ -29,7 +29,7 @@ export default function LoginForm() {
     if (isLogin) {
       const success = login(email, password);
       if (success) {
-        router.push(role === "admin" ? "/admin" : "/student");
+        router.push(role === "hospital" ? "/hospital" : "/student");
       } else {
         setError("Invalid email or password");
       }
@@ -42,7 +42,7 @@ export default function LoginForm() {
       createUser({ email, role, name });
       const success = login(email, password);
       if (success) {
-        router.push(role === "admin" ? "/admin" : "/student");
+        router.push(role === "hospital" ? "/hospital" : "/student");
       } else {
         setError("Registration failed");
       }
@@ -58,7 +58,7 @@ export default function LoginForm() {
               {isLogin ? "Welcome Back" : "Create Account"}
             </h1>
             <p className="text-gray-600">
-              {isLogin ? `Sign in as ${role === "admin" ? "Admin" : "Student"}` : "Join MedGate platform"}
+              {isLogin ? `Sign in as ${role === "hospital" ? "Hospital" : "Student"}` : "Join MedGate platform"}
             </p>
           </div>
 
@@ -86,11 +86,11 @@ export default function LoginForm() {
                   <select
                     id="role"
                     value={role}
-                    onChange={(e) => setRole(e.target.value as "student" | "admin")}
+                    onChange={(e) => setRole(e.target.value as "student" | "hospital")}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   >
                     <option value="student">Student</option>
-                    <option value="admin">Admin</option>
+                    <option value="hospital">Hospital</option>
                   </select>
                 </div>
               </>
@@ -170,7 +170,7 @@ export default function LoginForm() {
             <p className="text-sm text-blue-800">
               <strong>Demo Credentials:</strong><br />
               Student: student@example.com / password<br />
-              Admin: admin@example.com / password
+              Hospital: hospital1@medgate.com / password
             </p>
           </div>
         </div>
