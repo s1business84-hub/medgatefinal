@@ -17,7 +17,7 @@ const footerLinks = {
   product: [
     { name: "Browse Programs", href: "/programs" },
     { name: "Student Portal", href: "/student" },
-    { name: "For Hospitals", href: "/hospitals" },
+    { name: "For Hospitals", href: "/for-hospitals" },
     { name: "API", href: "/api" },
   ],
   company: [
