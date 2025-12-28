@@ -73,18 +73,11 @@ export function Header() {
                 </Link>
               </>
             ) : (
-              <>
-                <Link href="/login">
-                  <Button variant="outline" size="sm" className="border-blue-300 text-blue-600 hover:bg-blue-50">
-                    Student Login
-                  </Button>
-                </Link>
-                <Link href="/login?role=admin">
-                  <Button size="sm" className="bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
-                    Admin Login
-                  </Button>
-                </Link>
-              </>
+              <Link href="/login">
+                <Button size="sm" className="bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+                  Login
+                </Button>
+              </Link>
             )}
           </div>
         </div>
