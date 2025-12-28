@@ -1,19 +1,22 @@
 import Link from "next/link";
 import { ArrowLeft, Eye, Lightbulb, Shield, Users, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { LiquidParallax } from "@/components/ui/liquid-parallax";
 
 export default function VisionPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-emerald-50 overflow-hidden">
-      <div className="max-w-4xl mx-auto px-6 py-16">
+    <div className="relative min-h-screen overflow-hidden bg-slate-950 text-slate-100">
+      <LiquidParallax />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
+      <div className="relative max-w-4xl mx-auto px-6 py-16">
         {/* Header */}
         <div className="flex items-center justify-between mb-12 animate-fade-in">
-          <Link href="/" className="flex items-center text-green-600 hover:text-green-800 transition-all duration-300 hover:translate-x-1">
+          <Link href="/" className="inline-flex items-center px-3 py-2 rounded-xl border border-white/15 bg-white/5 text-slate-100 hover:bg-white/10 transition-all hover:translate-x-1">
             <ArrowLeft className="w-5 h-5 mr-2" />
             Back to Home
           </Link>
           <Link href="/login">
-            <Button variant="outline" size="sm" className="hover:scale-105 transition-transform">
+            <Button variant="outline" size="sm" className="border-white/25 text-slate-100 hover:bg-white/10 hover:scale-105 transition-transform">
               Login / Sign Up
             </Button>
           </Link>
@@ -21,10 +24,10 @@ export default function VisionPage() {
 
         {/* Hero Section */}
         <div className="text-center mb-16 animate-fade-in" style={{ animationDelay: '0.1s' }}>
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-            Our <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent animate-pulse">Vision</span>
+          <h1 className="text-4xl md:text-6xl font-bold text-slate-100 mb-6">
+            Our <span className="bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">Vision</span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
             To become the leading platform for medical education in the Middle East,
             where every medical student has equal access to transformative clinical experiences.
           </p>

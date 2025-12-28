@@ -1,47 +1,28 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
+// removed framer-motion parallax layers in favor of shared LiquidParallax
 import { ArrowLeft, Heart, Eye, Lightbulb, Shield, Users } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { LiquidParallax } from "@/components/ui/liquid-parallax";
 
 export default function MissionPage() {
-  const { scrollY } = useScroll();
-  const layerSlow = useTransform(scrollY, [0, 600], ["0px", "-80px"]);
-  const layerMid = useTransform(scrollY, [0, 600], ["0px", "-120px"]);
-  const layerFast = useTransform(scrollY, [0, 600], ["0px", "-180px"]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 overflow-hidden">
-      {/* Parallax backdrop */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <motion.div
-          aria-hidden
-          className="absolute -left-32 -top-24 h-96 w-96 rounded-full bg-gradient-to-br from-indigo-200 via-blue-200 to-transparent blur-3xl opacity-70"
-          style={{ y: layerSlow }}
-        />
-        <motion.div
-          aria-hidden
-          className="absolute right-[-180px] top-32 h-[420px] w-[420px] rounded-full bg-gradient-to-br from-blue-200 via-cyan-200 to-transparent blur-3xl opacity-60"
-          style={{ y: layerMid }}
-        />
-        <motion.div
-          aria-hidden
-          className="absolute left-1/2 bottom-[-260px] h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-gradient-to-br from-purple-200 via-indigo-200 to-transparent blur-[120px] opacity-70"
-          style={{ y: layerFast }}
-        />
-      </div>
+    <div className="relative min-h-screen overflow-hidden bg-slate-950 text-slate-100">
+      <LiquidParallax />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
 
-      <div className="max-w-4xl mx-auto px-6 py-16">
+      <div className="relative max-w-4xl mx-auto px-6 py-16">
         {/* Header */}
         <div className="flex items-center justify-between mb-12 animate-fade-in">
-          <Link href="/" className="flex items-center text-blue-600 hover:text-blue-800 transition-all duration-300 hover:translate-x-1">
+          <Link href="/" className="inline-flex items-center px-3 py-2 rounded-xl border border-white/15 bg-white/5 text-slate-100 hover:bg-white/10 transition-all hover:translate-x-1">
             <ArrowLeft className="w-5 h-5 mr-2" />
             Back to Home
           </Link>
           <Link href="/login">
-            <Button variant="outline" size="sm" className="hover:scale-105 transition-transform">
+            <Button variant="outline" size="sm" className="border-white/25 text-slate-100 hover:bg-white/10 hover:scale-105 transition-transform">
               Login / Sign Up
             </Button>
           </Link>
@@ -49,10 +30,10 @@ export default function MissionPage() {
 
         {/* Hero Section */}
         <div className="text-center mb-16 animate-fade-in" style={{ animationDelay: '0.1s' }}>
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-            Our <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent animate-pulse">Mission & Vision</span>
+          <h1 className="text-4xl md:text-6xl font-bold text-slate-100 mb-6">
+            Our <span className="bg-gradient-to-r from-cyan-500 to-indigo-600 bg-clip-text text-transparent">Mission & Vision</span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
             Shaping the future of medical education in the UAE through innovation,
             accessibility, and excellence in clinical training.
           </p>
