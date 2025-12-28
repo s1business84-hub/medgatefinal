@@ -11,7 +11,7 @@ const faqs = [
   },
   {
     question: "What documents do I need to apply?",
-    answer: "Typically, you'll need your medical school transcripts, CV, recommendation letters, and valid Emirates ID. Specific requirements vary by program and hospital.",
+    answer: "You'll need your medical school transcripts, CV, recommendation letters, valid Emirates ID, and medical fitness certificate. Specific requirements vary by program and hospital.",
   },
   {
     question: "Are the programs accredited?",

@@ -47,7 +47,7 @@ export function Header() {
           </nav>
 
           {/* Auth Buttons */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3">
             {user ? (
               <div className="flex items-center space-x-4">
                 <span className="text-sm text-gray-600">Welcome, {user.name}</span>
@@ -58,11 +58,18 @@ export function Header() {
                 </Link>
               </div>
             ) : (
-              <Link href="/login">
-                <Button size="sm" className="bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
-                  Login / Sign Up
-                </Button>
-              </Link>
+              <>
+                <Link href="/login">
+                  <Button size="sm" variant="outline" className="border-gray-300 hover:bg-gray-50">
+                    Student Login
+                  </Button>
+                </Link>
+                <Link href="/login">
+                  <Button size="sm" className="bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+                    Admin Login
+                  </Button>
+                </Link>
+              </>
             )}
           </div>
         </div>

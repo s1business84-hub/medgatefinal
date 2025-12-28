@@ -24,7 +24,7 @@ export interface Application {
   studentId: string;
   programId: string;
   hospitalId?: string;
-  status: "Draft" | "Submitted" | "Under Review" | "Approved" | "Rejected";
+  status: "Draft" | "Submitted" | "Under Review" | "Approved" | "Rejected" | "Waitlisted";
   submissionDate: string;
   notes?: string;
 }
