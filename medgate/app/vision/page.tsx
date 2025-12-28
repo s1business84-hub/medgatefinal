@@ -212,20 +212,3 @@ export default function VisionPage() {
     </div>
   );
 }
-                  <Users className="w-5 h-5 mr-2" />
-                  Explore Student Portal
-                </Button>
-              </Link>
-              <Link href="/programs">
-                <Button variant="outline" size="lg">
-                  <Eye className="w-5 h-5 mr-2" />
-                  Programs
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
-  );
-}
