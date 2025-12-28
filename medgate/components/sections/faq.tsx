@@ -114,15 +114,20 @@ export function FAQ() {
                   className="group"
                 >
                   <motion.div
-                    className="relative rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden"
-                    whileHover={{ y: -2 }}
+                    className="relative rounded-2xl border border-white/30 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden backdrop-blur-xl bg-gradient-to-br from-white/40 via-white/20 to-white/10"
+                    whileHover={{ y: -4 }}
                   >
                     {/* Animated gradient background on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-50 via-transparent to-purple-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 via-transparent to-purple-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    
+                    {/* Liquid glass shine effect */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300">
+                      <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-to-br from-white to-transparent rounded-full blur-xl" />
+                    </div>
 
                     <button
                       onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                      className="relative flex w-full items-center justify-between px-6 py-5 text-left cursor-pointer"
+                      className="relative flex w-full items-center justify-between px-6 py-5 text-left cursor-pointer z-10"
                     >
                       <div className="flex items-center gap-4 flex-1">
                         <motion.div
@@ -139,8 +144,9 @@ export function FAQ() {
                       <motion.div
                         animate={{ rotate: openIndex === index ? 180 : 0 }}
                         transition={{ duration: 0.3 }}
+                        className="flex-shrink-0"
                       >
-                        <ChevronDown className="h-5 w-5 text-slate-600 flex-shrink-0" />
+                        <ChevronDown className="h-5 w-5 text-slate-600" />
                       </motion.div>
                     </button>
 
@@ -151,7 +157,7 @@ export function FAQ() {
                           animate={{ opacity: 1, height: "auto" }}
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.3, ease: "easeInOut" }}
-                          className="relative border-t border-slate-200 px-6 py-4"
+                          className="relative border-t border-white/20 px-6 py-4 z-10"
                         >
                           <motion.p
                             initial={{ opacity: 0, y: -10 }}
