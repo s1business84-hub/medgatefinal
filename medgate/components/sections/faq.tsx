@@ -1,6 +1,7 @@
 "use client"
 
-import { motion, AnimatePresence } from "framer-motion"
+import Image from "next/image"
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import { ChevronDown, MessageCircle, HelpCircle } from "lucide-react"
 import * as React from "react"
 
@@ -37,6 +38,10 @@ const faqs = [
 
 export function FAQ() {
   const [openIndex, setOpenIndex] = React.useState<number | null>(null)
+  const sectionRef = React.useRef<HTMLElement | null>(null)
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] })
+  const imageY = useTransform(scrollYProgress, [0, 1], ["-50px", "50px"])
+  const glowY = useTransform(scrollYProgress, [0, 1], ["-30px", "30px"])
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -59,123 +64,150 @@ export function FAQ() {
   }
 
   return (
-    <section id="faq" className="py-24 sm:py-32 bg-gradient-to-b from-white via-slate-50 to-white relative overflow-hidden">
+    <section
+      id="faq"
+      ref={sectionRef}
+      className="py-24 sm:py-32 bg-gradient-to-b from-white via-slate-50 to-white relative overflow-hidden"
+    >
       {/* Decorative Elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10" />
 
-      <div className="mx-auto max-w-4xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center justify-center gap-2 mb-6"
-          >
-            <HelpCircle className="w-6 h-6 text-blue-600" />
-            <span className="text-sm font-semibold text-blue-600 uppercase tracking-wider">Questions & Answers</span>
-          </motion.div>
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        <div className="grid lg:grid-cols-[1.05fr,0.95fr] gap-12 items-start">
+          <div className="space-y-10 mx-auto w-full max-w-2xl">
+            <div className="text-center lg:text-left">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+                className="inline-flex items-center justify-center gap-2 mb-6"
+              >
+                <HelpCircle className="w-6 h-6 text-blue-600" />
+                <span className="text-sm font-semibold text-blue-600 uppercase tracking-wider">Questions & Answers</span>
+              </motion.div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            viewport={{ once: true }}
-            className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 bg-clip-text bg-gradient-to-r from-slate-900 via-blue-800 to-slate-900"
-          >
-            Frequently asked questions
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-            viewport={{ once: true }}
-            className="mt-6 text-lg leading-8 text-slate-600"
-          >
-            Everything you need to know about getting started with MedGate.
-            Can&apos;t find the answer you&apos;re looking for? Reach out to our support team.
-          </motion.p>
-        </div>
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                viewport={{ once: true }}
+                className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 bg-clip-text bg-gradient-to-r from-slate-900 via-blue-800 to-slate-900"
+              >
+                Frequently asked questions
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+                viewport={{ once: true }}
+                className="mt-6 text-lg leading-8 text-slate-600"
+              >
+                Everything you need to know about getting started with MedGate.
+                Can&apos;t find the answer you&apos;re looking for? Reach out to our support team.
+              </motion.p>
+            </div>
 
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={containerVariants}
-          className="mx-auto mt-16 max-w-3xl"
-        >
-          <div className="space-y-4">
-            <AnimatePresence mode="wait">
-              {faqs.map((faq, index) => (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  className="group"
-                >
-                  <motion.div
-                    className="relative rounded-2xl border border-white/30 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden backdrop-blur-xl bg-gradient-to-br from-white/40 via-white/20 to-white/10"
-                    whileHover={{ y: -4 }}
-                  >
-                    {/* Animated gradient background on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 via-transparent to-purple-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    
-                    {/* Liquid glass shine effect */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300">
-                      <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-to-br from-white to-transparent rounded-full blur-xl" />
-                    </div>
-
-                    <button
-                      onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                      className="relative flex w-full items-center justify-between px-6 py-5 text-left cursor-pointer z-10"
-                    >
-                      <div className="flex items-center gap-4 flex-1">
-                        <motion.div
-                          animate={{ rotate: openIndex === index ? 360 : 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="flex-shrink-0"
-                        >
-                          <MessageCircle className="h-5 w-5 text-blue-600" />
-                        </motion.div>
-                        <h3 className="text-lg font-semibold text-slate-900 group-hover:text-blue-700 transition-colors">
-                          {faq.question}
-                        </h3>
-                      </div>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={containerVariants}
+              className="mx-auto max-w-3xl"
+            >
+              <div className="space-y-4">
+                <AnimatePresence mode="wait">
+                  {faqs.map((faq, index) => (
+                    <motion.div key={index} variants={itemVariants} className="group">
                       <motion.div
-                        animate={{ rotate: openIndex === index ? 180 : 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="flex-shrink-0"
+                        className="relative rounded-2xl border border-white/30 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden backdrop-blur-xl bg-gradient-to-br from-white/40 via-white/20 to-white/10"
+                        whileHover={{ y: -4 }}
                       >
-                        <ChevronDown className="h-5 w-5 text-slate-600" />
-                      </motion.div>
-                    </button>
+                        {/* Animated gradient background on hover */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 via-transparent to-purple-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                    <AnimatePresence>
-                      {openIndex === index && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
-                          className="relative border-t border-white/20 px-6 py-4 z-10"
+                        {/* Liquid glass shine effect */}
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300">
+                          <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-to-br from-white to-transparent rounded-full blur-xl" />
+                        </div>
+
+                        <button
+                          onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                          className="relative flex w-full items-center justify-between px-6 py-5 text-left cursor-pointer z-10"
                         >
-                          <motion.p
-                            initial={{ opacity: 0, y: -10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.1, duration: 0.3 }}
-                            className="text-slate-600 leading-relaxed"
+                          <div className="flex items-center gap-4 flex-1">
+                            <motion.div
+                              animate={{ rotate: openIndex === index ? 360 : 0 }}
+                              transition={{ duration: 0.3 }}
+                              className="flex-shrink-0"
+                            >
+                              <MessageCircle className="h-5 w-5 text-blue-600" />
+                            </motion.div>
+                            <h3 className="text-lg font-semibold text-slate-900 group-hover:text-blue-700 transition-colors">
+                              {faq.question}
+                            </h3>
+                          </div>
+                          <motion.div
+                            animate={{ rotate: openIndex === index ? 180 : 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="flex-shrink-0"
                           >
-                            {faq.answer}
-                          </motion.p>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
+                            <ChevronDown className="h-5 w-5 text-slate-600" />
+                          </motion.div>
+                        </button>
+
+                        <AnimatePresence>
+                          {openIndex === index && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: "auto" }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.3, ease: "easeInOut" }}
+                              className="relative border-t border-white/20 px-6 py-4 z-10"
+                            >
+                              <motion.p
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.1, duration: 0.3 }}
+                                className="text-slate-600 leading-relaxed"
+                              >
+                                {faq.answer}
+                              </motion.p>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </motion.div>
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
+              </div>
+            </motion.div>
           </div>
-        </motion.div>
+
+          {/* Parallax illustration */}
+          <div className="relative mt-10 lg:mt-0">
+            <motion.div
+              aria-hidden
+              className="absolute -left-10 -right-6 top-6 h-72 rounded-3xl bg-gradient-to-r from-blue-100 via-indigo-100 to-purple-100 blur-3xl opacity-70"
+              style={{ y: glowY }}
+            />
+            <motion.div
+              style={{ y: imageY }}
+              className="relative rounded-3xl overflow-hidden border border-slate-200/60 shadow-2xl bg-white/70 backdrop-blur"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-blue-50/40" />
+              <Image
+                src="/faq-illustration.svg"
+                alt="Clinician reviewing MedGate application FAQs and program status"
+                width={800}
+                height={600}
+                className="relative z-10 w-full h-auto"
+                priority={false}
+              />
+            </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   )
