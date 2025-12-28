@@ -4,7 +4,6 @@ import { motion } from "framer-motion"
 import {
   Search,
   FileCheck,
-  CreditCard,
   Clock,
   Award,
   Heart
@@ -28,12 +27,6 @@ const features = [
     description: "Monitor your application status, interview schedules, and acceptance updates.",
     icon: Clock,
     gradient: "from-purple-500 to-pink-500",
-  },
-  {
-    name: "Secure Payments",
-    description: "Safe and secure payment processing with multiple payment options.",
-    icon: CreditCard,
-    gradient: "from-orange-500 to-red-500",
   },
   {
     name: "Hospital Partnerships",
@@ -82,41 +75,31 @@ export function Features() {
                 key={feature.name}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
                 viewport={{ once: true }}
-                className="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm ring-1 ring-slate-200/50 hover:shadow-xl hover:ring-slate-300/50 transition-all duration-300"
+                className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100 p-8 shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-200"
               >
-                <div className="flex items-center gap-x-3">
-                  <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-linear-to-r ${feature.gradient} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                {/* Gradient Background */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
+
+                {/* Icon */}
+                <div className="relative mb-6">
+                  <div className={`inline-flex rounded-xl bg-gradient-to-br ${feature.gradient} p-3 shadow-lg group-hover:shadow-xl transition-shadow duration-300`}>
                     <feature.icon className="h-6 w-6 text-white" />
                   </div>
-                  <h3 className="text-lg font-semibold text-slate-900">{feature.name}</h3>
                 </div>
-                <p className="mt-4 text-sm leading-6 text-slate-600">{feature.description}</p>
 
-                {/* Hover effect background */}
-                <div className="absolute inset-0 bg-linear-to-br from-slate-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+                {/* Content */}
+                <h3 className="relative text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">
+                  {feature.name}
+                </h3>
+                <p className="relative text-slate-600 group-hover:text-slate-700 transition-colors">
+                  {feature.description}
+                </p>
               </motion.div>
             ))}
           </div>
         </div>
-
-        {/* Trust indicators */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-          viewport={{ once: true }}
-          className="mt-20 text-center"
-        >
-          <p className="text-sm font-medium text-slate-600 mb-8">Trusted by leading institutions</p>
-          <div className="flex items-center justify-center space-x-8 opacity-60">
-            <div className="text-slate-400 font-semibold">Cleveland Clinic Abu Dhabi</div>
-            <div className="text-slate-400 font-semibold">Mediclinic</div>
-            <div className="text-slate-400 font-semibold">Burjeel Hospital</div>
-            <div className="text-slate-400 font-semibold">NMC Healthcare</div>
-          </div>
-        </motion.div>
       </div>
     </section>
   )

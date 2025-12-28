@@ -25,22 +25,22 @@ const stats = [
 ]
 
 const features = [
-  "Real-time pricing updates",
-  "Eligibility matching system",
-  "Program criteria at a glance",
-  "Hospital partnerships",
+  "One-Click Applications",
+  "Real-Time Tracking",
+  "Direct Hospital Partnerships",
+  "Instant Eligibility Matching",
 ]
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-linear-to-br from-slate-50 via-white to-blue-50/30">
+    <section className="relative overflow-hidden bg-linear-to-br from-slate-900 via-slate-800 to-indigo-900">
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-grid-slate-100 mask-[linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10" />
+      <div className="absolute inset-0 bg-grid-slate-700 mask-[linear-gradient(0deg,rgba(0,0,0,0.4),rgba(255,255,255,0.05))] -z-10" />
       <div className="absolute top-0 right-0 -z-10">
-        <div className="h-96 w-96 rounded-full bg-linear-to-br from-blue-100 to-indigo-100 opacity-40 blur-3xl" />
+        <div className="h-96 w-96 rounded-full bg-linear-to-br from-blue-500 to-indigo-500 opacity-20 blur-3xl" />
       </div>
       <div className="absolute bottom-0 left-0 -z-10">
-        <div className="h-96 w-96 rounded-full bg-linear-to-tr from-indigo-100 to-purple-100 opacity-30 blur-3xl" />
+        <div className="h-96 w-96 rounded-full bg-linear-to-tr from-indigo-500 to-purple-500 opacity-15 blur-3xl" />
       </div>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-24 lg:px-8">
@@ -53,7 +53,7 @@ export function Hero() {
             viewport={{ once: true }}
             className="mb-6 sm:mb-8"
           >
-            <span className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 sm:px-4 sm:py-2 text-sm font-medium text-blue-700 ring-1 ring-inset ring-blue-200">
+            <span className="inline-flex items-center rounded-full bg-white/10 px-3 py-1 sm:px-4 sm:py-2 text-sm font-medium text-blue-300 ring-1 ring-inset ring-white/20 backdrop-blur-sm">
               <CheckCircle className="mr-2 h-4 w-4" />
               <span className="hidden sm:inline">Trusted by 50+ UAE Hospitals</span>
               <span className="sm:hidden">50+ UAE Hospitals</span>
@@ -66,12 +66,12 @@ export function Hero() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-slate-900 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-white leading-tight"
           >
-            Find Your Perfect
+            One-Click Solutions to Find Your
             <br />
-            <span className="block bg-linear-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-              Medical Training
+            <span className="block bg-linear-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
+              Best Clinical Observership
             </span>
           </motion.h1>
 
@@ -81,10 +81,9 @@ export function Hero() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
             viewport={{ once: true }}
-            className="mt-4 sm:mt-6 text-base sm:text-lg lg:text-xl leading-7 sm:leading-8 text-slate-600 max-w-2xl mx-auto px-4"
+            className="mt-4 sm:mt-6 text-base sm:text-lg lg:text-xl leading-7 sm:leading-8 text-blue-100 max-w-2xl mx-auto px-4"
           >
-            Connect with clinical observerships and electives across UAE hospitals.
-            Streamlined applications, real-time tracking, and direct hospital partnerships.
+            Discover the best clinical observerships across UAE hospitals. Streamline your applications with real-time tracking and direct hospital partnerships.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -139,18 +138,18 @@ export function Hero() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.6 + index * 0.1 }}
-                className="relative overflow-hidden rounded-2xl bg-white/60 backdrop-blur-sm p-6 sm:p-8 shadow-sm ring-1 ring-slate-200/50 hover:shadow-lg transition-all duration-300"
+                className="relative overflow-hidden rounded-2xl bg-white/10 backdrop-blur-md p-6 sm:p-8 shadow-lg ring-1 ring-white/20 hover:bg-white/15 transition-all duration-300"
               >
                 <div className="flex items-center">
-                  <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-linear-to-r from-blue-500 to-indigo-500 shadow-lg">
+                  <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-linear-to-r from-blue-400 to-indigo-400 shadow-lg">
                     <stat.icon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                   </div>
                   <div className="ml-3 sm:ml-4">
-                    <div className="text-2xl sm:text-3xl font-bold text-slate-900">{stat.value}</div>
-                    <div className="text-xs sm:text-sm text-slate-600">{stat.label}</div>
+                    <div className="text-2xl sm:text-3xl font-bold text-white">{stat.value}</div>
+                    <div className="text-xs sm:text-sm text-blue-200">{stat.label}</div>
                   </div>
                 </div>
-                <div className="absolute -right-2 -top-2 sm:-right-4 sm:-top-4 h-16 w-16 sm:h-24 sm:w-24 rounded-full bg-linear-to-br from-blue-100 to-indigo-100 opacity-20" />
+                <div className="absolute -right-2 -top-2 sm:-right-4 sm:-top-4 h-16 w-16 sm:h-24 sm:w-24 rounded-full bg-linear-to-br from-blue-400 to-indigo-400 opacity-10" />
               </motion.div>
             ))}
           </div>
