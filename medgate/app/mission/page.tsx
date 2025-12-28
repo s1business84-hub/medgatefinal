@@ -3,19 +3,14 @@
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowLeft, Heart, Eye, Lightbulb, Shield, Users } from "lucide-react";
-import { useMemo } from "react";
 
 import { Button } from "@/components/ui/button";
 
 export default function MissionPage() {
   const { scrollY } = useScroll();
-  const [layerSlow, layerMid, layerFast] = useMemo(() => {
-    return [
-      useTransform(scrollY, [0, 600], ["0px", "-80px"]),
-      useTransform(scrollY, [0, 600], ["0px", "-120px"]),
-      useTransform(scrollY, [0, 600], ["0px", "-180px"]),
-    ];
-  }, [scrollY]);
+  const layerSlow = useTransform(scrollY, [0, 600], ["0px", "-80px"]);
+  const layerMid = useTransform(scrollY, [0, 600], ["0px", "-120px"]);
+  const layerFast = useTransform(scrollY, [0, 600], ["0px", "-180px"]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 overflow-hidden">
