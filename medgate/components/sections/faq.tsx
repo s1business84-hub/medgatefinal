@@ -11,7 +11,7 @@ const faqs = [
   },
   {
     question: "What documents do I need to apply?",
-    answer: "You'll need your medical school transcripts, CV, recommendation letters, valid Emirates ID, and medical fitness certificate. Specific requirements vary by program and hospital.",
+    answer: "You'll need your medical school transcripts, CV, recommendation letters, and valid Emirates ID. Specific requirements vary by program and hospital.",
   },
   {
     question: "Are the programs accredited?",
@@ -78,11 +78,11 @@ export function FAQ() {
               >
                 <button
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                  className="flex w-full items-center justify-between p-6 text-left"
+                  className="flex w-full items-center justify-between px-6 py-4 text-left"
                 >
-                  <h3 className="text-lg font-medium text-slate-900">{faq.question}</h3>
+                  <h3 className="text-lg font-semibold text-slate-900">{faq.question}</h3>
                   <ChevronDown
-                    className={`h-5 w-5 text-slate-500 transition-transform duration-200 ${
+                    className={`h-5 w-5 text-slate-600 transition-transform duration-200 ${
                       openIndex === index ? "rotate-180" : ""
                     }`}
                   />
@@ -92,46 +92,14 @@ export function FAQ() {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="px-6 pb-6"
+                    transition={{ duration: 0.2 }}
+                    className="border-t border-slate-200 px-6 py-4"
                   >
                     <p className="text-slate-600 leading-relaxed">{faq.answer}</p>
                   </motion.div>
                 )}
               </div>
             ))}
-          </div>
-        </motion.div>
-
-        {/* Contact CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="mt-16 text-center"
-        >
-          <div className="rounded-2xl bg-linear-to-r from-blue-50 to-indigo-50 p-8">
-            <h3 className="text-lg font-semibold text-slate-900 mb-2">
-              Still have questions?
-            </h3>
-            <p className="text-slate-600 mb-6">
-              Our support team is here to help you succeed in your medical training journey.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="mailto:support@medgate.com"
-                className="inline-flex items-center justify-center rounded-lg bg-linear-to-r from-blue-600 to-indigo-600 px-6 py-3 text-sm font-medium text-white shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                Contact Support
-              </a>
-              <a
-                href="#"
-                className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all duration-300"
-              >
-                Schedule a Call
-              </a>
-            </div>
           </div>
         </motion.div>
       </div>
