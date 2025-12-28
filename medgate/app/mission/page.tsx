@@ -1,10 +1,43 @@
+"use client";
+
 import Link from "next/link";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowLeft, Heart, Eye, Lightbulb, Shield, Users } from "lucide-react";
+import { useMemo } from "react";
+
 import { Button } from "@/components/ui/button";
 
 export default function MissionPage() {
+  const { scrollY } = useScroll();
+  const [layerSlow, layerMid, layerFast] = useMemo(() => {
+    return [
+      useTransform(scrollY, [0, 600], ["0px", "-80px"]),
+      useTransform(scrollY, [0, 600], ["0px", "-120px"]),
+      useTransform(scrollY, [0, 600], ["0px", "-180px"]),
+    ];
+  }, [scrollY]);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 overflow-hidden">
+      {/* Parallax backdrop */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <motion.div
+          aria-hidden
+          className="absolute -left-32 -top-24 h-96 w-96 rounded-full bg-gradient-to-br from-indigo-200 via-blue-200 to-transparent blur-3xl opacity-70"
+          style={{ y: layerSlow }}
+        />
+        <motion.div
+          aria-hidden
+          className="absolute right-[-180px] top-32 h-[420px] w-[420px] rounded-full bg-gradient-to-br from-blue-200 via-cyan-200 to-transparent blur-3xl opacity-60"
+          style={{ y: layerMid }}
+        />
+        <motion.div
+          aria-hidden
+          className="absolute left-1/2 bottom-[-260px] h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-gradient-to-br from-purple-200 via-indigo-200 to-transparent blur-[120px] opacity-70"
+          style={{ y: layerFast }}
+        />
+      </div>
+
       <div className="max-w-4xl mx-auto px-6 py-16">
         {/* Header */}
         <div className="flex items-center justify-between mb-12 animate-fade-in">
