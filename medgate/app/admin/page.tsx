@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { getApplications, updateApplicationStatus, getStudents, createNotification } from "@/lib/storage";
+import { getApplications, updateApplicationStatus, getStudents, createNotification, deleteApplication, addDocument, getProgramCriteria, setProgramCriteria } from "@/lib/storage";
 import { mockPrograms } from "@/lib/mockData";
 import { useAuth } from "@/lib/auth-context";
 import type { Application } from "@/lib/types";
@@ -24,6 +24,9 @@ export default function AdminPage() {
   const [actionInProgress, setActionInProgress] = useState(false);
   const [rejectReason, setRejectReason] = useState("");
   const [showRejectModal, setShowRejectModal] = useState(false);
+  const [docName, setDocName] = useState("");
+  const [docType, setDocType] = useState<"Passport" | "Medical Certificate" | "Academic Transcript" | "Emirates ID" | "Medical Fitness Certificate" | "Police Clearance Certificate" | "Immunization Records" | "Nursing License" | "Specialty Certification" | "Other">("Other");
+  const [criteriaInput, setCriteriaInput] = useState<string>("");
 
   const getStudentName = (studentId: string): string => {
     const students = getStudents();
@@ -94,6 +97,35 @@ export default function AdminPage() {
       setRejectReason("");
     }
     setActionInProgress(false);
+  };
+
+  const handleRemoveApplication = (appId: string) => {
+    const ok = deleteApplication(appId);
+    if (ok) {
+      setApplications(applications.filter(a => a.id !== appId));
+      setSelectedApp(null);
+    }
+  };
+
+  const handleUploadDocument = () => {
+    if (!selectedApp || !docName) return;
+    addDocument({
+      applicationId: selectedApp.id,
+      type: docType,
+      fileName: docName,
+      fileUrl: "#",
+    });
+    setDocName("");
+  };
+
+  const saveCriteria = () => {
+    if (!selectedApp) return;
+    const current = getProgramCriteria(selectedApp.programId);
+    const next = criteriaInput
+      .split("\n")
+      .map(s => s.trim())
+      .filter(Boolean);
+    setProgramCriteria(selectedApp.programId, next.length ? next : current);
   };
 
   if (!user || user.role !== "admin") {
@@ -196,8 +228,42 @@ export default function AdminPage() {
                         <XCircle className="w-4 h-4 mr-2" />
                         Reject Application
                       </button>
+                      <button onClick={() => handleRemoveApplication(selectedApp.id)} className="w-full bg-gray-600 hover:bg-gray-700 text-white font-medium py-2 rounded-lg transition-colors flex items-center justify-center">
+                        Remove Application
+                      </button>
                     </div>
                   )}
+                  <div className="pt-4 border-t border-gray-200 space-y-3">
+                    <p className="text-sm font-semibold text-gray-900">Upload Document (admin)</p>
+                    <div className="flex items-center gap-2">
+                      <select
+                        value={docType}
+                        onChange={(e) => setDocType(e.target.value as typeof docType)}
+                        className="border border-gray-300 rounded-lg px-2 py-2 text-sm"
+                      >
+                        {[
+                          "Passport",
+                          "Medical Certificate",
+                          "Academic Transcript",
+                          "Emirates ID",
+                          "Medical Fitness Certificate",
+                          "Police Clearance Certificate",
+                          "Immunization Records",
+                          "Nursing License",
+                          "Specialty Certification",
+                          "Other",
+                        ].map(t => <option key={t} value={t}>{t}</option>)}
+                      </select>
+                      <input value={docName} onChange={(e) => setDocName(e.target.value)} placeholder="Document name" className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm" />
+                      <button onClick={handleUploadDocument} className="px-3 py-2 bg-indigo-600 text-white rounded-lg text-sm">Upload</button>
+                    </div>
+                  </div>
+                  <div className="pt-4 border-t border-gray-200 space-y-3">
+                    <p className="text-sm font-semibold text-gray-900">Set Course Criteria (per program)</p>
+                    <p className="text-xs text-gray-600">Enter one criterion per line.</p>
+                    <textarea value={criteriaInput} onChange={(e) => setCriteriaInput(e.target.value)} rows={4} className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" placeholder="e.g., IELTS 7.0\nEmirates ID\nMedical Fitness" />
+                    <button onClick={saveCriteria} className="px-3 py-2 bg-blue-600 text-white rounded-lg text-sm">Save Criteria</button>
+                  </div>
                 </div>
               </div>
             ) : (

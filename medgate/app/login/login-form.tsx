@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/lib/auth-context";
-import { createUser } from "@/lib/storage";
+import { createUser, getCurrentUser } from "@/lib/storage";
 
 function getInitialRole(searchParams: ReturnType<typeof useSearchParams>) {
   const roleParam = searchParams?.get("role");
@@ -29,7 +29,14 @@ export default function LoginForm() {
     if (isLogin) {
       const success = login(email, password);
       if (success) {
-        router.push(role === "hospital" ? "/hospital" : "/student");
+        const u = getCurrentUser();
+        if (u?.role === "admin") {
+          router.push("/admin");
+        } else if (u?.role === "hospital") {
+          router.push("/hospital");
+        } else {
+          router.push("/student");
+        }
       } else {
         setError("Invalid email or password");
       }
@@ -42,7 +49,14 @@ export default function LoginForm() {
       createUser({ email, role, name });
       const success = login(email, password);
       if (success) {
-        router.push(role === "hospital" ? "/hospital" : "/student");
+        const u = getCurrentUser();
+        if (u?.role === "admin") {
+          router.push("/admin");
+        } else if (u?.role === "hospital") {
+          router.push("/hospital");
+        } else {
+          router.push("/student");
+        }
       } else {
         setError("Registration failed");
       }

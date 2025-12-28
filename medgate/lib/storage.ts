@@ -10,6 +10,7 @@ const KEYS = {
   currentUser: "medgate_current_user",
   notifications: "medgate_notifications",
   reminders: "medgate_reminders",
+  programCriteria: "medgate_program_criteria",
 };
 
 function readJSON<T>(key: string, fallback: T): T {
@@ -83,6 +84,16 @@ export function updateApplicationStatus(applicationId: string, status: Applicati
   writeJSON(KEYS.applications, applications);
   
   return updated;
+}
+
+export function deleteApplication(applicationId: string): boolean {
+  const applications = readJSON<Application[]>(KEYS.applications, []);
+  const next = applications.filter(a => a.id !== applicationId);
+  const removed = next.length !== applications.length;
+  if (removed) {
+    writeJSON(KEYS.applications, next);
+  }
+  return removed;
 }
 
 /* DOCUMENTS */
@@ -261,4 +272,18 @@ export function removeReminder(reminderId: string): void {
     reminder.isActive = false;
     writeJSON(KEYS.reminders, reminders);
   }
+}
+
+/* PROGRAM CRITERIA */
+type ProgramCriteriaMap = Record<string, string[]>;
+
+export function getProgramCriteria(programId: string): string[] {
+  const map = readJSON<ProgramCriteriaMap>(KEYS.programCriteria, {});
+  return map[programId] || [];
+}
+
+export function setProgramCriteria(programId: string, criteria: string[]): void {
+  const map = readJSON<ProgramCriteriaMap>(KEYS.programCriteria, {});
+  map[programId] = criteria;
+  writeJSON(KEYS.programCriteria, map);
 }
