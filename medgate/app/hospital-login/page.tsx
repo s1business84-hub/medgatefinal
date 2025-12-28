@@ -104,7 +104,7 @@ export default function HospitalLogin() {
           {/* Footer */}
           <div className="px-8 py-6 bg-gray-50 border-t border-gray-200 text-center space-y-3">
             <Button asChild variant="outline" className="w-full flex items-center justify-center gap-2">
-              <Link href="/login?role=hospital">
+              <Link href="/hospital/create-account">
                 <UserPlus className="w-4 h-4" />
                 Create Hospital Account
               </Link>

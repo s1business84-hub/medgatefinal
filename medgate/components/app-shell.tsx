@@ -39,8 +39,8 @@ const navigation = [
     icon: Building2,
   },
   {
-    name: "Admin",
-    href: "/admin",
+    name: "Hospital Login",
+    href: "/hospital-login",
     icon: Settings,
   },
 ]
