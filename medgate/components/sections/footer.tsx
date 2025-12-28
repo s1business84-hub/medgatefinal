@@ -30,7 +30,7 @@ const footerLinks = {
     { name: "Help Center", href: "/help" },
     { name: "Contact", href: "/contact" },
     { name: "Privacy", href: "/privacy" },
-    { name: "Terms", href: "/terms" },
+    { name: "Legal Disclaimer & Terms", href: "/legal" },
   ],
   social: [
     { name: "Twitter", href: "#", icon: Twitter },

@@ -160,7 +160,7 @@ export default function ForHospitalsPage() {
                   { icon: Star, title: 'Custom Branding', desc: 'Showcase your institution with customized program pages' },
                   { icon: Shield, title: 'Document Verification', desc: 'Automated validation of credentials and certifications' },
                   { icon: BarChart3, title: 'Reporting Dashboard', desc: 'Comprehensive insights into your training programs' }
-                ].map((feature, index) => (
+                ].map((feature) => (
                   <div 
                     key={feature.title}
                     className="backdrop-blur-sm bg-white/10 rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300"
@@ -236,7 +236,7 @@ export default function ForHospitalsPage() {
                 description: 'Oversee the entire training cycle from onboarding to completion with powerful tools.',
                 icon: BarChart3
               }
-            ].map((step, index) => (
+            ].map((step) => (
               <div 
                 key={step.step}
                 className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
