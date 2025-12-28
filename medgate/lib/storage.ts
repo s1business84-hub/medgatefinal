@@ -1,4 +1,4 @@
-import type { Student, Application, Document, Payment, AuditLog, User, Notification } from "./types";
+import type { Student, Application, Document, Payment, AuditLog, User, Notification, ProgramReminder } from "./types";
 
 const KEYS = {
   students: "medgate_students",
@@ -9,6 +9,7 @@ const KEYS = {
   users: "medgate_users",
   currentUser: "medgate_current_user",
   notifications: "medgate_notifications",
+  reminders: "medgate_reminders",
 };
 
 function readJSON<T>(key: string, fallback: T): T {
@@ -227,5 +228,37 @@ export function markNotificationAsRead(notificationId: string): void {
   if (notification) {
     notification.isRead = true;
     writeJSON(KEYS.notifications, notifications);
+  }
+}
+
+/* PROGRAM REMINDERS */
+export function createReminder(input: Omit<ProgramReminder, "id" | "createdAt" | "isActive">): ProgramReminder {
+  const reminders = readJSON<ProgramReminder[]>(KEYS.reminders, []);
+  const reminder: ProgramReminder = {
+    id: newId("rem"),
+    createdAt: new Date().toISOString(),
+    isActive: true,
+    ...input,
+  };
+  reminders.push(reminder);
+  writeJSON(KEYS.reminders, reminders);
+  return reminder;
+}
+
+export function getReminders(): ProgramReminder[] {
+  return readJSON<ProgramReminder[]>(KEYS.reminders, []);
+}
+
+export function getRemindersByProgram(programId: string): ProgramReminder[] {
+  const reminders = getReminders();
+  return reminders.filter(r => r.programId === programId && r.isActive);
+}
+
+export function removeReminder(reminderId: string): void {
+  const reminders = getReminders();
+  const reminder = reminders.find(r => r.id === reminderId);
+  if (reminder) {
+    reminder.isActive = false;
+    writeJSON(KEYS.reminders, reminders);
   }
 }

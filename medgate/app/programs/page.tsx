@@ -3,14 +3,20 @@
 import Link from "next/link";
 import { hospitals, programs } from "@/lib/mockData";
 import { EligibilityChecker } from "@/components/eligibility-checker";
+import { ReminderModal } from "@/components/reminder-modal";
 import { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, Bell } from "lucide-react";
 import { ApplicationModal } from "@/components/application-modal";
 
 export default function ProgramsPage() {
   const [expandedProgram, setExpandedProgram] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProgram, setSelectedProgram] = useState<{ name: string; hospital: string } | null>(null);
+  const [reminderModal, setReminderModal] = useState<{ open: boolean; programId: string; programName: string }>({
+    open: false,
+    programId: "",
+    programName: "",
+  });
 
   const toggleProgramExpansion = (programId: string) => {
     setExpandedProgram(expandedProgram === programId ? null : programId);
@@ -22,6 +28,14 @@ export default function ProgramsPage() {
       hospital: hospital?.name || ''
     });
     setIsModalOpen(true);
+  };
+
+  const handleReminderClick = (program: typeof programs[0]) => {
+    setReminderModal({
+      open: true,
+      programId: program.id,
+      programName: program.departmentName,
+    });
   };
   return (
     <main className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-indigo-50 relative overflow-hidden">
@@ -70,7 +84,7 @@ export default function ProgramsPage() {
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2 sm:gap-3">
                     <span className={`px-2 py-1 rounded-full text-xs font-medium whitespace-nowrap ${
                       p.seatsAvailable > 2 ? 'bg-green-100 text-green-800' :
                       p.seatsAvailable > 0 ? 'bg-yellow-100 text-yellow-800' :
@@ -78,9 +92,19 @@ export default function ProgramsPage() {
                     }`}>
                       {p.seatsAvailable} seats
                     </span>
+                    
+                    {/* Reminder Button */}
+                    <button
+                      onClick={() => handleReminderClick(p)}
+                      className="p-2 rounded-lg bg-white/40 border border-white/30 hover:bg-blue-100 hover:border-blue-300 transition-all group"
+                      title="Set reminder for this program"
+                    >
+                      <Bell className="w-4 h-4 text-amber-600 group-hover:text-amber-700" />
+                    </button>
+                    
                     <button
                       onClick={() => toggleProgramExpansion(p.id)}
-                      className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                      className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm"
                     >
                       {isExpanded ? (
                         <>
@@ -223,6 +247,17 @@ export default function ProgramsPage() {
           hospitalName={selectedProgram.hospital}
         />
       )}
+
+      {/* Reminder Modal */}
+      <ReminderModal
+        isOpen={reminderModal.open}
+        programId={reminderModal.programId}
+        programName={reminderModal.programName}
+        onClose={() => setReminderModal({ open: false, programId: "", programName: "" })}
+        onSuccess={() => {
+          // Optional: Show success message or update UI
+        }}
+      />
     </main>
   );
 } 

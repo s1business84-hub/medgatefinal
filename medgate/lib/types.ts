@@ -89,3 +89,12 @@ export interface Notification {
   createdAt: string;
   relatedApplicationId?: string;
 }
+
+export interface ProgramReminder {
+  id: string;
+  programId: string;
+  email: string;
+  notificationChannels: ("email" | "sms" | "whatsapp")[];
+  createdAt: string;
+  isActive: boolean;
+}
