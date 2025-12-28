@@ -24,11 +24,15 @@ export default function ProgramsPage() {
     setIsModalOpen(true);
   };
   return (
-    <main className="min-h-screen bg-linear-to-br from-blue-50 via-white to-indigo-50">
+    <main className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-indigo-50 relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute top-0 left-0 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 animate-pulse" />
+      <div className="absolute top-1/2 right-0 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 animate-pulse" style={{ animationDelay: '2s' }} />
+      
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         {/* Header */}
         <div className="text-center mb-8 sm:mb-12 animate-fade-in">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">Available Programs</h1>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-clip-text bg-gradient-to-r from-slate-900 via-blue-800 to-slate-900 text-transparent mb-3 sm:mb-4">Available Programs</h1>
           <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto px-4">Discover clinical training opportunities across UAE hospitals</p>
         </div>
 
@@ -43,17 +47,25 @@ export default function ProgramsPage() {
             const h = hospitals.find((x) => x.id === p.hospitalId);
             const isExpanded = expandedProgram === p.id;
             return (
-              <div key={p.id} className="card hover-lift animate-slide-in" style={{ animationDelay: `${0.3 + index * 0.1}s` }}>
+              <div key={p.id} className="group rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden backdrop-blur-xl bg-gradient-to-br from-white/40 via-white/20 to-white/10 border border-white/30 animate-slide-in p-6 sm:p-8" style={{ animationDelay: `${0.3 + index * 0.1}s` }}>
+                {/* Animated gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 via-transparent to-purple-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                {/* Liquid glass shine effect */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300">
+                  <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-to-br from-white to-transparent rounded-full blur-xl" />
+                </div>
+
                 {/* Program Header */}
-                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                <div className="relative flex flex-col lg:flex-row lg:items-center justify-between gap-4 z-10">
                   <div className="flex items-center space-x-3 flex-1">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-xl flex items-center justify-center shrink-0">
-                      <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-linear-to-br from-blue-500 to-indigo-500 rounded-xl flex items-center justify-center shrink-0 shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">
+                      <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                       </svg>
                     </div>
                     <div className="min-w-0 flex-1">
-                      <h2 className="text-lg sm:text-xl font-semibold text-gray-900 truncate">{p.departmentName}</h2>
+                      <h2 className="text-lg sm:text-xl font-semibold text-gray-900 truncate group-hover:text-blue-700 transition-colors">{p.departmentName}</h2>
                       <p className="text-sm text-gray-600">{p.programType} • {h?.name}</p>
                     </div>
                   </div>

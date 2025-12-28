@@ -91,7 +91,11 @@ export function Pricing() {
   }, [])
 
   return (
-    <section className="py-16 sm:py-24 bg-linear-to-br from-slate-50 via-white to-blue-50/30">
+    <section className="py-16 sm:py-24 bg-gradient-to-b from-slate-50 via-white to-slate-50 relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute top-0 left-0 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 animate-pulse" />
+      <div className="absolute top-1/2 right-0 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 animate-pulse" style={{ animationDelay: '2s' }} />
+      
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <motion.h2
@@ -123,12 +127,20 @@ export function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className={`relative rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-sm ring-1 transition-all duration-300 hover:shadow-xl ${
+              className={`relative rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group ${
                 plan.popular
-                  ? "bg-white ring-blue-200 shadow-blue-100"
-                  : "bg-white/60 backdrop-blur-sm ring-slate-200/50"
+                  ? "border border-white/40 backdrop-blur-xl bg-gradient-to-br from-white/50 via-white/30 to-white/20"
+                  : "border border-white/30 backdrop-blur-xl bg-gradient-to-br from-white/40 via-white/20 to-white/10"
               }`}
             >
+              {/* Animated gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-400/10 via-transparent to-purple-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              
+              {/* Liquid glass shine effect */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300">
+                <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-to-br from-white to-transparent rounded-full blur-xl" />
+              </div>
+
               {plan.popular && (
                 <div className="absolute -top-3 sm:-top-4 left-1/2 -translate-x-1/2">
                   <div className="flex items-center rounded-full bg-linear-to-r from-blue-600 to-indigo-600 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium text-white shadow-lg">
@@ -139,7 +151,7 @@ export function Pricing() {
                 </div>
               )}
 
-              <div className="text-center">
+              <div className="relative text-center z-10">
                 <h3 className="text-base sm:text-lg font-semibold text-slate-900">{plan.name}</h3>
                 <div className="mt-3 sm:mt-4 flex items-baseline justify-center">
                   <span className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">
@@ -170,7 +182,7 @@ export function Pricing() {
                 <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-slate-600">{plan.description}</p>
               </div>
 
-              <ul className="mt-6 sm:mt-8 space-y-2 sm:space-y-3">
+              <ul className="relative z-10 mt-6 sm:mt-8 space-y-2 sm:space-y-3">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start">
                     <Check className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />
@@ -179,7 +191,7 @@ export function Pricing() {
                 ))}
               </ul>
 
-              <div className="mt-6 sm:mt-8">
+              <div className="relative z-10 mt-6 sm:mt-8">
                 <Button
                   className={`w-full py-3 text-sm sm:text-base ${
                     plan.popular
@@ -191,11 +203,6 @@ export function Pricing() {
                   {plan.cta}
                 </Button>
               </div>
-
-              {/* Subtle background gradient */}
-              {plan.popular && (
-                <div className="absolute inset-0 rounded-3xl bg-linear-to-br from-blue-50/50 to-indigo-50/50 -z-10" />
-              )}
             </motion.div>
           ))}
         </div>

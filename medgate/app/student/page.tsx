@@ -21,57 +21,61 @@ export default function StudentPortal() {
   // If user is logged in and is a student, show full portal
   if (user && user.role === "student") {
     return (
-      <div className="min-h-screen bg-linear-to-br from-blue-50 via-white to-indigo-50">
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-indigo-50 relative overflow-hidden">
+        {/* Animated Background Elements */}
+        <div className="absolute top-0 left-0 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 animate-pulse" />
+        <div className="absolute top-1/2 right-0 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 animate-pulse" style={{ animationDelay: '2s' }} />
+        
         <div className="max-w-7xl mx-auto px-6 py-8">
           {/* Header */}
-          <div className="flex items-center justify-between mb-8 animate-fade-in">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 animate-fade-in gap-4">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">Student Portal</h1>
+              <h1 className="text-3xl sm:text-4xl font-bold bg-clip-text bg-gradient-to-r from-slate-900 via-blue-800 to-slate-900 text-transparent mb-2">Student Portal</h1>
               <p className="text-gray-600">Welcome back, {user.name}!</p>
             </div>
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
               <button
                 onClick={() => {
                   logout();
                   router.push("/");
                 }}
-                className="btn-secondary hover-scale"
+                className="btn-secondary hover-scale px-4 sm:px-6 py-2 sm:py-3 rounded-lg backdrop-blur-md border-white/30 bg-white/40"
               >
                 Logout
               </button>
-              <Link href="/" className="btn-secondary hover-scale">
+              <Link href="/" className="btn-secondary hover-scale px-4 sm:px-6 py-2 sm:py-3 rounded-lg backdrop-blur-md border-white/30 bg-white/40">
                 ← Back to Home
               </Link>
             </div>
           </div>
-        <div className="flex justify-center mb-8">
-          <div className="bg-white rounded-lg shadow-sm p-1 flex">
+        <div className="flex justify-center mb-8 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+          <div className="rounded-xl shadow-lg p-1 flex backdrop-blur-xl bg-gradient-to-br from-white/40 via-white/20 to-white/10 border border-white/30">
             <button
               onClick={() => setActiveTab('about')}
-              className={`px-6 py-3 rounded-md font-medium transition-colors ${
+              className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium transition-all duration-300 ${
                 activeTab === 'about'
-                  ? 'bg-blue-600 text-white'
-                  : 'text-gray-600 hover:text-gray-900'
+                  ? 'bg-linear-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-white/20'
               }`}
             >
               About MedGate
             </button>
             <button
               onClick={() => setActiveTab('mission')}
-              className={`px-6 py-3 rounded-md font-medium transition-colors ${
+              className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium transition-all duration-300 ${
                 activeTab === 'mission'
-                  ? 'bg-blue-600 text-white'
-                  : 'text-gray-600 hover:text-gray-900'
+                  ? 'bg-linear-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-white/20'
               }`}
             >
               Mission & Vision
             </button>
             <button
               onClick={() => setActiveTab('apply')}
-              className={`px-6 py-3 rounded-md font-medium transition-colors ${
+              className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium transition-all duration-300 ${
                 activeTab === 'apply'
-                  ? 'bg-blue-600 text-white'
-                  : 'text-gray-600 hover:text-gray-900'
+                  ? 'bg-linear-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-white/20'
               }`}
             >
               Apply for Programs
