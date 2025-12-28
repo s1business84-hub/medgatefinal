@@ -6,7 +6,8 @@ import {
   FileCheck,
   Clock,
   Award,
-  Heart
+  Heart,
+  Zap
 } from "lucide-react"
 
 const features = [
@@ -43,16 +44,53 @@ const features = [
 ]
 
 export function Features() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.6 },
+    },
+  }
+
   return (
-    <section className="py-24 sm:py-32 bg-white">
+    <section className="py-24 sm:py-32 bg-gradient-to-b from-slate-50 via-white to-slate-50 relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute top-0 left-0 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 animate-pulse" />
+      <div className="absolute top-1/2 right-0 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 animate-pulse animation-delay-2000" />
+      <div className="absolute bottom-0 left-1/2 w-80 h-80 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 animate-pulse animation-delay-4000" />
+
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-3xl text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center justify-center gap-2 mb-6"
+          >
+            <Zap className="w-6 h-6 text-amber-500 animate-pulse" />
+            <span className="text-sm font-semibold text-blue-600 uppercase tracking-wider">Powerful Features</span>
+          </motion.div>
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl"
+            className="text-4xl sm:text-5xl font-bold tracking-tight bg-clip-text bg-gradient-to-r from-slate-900 via-blue-800 to-slate-900 text-transparent"
           >
             Everything you need to succeed
           </motion.h2>
@@ -68,38 +106,84 @@ export function Features() {
           </motion.p>
         </div>
 
-        <div className="mx-auto mt-16 max-w-7xl">
+        <motion.div
+          className="mx-auto mt-16 max-w-7xl"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={containerVariants}
+        >
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
-                viewport={{ once: true }}
-                className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100 p-8 shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-200"
-              >
-                {/* Gradient Background */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
+            {features.map((feature) => {
+              const Icon = feature.icon
+              return (
+                <motion.div
+                  key={feature.name}
+                  variants={itemVariants}
+                  className="group"
+                >
+                  <motion.div
+                    className="relative h-full overflow-hidden rounded-2xl bg-gradient-to-br from-white to-slate-50 p-8 shadow-sm border border-slate-200 cursor-pointer"
+                    whileHover={{
+                      y: -8,
+                      boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {/* Animated gradient overlay */}
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
+                    />
 
-                {/* Icon */}
-                <div className="relative mb-6">
-                  <div className={`inline-flex rounded-xl bg-gradient-to-br ${feature.gradient} p-3 shadow-lg group-hover:shadow-xl transition-shadow duration-300`}>
-                    <feature.icon className="h-6 w-6 text-white" />
-                  </div>
-                </div>
+                    {/* Animated accent line */}
+                    <motion.div
+                      className={`absolute top-0 left-0 h-1 bg-gradient-to-r ${feature.gradient}`}
+                      initial={{ width: 0 }}
+                      whileHover={{ width: "100%" }}
+                      transition={{ duration: 0.4 }}
+                    />
 
-                {/* Content */}
-                <h3 className="relative text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">
-                  {feature.name}
-                </h3>
-                <p className="relative text-slate-600 group-hover:text-slate-700 transition-colors">
-                  {feature.description}
-                </p>
-              </motion.div>
-            ))}
+                    {/* Icon Container */}
+                    <motion.div
+                      className="relative mb-6 inline-block"
+                      whileHover={{ scale: 1.15, rotate: 5 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    >
+                      <div className={`inline-flex rounded-xl bg-gradient-to-br ${feature.gradient} p-3 shadow-lg group-hover:shadow-2xl transition-all duration-300`}>
+                        <Icon className="h-6 w-6 text-white" />
+                      </div>
+                      {/* Glow effect */}
+                      <div
+                        className={`absolute inset-0 rounded-xl bg-gradient-to-br ${feature.gradient} opacity-0 blur group-hover:opacity-30 transition-opacity duration-300`}
+                      />
+                    </motion.div>
+
+                    {/* Content */}
+                    <motion.h3
+                      className="relative text-xl font-bold text-slate-900 mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r transition-all duration-300"
+                      style={{
+                        backgroundImage: `linear-gradient(to right, ${"var(--color)"})`,
+                      }}
+                    >
+                      {feature.name}
+                    </motion.h3>
+                    <motion.p className="relative text-slate-600 group-hover:text-slate-700 transition-colors leading-relaxed">
+                      {feature.description}
+                    </motion.p>
+
+                    {/* Bottom accent */}
+                    <motion.div
+                      className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent"
+                      initial={{ opacity: 0, scaleX: 0 }}
+                      whileHover={{ opacity: 1, scaleX: 1 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </motion.div>
+                </motion.div>
+              )
+            })}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )
