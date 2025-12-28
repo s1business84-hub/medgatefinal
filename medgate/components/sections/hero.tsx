@@ -43,6 +43,15 @@ export function Hero() {
         <div className="h-96 w-96 rounded-full bg-linear-to-tr from-indigo-500 to-purple-500 opacity-15 blur-3xl" />
       </div>
 
+      {/* 3D animated lattice */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="hero-3d-perspective">
+          <div className="hero-3d-grid" />
+          <div className="hero-3d-orb hero-3d-orb--left" />
+          <div className="hero-3d-orb hero-3d-orb--right" />
+        </div>
+      </div>
+
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-24 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
           {/* Badge */}
