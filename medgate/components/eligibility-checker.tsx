@@ -40,17 +40,10 @@ export function EligibilityChecker() {
   const emirates = ["Abu Dhabi", "Dubai", "Sharjah", "Ajman", "Ras Al Khaimah", "Fujairah", "Umm Al Quwain"]
   const seasons = ["Summer", "Winter", "Spring", "Fall"]
 
-  const applyFilters = () => {
-    setShowResults(true)
-  }
+  const applyFilters = () => setShowResults(true)
 
   const resetFilters = () => {
-    setFilters({
-      duration: "",
-      specialty: "",
-      emirate: "",
-      season: ""
-    })
+    setFilters({ duration: "", specialty: "", emirate: "", season: "" })
     setShowResults(false)
   }
 
@@ -237,105 +230,6 @@ export function EligibilityChecker() {
           </motion.div>
         )}
       </div>
-    </motion.div>
-  )
-}            <label className="flex items-center p-3 sm:p-0 rounded-lg sm:rounded-none border sm:border-0 border-slate-200 cursor-pointer hover:bg-slate-50 sm:hover:bg-transparent transition-colors">
-              <input
-                type="checkbox"
-                checked={criteria.medicalFitness}
-                onChange={(e) => setCriteria(prev => ({ ...prev, medicalFitness: e.target.checked }))}
-                className="w-5 h-5 sm:w-4 sm:h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
-              />
-              <span className="ml-3 sm:ml-2 text-sm sm:text-base text-slate-700">Medical Fitness Certificate</span>
-            </label>
-          </div>
-
-          <Button onClick={checkEligibility} className="w-full bg-blue-600 hover:bg-blue-700 py-3 text-base">
-            Check My Eligibility
-          </Button>
-        </div>
-      ) : (
-        <div className="space-y-4 sm:space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <h4 className="text-base sm:text-lg font-semibold text-slate-900">Your Eligibility Results</h4>
-            <Button variant="outline" size="sm" onClick={resetChecker} className="w-full sm:w-auto">
-              Check Again
-            </Button>
-          </div>
-
-          <div className="space-y-3 sm:space-y-4">
-            {eligiblePrograms.map((program, index) => (
-              <motion.div
-                key={program.name}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className={`p-4 sm:p-5 rounded-lg border ${
-                  program.match
-                    ? 'bg-green-50 border-green-200'
-                    : 'bg-red-50 border-red-200'
-                }`}
-              >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                  <div className="flex items-start sm:items-center">
-                    {program.match ? (
-                      <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 sm:mt-0 shrink-0" />
-                    ) : (
-                      <XCircle className="w-5 h-5 text-red-600 mr-3 mt-0.5 sm:mt-0 shrink-0" />
-                    )}
-                    <div className="min-w-0 flex-1">
-                      <h5 className="font-medium text-slate-900 text-sm sm:text-base">{program.name}</h5>
-                      <p className="text-xs sm:text-sm text-slate-600 mt-1">
-                        Requires: {program.requirements.join(", ")}
-                      </p>
-                    </div>
-                  </div>
-                  <span className={`px-2 py-1 rounded-full text-xs font-medium whitespace-nowrap self-start sm:self-center ${
-                    program.match ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
-                  }`}>
-                    {program.match ? 'Eligible' : 'Not Eligible'}
-                  </span>
-                </div>
-
-                {!program.match && (
-                  <div className="mt-3 text-sm text-slate-600">
-                    <strong>Missing requirements:</strong>
-                    <ul className="list-disc list-inside mt-1 space-y-1">
-                      {criteria.yearOfStudy < program.minYear && (
-                        <li>Minimum Year {program.minYear} required (you have Year {criteria.yearOfStudy})</li>
-                      )}
-                      {!criteria.medicalDegree && program.requirements.includes("Medical Degree") && (
-                        <li>Medical Degree required</li>
-                      )}
-                      {!criteria.validLicense && program.requirements.includes("Valid License") && (
-                        <li>Valid Medical License required</li>
-                      )}
-                      {!criteria.englishProficiency && program.requirements.includes("English Proficiency") && (
-                        <li>English Proficiency required</li>
-                      )}
-                    </ul>
-                  </div>
-                )}
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
-            <div className="flex flex-col sm:flex-row sm:items-start">
-              <FileText className="w-5 h-5 text-blue-600 mr-0 sm:mr-3 mb-3 sm:mb-0 mt-0.5 shrink-0" />
-              <div className="flex-1">
-                <h5 className="font-medium text-blue-900 text-sm sm:text-base">Need Help?</h5>
-                <p className="text-xs sm:text-sm text-blue-800 mt-1">
-                  Contact our admissions team for personalized guidance on improving your eligibility.
-                </p>
-                <Button size="sm" className="mt-3 w-full sm:w-auto bg-blue-600 hover:bg-blue-700">
-                  Get Help
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </motion.div>
   )
 }
