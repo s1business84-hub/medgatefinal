@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { getApplications, updateApplicationStatus, getStudents, createNotification, deleteApplication, addDocument, getProgramCriteria, setProgramCriteria } from "@/lib/storage";
+import { getApplications, updateApplicationStatus, getStudents, createNotification, deleteApplication, addDocument } from "@/lib/storage";
 import { mockPrograms } from "@/lib/mockData";
 import { useAuth } from "@/lib/auth-context";
 import type { Application } from "@/lib/types";
@@ -26,7 +26,17 @@ export default function AdminPage() {
   const [showRejectModal, setShowRejectModal] = useState(false);
   const [docName, setDocName] = useState("");
   const [docType, setDocType] = useState<"Passport" | "Medical Certificate" | "Academic Transcript" | "Emirates ID" | "Medical Fitness Certificate" | "Police Clearance Certificate" | "Immunization Records" | "Nursing License" | "Specialty Certification" | "Other">("Other");
-  const [criteriaInput, setCriteriaInput] = useState<string>("");
+  const [showObsForm, setShowObsForm] = useState(false);
+  const [obsForm, setObsForm] = useState({
+    name: "",
+    description: "",
+    requirements: "",
+    length: "",
+    instructor: "",
+    timeline: "",
+    location: "",
+    price: "",
+  });
 
   const getStudentName = (studentId: string): string => {
     const students = getStudents();
@@ -118,14 +128,21 @@ export default function AdminPage() {
     setDocName("");
   };
 
-  const saveCriteria = () => {
-    if (!selectedApp) return;
-    const current = getProgramCriteria(selectedApp.programId);
-    const next = criteriaInput
-      .split("\n")
-      .map(s => s.trim())
-      .filter(Boolean);
-    setProgramCriteria(selectedApp.programId, next.length ? next : current);
+  const handleCreateObservership = () => {
+    // Placeholder: save observership to storage
+    console.log("Creating observership:", obsForm);
+    // Reset form and close
+    setObsForm({
+      name: "",
+      description: "",
+      requirements: "",
+      length: "",
+      instructor: "",
+      timeline: "",
+      location: "",
+      price: "",
+    });
+    setShowObsForm(false);
   };
 
   if (!user || user.role !== "admin") {
@@ -141,6 +158,12 @@ export default function AdminPage() {
             <p className="text-gray-600">Review and manage observership applications</p>
           </div>
           <div className="flex gap-4">
+            <button
+              onClick={() => setShowObsForm(true)}
+              className="px-6 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white transition-colors font-medium"
+            >
+              + Add Observership
+            </button>
             <button onClick={() => { logout(); router.push("/"); }} className="px-6 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition-colors font-medium">
               Logout
             </button>
@@ -258,12 +281,6 @@ export default function AdminPage() {
                       <button onClick={handleUploadDocument} className="px-3 py-2 bg-indigo-600 text-white rounded-lg text-sm">Upload</button>
                     </div>
                   </div>
-                  <div className="pt-4 border-t border-gray-200 space-y-3">
-                    <p className="text-sm font-semibold text-gray-900">Set Course Criteria (per program)</p>
-                    <p className="text-xs text-gray-600">Enter one criterion per line.</p>
-                    <textarea value={criteriaInput} onChange={(e) => setCriteriaInput(e.target.value)} rows={4} className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" placeholder="e.g., IELTS 7.0\nEmirates ID\nMedical Fitness" />
-                    <button onClick={saveCriteria} className="px-3 py-2 bg-blue-600 text-white rounded-lg text-sm">Save Criteria</button>
-                  </div>
                 </div>
               </div>
             ) : (
@@ -274,6 +291,109 @@ export default function AdminPage() {
           </div>
         </div>
       </div>
+
+      {/* Add Observership Modal */}
+      {showObsForm && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 overflow-y-auto">
+          <div className="bg-white rounded-lg shadow-lg max-w-2xl w-full p-6 my-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">Add New Observership</h3>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Observership Name</label>
+                <input
+                  value={obsForm.name}
+                  onChange={(e) => setObsForm({ ...obsForm, name: e.target.value })}
+                  placeholder="e.g., Cardiology Observership"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                <textarea
+                  value={obsForm.description}
+                  onChange={(e) => setObsForm({ ...obsForm, description: e.target.value })}
+                  placeholder="Brief description of the observership program"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  rows={3}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Requirements (comma-separated)</label>
+                <textarea
+                  value={obsForm.requirements}
+                  onChange={(e) => setObsForm({ ...obsForm, requirements: e.target.value })}
+                  placeholder="e.g., Medical Degree, IELTS 7.0, Emirates ID"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  rows={2}
+                />
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Length</label>
+                  <input
+                    value={obsForm.length}
+                    onChange={(e) => setObsForm({ ...obsForm, length: e.target.value })}
+                    placeholder="e.g., 4 weeks"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Instructor</label>
+                  <input
+                    value={obsForm.instructor}
+                    onChange={(e) => setObsForm({ ...obsForm, instructor: e.target.value })}
+                    placeholder="e.g., Dr. Ahmed Hassan"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  />
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Timeline</label>
+                  <input
+                    value={obsForm.timeline}
+                    onChange={(e) => setObsForm({ ...obsForm, timeline: e.target.value })}
+                    placeholder="e.g., Jan 2026 - Feb 2026"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Location</label>
+                  <input
+                    value={obsForm.location}
+                    onChange={(e) => setObsForm({ ...obsForm, location: e.target.value })}
+                    placeholder="e.g., Dubai Healthcare City"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  />
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Price (AED)</label>
+                <input
+                  value={obsForm.price}
+                  onChange={(e) => setObsForm({ ...obsForm, price: e.target.value })}
+                  placeholder="e.g., 5000"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
+            </div>
+            <div className="flex gap-3 mt-6">
+              <button
+                onClick={() => setShowObsForm(false)}
+                className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleCreateObservership}
+                className="flex-1 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-medium transition-colors"
+              >
+                Create Observership
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {showRejectModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
