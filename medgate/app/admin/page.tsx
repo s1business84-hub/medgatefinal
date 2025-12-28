@@ -8,6 +8,7 @@ import { mockPrograms } from "@/lib/mockData";
 import { useAuth } from "@/lib/auth-context";
 import type { Application } from "@/lib/types";
 import { CheckCircle, XCircle, Clock } from "lucide-react";
+import { LiquidParallax } from "@/components/ui/liquid-parallax";
 
 export default function AdminPage() {
   const { user, logout } = useAuth();
@@ -149,25 +150,44 @@ export default function AdminPage() {
     return null;
   }
 
+  const panelClass = "rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.5)]";
+  const badge = (state: string) =>
+    state === "Approved"
+      ? "bg-emerald-500/15 text-emerald-100 border-emerald-400/30"
+      : state === "Rejected"
+        ? "bg-rose-500/15 text-rose-100 border-rose-400/30"
+        : state === "Waitlisted"
+          ? "bg-amber-500/15 text-amber-100 border-amber-400/30"
+          : "bg-cyan-500/15 text-cyan-100 border-cyan-400/30";
+
   return (
-    <div className="min-h-screen bg-linear-to-br from-blue-50 via-white to-indigo-50">
-      <div className="max-w-7xl mx-auto px-6 py-8">
+    <div className="relative min-h-screen overflow-hidden bg-slate-950 text-slate-100">
+      <LiquidParallax />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
+
+      <div className="relative max-w-7xl mx-auto px-6 py-8">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Admin Dashboard</h1>
-            <p className="text-gray-600">Review and manage observership applications</p>
+            <h1 className="text-3xl font-bold text-slate-100 mb-2">Admin Dashboard</h1>
+            <p className="text-slate-300">Review and manage observership applications</p>
           </div>
-          <div className="flex gap-4">
+          <div className="flex gap-4 flex-wrap justify-end">
             <button
               onClick={() => setShowObsForm(true)}
-              className="px-6 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white transition-colors font-medium"
+              className="px-6 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-indigo-600 text-white font-semibold shadow-lg hover:from-cyan-400 hover:to-indigo-500 transition-all"
             >
               + Add Observership
             </button>
-            <button onClick={() => { logout(); router.push("/"); }} className="px-6 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition-colors font-medium">
+            <button
+              onClick={() => { logout(); router.push("/"); }}
+              className="px-6 py-2 rounded-lg border border-white/15 bg-white/5 text-slate-100 hover:bg-white/10 transition-colors font-semibold"
+            >
               Logout
             </button>
-            <Link href="/" className="px-6 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition-colors font-medium">
+            <Link
+              href="/"
+              className="px-6 py-2 rounded-lg border border-white/15 bg-white/5 text-slate-100 hover:bg-white/10 transition-colors font-semibold"
+            >
               ← Back to Home
             </Link>
           </div>
@@ -175,26 +195,30 @@ export default function AdminPage() {
 
         <div className="grid md:grid-cols-3 gap-6">
           <div className="md:col-span-2">
-            <div className="bg-white rounded-lg shadow">
-              <div className="p-6 border-b border-gray-200">
-                <h2 className="text-xl font-bold text-gray-900">Applications</h2>
+            <div className={`${panelClass}`}>
+              <div className="p-6 border-b border-white/10">
+                <h2 className="text-xl font-bold text-slate-100">Applications</h2>
               </div>
               {applications.length === 0 ? (
-                <div className="p-12 text-center text-gray-500">
+                <div className="p-12 text-center text-slate-400">
                   <p>No applications yet</p>
                 </div>
               ) : (
-                <div className="divide-y">
+                <div className="divide-y divide-white/10">
                   {applications.map((app) => (
-                    <div key={app.id} onClick={() => setSelectedApp(app)} className={`p-4 cursor-pointer hover:bg-gray-50 transition-colors ${selectedApp?.id === app.id ? "bg-indigo-50" : ""}`}>
+                    <div
+                      key={app.id}
+                      onClick={() => setSelectedApp(app)}
+                      className={`p-4 cursor-pointer transition-colors ${selectedApp?.id === app.id ? "bg-white/10" : "hover:bg-white/5"}`}
+                    >
                       <div className="flex items-center justify-between">
                         <div className="flex-1">
-                          <p className="font-semibold text-gray-900">{getStudentName(app.studentId)}</p>
-                          <p className="text-sm text-gray-600">{getStudentEmail(app.studentId)}</p>
-                          <p className="text-xs text-gray-500 mt-1">{new Date(app.submissionDate).toLocaleDateString()}</p>
+                          <p className="font-semibold text-slate-100">{getStudentName(app.studentId)}</p>
+                          <p className="text-sm text-slate-300">{getStudentEmail(app.studentId)}</p>
+                          <p className="text-xs text-slate-400 mt-1">{new Date(app.submissionDate).toLocaleDateString()}</p>
                         </div>
                         <div className="text-right">
-                          <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${app.status === "Approved" ? "bg-green-100 text-green-800" : app.status === "Rejected" ? "bg-red-100 text-red-800" : app.status === "Waitlisted" ? "bg-yellow-100 text-yellow-800" : "bg-blue-100 text-blue-800"}`}>
+                          <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium border ${badge(app.status)}`}>
                             {app.status === "Approved" ? "Included" : app.status}
                           </span>
                         </div>
@@ -208,61 +232,61 @@ export default function AdminPage() {
 
           <div>
             {selectedApp ? (
-              <div className="bg-white rounded-lg shadow sticky top-8">
-                <div className="p-6 border-b border-gray-200">
-                  <h3 className="text-lg font-bold text-gray-900">Application Details</h3>
+              <div className={`${panelClass} sticky top-8`}>
+                <div className="p-6 border-b border-white/10">
+                  <h3 className="text-lg font-bold text-slate-100">Application Details</h3>
                 </div>
                 <div className="p-6 space-y-4">
                   <div>
-                    <p className="text-sm text-gray-600 mb-1">Student Name</p>
-                    <p className="font-semibold text-gray-900">{getStudentName(selectedApp.studentId)}</p>
+                    <p className="text-sm text-slate-400 mb-1">Student Name</p>
+                    <p className="font-semibold text-slate-100">{getStudentName(selectedApp.studentId)}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600 mb-1">Email</p>
-                    <p className="font-semibold text-gray-900 break-all">{getStudentEmail(selectedApp.studentId)}</p>
+                    <p className="text-sm text-slate-400 mb-1">Email</p>
+                    <p className="font-semibold text-slate-100 break-all">{getStudentEmail(selectedApp.studentId)}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600 mb-1">Program</p>
-                    <p className="font-semibold text-gray-900">{mockPrograms.find(p => p.id === selectedApp.programId)?.name || "Unknown Program"}</p>
+                    <p className="text-sm text-slate-400 mb-1">Program</p>
+                    <p className="font-semibold text-slate-100">{mockPrograms.find(p => p.id === selectedApp.programId)?.name || "Unknown Program"}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600 mb-1">Status</p>
-                    <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${selectedApp.status === "Approved" ? "bg-green-100 text-green-800" : selectedApp.status === "Rejected" ? "bg-red-100 text-red-800" : selectedApp.status === "Waitlisted" ? "bg-yellow-100 text-yellow-800" : "bg-blue-100 text-blue-800"}`}>
+                    <p className="text-sm text-slate-400 mb-1">Status</p>
+                    <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium border ${badge(selectedApp.status)}`}>
                       {selectedApp.status === "Approved" ? "Included" : selectedApp.status}
                     </span>
                   </div>
                   {selectedApp.notes && (
                     <div>
-                      <p className="text-sm text-gray-600 mb-1">Notes</p>
-                      <p className="text-gray-900 text-sm">{selectedApp.notes}</p>
+                      <p className="text-sm text-slate-400 mb-1">Notes</p>
+                      <p className="text-slate-200 text-sm">{selectedApp.notes}</p>
                     </div>
                   )}
                   {selectedApp.status === "Submitted" && (
-                    <div className="pt-4 border-t border-gray-200 space-y-2">
-                      <button onClick={() => handleIncludeInObservership(selectedApp.id)} disabled={actionInProgress} className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded-lg transition-colors disabled:opacity-50 flex items-center justify-center">
+                    <div className="pt-4 border-t border-white/10 space-y-2">
+                      <button onClick={() => handleIncludeInObservership(selectedApp.id)} disabled={actionInProgress} className="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-white font-semibold py-2 rounded-lg transition-colors disabled:opacity-50 flex items-center justify-center shadow-lg">
                         <CheckCircle className="w-4 h-4 mr-2" />
                         Include in Observership
                       </button>
-                      <button onClick={() => handleWaitlist(selectedApp.id)} disabled={actionInProgress} className="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-medium py-2 rounded-lg transition-colors disabled:opacity-50 flex items-center justify-center">
+                      <button onClick={() => handleWaitlist(selectedApp.id)} disabled={actionInProgress} className="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-white font-semibold py-2 rounded-lg transition-colors disabled:opacity-50 flex items-center justify-center shadow-lg">
                         <Clock className="w-4 h-4 mr-2" />
                         Add to Waitlist
                       </button>
-                      <button onClick={() => setShowRejectModal(true)} disabled={actionInProgress} className="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-2 rounded-lg transition-colors disabled:opacity-50 flex items-center justify-center">
+                      <button onClick={() => setShowRejectModal(true)} disabled={actionInProgress} className="w-full bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-500 hover:to-rose-600 text-white font-semibold py-2 rounded-lg transition-colors disabled:opacity-50 flex items-center justify-center shadow-lg">
                         <XCircle className="w-4 h-4 mr-2" />
                         Reject Application
                       </button>
-                      <button onClick={() => handleRemoveApplication(selectedApp.id)} className="w-full bg-gray-600 hover:bg-gray-700 text-white font-medium py-2 rounded-lg transition-colors flex items-center justify-center">
+                      <button onClick={() => handleRemoveApplication(selectedApp.id)} className="w-full border border-white/15 bg-white/5 hover:bg-white/10 text-slate-100 font-semibold py-2 rounded-lg transition-colors flex items-center justify-center">
                         Remove Application
                       </button>
                     </div>
                   )}
-                  <div className="pt-4 border-t border-gray-200 space-y-3">
-                    <p className="text-sm font-semibold text-gray-900">Upload Document (admin)</p>
+                  <div className="pt-4 border-t border-white/10 space-y-3">
+                    <p className="text-sm font-semibold text-slate-100">Upload Document (admin)</p>
                     <div className="flex items-center gap-2">
                       <select
                         value={docType}
                         onChange={(e) => setDocType(e.target.value as typeof docType)}
-                        className="border border-gray-300 rounded-lg px-2 py-2 text-sm"
+                        className="border border-white/15 rounded-lg px-2 py-2 text-sm bg-white/5 text-slate-100"
                       >
                         {[
                           "Passport",
@@ -277,14 +301,14 @@ export default function AdminPage() {
                           "Other",
                         ].map(t => <option key={t} value={t}>{t}</option>)}
                       </select>
-                      <input value={docName} onChange={(e) => setDocName(e.target.value)} placeholder="Document name" className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm" />
-                      <button onClick={handleUploadDocument} className="px-3 py-2 bg-indigo-600 text-white rounded-lg text-sm">Upload</button>
+                      <input value={docName} onChange={(e) => setDocName(e.target.value)} placeholder="Document name" className="flex-1 border border-white/15 bg-white/5 text-slate-100 rounded-lg px-3 py-2 text-sm" />
+                      <button onClick={handleUploadDocument} className="px-3 py-2 bg-gradient-to-r from-cyan-500 to-indigo-600 text-white rounded-lg text-sm shadow-lg">Upload</button>
                     </div>
                   </div>
                 </div>
               </div>
             ) : (
-              <div className="bg-white rounded-lg shadow p-6 text-center text-gray-500">
+              <div className={`${panelClass} p-6 text-center text-slate-400`}>
                 <p>Select an application to view details</p>
               </div>
             )}
@@ -294,9 +318,9 @@ export default function AdminPage() {
 
       {/* Add Observership Modal */}
       {showObsForm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 overflow-y-auto">
-          <div className="bg-white rounded-lg shadow-lg max-w-2xl w-full p-6 my-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Add New Observership</h3>
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50 overflow-y-auto">
+          <div className="bg-slate-900/95 border border-white/10 rounded-2xl shadow-[0_20px_80px_rgba(0,0,0,0.6)] max-w-2xl w-full p-6 my-8 text-slate-100">
+            <h3 className="text-2xl font-bold mb-6">Add New Observership</h3>
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Observership Name</label>
@@ -380,13 +404,13 @@ export default function AdminPage() {
             <div className="flex gap-3 mt-6">
               <button
                 onClick={() => setShowObsForm(false)}
-                className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium transition-colors"
+                className="flex-1 px-4 py-2 border border-white/15 text-slate-100 rounded-lg hover:bg-white/10 font-medium transition-colors"
               >
                 Cancel
               </button>
               <button
                 onClick={handleCreateObservership}
-                className="flex-1 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-medium transition-colors"
+                className="flex-1 px-4 py-2 bg-gradient-to-r from-cyan-500 to-indigo-600 text-white rounded-lg hover:from-cyan-400 hover:to-indigo-500 font-medium transition-colors shadow-lg"
               >
                 Create Observership
               </button>
@@ -396,18 +420,18 @@ export default function AdminPage() {
       )}
 
       {showRejectModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg shadow-lg max-w-md w-full p-6">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Reject Application</h3>
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50">
+          <div className="bg-slate-900/95 border border-white/10 rounded-2xl shadow-[0_20px_80px_rgba(0,0,0,0.6)] max-w-md w-full p-6 text-slate-100">
+            <h3 className="text-xl font-bold mb-4">Reject Application</h3>
             <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 mb-2">Reason for Rejection (Optional)</label>
-              <textarea value={rejectReason} onChange={(e) => setRejectReason(e.target.value)} placeholder="Enter reason..." className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" rows={4} />
+              <label className="block text-sm font-medium text-slate-300 mb-2">Reason for Rejection (Optional)</label>
+              <textarea value={rejectReason} onChange={(e) => setRejectReason(e.target.value)} placeholder="Enter reason..." className="w-full px-3 py-2 border border-white/15 rounded-lg bg-white/5 focus:outline-none focus:ring-2 focus:ring-rose-500 text-slate-100" rows={4} />
             </div>
             <div className="flex gap-3">
-              <button onClick={() => { setShowRejectModal(false); setRejectReason(""); }} className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium transition-colors">
+              <button onClick={() => { setShowRejectModal(false); setRejectReason(""); }} className="flex-1 px-4 py-2 border border-white/15 text-slate-100 rounded-lg hover:bg-white/10 font-medium transition-colors">
                 Cancel
               </button>
-              <button onClick={() => selectedApp && handleReject(selectedApp.id)} disabled={actionInProgress} className="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium transition-colors disabled:opacity-50">
+              <button onClick={() => selectedApp && handleReject(selectedApp.id)} disabled={actionInProgress} className="flex-1 px-4 py-2 bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-500 hover:to-rose-600 text-white rounded-lg font-medium transition-colors disabled:opacity-50 shadow-lg">
                 {actionInProgress ? "Processing..." : "Confirm Rejection"}
               </button>
             </div>

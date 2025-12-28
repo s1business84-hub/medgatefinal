@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useAuth } from "@/lib/auth-context";
 import { Button } from "@/components/ui/button";
 import { Heart, Eye, Users, CheckCircle, Upload } from "lucide-react";
+import { LiquidParallax } from "@/components/ui/liquid-parallax";
 
 export default function StudentPortal() {
   const { user, logout } = useAuth();
@@ -21,17 +22,16 @@ export default function StudentPortal() {
   // If user is logged in and is a student, show full portal
   if (user && user.role === "student") {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-indigo-50 relative overflow-hidden">
-        {/* Animated Background Elements */}
-        <div className="absolute top-0 left-0 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 animate-pulse" />
-        <div className="absolute top-1/2 right-0 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 animate-pulse" style={{ animationDelay: '2s' }} />
-        
-        <div className="max-w-7xl mx-auto px-6 py-8">
+      <div className="relative min-h-screen overflow-hidden bg-slate-950 text-slate-100">
+        <LiquidParallax />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
+
+        <div className="relative max-w-7xl mx-auto px-6 py-8">
           {/* Header */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 animate-fade-in gap-4">
             <div>
               <h1 className="text-3xl sm:text-4xl font-bold bg-clip-text bg-gradient-to-r from-slate-900 via-blue-800 to-slate-900 text-transparent mb-2">Student Portal</h1>
-              <p className="text-gray-600">Welcome back, {user.name}!</p>
+              <p className="text-slate-300">Welcome back, {user.name}!</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
               <button
@@ -49,13 +49,13 @@ export default function StudentPortal() {
             </div>
           </div>
         <div className="flex justify-center mb-8 animate-fade-in" style={{ animationDelay: '0.1s' }}>
-          <div className="rounded-xl shadow-lg p-1 flex backdrop-blur-xl bg-gradient-to-br from-white/40 via-white/20 to-white/10 border border-white/30">
+          <div className="rounded-xl shadow-lg p-1 flex backdrop-blur-xl bg-white/5 border border-white/10">
             <button
               onClick={() => setActiveTab('about')}
               className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium transition-all duration-300 ${
                 activeTab === 'about'
                   ? 'bg-linear-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
-                  : 'text-gray-600 hover:text-gray-900 hover:bg-white/20'
+                  : 'text-slate-300 hover:text-slate-100 hover:bg-white/10'
               }`}
             >
               About MedGate
@@ -65,7 +65,7 @@ export default function StudentPortal() {
               className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium transition-all duration-300 ${
                 activeTab === 'mission'
                   ? 'bg-linear-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
-                  : 'text-gray-600 hover:text-gray-900 hover:bg-white/20'
+                  : 'text-slate-300 hover:text-slate-100 hover:bg-white/10'
               }`}
             >
               Mission & Vision
@@ -75,7 +75,7 @@ export default function StudentPortal() {
               className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium transition-all duration-300 ${
                 activeTab === 'apply'
                   ? 'bg-linear-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
-                  : 'text-gray-600 hover:text-gray-900 hover:bg-white/20'
+                  : 'text-slate-300 hover:text-slate-100 hover:bg-white/10'
               }`}
             >
               Apply for Programs
@@ -87,20 +87,20 @@ export default function StudentPortal() {
         {activeTab === 'about' && (
           <div className="space-y-8">
             <div className="text-center mb-12">
-              <h1 className="text-4xl font-bold text-gray-900 mb-4">About MedGate</h1>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <h1 className="text-4xl font-bold text-slate-100 mb-4">About MedGate</h1>
+              <p className="text-xl text-slate-300 max-w-3xl mx-auto">
                 Connecting medical students with life-changing clinical training opportunities across the UAE.
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-lg p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Our Story</h2>
-              <p className="text-lg text-gray-700 leading-relaxed mb-6">
+            <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.45)] p-8">
+              <h2 className="text-2xl font-bold text-slate-100 mb-6">Our Story</h2>
+              <p className="text-lg text-slate-300 leading-relaxed mb-6">
                 Founded in 2024, MedGate emerged from a simple observation: medical students in the UAE were struggling
                 to find quality clinical training opportunities. The process was fragmented, time-consuming, and often
                 frustrating for both students and healthcare institutions.
               </p>
-              <p className="text-lg text-gray-700 leading-relaxed">
+              <p className="text-lg text-slate-300 leading-relaxed">
                 We set out to change this by creating a centralized platform that streamlines the entire process.
                 Our technology connects students directly with hospitals, eliminates paperwork bottlenecks, and ensures
                 fair, transparent application processes.
@@ -108,20 +108,20 @@ export default function StudentPortal() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-white rounded-xl shadow-lg p-6 text-center">
-                <Users className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">2,500+ Students</h3>
-                <p className="text-gray-600">Medical students served across the UAE</p>
+              <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.45)] p-6 text-center">
+                <Users className="w-12 h-12 text-cyan-200 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-slate-100 mb-2">2,500+ Students</h3>
+                <p className="text-slate-300">Medical students served across the UAE</p>
               </div>
-              <div className="bg-white rounded-xl shadow-lg p-6 text-center">
-                <CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">50+ Hospitals</h3>
-                <p className="text-gray-600">Accredited healthcare partners</p>
+              <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.45)] p-6 text-center">
+                <CheckCircle className="w-12 h-12 text-emerald-200 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-slate-100 mb-2">50+ Hospitals</h3>
+                <p className="text-slate-300">Accredited healthcare partners</p>
               </div>
-              <div className="bg-white rounded-xl shadow-lg p-6 text-center">
-                <Heart className="w-12 h-12 text-red-600 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">98% Success Rate</h3>
-                <p className="text-gray-600">Students successfully placed in programs</p>
+              <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.45)] p-6 text-center">
+                <Heart className="w-12 h-12 text-rose-200 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-slate-100 mb-2">98% Success Rate</h3>
+                <p className="text-slate-300">Students successfully placed in programs</p>
               </div>
             </div>
           </div>
@@ -130,24 +130,24 @@ export default function StudentPortal() {
         {activeTab === 'mission' && (
           <div className="space-y-8">
             <div className="text-center mb-12">
-              <h1 className="text-4xl font-bold text-gray-900 mb-4">Our Mission & Vision</h1>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <h1 className="text-4xl font-bold text-slate-100 mb-4">Our Mission & Vision</h1>
+              <p className="text-xl text-slate-300 max-w-3xl mx-auto">
                 Shaping the future of medical education in the UAE through innovation and excellence.
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-lg p-8">
+            <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.45)] p-8">
               <div className="flex items-center justify-center mb-6">
-                <Heart className="w-16 h-16 text-blue-600" />
+                <Heart className="w-16 h-16 text-cyan-200" />
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 text-center">Our Mission</h2>
-              <p className="text-lg text-gray-700 leading-relaxed text-center">
+              <h2 className="text-2xl font-bold text-slate-100 mb-4 text-center">Our Mission</h2>
+              <p className="text-lg text-slate-300 leading-relaxed text-center">
                 To democratize access to high-quality clinical training opportunities for medical students
                 across the UAE by creating a transparent, efficient, and student-centered platform.
               </p>
             </div>
 
-            <div className="bg-linear-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white">
+            <div className="bg-linear-to-r from-cyan-500 via-indigo-600 to-purple-600 rounded-2xl p-8 text-white shadow-[0_20px_80px_rgba(0,0,0,0.5)] border border-white/10">
               <div className="flex items-center justify-center mb-6">
                 <Eye className="w-16 h-16 text-white" />
               </div>
@@ -162,20 +162,20 @@ export default function StudentPortal() {
 
         {activeTab === 'apply' && (
           <div className="text-center py-16">
-            <Upload className="w-24 h-24 text-gray-400 mx-auto mb-6" />
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Apply?</h2>
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            <Upload className="w-24 h-24 text-cyan-200 mx-auto mb-6" />
+            <h2 className="text-3xl font-bold text-slate-100 mb-4">Ready to Apply?</h2>
+            <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
               Join thousands of medical students who have found their perfect clinical training opportunity.
               Create your account to start applying for observerships and electives.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/login">
-                <Button size="lg" className="bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+                <Button size="lg" className="bg-linear-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-lg">
                   Login to Apply
                 </Button>
               </Link>
               <Link href="/programs">
-                <Button variant="outline" size="lg">
+                <Button variant="outline" size="lg" className="border-white/25 text-slate-100 hover:bg-white/10">
                   Browse Programs First
                 </Button>
               </Link>
@@ -189,8 +189,11 @@ export default function StudentPortal() {
 
   // Public content for non-logged-in users
   return (
-    <div className="min-h-screen bg-linear-to-br from-blue-50 via-white to-indigo-50">
-      <div className="max-w-7xl mx-auto px-6 py-8">
+    <div className="relative min-h-screen overflow-hidden bg-slate-950 text-slate-100">
+      <LiquidParallax />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
+
+      <div className="relative max-w-7xl mx-auto px-6 py-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-8 animate-fade-in">
           <div>
