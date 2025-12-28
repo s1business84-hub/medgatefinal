@@ -41,7 +41,10 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="bg-slate-900 text-white">
+    <footer className="relative text-white overflow-hidden">
+      <div className="absolute inset-0 -z-10 bg-slate-950/70 backdrop-blur-xl" />
+      <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_20%_20%,rgba(99,102,241,0.25),transparent_35%),radial-gradient(circle_at_80%_10%,rgba(59,130,246,0.22),transparent_32%),radial-gradient(circle_at_30%_70%,rgba(79,70,229,0.22),transparent_30%)]" />
+
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
           {/* Brand */}

@@ -66,40 +66,40 @@ export function Features() {
   }
 
   return (
-    <section className="py-24 sm:py-32 bg-gradient-to-b from-slate-50 via-white to-slate-50 relative overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute top-0 left-0 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 animate-pulse" />
-      <div className="absolute top-1/2 right-0 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 animate-pulse animation-delay-2000" />
-      <div className="absolute bottom-0 left-1/2 w-80 h-80 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 animate-pulse animation-delay-4000" />
+    <section className="py-24 sm:py-32 relative overflow-hidden text-slate-50">
+      {/* Animated Background Elements with parallax drift */}
+      <div className="absolute top-0 left-0 w-80 h-80 bg-blue-400/20 rounded-full mix-blend-screen blur-3xl opacity-60 -z-10 animate-float" />
+      <div className="absolute top-1/2 right-0 w-96 h-96 bg-purple-400/20 rounded-full mix-blend-screen blur-3xl opacity-60 -z-10 animate-[float_3.8s_ease-in-out_infinite_1.2s]" />
+      <div className="absolute bottom-0 left-1/2 w-80 h-80 bg-cyan-300/20 rounded-full mix-blend-screen blur-3xl opacity-60 -z-10 animate-[float_4.4s_ease-in-out_infinite_2.1s]" />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.92 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
             className="inline-flex items-center justify-center gap-2 mb-6"
           >
-            <Zap className="w-6 h-6 text-amber-500 animate-pulse" />
-            <span className="text-sm font-semibold text-blue-600 uppercase tracking-wider">Powerful Features</span>
+            <Zap className="w-6 h-6 text-amber-400 animate-pulse" />
+            <span className="text-sm font-semibold text-blue-200 uppercase tracking-wider">Powerful Features</span>
           </motion.div>
 
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 26 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="text-4xl sm:text-5xl font-bold tracking-tight bg-clip-text bg-gradient-to-r from-slate-900 via-blue-800 to-slate-900 text-transparent"
+            className="text-4xl sm:text-5xl font-bold tracking-tight bg-clip-text bg-gradient-to-r from-white via-blue-200 to-purple-200 text-transparent"
           >
             Everything you need to succeed
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+            transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="mt-6 text-lg leading-8 text-slate-600"
+            className="mt-6 text-lg leading-8 text-slate-200"
           >
             Comprehensive platform designed to streamline your medical training journey
             from application to completion.
@@ -110,29 +110,30 @@ export function Features() {
           className="mx-auto mt-16 max-w-7xl"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
           variants={containerVariants}
         >
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {features.map((feature) => {
+            {features.map((feature, idx) => {
               const Icon = feature.icon
               return (
                 <motion.div
                   key={feature.name}
                   variants={itemVariants}
                   className="group"
+                  transition={{ delay: 0.08 * idx }}
                 >
                   <motion.div
-                    className="relative h-full overflow-hidden rounded-2xl bg-gradient-to-br from-white to-slate-50 p-8 shadow-sm border border-slate-200 cursor-pointer"
+                    className="relative h-full overflow-hidden rounded-2xl bg-white/5 p-8 shadow-xl border border-white/10 backdrop-blur-lg"
                     whileHover={{
                       y: -8,
-                      boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+                      boxShadow: "0 25px 50px rgba(0,0,0,0.35)",
                     }}
                     transition={{ duration: 0.3 }}
                   >
                     {/* Animated gradient overlay */}
                     <div
-                      className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
+                      className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
                     />
 
                     {/* Animated accent line */}
@@ -146,34 +147,34 @@ export function Features() {
                     {/* Icon Container */}
                     <motion.div
                       className="relative mb-6 inline-block"
-                      whileHover={{ scale: 1.15, rotate: 5 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                      whileHover={{ scale: 1.15, rotate: 4 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 14 }}
                     >
                       <div className={`inline-flex rounded-xl bg-gradient-to-br ${feature.gradient} p-3 shadow-lg group-hover:shadow-2xl transition-all duration-300`}>
                         <Icon className="h-6 w-6 text-white" />
                       </div>
                       {/* Glow effect */}
                       <div
-                        className={`absolute inset-0 rounded-xl bg-gradient-to-br ${feature.gradient} opacity-0 blur group-hover:opacity-30 transition-opacity duration-300`}
+                        className={`absolute inset-0 rounded-xl bg-gradient-to-br ${feature.gradient} opacity-0 blur group-hover:opacity-40 transition-opacity duration-300`}
                       />
                     </motion.div>
 
                     {/* Content */}
                     <motion.h3
-                      className="relative text-xl font-bold text-slate-900 mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r transition-all duration-300"
+                      className="relative text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r transition-all duration-300"
                       style={{
                         backgroundImage: `linear-gradient(to right, ${"var(--color)"})`,
                       }}
                     >
                       {feature.name}
                     </motion.h3>
-                    <motion.p className="relative text-slate-600 group-hover:text-slate-700 transition-colors leading-relaxed">
+                    <motion.p className="relative text-slate-200 group-hover:text-slate-100 transition-colors leading-relaxed">
                       {feature.description}
                     </motion.p>
 
                     {/* Bottom accent */}
                     <motion.div
-                      className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent"
+                      className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent"
                       initial={{ opacity: 0, scaleX: 0 }}
                       whileHover={{ opacity: 1, scaleX: 1 }}
                       transition={{ duration: 0.3 }}
