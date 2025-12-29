@@ -1,10 +1,56 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, Building2, Users, FileCheck, BarChart3, Shield, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LiquidParallax } from "@/components/ui/liquid-parallax";
 import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
 
+function sendOnboardingEmail(email: string) {
+  const onboardingEmail = {
+    from: "hellomedgate@gmail.com",
+    to: email,
+    subject: "MedGate Hospital Onboarding Pack",
+    body: `
+Dear Hospital Team,
+
+Thank you for your interest in MedGate. Here are the onboarding steps:
+
+1) Confirm program contacts: primary coordinator and approver
+2) Share eligibility rules: applicant criteria and required documents
+3) Intake settings: monthly/quarterly capacity and application windows
+4) Review workflow: who reviews, who approves, typical timelines
+5) Safety & compliance: required vaccinations, screenings, and attestations
+6) Communication: notification emails and escalation contacts
+
+Reply to this email with your details and we will provision your hospital workspace.
+
+Best regards,
+The MedGate Team
+    `,
+  };
+
+  // Placeholder for real email service integration
+  console.log("Onboarding pack email would be sent:", onboardingEmail);
+}
+
 export default function ForHospitalsPage() {
+  const [onboardingEmail, setOnboardingEmail] = useState("");
+  const [onboardingStatus, setOnboardingStatus] = useState<"idle" | "sent">("idle");
+  const [onboardingError, setOnboardingError] = useState("");
+
+  const handleSendOnboarding = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!onboardingEmail.trim()) {
+      setOnboardingError("Please enter your email");
+      return;
+    }
+    setOnboardingError("");
+    sendOnboardingEmail(onboardingEmail.trim());
+    setOnboardingStatus("sent");
+  };
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-slate-950 text-slate-100">
       <LiquidParallax />
@@ -235,17 +281,40 @@ export default function ForHospitalsPage() {
               <p className="text-lg text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
                 Healthcare institutions interested in participating in early pilot collaborations can request onboarding information.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/hospital-login">
-                  <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-semibold shadow-lg">
-                    Request Onboarding Pack
-                  </Button>
-                </Link>
-                <Link href="/about">
-                  <Button size="lg" variant="outline" className="border-white/25 text-slate-100 hover:bg-white/10 font-semibold">
-                    Schedule Introductory Call
-                  </Button>
-                </Link>
+              <form onSubmit={handleSendOnboarding} className="flex flex-col sm:flex-row gap-4 justify-center max-w-2xl mx-auto">
+                <input
+                  type="email"
+                  value={onboardingEmail}
+                  onChange={(e) => setOnboardingEmail(e.target.value)}
+                  placeholder="Enter your work email"
+                  className="w-full sm:max-w-xs px-4 py-3 border border-white/15 bg-white/5 text-slate-100 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
+                  required
+                />
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-semibold shadow-lg"
+                >
+                  Request Onboarding Pack
+                </Button>
+              </form>
+              {onboardingError && (
+                <p className="text-sm text-rose-200 mt-3">{onboardingError}</p>
+              )}
+              {onboardingStatus === "sent" && (
+                <p className="text-sm text-cyan-200 mt-3">
+                  Onboarding steps sent from hellomedgate@gmail.com. Please check your inbox.
+                </p>
+              )}
+              <div className="mt-6 text-sm text-slate-300">
+                We send onboarding steps from <span className="text-cyan-200">hellomedgate@gmail.com</span>. You can also schedule an intro call if preferred.
+                <div className="mt-3">
+                  <Link href="/about">
+                    <Button size="sm" variant="outline" className="border-white/25 text-slate-100 hover:bg-white/10 font-semibold">
+                      Schedule Introductory Call
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
