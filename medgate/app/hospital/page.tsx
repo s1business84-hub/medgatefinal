@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/lib/auth-context";
 import { Button } from "@/components/ui/button";
+import { LiquidParallax } from "@/components/ui/liquid-parallax";
 import { getApplicationsByHospital, getStudents, updateApplicationStatus, createNotification } from "@/lib/storage";
 import { Application } from "@/lib/types";
 import { CheckCircle, XCircle, FileText, Users, Clock } from "lucide-react";
@@ -122,28 +123,32 @@ export default function HospitalPortal() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 to-indigo-50">
-        <div className="text-center">
-          <div className="w-12 h-12 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-gray-600">Loading applications...</p>
+      <div className="relative min-h-screen overflow-hidden bg-slate-950 text-slate-100 flex items-center justify-center">
+        <LiquidParallax />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
+        <div className="relative text-center">
+          <div className="w-12 h-12 border-4 border-indigo-400/40 border-t-indigo-400 rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-slate-300">Loading applications...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-blue-50 via-white to-indigo-50">
-      <div className="max-w-7xl mx-auto px-6 py-8">
+    <div className="relative min-h-screen overflow-hidden bg-slate-950 text-slate-100">
+      <LiquidParallax />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
+      <div className="relative max-w-7xl mx-auto px-6 py-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-8 animate-fade-in">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Hospital Portal</h1>
-            <p className="text-gray-600">Manage observership applications</p>
+            <h1 className="text-3xl font-bold text-slate-100 mb-2">Hospital Portal</h1>
+            <p className="text-slate-300">Manage observership applications</p>
           </div>
           <div className="flex gap-4">
             <button
               onClick={() => setShowObsForm(true)}
-              className="px-6 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white transition-colors font-medium"
+              className="px-6 py-2 rounded-lg bg-indigo-600/90 hover:bg-indigo-600 text-white transition-colors font-medium shadow-sm"
             >
               + Add Observership
             </button>
@@ -152,11 +157,11 @@ export default function HospitalPortal() {
                 logout();
                 router.push("/");
               }}
-              className="px-6 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition-colors font-medium"
+              className="px-6 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-slate-100 transition-colors font-medium border border-white/15"
             >
               Logout
             </button>
-            <Link href="/" className="px-6 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition-colors font-medium">
+            <Link href="/" className="px-6 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-slate-100 transition-colors font-medium border border-white/15">
               ← Back to Home
             </Link>
           </div>
@@ -164,37 +169,37 @@ export default function HospitalPortal() {
 
         <div className="grid md:grid-cols-3 gap-6 mb-8">
           {/* Stats */}
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-lg shadow p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-600 text-sm mb-2">Total Applications</p>
-                <p className="text-3xl font-bold text-gray-900">{applications.length}</p>
+                <p className="text-slate-300 text-sm mb-2">Total Applications</p>
+                <p className="text-3xl font-bold text-slate-100">{applications.length}</p>
               </div>
-              <Users className="w-12 h-12 text-blue-500 opacity-20" />
+              <Users className="w-12 h-12 text-blue-400 opacity-30" />
             </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-lg shadow p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-600 text-sm mb-2">Pending Review</p>
-                <p className="text-3xl font-bold text-orange-600">
+                <p className="text-slate-300 text-sm mb-2">Pending Review</p>
+                <p className="text-3xl font-bold text-amber-400">
                   {applications.filter(a => a.status === "Submitted").length}
                 </p>
               </div>
-              <Clock className="w-12 h-12 text-orange-500 opacity-20" />
+              <Clock className="w-12 h-12 text-amber-400 opacity-30" />
             </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-lg shadow p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-600 text-sm mb-2">Approved</p>
-                <p className="text-3xl font-bold text-green-600">
+                <p className="text-slate-300 text-sm mb-2">Approved</p>
+                <p className="text-3xl font-bold text-emerald-400">
                   {applications.filter(a => a.status === "Approved").length}
                 </p>
               </div>
-              <CheckCircle className="w-12 h-12 text-green-500 opacity-20" />
+              <CheckCircle className="w-12 h-12 text-emerald-400 opacity-30" />
             </div>
           </div>
         </div>
@@ -202,14 +207,14 @@ export default function HospitalPortal() {
         <div className="grid md:grid-cols-3 gap-6">
           {/* Applications List */}
           <div className="md:col-span-2">
-            <div className="bg-white rounded-lg shadow">
-              <div className="p-6 border-b border-gray-200">
-                <h2 className="text-xl font-bold text-gray-900">Applications</h2>
+            <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-lg shadow">
+              <div className="p-6 border-b border-white/10">
+                <h2 className="text-xl font-bold text-slate-100">Applications</h2>
               </div>
 
               {applications.length === 0 ? (
-                <div className="p-12 text-center text-gray-500">
-                  <FileText className="w-12 h-12 mx-auto mb-4 opacity-30" />
+                <div className="p-12 text-center text-slate-400">
+                  <FileText className="w-12 h-12 mx-auto mb-4 opacity-40" />
                   <p>No applications yet</p>
                 </div>
               ) : (
@@ -218,26 +223,26 @@ export default function HospitalPortal() {
                     <div
                       key={app.id}
                       onClick={() => setSelectedApp(app)}
-                      className={`p-4 cursor-pointer hover:bg-gray-50 transition-colors ${
-                        selectedApp?.id === app.id ? "bg-indigo-50" : ""
+                      className={`p-4 cursor-pointer transition-colors ${
+                        selectedApp?.id === app.id ? "bg-indigo-950/40" : "hover:bg-white/5"
                       }`}
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex-1">
-                          <p className="font-semibold text-gray-900">{getStudentName(app.studentId)}</p>
-                          <p className="text-sm text-gray-600">{getStudentEmail(app.studentId)}</p>
-                          <p className="text-xs text-gray-500 mt-1">
+                          <p className="font-semibold text-slate-100">{getStudentName(app.studentId)}</p>
+                          <p className="text-sm text-slate-300">{getStudentEmail(app.studentId)}</p>
+                          <p className="text-xs text-slate-400 mt-1">
                             {new Date(app.submissionDate).toLocaleDateString()}
                           </p>
                         </div>
                         <div className="text-right">
                           <span
-                            className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${
+                            className={`inline-block px-3 py-1 rounded-full text-sm font-medium border ${
                               app.status === "Approved"
-                                ? "bg-green-100 text-green-800"
+                                ? "bg-emerald-900/30 text-emerald-300 border-emerald-700/40"
                                 : app.status === "Rejected"
-                                ? "bg-red-100 text-red-800"
-                                : "bg-yellow-100 text-yellow-800"
+                                ? "bg-red-900/30 text-red-300 border-red-700/40"
+                                : "bg-amber-900/30 text-amber-300 border-amber-700/40"
                             }`}
                           >
                             {app.status}
@@ -254,38 +259,38 @@ export default function HospitalPortal() {
           {/* Details Panel */}
           <div>
             {selectedApp ? (
-              <div className="bg-white rounded-lg shadow sticky top-8">
-                <div className="p-6 border-b border-gray-200">
-                  <h3 className="text-lg font-bold text-gray-900">Application Details</h3>
+              <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-lg shadow sticky top-8">
+                <div className="p-6 border-b border-white/10">
+                  <h3 className="text-lg font-bold text-slate-100">Application Details</h3>
                 </div>
 
                 <div className="p-6 space-y-4">
                   <div>
-                    <p className="text-sm text-gray-600 mb-1">Student Name</p>
-                    <p className="font-semibold text-gray-900">{getStudentName(selectedApp.studentId)}</p>
+                    <p className="text-sm text-slate-300 mb-1">Student Name</p>
+                    <p className="font-semibold text-slate-100">{getStudentName(selectedApp.studentId)}</p>
                   </div>
 
                   <div>
-                    <p className="text-sm text-gray-600 mb-1">Email</p>
-                    <p className="font-semibold text-gray-900 break-all">{getStudentEmail(selectedApp.studentId)}</p>
+                    <p className="text-sm text-slate-300 mb-1">Email</p>
+                    <p className="font-semibold text-slate-100 break-all">{getStudentEmail(selectedApp.studentId)}</p>
                   </div>
 
                   <div>
-                    <p className="text-sm text-gray-600 mb-1">Submission Date</p>
-                    <p className="font-semibold text-gray-900">
+                    <p className="text-sm text-slate-300 mb-1">Submission Date</p>
+                    <p className="font-semibold text-slate-100">
                       {new Date(selectedApp.submissionDate).toLocaleDateString()}
                     </p>
                   </div>
 
                   <div>
-                    <p className="text-sm text-gray-600 mb-1">Status</p>
+                    <p className="text-sm text-slate-300 mb-1">Status</p>
                     <span
-                      className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${
+                      className={`inline-block px-3 py-1 rounded-full text-sm font-medium border ${
                         selectedApp.status === "Approved"
-                          ? "bg-green-100 text-green-800"
+                          ? "bg-emerald-900/30 text-emerald-300 border-emerald-700/40"
                           : selectedApp.status === "Rejected"
-                          ? "bg-red-100 text-red-800"
-                          : "bg-yellow-100 text-yellow-800"
+                          ? "bg-red-900/30 text-red-300 border-red-700/40"
+                          : "bg-amber-900/30 text-amber-300 border-amber-700/40"
                       }`}
                     >
                       {selectedApp.status}
@@ -294,18 +299,18 @@ export default function HospitalPortal() {
 
                   {selectedApp.notes && (
                     <div>
-                      <p className="text-sm text-gray-600 mb-1">Notes</p>
-                      <p className="text-gray-900 text-sm">{selectedApp.notes}</p>
+                      <p className="text-sm text-slate-300 mb-1">Notes</p>
+                      <p className="text-slate-100 text-sm">{selectedApp.notes}</p>
                     </div>
                   )}
 
                   {/* Action Buttons */}
                   {selectedApp.status === "Submitted" && (
-                    <div className="pt-4 border-t border-gray-200 space-y-2">
+                    <div className="pt-4 border-t border-white/10 space-y-2">
                       <Button
                         onClick={() => handleApproval(selectedApp.id)}
                         disabled={actionInProgress}
-                        className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded-lg transition-colors"
+                        className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2 rounded-lg transition-colors"
                       >
                         <CheckCircle className="w-4 h-4 mr-2 inline" />
                         Approve Application
@@ -324,7 +329,7 @@ export default function HospitalPortal() {
                 </div>
               </div>
             ) : (
-              <div className="bg-white rounded-lg shadow p-6 text-center text-gray-500">
+              <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-lg shadow p-6 text-center text-slate-400">
                 <p>Select an application to view details</p>
               </div>
             )}
@@ -334,19 +339,19 @@ export default function HospitalPortal() {
 
       {/* Rejection Modal */}
       {showRejectModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg shadow-lg max-w-md w-full p-6">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Reject Application</h3>
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50">
+          <div className="backdrop-blur-xl bg-white/10 border border-white/15 rounded-lg shadow-lg max-w-md w-full p-6 text-slate-100">
+            <h3 className="text-xl font-bold mb-4">Reject Application</h3>
 
             <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-slate-200 mb-2">
                 Reason for Rejection
               </label>
               <textarea
                 value={rejectionReason}
                 onChange={(e) => setRejectionReason(e.target.value)}
                 placeholder="Enter reason (optional)"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="w-full px-3 py-2 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 text-slate-100 placeholder-slate-400"
                 rows={4}
               />
             </div>
@@ -357,7 +362,7 @@ export default function HospitalPortal() {
                   setShowRejectModal(false);
                   setRejectionReason("");
                 }}
-                className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium transition-colors"
+                className="flex-1 px-4 py-2 border border-white/20 text-slate-200 rounded-lg hover:bg-white/10 font-medium transition-colors"
               >
                 Cancel
               </Button>
@@ -375,93 +380,93 @@ export default function HospitalPortal() {
 
       {/* Add Observership Modal */}
       {showObsForm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 overflow-y-auto">
-          <div className="bg-white rounded-lg shadow-lg max-w-2xl w-full p-6 my-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Add New Observership</h3>
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50 overflow-y-auto">
+          <div className="backdrop-blur-xl bg-white/10 border border-white/15 rounded-lg shadow-lg max-w-2xl w-full p-6 my-8 text-slate-100">
+            <h3 className="text-2xl font-bold mb-6">Add New Observership</h3>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Observership Name</label>
+                <label className="block text-sm font-medium text-slate-200 mb-2">Observership Name</label>
                 <input
                   value={obsForm.name}
                   onChange={(e) => setObsForm({ ...obsForm, name: e.target.value })}
                   placeholder="e.g., Cardiology Observership"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-slate-100 placeholder-slate-400"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                <label className="block text-sm font-medium text-slate-200 mb-2">Description</label>
                 <textarea
                   value={obsForm.description}
                   onChange={(e) => setObsForm({ ...obsForm, description: e.target.value })}
                   placeholder="Brief description of the observership program"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-slate-100 placeholder-slate-400"
                   rows={3}
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Requirements (comma-separated)</label>
+                <label className="block text-sm font-medium text-slate-200 mb-2">Requirements (comma-separated)</label>
                 <textarea
                   value={obsForm.requirements}
                   onChange={(e) => setObsForm({ ...obsForm, requirements: e.target.value })}
                   placeholder="e.g., Medical Degree, IELTS 7.0, Emirates ID"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-slate-100 placeholder-slate-400"
                   rows={2}
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Length</label>
+                  <label className="block text-sm font-medium text-slate-200 mb-2">Length</label>
                   <input
                     value={obsForm.length}
                     onChange={(e) => setObsForm({ ...obsForm, length: e.target.value })}
                     placeholder="e.g., 4 weeks"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full px-3 py-2 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-slate-100 placeholder-slate-400"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Instructor</label>
+                  <label className="block text-sm font-medium text-slate-200 mb-2">Instructor</label>
                   <input
                     value={obsForm.instructor}
                     onChange={(e) => setObsForm({ ...obsForm, instructor: e.target.value })}
                     placeholder="e.g., Dr. Ahmed Hassan"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full px-3 py-2 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-slate-100 placeholder-slate-400"
                   />
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Timeline</label>
+                  <label className="block text-sm font-medium text-slate-200 mb-2">Timeline</label>
                   <input
                     value={obsForm.timeline}
                     onChange={(e) => setObsForm({ ...obsForm, timeline: e.target.value })}
                     placeholder="e.g., Jan 2026 - Feb 2026"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full px-3 py-2 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-slate-100 placeholder-slate-400"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Location</label>
+                  <label className="block text-sm font-medium text-slate-200 mb-2">Location</label>
                   <input
                     value={obsForm.location}
                     onChange={(e) => setObsForm({ ...obsForm, location: e.target.value })}
                     placeholder="e.g., Dubai Healthcare City"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full px-3 py-2 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-slate-100 placeholder-slate-400"
                   />
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Price (AED)</label>
+                <label className="block text-sm font-medium text-slate-200 mb-2">Price (AED)</label>
                 <input
                   value={obsForm.price}
                   onChange={(e) => setObsForm({ ...obsForm, price: e.target.value })}
                   placeholder="e.g., 5000"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-slate-100 placeholder-slate-400"
                 />
               </div>
             </div>
             <div className="flex gap-3 mt-6">
               <button
                 onClick={() => setShowObsForm(false)}
-                className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium transition-colors"
+                className="flex-1 px-4 py-2 border border-white/20 text-slate-200 rounded-lg hover:bg-white/10 font-medium transition-colors"
               >
                 Cancel
               </button>

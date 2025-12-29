@@ -35,7 +35,7 @@ export default function VisionPage() {
 
         {/* Vision Statement */}
         <section className="mb-16 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-          <div className="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl p-8 md:p-12 transition-all duration-300 overflow-hidden">
+          <div className="group relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl shadow-lg hover:shadow-2xl p-8 md:p-12 transition-all duration-300 overflow-hidden">
             {/* Animated gradient background */}
             <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-emerald-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             
@@ -44,18 +44,18 @@ export default function VisionPage() {
             
             <div className="relative z-10">
               <div className="flex items-center justify-center mb-8">
-                <div className="w-24 h-24 bg-gradient-to-br from-green-100 to-emerald-100 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <Eye className="w-12 h-12 text-green-600" />
+                <div className="w-24 h-24 bg-white/10 backdrop-blur-xl rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <Eye className="w-12 h-12 text-emerald-300" />
                 </div>
               </div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6 text-center">Our Vision</h2>
-              <p className="text-lg text-gray-700 leading-relaxed text-center max-w-3xl mx-auto mb-8">
+              <h2 className="text-4xl font-bold text-slate-100 mb-6 text-center">Our Vision</h2>
+              <p className="text-lg text-slate-300 leading-relaxed text-center max-w-3xl mx-auto mb-8">
                 To be the global leader in healthcare education, creating a world where every aspiring medical
                 professional has the opportunity to achieve their dreams, regardless of geographical or
                 socioeconomic barriers, through innovative, accessible, and comprehensive educational solutions.
               </p>
-              <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-2xl border border-green-200">
-                <p className="text-lg text-green-800 text-center font-semibold italic">
+              <div className="bg-white/5 p-6 rounded-2xl border border-white/10">
+                <p className="text-lg text-slate-200 text-center font-semibold italic">
                   &quot;Empowering healthcare professionals worldwide through accessible, quality medical education.&quot;
                 </p>
               </div>
@@ -63,17 +63,18 @@ export default function VisionPage() {
           </div>
         </section>
 
-        {/* Vision Pillars */}
+        {/* Vision Pillars - Carousel */}
         <section className="mb-16 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-          <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Vision Pillars</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <h2 className="text-4xl font-bold text-slate-100 mb-6 text-center">Vision Pillars</h2>
+          <div className="relative">
+            <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory px-1 pb-2 -mx-1">
             {[
               {
                 icon: Lightbulb,
                 title: 'Innovation',
                 description: 'Advancing healthcare education through cutting-edge technology and modern learning methodologies that prepare students for the future of medicine.',
                 gradient: 'from-green-600 to-emerald-600',
-                bgGradient: 'from-green-50 to-emerald-50',
+                bgGradient: 'from-emerald-400/20 to-emerald-400/10',
                 index: 0
               },
               {
@@ -81,7 +82,7 @@ export default function VisionPage() {
                 title: 'Accessibility',
                 description: 'Breaking down barriers to quality medical education, ensuring that talent and dedication, not geography or finances, determine success in healthcare careers.',
                 gradient: 'from-blue-600 to-cyan-600',
-                bgGradient: 'from-blue-50 to-cyan-50',
+                bgGradient: 'from-cyan-400/20 to-cyan-400/10',
                 index: 1
               },
               {
@@ -89,38 +90,30 @@ export default function VisionPage() {
                 title: 'Community',
                 description: 'Building a global network of healthcare professionals who collaborate, learn, and grow together to improve healthcare outcomes worldwide.',
                 gradient: 'from-purple-600 to-pink-600',
-                bgGradient: 'from-purple-50 to-pink-50',
+                bgGradient: 'from-fuchsia-400/20 to-pink-400/10',
                 index: 2
               }
             ].map((pillar) => (
-              <div 
-                key={pillar.title} 
-                className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-300 animate-fade-in"
-                style={{ animationDelay: `${0.4 + pillar.index * 0.1}s` }}
+              <div
+                key={pillar.title}
+                className="snap-start shrink-0 w-[85%] sm:w-[70%] md:w-[55%] lg:w-[40%] group relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-300"
               >
-                {/* Animated gradient overlay */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${pillar.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
-                
-                {/* Floating shine */}
-                <div className="absolute -top-32 -right-32 w-64 h-64 bg-white rounded-full opacity-0 group-hover:opacity-20 blur-3xl transition-all duration-500" />
-                
                 <div className="relative z-10 p-8 text-center">
                   <div className={`w-20 h-20 bg-gradient-to-br ${pillar.gradient} rounded-xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
                     <pillar.icon className="w-10 h-10 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r transition-all duration-300"
-                      style={{
-                        backgroundImage: `linear-gradient(to right, rgb(var(--color-start)), rgb(var(--color-end)))`
-                      }}>
+                  <h3 className="text-2xl font-bold text-slate-100 mb-4">
                     {pillar.title}
                   </h3>
-                  <p className="text-gray-600 group-hover:text-gray-700 transition-colors leading-relaxed">
+                  <p className="text-slate-300 group-hover:text-slate-200 transition-colors leading-relaxed">
                     {pillar.description}
                   </p>
-                  <div className={`mt-6 h-1 bg-gradient-to-r ${pillar.gradient} rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
+                  <div className={`mt-6 h-1 bg-gradient-to-r ${pillar.gradient} rounded-full`} />
                 </div>
               </div>
             ))}
+            </div>
           </div>
         </section>
 

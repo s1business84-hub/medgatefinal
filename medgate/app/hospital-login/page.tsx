@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useAuth } from "@/lib/auth-context";
 import { Button } from "@/components/ui/button";
 import { Building2, Mail, Lock, UserPlus } from "lucide-react";
+import { LiquidParallax } from "@/components/ui/liquid-parallax";
 
 export default function HospitalLogin() {
   const [email, setEmail] = useState("hospital1@medgate.com");
@@ -32,10 +33,12 @@ export default function HospitalLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-indigo-100 via-white to-blue-100 flex items-center justify-center p-4">
+    <div className="relative min-h-screen overflow-hidden bg-slate-950 text-slate-100 flex items-center justify-center p-4">
+      <LiquidParallax />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
       <div className="w-full max-w-md">
         {/* Card */}
-        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+        <div className="backdrop-blur-xl bg-white/10 border border-white/15 rounded-2xl shadow-2xl overflow-hidden">
           {/* Header */}
           <div className="bg-linear-to-r from-indigo-600 to-blue-600 px-6 py-12 text-center">
             <div className="flex justify-center mb-4">
@@ -58,8 +61,8 @@ export default function HospitalLogin() {
           </div>
           <form onSubmit={handleSubmit} className="p-8">
             {error && (
-              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-                <p className="text-red-600 font-medium">{error}</p>
+              <div className="mb-6 p-4 bg-red-900/30 border border-red-700/40 rounded-lg">
+                <p className="text-red-200 font-medium">{error}</p>
               </div>
             )}
 
@@ -72,7 +75,7 @@ export default function HospitalLogin() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-slate-100 placeholder-slate-400"
                   placeholder="your@hospital.com"
                 />
               </div>
@@ -87,7 +90,7 @@ export default function HospitalLogin() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-slate-100 placeholder-slate-400"
                   placeholder="••••••••"
                 />
               </div>
@@ -110,12 +113,12 @@ export default function HospitalLogin() {
           </form>
 
           {/* Footer */}
-          <div className="px-8 py-6 bg-gray-50 border-t border-gray-200 text-center space-y-3">
+          <div className="px-8 py-6 bg-white/5 border-t border-white/10 text-center space-y-3">
             <div>
-              <p className="text-gray-600 text-sm mb-2">Not a hospital?</p>
+              <p className="text-slate-300 text-sm mb-2">Not a hospital?</p>
               <Link
                 href="/"
-                className="text-indigo-600 hover:text-indigo-700 font-semibold transition-colors"
+                className="text-indigo-300 hover:text-indigo-200 font-semibold transition-colors"
               >
                 ← Back to Home
               </Link>

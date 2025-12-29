@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { LiquidParallax } from "@/components/ui/liquid-parallax";
 import { Building2, Mail, Lock, Phone, User, CheckCircle2 } from "lucide-react";
 
 export default function HospitalCreateAccount() {
@@ -49,9 +50,11 @@ export default function HospitalCreateAccount() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-indigo-100 via-white to-blue-100 flex items-center justify-center p-4">
+    <div className="relative min-h-screen overflow-hidden bg-slate-950 text-slate-100 flex items-center justify-center p-4">
+      <LiquidParallax />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
       <div className="w-full max-w-xl">
-        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+        <div className="backdrop-blur-xl bg-white/10 border border-white/15 rounded-2xl shadow-2xl overflow-hidden">
           {/* Header */}
           <div className="bg-linear-to-r from-indigo-600 to-blue-600 px-6 py-10 text-center">
             <div className="flex justify-center mb-4">
@@ -66,71 +69,71 @@ export default function HospitalCreateAccount() {
           {/* Content */}
           <form onSubmit={handleSubmit} className="p-8 space-y-6">
             {error && (
-              <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
-                <p className="text-red-600 font-medium">{error}</p>
+              <div className="p-4 bg-red-900/30 border border-red-700/40 rounded-lg">
+                <p className="text-red-200 font-medium">{error}</p>
               </div>
             )}
             {success && (
-              <div className="p-4 bg-green-50 border border-green-200 rounded-lg flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-green-600" />
-                <p className="text-green-700 font-medium">{success}</p>
+              <div className="p-4 bg-emerald-900/30 border border-emerald-700/40 rounded-lg flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5 text-emerald-300" />
+                <p className="text-emerald-200 font-medium">{success}</p>
               </div>
             )}
 
             <div>
-              <label className="block text-gray-700 font-semibold mb-2">Institution Name</label>
+              <label className="block text-slate-200 font-semibold mb-2">Institution Name</label>
               <div className="relative">
-                <Building2 className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+                <Building2 className="absolute left-3 top-3 w-5 h-5 text-slate-400" />
                 <input
                   type="text"
                   value={form.institutionName}
                   onChange={update("institutionName")}
                   required
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-slate-100 placeholder-slate-400"
                   placeholder="e.g., City Hospital"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-gray-700 font-semibold mb-2">Primary Contact Name</label>
+              <label className="block text-slate-200 font-semibold mb-2">Primary Contact Name</label>
               <div className="relative">
-                <User className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+                <User className="absolute left-3 top-3 w-5 h-5 text-slate-400" />
                 <input
                   type="text"
                   value={form.contactName}
                   onChange={update("contactName")}
                   required
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-slate-100 placeholder-slate-400"
                   placeholder="e.g., Dr. Aisha Khan"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-gray-700 font-semibold mb-2">Email</label>
+              <label className="block text-slate-200 font-semibold mb-2">Email</label>
               <div className="relative">
-                <Mail className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+                <Mail className="absolute left-3 top-3 w-5 h-5 text-slate-400" />
                 <input
                   type="email"
                   value={form.email}
                   onChange={update("email")}
                   required
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-slate-100 placeholder-slate-400"
                   placeholder="admin@hospital.com"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-gray-700 font-semibold mb-2">Phone (optional)</label>
+              <label className="block text-slate-200 font-semibold mb-2">Phone (optional)</label>
               <div className="relative">
-                <Phone className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+                <Phone className="absolute left-3 top-3 w-5 h-5 text-slate-400" />
                 <input
                   type="tel"
                   value={form.phone}
                   onChange={update("phone")}
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-slate-100 placeholder-slate-400"
                   placeholder="+971 50 123 4567"
                 />
               </div>
@@ -138,29 +141,29 @@ export default function HospitalCreateAccount() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-gray-700 font-semibold mb-2">Password</label>
+                <label className="block text-slate-200 font-semibold mb-2">Password</label>
                 <div className="relative">
-                  <Lock className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+                  <Lock className="absolute left-3 top-3 w-5 h-5 text-slate-400" />
                   <input
                     type="password"
                     value={form.password}
                     onChange={update("password")}
                     required
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-slate-100 placeholder-slate-400"
                     placeholder="••••••••"
                   />
                 </div>
               </div>
               <div>
-                <label className="block text-gray-700 font-semibold mb-2">Confirm Password</label>
+                <label className="block text-slate-200 font-semibold mb-2">Confirm Password</label>
                 <div className="relative">
-                  <Lock className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+                  <Lock className="absolute left-3 top-3 w-5 h-5 text-slate-400" />
                   <input
                     type="password"
                     value={form.confirmPassword}
                     onChange={update("confirmPassword")}
                     required
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-slate-100 placeholder-slate-400"
                     placeholder="••••••••"
                   />
                 </div>
@@ -176,8 +179,8 @@ export default function HospitalCreateAccount() {
             </Button>
 
             <div className="text-center">
-              <p className="text-gray-600 text-sm mt-4">Already have an account?</p>
-              <Link href="/hospital-login" className="text-indigo-600 hover:text-indigo-700 font-semibold">
+              <p className="text-slate-300 text-sm mt-4">Already have an account?</p>
+              <Link href="/hospital-login" className="text-indigo-300 hover:text-indigo-200 font-semibold">
                 Hospital Login
               </Link>
             </div>
