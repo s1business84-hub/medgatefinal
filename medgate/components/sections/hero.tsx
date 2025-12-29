@@ -99,6 +99,19 @@ export function Hero() {
             MedGate is being developed to help hospitals and medical students manage formal observership and elective programs through structured eligibility criteria, transparent requirements, and standardized application workflows.
           </motion.p>
 
+          {/* Pilot Phase Disclaimer */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+            viewport={{ once: true }}
+            className="mt-4 sm:mt-5 px-4 inline-block"
+          >
+            <span className="text-xs sm:text-sm text-blue-200/80 bg-blue-500/10 border border-blue-400/30 rounded-full px-3 py-1 inline-block">
+              🔄 Pilot Phase — Platform in early development
+            </span>
+          </motion.div>
+
           {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
