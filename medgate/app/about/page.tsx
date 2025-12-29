@@ -198,6 +198,32 @@ export default function AboutPage() {
         </section>
 
         {/* Call to Action */}
+        <section className="text-center animate-fade-in mb-16" style={{ animationDelay: '0.35s' }}>
+          <h2 className="text-3xl font-bold text-slate-100 mb-12">
+            <AnimatedGradientText>Our Founders</AnimatedGradientText>
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+            <div className="rounded-2xl bg-white/5 border border-white/10 p-8 hover:bg-white/10 transition-all duration-300">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-r from-cyan-500 to-indigo-600 mx-auto mb-4 flex items-center justify-center">
+                <span className="text-white font-bold text-lg">KD</span>
+              </div>
+              <h3 className="text-xl font-semibold text-slate-100 mb-2">Kashish Devnani</h3>
+              <p className="text-slate-300">Founder</p>
+              <p className="text-sm text-slate-400 mt-3">Visionary leader driving MedGate&apos;s mission to transform medical education</p>
+            </div>
+            
+            <div className="rounded-2xl bg-white/5 border border-white/10 p-8 hover:bg-white/10 transition-all duration-300">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto mb-4 flex items-center justify-center">
+                <span className="text-white font-bold text-lg">SN</span>
+              </div>
+              <h3 className="text-xl font-semibold text-slate-100 mb-2">Sanskaar Nair</h3>
+              <p className="text-slate-300">Co-founder & Lead Developer</p>
+              <p className="text-sm text-slate-400 mt-3">Building and architecting the platform that powers MedGate</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Call to Action */}
         <section className="text-center animate-fade-in" style={{ animationDelay: '0.4s' }}>
           <h2 className="text-3xl font-bold text-slate-100 mb-4">
             <AnimatedGradientText>Ready to Start Your Journey?</AnimatedGradientText>
