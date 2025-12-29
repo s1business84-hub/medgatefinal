@@ -25,11 +25,6 @@ export default function VisionPage() {
             <ArrowLeft className="w-5 h-5 mr-2" />
             Back to Home
           </Link>
-          <Link href="/login">
-            <Button variant="outline" size="sm" className="border-white/25 text-slate-100 hover:bg-white/10 hover:scale-105 transition-transform">
-              Login / Sign Up
-            </Button>
-          </Link>
         </div>
 
         {/* Hero Section */}
