@@ -17,23 +17,6 @@ export default function ForHospitalsPage() {
             <ArrowLeft className="w-5 h-5 mr-2" />
             Back to Home
           </Link>
-          <div className="flex gap-3 flex-wrap justify-end">
-            <Link href="/student">
-              <Button size="sm" className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white hover:scale-105 transition-all">
-                For Students
-              </Button>
-            </Link>
-            <Link href="/hospital-login">
-              <Button variant="outline" size="sm" className="border-white/25 text-slate-100 hover:bg-white/10">
-                Hospital Login
-              </Button>
-            </Link>
-            <Link href="/hospital/create-account">
-              <Button size="sm" className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white">
-                Create Account
-              </Button>
-            </Link>
-          </div>
         </div>
 
         {/* Hero Section */}
