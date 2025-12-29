@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 // removed framer-motion parallax layers in favor of shared LiquidParallax
-import { ArrowLeft, Heart, Eye, Lightbulb, Shield, Users } from "lucide-react";
+import { ArrowLeft, Heart, Lightbulb, Shield, Users } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { LiquidParallax } from "@/components/ui/liquid-parallax";
@@ -40,7 +40,7 @@ export default function MissionPage() {
         {/* Hero Section */}
         <div className="text-center mb-24 animate-fade-in" style={{ animationDelay: '0.1s' }}>
           <h1 className="text-5xl md:text-7xl font-bold text-slate-100 mb-8">
-            Our <AnimatedGradientText className="text-5xl md:text-7xl font-bold">Mission & Vision</AnimatedGradientText>
+            Our <AnimatedGradientText className="text-5xl md:text-7xl font-bold">Mission</AnimatedGradientText>
           </h1>
           <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-4">
             Shaping the future of medical education in the UAE through innovation,
@@ -68,29 +68,6 @@ export default function MissionPage() {
                 To democratize access to high-quality clinical training opportunities for medical students
                 across the UAE by creating a transparent, efficient, and student-centered platform that
                 connects aspiring healthcare professionals with accredited medical institutions.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Vision Statement */}
-        <section className="mb-24 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-          <div className="group relative bg-gradient-to-br from-indigo-600 via-blue-600 to-purple-600 rounded-3xl p-8 md:p-12 text-white overflow-hidden">
-            {/* Animated background elements */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-white opacity-5 rounded-full blur-3xl -mr-48 -mt-48 group-hover:scale-125 transition-transform duration-500" />
-            <div className="absolute bottom-0 left-0 w-80 h-80 bg-white opacity-5 rounded-full blur-3xl -ml-40 -mb-40 group-hover:scale-110 transition-transform duration-500" />
-            
-            <div className="relative z-10">
-              <div className="flex items-center justify-center mb-8">
-                <div className="w-24 h-24 bg-white/20 backdrop-blur-xl rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <Eye className="w-12 h-12 text-white" />
-                </div>
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center">Our Vision</h2>
-              <p className="text-lg leading-relaxed text-center max-w-3xl mx-auto">
-                To become the leading platform for medical education in the Middle East, where every
-                medical student has equal access to transformative clinical experiences that shape
-                compassionate, competent, and culturally aware healthcare leaders.
               </p>
             </div>
           </div>
