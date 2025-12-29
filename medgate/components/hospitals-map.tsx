@@ -3,6 +3,18 @@
 import { useEffect, useRef, useState } from "react"
 import { hospitals } from "@/lib/mockData"
 
+// Hospital coordinates in UAE
+export const hospitalCoords: Record<string, [number, number]> = {
+  "h1": [25.1242, 55.2183], // Dubai, Al Barsha
+  "h2": [25.3548, 55.4164], // Sharjah, Al Majaz
+  "h3": [24.4539, 54.3773], // Abu Dhabi, Al Bateen
+  "h4": [25.2854, 55.3157], // Dubai, Deira
+  "h5": [24.2155, 55.7671], // Al Ain
+  "h6": [25.1242, 56.3426], // Fujairah
+  "h7": [25.7851, 55.1271], // Ras Al Khaimah
+  "h8": [25.3671, 55.4711], // Ajman
+}
+
 export function HospitalsMap() {
   const mapRef = useRef<HTMLDivElement>(null)
   const [isLoaded, setIsLoaded] = useState(false)
@@ -17,20 +29,8 @@ export function HospitalsMap() {
       link.rel = "stylesheet"
       link.href = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"
       document.head.appendChild(link)
-      
-      // Hospital coordinates in UAE
-      const hospitalCoords: Record<string, [number, number]> = {
-        "h1": [25.1242, 55.2183], // Dubai, Al Barsha
-        "h2": [25.3548, 55.4164], // Sharjah, Al Majaz
-        "h3": [24.4539, 54.3773], // Abu Dhabi, Al Bateen
-        "h4": [25.2854, 55.3157], // Dubai, Deira
-        "h5": [24.2155, 55.7671], // Al Ain
-        "h6": [25.1242, 56.3426], // Fujairah
-        "h7": [25.7851, 55.1271], // Ras Al Khaimah
-        "h8": [25.3671, 55.4711], // Ajman
-      }
 
-      // Initialize map centered on UAE
+      // Initialize map centered on UAE with English locale
       const map = L.map(mapRef.current!).setView([24.4539, 54.5260], 7)
 
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -51,11 +51,14 @@ export function HospitalsMap() {
         const coords = hospitalCoords[hospital.id]
         if (coords) {
           const marker = L.marker(coords, { icon: customIcon }).addTo(map)
-          marker.bindPopup(`
-            <div class="font-semibold text-slate-900">${hospital.name}</div>
-            <div class="text-sm text-slate-600">${hospital.city}, ${hospital.emirate}</div>
-            <div class="text-xs text-slate-500 mt-1">${hospital.departments.slice(0, 2).join(", ")}</div>
-          `)
+          const popupContent = `
+            <div style="font-family: Arial, sans-serif;">
+              <div style="font-weight: bold; color: #000; margin-bottom: 4px;">${hospital.name}</div>
+              <div style="font-size: 12px; color: #666; margin-bottom: 4px;">${hospital.city}, ${hospital.emirate}</div>
+              <div style="font-size: 11px; color: #999;">${hospital.departments.slice(0, 2).join(", ")}</div>
+            </div>
+          `
+          marker.bindPopup(popupContent)
         }
       })
 
