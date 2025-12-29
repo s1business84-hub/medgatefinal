@@ -9,8 +9,8 @@ import { AnimatedGradientText } from "@/components/ui/animated-gradient-text"
 
 const stats = [
   {
-    label: "Platform Vision",
-    value: "Pilot",
+    label: "Medical Ecosystem",
+    value: "UAE",
     icon: Users,
   },
   {
