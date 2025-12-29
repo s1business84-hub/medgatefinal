@@ -165,11 +165,11 @@ export default function ProgramsPage() {
                         <h3 className="text-lg font-semibold text-slate-100 mb-3">Program Overview</h3>
                         <p className="text-slate-300 mb-4">{p.description}</p>
                         
-                        <h4 className="text-md font-medium text-slate-100 mb-2">Requirements</h4>
-                        <ul className="space-y-1">
+                        <h4 className="text-md font-medium text-slate-100 mb-3 drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]">Requirements</h4>
+                        <ul className="space-y-2">
                           {p.requirements.map((req, reqIndex) => (
-                            <li key={reqIndex} className="flex items-center text-sm text-slate-300">
-                              <svg className="w-3 h-3 mr-2 text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <li key={reqIndex} className="flex items-center text-sm text-slate-300 p-3 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
+                              <svg className="w-4 h-4 mr-2 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                               </svg>
                               {req}

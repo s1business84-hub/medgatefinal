@@ -69,21 +69,21 @@ function ProgramContent({ id }: { id: string }) {
 
         {/* Requirements Section */}
         <div
-          className="mb-12 animate-fade-in rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.45)] p-8"
+          className="mb-12 animate-fade-in rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-lg drop-shadow-[0_0_10px_rgba(34,211,238,0.4)] p-8"
           style={{ animationDelay: '0.2s' }}
         >
           <div className="flex items-center mb-6">
-            <div className="w-10 h-10 bg-rose-500/20 rounded-lg flex items-center justify-center mr-3 border border-rose-300/30">
-              <svg className="w-5 h-5 text-rose-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-10 h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center mr-3 border border-cyan-300/30">
+              <svg className="w-5 h-5 text-cyan-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h2 className="text-xl font-semibold text-slate-100">Program Requirements</h2>
+            <h2 className="text-xl font-semibold text-slate-100 drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]">Program Requirements</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {program.requirements.map((req, index) => (
-              <div key={index} className="flex items-center p-4 bg-rose-500/10 rounded-lg border border-rose-300/20">
-                <svg className="w-5 h-5 text-rose-200 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div key={index} className="flex items-center p-4 bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 transition-colors">
+                <svg className="w-5 h-5 text-cyan-400 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <span className="text-slate-100 font-medium">{req}</span>
