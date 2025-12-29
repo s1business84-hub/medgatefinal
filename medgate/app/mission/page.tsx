@@ -13,7 +13,15 @@ export default function MissionPage() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-slate-950 text-slate-100">
       <LiquidParallax />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
+      
+      {/* Animated gradient background */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-r from-cyan-600/0 via-indigo-600/10 to-purple-600/0 animate-pulse" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-cyan-500/15 rounded-full blur-3xl animate-[float_8s_ease-in-out_infinite]" />
+        <div className="absolute bottom-1/3 left-1/3 w-80 h-80 bg-indigo-500/15 rounded-full blur-3xl animate-[float_10s_ease-in-out_infinite_2s]" />
+        <div className="absolute top-1/2 right-0 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-[float_12s_ease-in-out_infinite_4s]" />
+      </div>
 
       <div className="relative max-w-4xl mx-auto px-6 py-16">
         {/* Header */}
@@ -30,18 +38,18 @@ export default function MissionPage() {
         </div>
 
         {/* Hero Section */}
-        <div className="text-center mb-16 animate-fade-in" style={{ animationDelay: '0.1s' }}>
-          <h1 className="text-4xl md:text-6xl font-bold text-slate-100 mb-6">
-            Our <AnimatedGradientText className="text-4xl md:text-6xl font-bold">Mission & Vision</AnimatedGradientText>
+        <div className="text-center mb-24 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+          <h1 className="text-5xl md:text-7xl font-bold text-slate-100 mb-8">
+            Our <AnimatedGradientText className="text-5xl md:text-7xl font-bold">Mission & Vision</AnimatedGradientText>
           </h1>
-          <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-4">
             Shaping the future of medical education in the UAE through innovation,
             accessibility, and excellence in clinical training.
           </p>
         </div>
 
         {/* Mission Statement */}
-        <section className="mb-16 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+        <section className="mb-24 animate-fade-in" style={{ animationDelay: '0.2s' }}>
           <div className="group relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl shadow-lg hover:shadow-2xl p-8 md:p-12 transition-all duration-300 overflow-hidden">
             {/* Animated gradient background */}
             <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -55,7 +63,7 @@ export default function MissionPage() {
                   <Heart className="w-12 h-12 text-cyan-300" />
                 </div>
               </div>
-              <h2 className="text-4xl font-bold text-slate-100 mb-6 text-center">Our Mission</h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-100 mb-8 text-center">Our Mission</h2>
               <p className="text-lg text-slate-300 leading-relaxed text-center max-w-3xl mx-auto">
                 To democratize access to high-quality clinical training opportunities for medical students
                 across the UAE by creating a transparent, efficient, and student-centered platform that
@@ -66,7 +74,7 @@ export default function MissionPage() {
         </section>
 
         {/* Vision Statement */}
-        <section className="mb-16 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+        <section className="mb-24 animate-fade-in" style={{ animationDelay: '0.3s' }}>
           <div className="group relative bg-gradient-to-br from-indigo-600 via-blue-600 to-purple-600 rounded-3xl p-8 md:p-12 text-white overflow-hidden">
             {/* Animated background elements */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-white opacity-5 rounded-full blur-3xl -mr-48 -mt-48 group-hover:scale-125 transition-transform duration-500" />
@@ -78,7 +86,7 @@ export default function MissionPage() {
                   <Eye className="w-12 h-12 text-white" />
                 </div>
               </div>
-              <h2 className="text-4xl font-bold mb-6 text-center">Our Vision</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center">Our Vision</h2>
               <p className="text-lg leading-relaxed text-center max-w-3xl mx-auto">
                 To become the leading platform for medical education in the Middle East, where every
                 medical student has equal access to transformative clinical experiences that shape
@@ -89,11 +97,12 @@ export default function MissionPage() {
         </section>
 
         {/* Core Values - Carousel */}
-        <section className="mb-16 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-          <div className="text-center mb-6">
-            <h2 className="text-4xl font-bold inline-block">
-              <AnimatedGradientText className="text-4xl font-bold">Our Core Values</AnimatedGradientText>
+        <section className="mb-24 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold inline-block mb-4">
+              <AnimatedGradientText className="text-4xl md:text-5xl font-bold">Our Core Values</AnimatedGradientText>
             </h2>
+            <p className="text-slate-300 text-lg mt-4">The principles that guide everything we do</p>
           </div>
           <div className="relative">
             <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory px-1 pb-2 -mx-1">
@@ -147,11 +156,12 @@ export default function MissionPage() {
         </section>
 
         {/* Goals - Carousel */}
-        <section className="mb-16 animate-fade-in" style={{ animationDelay: '0.7s' }}>
-          <div className="text-center mb-6">
-            <h2 className="text-4xl font-bold inline-block">
-              <AnimatedGradientText className="text-4xl font-bold">Our Goals for 2025</AnimatedGradientText>
+        <section className="mb-24 animate-fade-in" style={{ animationDelay: '0.7s' }}>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold inline-block mb-4">
+              <AnimatedGradientText className="text-4xl md:text-5xl font-bold">Our Goals for 2025</AnimatedGradientText>
             </h2>
+            <p className="text-slate-300 text-lg mt-4">Ambitious targets to drive growth and impact</p>
           </div>
           <div className="relative">
             <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory px-1 pb-2 -mx-1">
