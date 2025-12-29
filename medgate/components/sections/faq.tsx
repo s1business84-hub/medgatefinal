@@ -143,7 +143,7 @@ export function FAQ() {
                       <div className="flex items-center gap-4 flex-1">
                         <motion.div
                           animate={{ rotate: openIndex === index ? 360 : 0 }}
-                          transition={{ duration: 0.2 }}
+                          transition={{ duration: 0.1 }}
                           className="flex-shrink-0"
                         >
                             <MessageCircle className="h-5 w-5 text-blue-200" />
@@ -154,7 +154,7 @@ export function FAQ() {
                       </div>
                       <motion.div
                         animate={{ rotate: openIndex === index ? 180 : 0 }}
-                        transition={{ duration: 0.2 }}
+                        transition={{ duration: 0.1 }}
                         className="flex-shrink-0"
                       >
                           <ChevronDown className="h-5 w-5 text-slate-200" />
@@ -167,13 +167,13 @@ export function FAQ() {
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: "auto" }}
                           exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.2, ease: "easeInOut" }}
+                          transition={{ duration: 0.1, ease: "easeInOut" }}
                           className="relative border-t border-white/10 px-6 py-4 z-10"
                         >
                           <motion.p
                             initial={{ opacity: 0, y: -10 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.05, duration: 0.2 }}
+                            transition={{ delay: 0.01, duration: 0.1 }}
                             className="text-slate-200 leading-relaxed"
                           >
                             {faq.answer}
