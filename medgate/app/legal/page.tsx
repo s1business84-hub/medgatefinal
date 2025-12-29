@@ -17,7 +17,7 @@ export default function LegalPage() {
             <section className="space-y-4">
               <h2 className="text-xl font-semibold text-slate-900">1. Platform Role & Disclaimer of Affiliation</h2>
               <p className="text-slate-700 leading-relaxed">
-                This platform operates as an independent facilitation and application-management service for clinical observerships and electives in the United Arab Emirates.
+                This platform is being developed to operate as an independent facilitation and application-management service for clinical observerships and electives in the United Arab Emirates.
               </p>
               <p className="text-slate-700 leading-relaxed">
                 We are not a hospital, clinic, university, or healthcare authority, and we do not provide medical training, certification, or licensure.

@@ -54,18 +54,18 @@ export default function StudentPortal() {
             <div className="grid md:grid-cols-3 gap-6">
               <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.45)] p-6 text-center">
                 <Users className="w-12 h-12 text-cyan-200 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-slate-100 mb-2">2,500+ Students</h3>
-                <p className="text-slate-300">Medical students served across the UAE</p>
+                <h3 className="text-xl font-semibold text-slate-100 mb-2">Pilot Platform</h3>
+                <p className="text-slate-300">Preparing for UAE pilot collaborations</p>
               </div>
               <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.45)] p-6 text-center">
                 <CheckCircle className="w-12 h-12 text-emerald-200 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-slate-100 mb-2">50+ Hospitals</h3>
-                <p className="text-slate-300">Accredited healthcare partners</p>
+                <h3 className="text-xl font-semibold text-slate-100 mb-2">UAE Coverage</h3>
+                <p className="text-slate-300">Targeting major healthcare institutions</p>
               </div>
               <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.45)] p-6 text-center">
                 <Heart className="w-12 h-12 text-rose-200 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-slate-100 mb-2">98% Success Rate</h3>
-                <p className="text-slate-300">Students successfully placed in programs</p>
+                <h3 className="text-xl font-semibold text-slate-100 mb-2">Active Development</h3>
+                <p className="text-slate-300">Platform features in progress</p>
               </div>
             </div>
 
@@ -110,7 +110,7 @@ export default function StudentPortal() {
           {/* Desktop Navigation */}
           <div className="hidden sm:flex gap-4">
             <Link href="/login" className="inline-flex items-center px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-medium transition-all">
-              Login
+              Join Early Access
             </Link>
             <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg border border-white/25 text-slate-100 hover:bg-white/10 font-medium transition-all">
               ← Back to Home
@@ -137,7 +137,7 @@ export default function StudentPortal() {
               onClick={() => setMobileMenuOpen(false)}
               className="w-full inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-medium transition-all"
             >
-              Login
+              Get Notified
             </Link>
             <Link 
               href="/" 
@@ -152,16 +152,16 @@ export default function StudentPortal() {
         {/* Apply Section */}
         <div className="animate-fade-in" style={{ animationDelay: '0.4s' }}>
           <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-lg p-8">
-            <h2 className="text-2xl font-bold text-slate-100 mb-6">Apply for Medical Training Programs</h2>
+            <h2 className="text-2xl font-bold text-slate-100 mb-6">Join Early Access</h2>
             <div>
               <p className="text-lg text-slate-300 mb-8">
-                Start your journey with MedGate today. Browse our extensive network of accredited hospitals and programs,
-                complete a simple application, and begin your medical training experience.
+                MedGate is preparing for pilot program listings. Create an account to join early access
+                and get notified when observership and elective applications open.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/login">
                   <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-lg">
-                    Login to Apply
+                    Join Early Access
                   </Button>
                 </Link>
                 <Link href="/programs">

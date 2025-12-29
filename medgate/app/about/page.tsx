@@ -169,8 +169,8 @@ export default function AboutPage() {
                 <span className="text-white font-bold text-lg">KD</span>
               </div>
               <h3 className="text-xl font-semibold text-slate-100 mb-2">Kashish Devnani</h3>
-              <p className="text-slate-300">Founder</p>
-              <p className="text-sm text-slate-400 mt-3">Leading MedGate&apos;s mission to standardize and streamline medical training applications across the UAE</p>
+              <p className="text-slate-300">Founder & Program Director</p>
+              <p className="text-sm text-slate-400 mt-3">Directs MedGate&apos;s institutional onboarding and clinical program framework, coordinating with hospitals to operationalize eligibility criteria, intake parameters, and approval workflows for observership and elective programs.</p>
             </div>
             
             <div className="rounded-2xl bg-white/5 border border-white/10 p-8 hover:bg-white/10 transition-all duration-300">
@@ -178,8 +178,8 @@ export default function AboutPage() {
                 <span className="text-white font-bold text-lg">SN</span>
               </div>
               <h3 className="text-xl font-semibold text-slate-100 mb-2">Sanskaar Nair</h3>
-              <p className="text-slate-300">Co-founder & Lead Engineer</p>
-              <p className="text-sm text-slate-400 mt-3">Architecting and building the platform infrastructure that powers MedGate</p>
+              <p className="text-slate-300">Co-Founder & Lead Engineer</p>
+              <p className="text-sm text-slate-400 mt-3">Architects and engineers the MedGate platform, owning system design, backend infrastructure, and application workflows that support hospital onboarding, program management, and secure applicant tracking.</p>
             </div>
           </div>
         </section>

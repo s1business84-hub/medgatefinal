@@ -92,15 +92,15 @@ export default function ForHospitalsPage() {
               {
                 icon: Clock,
                 title: 'Save Time & Resources',
-                description: 'Reduce administrative overhead by up to 70% with automated workflows and document verification.',
+                description: 'Designed to reduce admin overhead through standardized intake and document handling workflows.',
                 gradient: 'from-green-600 to-emerald-600',
                 bgGradient: 'from-green-50 to-emerald-50',
                 index: 3
               },
               {
                 icon: Shield,
-                title: 'Compliance & Security',
-                description: 'Ensure full regulatory compliance with secure, encrypted data handling and audit trails.',
+                title: 'Privacy & Security',
+                description: 'Built with privacy-by-design and role-based access controls for secure data handling.',
                 gradient: 'from-orange-600 to-red-600',
                 bgGradient: 'from-orange-50 to-red-50',
                 index: 4
@@ -157,7 +157,7 @@ export default function ForHospitalsPage() {
               <div className="grid md:grid-cols-2 gap-6">
                 {[
                   { icon: Zap, title: 'Instant Notifications', desc: 'Get real-time alerts for new applications and updates' },
-                  { icon: CheckCircle2, title: 'Automated Screening', desc: 'AI-powered filtering matches students to your criteria' },
+                  { icon: CheckCircle2, title: 'Eligibility Matching', desc: 'Designed to match student profiles to your published criteria' },
                   { icon: TrendingUp, title: 'Performance Tracking', desc: 'Monitor and evaluate student progress throughout programs' },
                   { icon: Star, title: 'Custom Branding', desc: 'Showcase your institution with customized program pages' },
                   { icon: Shield, title: 'Document Verification', desc: 'Automated validation of credentials and certifications' },
@@ -183,31 +183,6 @@ export default function ForHospitalsPage() {
           </div>
         </section>
 
-        {/* Statistics Section */}
-        <section className="mb-20 animate-fade-in" style={{ animationDelay: '0.5s' }}>
-          <div className="rounded-3xl overflow-hidden backdrop-blur-xl bg-white/5 border border-white/10 p-8 md:p-12">
-            <h2 className="text-3xl font-bold text-slate-100 mb-10 text-center">Trusted by Leading Institutions</h2>
-            <div className="grid md:grid-cols-4 gap-8 text-center">
-              <div>
-                <div className="text-4xl font-bold bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-300 text-transparent mb-2">50+</div>
-                <p className="text-slate-300 font-medium">Partner Hospitals</p>
-              </div>
-              <div>
-                <div className="text-4xl font-bold bg-clip-text bg-gradient-to-r from-indigo-400 to-indigo-300 text-transparent mb-2">10k+</div>
-                <p className="text-slate-300 font-medium">Students Placed</p>
-              </div>
-              <div>
-                <div className="text-4xl font-bold bg-clip-text bg-gradient-to-r from-purple-400 to-purple-300 text-transparent mb-2">95%</div>
-                <p className="text-slate-300 font-medium">Satisfaction Rate</p>
-              </div>
-              <div>
-                <div className="text-4xl font-bold bg-clip-text bg-gradient-to-r from-pink-400 to-pink-300 text-transparent mb-2">70%</div>
-                <p className="text-slate-300 font-medium">Time Saved</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* How It Works */}
         <section className="mb-20 animate-fade-in" style={{ animationDelay: '0.6s' }}>
           <h2 className="text-4xl font-bold text-slate-100 mb-12 text-center">
@@ -225,7 +200,7 @@ export default function ForHospitalsPage() {
               {
                 step: 2,
                 title: 'Receive Applications',
-                description: 'Get qualified applications from pre-screened students that match your criteria.',
+                description: 'Receive applications aligned to your published eligibility criteria.',
                 icon: Users
               },
               {
@@ -286,12 +261,12 @@ export default function ForHospitalsPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/hospital-login">
                   <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-semibold shadow-lg">
-                    Get Started Now
+                    Pilot Partner Intake
                   </Button>
                 </Link>
                 <Link href="/about">
                   <Button size="lg" variant="outline" className="border-white/25 text-slate-100 hover:bg-white/10 font-semibold">
-                    Schedule a Demo
+                    Request Onboarding Pack
                   </Button>
                 </Link>
               </div>

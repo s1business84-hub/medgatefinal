@@ -33,8 +33,8 @@ export default function VisionPage() {
             Our <AnimatedGradientText className="text-5xl md:text-7xl font-bold">Vision</AnimatedGradientText>
           </h1>
           <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-4">
-            To become the leading platform for medical education in the Middle East,
-            where every medical student has equal access to transformative clinical experiences.
+            To build a platform where every medical student has equal access to
+            transformative clinical training opportunities across the UAE and wider region.
           </p>
         </div>
 
@@ -55,9 +55,9 @@ export default function VisionPage() {
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-slate-100 mb-8 text-center">Our Vision</h2>
               <p className="text-lg text-slate-300 leading-relaxed text-center max-w-3xl mx-auto mb-8">
-                To be the global leader in healthcare education, creating a world where every aspiring medical
-                professional has the opportunity to achieve their dreams, regardless of geographical or
-                socioeconomic barriers, through innovative, accessible, and comprehensive educational solutions.
+                To create a platform where every aspiring medical professional has the opportunity to achieve
+                their dreams, regardless of geographical or socioeconomic barriers, through innovative,
+                accessible, and comprehensive educational solutions.
               </p>
               <div className="bg-white/5 p-6 rounded-2xl border border-white/10">
                 <p className="text-lg text-slate-200 text-center font-semibold italic">
@@ -140,45 +140,21 @@ export default function VisionPage() {
                   <Target className="w-8 h-8 text-white" />
                 </div>
               </div>
-              <h2 className="text-4xl font-bold mb-8 text-center">Future Goals</h2>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="backdrop-blur-sm bg-white/5 rounded-2xl p-8 border border-white/20 hover:bg-white/10 transition-all duration-300">
-                  <h3 className="text-2xl font-bold mb-6 flex items-center">
-                    <span className="w-8 h-8 rounded-full bg-white/30 flex items-center justify-center mr-3 text-sm">📅</span>
-                    2025-2027
-                  </h3>
+              <h2 className="text-4xl font-bold mb-8 text-center">Development Roadmap</h2>
+              <div className="grid md:grid-cols-1 gap-8 max-w-2xl mx-auto">
+                <div className="backdrop-blur-sm bg-white/5 rounded-2xl p-8 border border-white/20">
                   <ul className="space-y-4 text-green-50">
                     <li className="flex items-start hover:translate-x-2 transition-transform">
                       <span className="w-3 h-3 bg-white rounded-full mt-2 mr-4 shrink-0 animate-pulse"></span>
-                      <span>Expand to 50+ partner hospitals across the Middle East</span>
+                      <span>Expand institution coverage across the UAE and wider region</span>
                     </li>
                     <li className="flex items-start hover:translate-x-2 transition-transform">
                       <span className="w-3 h-3 bg-white rounded-full mt-2 mr-4 shrink-0 animate-pulse" style={{ animationDelay: '0.2s' }}></span>
-                      <span>Launch AI-powered matching system for optimal placements</span>
+                      <span>Introduce structured matching and eligibility logic</span>
                     </li>
                     <li className="flex items-start hover:translate-x-2 transition-transform">
                       <span className="w-3 h-3 bg-white rounded-full mt-2 mr-4 shrink-0 animate-pulse" style={{ animationDelay: '0.4s' }}></span>
-                      <span>Develop comprehensive career tracking platform</span>
-                    </li>
-                  </ul>
-                </div>
-                <div className="backdrop-blur-sm bg-white/5 rounded-2xl p-8 border border-white/20 hover:bg-white/10 transition-all duration-300">
-                  <h3 className="text-2xl font-bold mb-6 flex items-center">
-                    <span className="w-8 h-8 rounded-full bg-white/30 flex items-center justify-center mr-3 text-sm">🎯</span>
-                    2027-2030
-                  </h3>
-                  <ul className="space-y-4 text-green-50">
-                    <li className="flex items-start hover:translate-x-2 transition-transform">
-                      <span className="w-3 h-3 bg-white rounded-full mt-2 mr-4 shrink-0 animate-pulse" style={{ animationDelay: '0.1s' }}></span>
-                      <span>Become the leading medical education platform globally</span>
-                    </li>
-                    <li className="flex items-start hover:translate-x-2 transition-transform">
-                      <span className="w-3 h-3 bg-white rounded-full mt-2 mr-4 shrink-0 animate-pulse" style={{ animationDelay: '0.3s' }}></span>
-                      <span>Establish research partnerships with top medical institutions</span>
-                    </li>
-                    <li className="flex items-start hover:translate-x-2 transition-transform">
-                      <span className="w-3 h-3 bg-white rounded-full mt-2 mr-4 shrink-0 animate-pulse" style={{ animationDelay: '0.5s' }}></span>
-                      <span>Create lifelong learning ecosystem for healthcare professionals</span>
+                      <span>Build longitudinal tracking for clinical exposure history (planned feature)</span>
                     </li>
                   </ul>
                 </div>

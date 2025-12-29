@@ -51,6 +51,14 @@ export default function ProgramsPage() {
           <p className="text-base sm:text-lg lg:text-xl text-slate-300 max-w-2xl mx-auto px-4">
             Discover clinical training opportunities across UAE hospitals
           </p>
+          {/* Demo Data Banner */}
+          <div className="mt-6 mx-auto max-w-3xl px-4">
+            <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 backdrop-blur-xl p-4">
+              <p className="text-sm text-amber-200">
+                <strong>Demo Listings:</strong> Programs shown for prototype purposes. Final program details, fees, and schedules will be published by institutions during pilot onboarding. Requirements vary by institution.
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Eligibility Checker */}

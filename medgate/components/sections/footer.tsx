@@ -25,9 +25,6 @@ const footerLinks = {
     { name: "Vision", href: "/vision" },
   ],
   support: [
-    { name: "Help Center", href: "/help" },
-    { name: "Contact", href: "/contact" },
-    { name: "Privacy", href: "/privacy" },
     { name: "Legal Disclaimer & Terms", href: "/legal" },
   ],
   social: [
@@ -197,7 +194,7 @@ export function Footer() {
         >
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-slate-400 drop-shadow-[0_0_6px_rgba(148,163,184,0.2)]">
-              © 2024 MedGate. All rights reserved.
+              © 2025 MedGate. All rights reserved.
             </p>
             <p className="text-sm text-slate-400 mt-2 md:mt-0 flex items-center drop-shadow-[0_0_6px_rgba(239,68,68,0.3)]">
               Made with <Heart className="h-4 w-4 mx-1 text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.6)]" /> in Dubai
