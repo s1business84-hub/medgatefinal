@@ -4,6 +4,7 @@ import Link from "next/link";
 import { hospitals, programs } from "@/lib/mockData";
 import { EligibilityChecker } from "@/components/eligibility-checker";
 import { ReminderModal } from "@/components/reminder-modal";
+import { HospitalsMap } from "@/components/hospitals-map";
 import { useState } from "react";
 import { ChevronDown, ChevronUp, Bell } from "lucide-react";
 import { ApplicationModal } from "@/components/application-modal";
@@ -55,6 +56,15 @@ export default function ProgramsPage() {
         {/* Eligibility Checker */}
         <div className="mb-12 animate-fade-in" style={{ animationDelay: '0.1s' }}>
           <EligibilityChecker />
+        </div>
+
+        {/* Hospitals Map */}
+        <div className="mb-12 animate-fade-in" style={{ animationDelay: '0.15s' }}>
+          <div className="mb-4">
+            <h2 className="text-2xl font-bold text-slate-100">Hospital Locations</h2>
+            <p className="text-slate-300 mt-2">View all observership opportunities across UAE hospitals on the map below</p>
+          </div>
+          <HospitalsMap />
         </div>
 
         {/* Programs Grid */}
