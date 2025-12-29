@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { CheckCircle2 } from "lucide-react"
 
 const requirements = [
-  "Valid passport and visa",
+  "Government ID and residency/visa status (as applicable)",
   "Proof of medical student or graduate status",
   "Updated CV",
   "Complete health clearance (immunizations + screening)",
@@ -41,7 +41,7 @@ export function EligibilityChecker() {
       </div>
 
       <div className="mt-6 p-4 rounded-xl bg-gradient-to-r from-cyan-500/10 to-indigo-500/10 border border-cyan-400/30 text-sm text-slate-200">
-        Additional requirements may apply depending on the hospital and program.
+        <strong>Note:</strong> Requirements vary by institution. Each program sets its own eligibility criteria, documentation needs, and approval process.
       </div>
     </motion.div>
   )

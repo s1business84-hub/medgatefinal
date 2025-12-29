@@ -105,7 +105,7 @@ export default function StudentPortal() {
         <div className="flex items-center justify-between mb-8 animate-fade-in">
           <div>
             <h1 className="text-3xl font-bold text-slate-100 mb-2">Student Portal</h1>
-            <p className="text-slate-300">Apply for medical training programs</p>
+            <p className="text-slate-300">Join Early Access for Observerships & Electives</p>
           </div>
           {/* Desktop Navigation */}
           <div className="hidden sm:flex gap-4">
@@ -149,27 +149,66 @@ export default function StudentPortal() {
           </div>
         </div>
 
-        {/* Apply Section */}
-        <div className="animate-fade-in" style={{ animationDelay: '0.4s' }}>
+        {/* Early Access Section */}
+        <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
           <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-lg p-8">
-            <h2 className="text-2xl font-bold text-slate-100 mb-6">Join Early Access</h2>
-            <div>
-              <p className="text-lg text-slate-300 mb-8">
-                MedGate is preparing for pilot program listings. Create an account to join early access
-                and get notified when observership and elective applications open.
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-100 mb-4">Join Early Access for Observerships & Electives</h2>
+            <p className="text-lg text-slate-300 mb-6 leading-relaxed">
+              MedGate is preparing for pilot program listings of formal observership and elective opportunities 
+              with healthcare institutions. Create an account to join early access, stay informed, and be among 
+              the first to apply when programs go live.
+            </p>
+            
+            {/* No Live Programs Notice */}
+            <div className="mb-8 p-4 rounded-xl border border-amber-500/30 bg-amber-500/10 backdrop-blur-xl">
+              <p className="text-sm text-amber-200">
+                <strong>Early Access:</strong> No observership or elective listings are live yet. Register now to receive updates and priority access when applications open.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/login">
-                  <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-lg">
-                    Join Early Access
-                  </Button>
-                </Link>
-                <Link href="/programs">
-                  <Button size="lg" variant="outline" className="border-white/25 text-slate-100 hover:bg-white/10">
-                    Browse Programs
-                  </Button>
-                </Link>
-              </div>
+            </div>
+
+            {/* Benefits List */}
+            <div className="mb-8">
+              <h3 className="text-lg font-semibold text-slate-100 mb-4">What You'll Get:</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center shrink-0 mt-0.5">
+                    <span className="text-cyan-400 text-sm">✓</span>
+                  </div>
+                  <span className="text-slate-300">Early access to pilot observership & elective programs</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center shrink-0 mt-0.5">
+                    <span className="text-cyan-400 text-sm">✓</span>
+                  </div>
+                  <span className="text-slate-300">Priority notifications when applications open</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center shrink-0 mt-0.5">
+                    <span className="text-cyan-400 text-sm">✓</span>
+                  </div>
+                  <span className="text-slate-300">Direct updates from partner institutions</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center shrink-0 mt-0.5">
+                    <span className="text-cyan-400 text-sm">✓</span>
+                  </div>
+                  <span className="text-slate-300">Support materials & eligibility guidelines</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href="/login">
+                <Button size="lg" className="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-lg">
+                  Join Early Access
+                </Button>
+              </Link>
+              <Link href="/programs">
+                <Button size="lg" variant="outline" className="w-full sm:w-auto border-white/25 text-slate-100 hover:bg-white/10">
+                  View Demo Listings
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { hospitals, programs } from "@/lib/mockData";
 import { EligibilityChecker } from "@/components/eligibility-checker";
+import { ProgramFilters } from "@/components/program-filters";
 import { ReminderModal } from "@/components/reminder-modal";
 import { HospitalsMap, hospitalCoords } from "@/components/hospitals-map";
 import { useState } from "react";
@@ -61,13 +62,18 @@ export default function ProgramsPage() {
           </div>
         </div>
 
+        {/* Program Filters */}
+        <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+          <ProgramFilters />
+        </div>
+
         {/* Eligibility Checker */}
-        <div className="mb-12 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+        <div className="mb-12 animate-fade-in" style={{ animationDelay: '0.15s' }}>
           <EligibilityChecker />
         </div>
 
         {/* Hospitals Map */}
-        <div className="mb-12 animate-fade-in" style={{ animationDelay: '0.15s' }}>
+        <div className="mb-12 animate-fade-in" style={{ animationDelay: '0.2s' }}>
           <div className="mb-4">
             <h2 className="text-2xl font-bold text-slate-100">Hospital Locations</h2>
             <p className="text-slate-300 mt-2">View all observership opportunities across UAE hospitals on the map below</p>
@@ -76,7 +82,7 @@ export default function ProgramsPage() {
         </div>
 
         {/* Programs Grid */}
-        <div className="space-y-4 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+        <div className="space-y-4 animate-fade-in" style={{ animationDelay: '0.25s' }}>
           {programs.map((p, index) => {
             const h = hospitals.find((x) => x.id === p.hospitalId);
             const isExpanded = expandedProgram === p.id;
