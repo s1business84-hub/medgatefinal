@@ -9,7 +9,7 @@ const requirements = [
   "Valid visa status or legal presence in UAE (tourist or resident)",
   "Updated CV or resume",
   "Passport-style photograph",
-  "Medical insurance (often required by hospitals)",
+  "Vaccinations and screenings (required by some programs)",
 ]
 
 export function EligibilityChecker() {
@@ -40,7 +40,7 @@ export function EligibilityChecker() {
       </div>
 
       <div className="mt-6 p-4 rounded-xl bg-gradient-to-r from-cyan-500/10 to-indigo-500/10 border border-cyan-400/30 text-sm text-slate-200">
-        <strong>Note:</strong> Requirements vary by institution. Each program sets its own eligibility criteria, documentation needs, and approval process. Academic transcripts are typically requested <em>after</em> conditional acceptance, not at initial application.
+        <strong>Note:</strong> Requirements vary by institution. Each program sets its own eligibility criteria, documentation needs, and approval process. Academic transcripts, vaccinations, and screenings are required by some programs but not all.
       </div>
     </motion.div>
   )
