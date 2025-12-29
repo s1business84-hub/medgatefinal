@@ -9,6 +9,7 @@ import {
   Heart,
   Zap
 } from "lucide-react"
+import { AnimatedGradientText } from "@/components/ui/animated-gradient-text"
 
 const features = [
   {
@@ -90,9 +91,9 @@ export function Features() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="text-4xl sm:text-5xl font-bold tracking-tight bg-clip-text bg-gradient-to-r from-white via-blue-200 to-purple-200 text-transparent"
+            className="text-4xl sm:text-5xl font-bold tracking-tight"
           >
-            Everything you need to succeed
+            <AnimatedGradientText>Everything you need to succeed</AnimatedGradientText>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 24 }}

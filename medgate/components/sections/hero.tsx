@@ -5,6 +5,7 @@ import { ArrowRight, CheckCircle, Users, Award } from "lucide-react"
 import Link from "next/link"
 
 import { Button } from "@/components/ui/button"
+import { AnimatedGradientText } from "@/components/ui/animated-gradient-text"
 
 const stats = [
   {
@@ -79,8 +80,8 @@ export function Hero() {
           >
             One-Click Solutions to Find Your
             <br />
-            <span className="block bg-linear-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
-              Best Clinical Observership
+            <span className="block">
+              <AnimatedGradientText>Best Clinical Observership</AnimatedGradientText>
             </span>
           </motion.h1>
 
