@@ -85,13 +85,8 @@ export function Header() {
             ) : (
               <>
                 <Link href="/login">
-                  <Button size="sm" variant="outline" className="border-white/25 text-slate-100 hover:bg-white/10">
+                  <Button size="sm" className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white">
                     Login
-                  </Button>
-                </Link>
-                <Link href="/for-hospitals">
-                  <Button size="sm" className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white hidden sm:inline-flex">
-                    Hospital Portal
                   </Button>
                 </Link>
               </>
