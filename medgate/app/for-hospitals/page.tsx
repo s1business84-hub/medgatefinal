@@ -33,9 +33,9 @@ export default function ForHospitalsPage() {
             MedGate is being developed to support healthcare institutions in managing formal observership and elective programs through structured intake, clear eligibility standards, and transparent application workflows.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/hospital-login">
+            <Link href="/hospital/create-account">
               <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-semibold shadow-lg">
-                Request Pilot Information
+                Join Us Now
               </Button>
             </Link>
             <Link href="/about">
