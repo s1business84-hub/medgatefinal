@@ -49,11 +49,6 @@ const navigation = [
     icon: Building2,
   },
   {
-    name: "Hospital Login",
-    href: "/hospital-login",
-    icon: Building2,
-  },
-  {
     name: "Login",
     href: "/login",
     icon: Settings,
@@ -101,21 +96,27 @@ export function AppShell({ children }: AppShellProps) {
                         <Link
                           href={item.href}
                           className={cn(
-                            "group flex gap-x-3 rounded-lg p-3 text-sm font-medium leading-6 transition-all duration-200 hover:bg-slate-50 hover:shadow-sm",
-                            isActive
-                              ? "bg-linear-to-r from-blue-50 to-indigo-50 text-blue-700 shadow-sm border border-blue-200/50"
-                              : "text-slate-700 hover:text-slate-900"
+                            "group flex gap-x-3 rounded-lg p-3 text-sm font-medium leading-6 transition-all duration-200",
+                            item.name === "Login"
+                              ? "bg-linear-to-r from-cyan-500 to-indigo-600 text-white shadow-lg hover:from-cyan-400 hover:to-indigo-500"
+                              : isActive
+                              ? "bg-linear-to-r from-blue-50 to-indigo-50 text-blue-700 shadow-sm border border-blue-200/50 hover:bg-slate-50 hover:shadow-sm"
+                              : "text-slate-700 hover:bg-slate-50 hover:shadow-sm hover:text-slate-900"
                           )}
                         >
                           <item.icon
                             className={cn(
                               "h-5 w-5 shrink-0 transition-colors",
-                              isActive ? "text-blue-600" : "text-slate-400 group-hover:text-slate-600"
+                              item.name === "Login"
+                                ? "text-white"
+                                : isActive
+                                ? "text-blue-600"
+                                : "text-slate-400 group-hover:text-slate-600"
                             )}
                             aria-hidden="true"
                           />
                           {item.name}
-                          {isActive && (
+                          {isActive && item.name !== "Login" && (
                             <motion.div
                               layoutId="activeTab"
                               className="absolute left-0 top-0 h-full w-1 bg-linear-to-b from-blue-600 to-indigo-600 rounded-r-full"
@@ -161,16 +162,22 @@ export function AppShell({ children }: AppShellProps) {
                             href={item.href}
                             onClick={() => setSidebarOpen(false)}
                             className={cn(
-                              "group flex gap-x-3 rounded-lg p-3 sm:p-4 text-sm sm:text-base font-medium leading-6 transition-all duration-200 hover:bg-slate-50 hover:shadow-sm min-h-12 items-center",
-                              isActive
-                                ? "bg-linear-to-r from-blue-50 to-indigo-50 text-blue-700 shadow-sm border border-blue-200/50"
-                                : "text-slate-700 hover:text-slate-900"
+                              "group flex gap-x-3 rounded-lg p-3 sm:p-4 text-sm sm:text-base font-medium leading-6 transition-all duration-200 min-h-12 items-center",
+                              item.name === "Login"
+                                ? "bg-linear-to-r from-cyan-500 to-indigo-600 text-white shadow-lg hover:from-cyan-400 hover:to-indigo-500"
+                                : isActive
+                                ? "bg-linear-to-r from-blue-50 to-indigo-50 text-blue-700 shadow-sm border border-blue-200/50 hover:bg-slate-50 hover:shadow-sm"
+                                : "text-slate-700 hover:bg-slate-50 hover:shadow-sm hover:text-slate-900"
                             )}
                           >
                             <item.icon
                               className={cn(
                                 "h-5 w-5 shrink-0 transition-colors",
-                                isActive ? "text-blue-600" : "text-slate-400 group-hover:text-slate-600"
+                                item.name === "Login"
+                                  ? "text-white"
+                                  : isActive
+                                  ? "text-blue-600"
+                                  : "text-slate-400 group-hover:text-slate-600"
                               )}
                               aria-hidden="true"
                             />
