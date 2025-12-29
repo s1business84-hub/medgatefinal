@@ -136,7 +136,8 @@ export default function MissionPage() {
         <section className="mb-24 animate-fade-in" style={{ animationDelay: '0.7s' }}>
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold inline-block mb-4">
-              <AnimatedGradientText className="text-4xl md:text-5xl font-bold">Our Goals <br /> for 2025</AnimatedGradientText>
+              Our Goals <br />
+              <AnimatedGradientText className="text-4xl md:text-5xl font-bold">for 2025</AnimatedGradientText>
             </h2>
             <p className="text-slate-300 text-lg mt-4">Ambitious targets to drive growth and impact</p>
           </div>
