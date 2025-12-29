@@ -7,37 +7,21 @@ import { Button } from "@/components/ui/button";
 import { LiquidParallax } from "@/components/ui/liquid-parallax";
 import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
 
-function sendOnboardingEmail(email: string) {
-  const onboardingEmail = {
-    from: "hellomedgate@gmail.com",
-    to: email,
-    subject: "MedGate Hospital Onboarding Pack",
-    body: `
-Dear Hospital Team,
+async function sendOnboardingEmail(email: string) {
+  const res = await fetch("/api/send-onboarding-email", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, type: "onboarding" }),
+  });
 
-Thank you for your interest in MedGate. Here are the onboarding steps:
-
-1) Confirm program contacts: primary coordinator and approver
-2) Share eligibility rules: applicant criteria and required documents
-3) Intake settings: monthly/quarterly capacity and application windows
-4) Review workflow: who reviews, who approves, typical timelines
-5) Safety & compliance: required vaccinations, screenings, and attestations
-6) Communication: notification emails and escalation contacts
-
-Reply to this email with your details and we will provision your hospital workspace.
-
-Best regards,
-The MedGate Team
-    `,
-  };
-
-  // Placeholder for real email service integration
-  console.log("Onboarding pack email would be sent:", onboardingEmail);
+  if (!res.ok) {
+    throw new Error("Failed to send onboarding email");
+  }
 }
 
 export default function ForHospitalsPage() {
   const [onboardingEmail, setOnboardingEmail] = useState("");
-  const [onboardingStatus, setOnboardingStatus] = useState<"idle" | "sent">("idle");
+  const [onboardingStatus, setOnboardingStatus] = useState<"idle" | "sent" | "error">("idle");
   const [onboardingError, setOnboardingError] = useState("");
 
   const handleSendOnboarding = (e: React.FormEvent) => {
@@ -47,8 +31,12 @@ export default function ForHospitalsPage() {
       return;
     }
     setOnboardingError("");
-    sendOnboardingEmail(onboardingEmail.trim());
-    setOnboardingStatus("sent");
+    sendOnboardingEmail(onboardingEmail.trim())
+      .then(() => setOnboardingStatus("sent"))
+      .catch(() => {
+        setOnboardingStatus("error");
+        setOnboardingError("Unable to send onboarding steps. Please try again.");
+      });
   };
 
   return (
@@ -304,6 +292,11 @@ export default function ForHospitalsPage() {
               {onboardingStatus === "sent" && (
                 <p className="text-sm text-cyan-200 mt-3">
                   Onboarding steps sent from hellomedgate@gmail.com. Please check your inbox.
+                </p>
+              )}
+              {onboardingStatus === "error" && (
+                <p className="text-sm text-rose-200 mt-3">
+                  Unable to send onboarding steps right now. Please retry.
                 </p>
               )}
               <div className="mt-6 text-sm text-slate-300">

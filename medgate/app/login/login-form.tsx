@@ -7,48 +7,16 @@ import { useAuth } from "@/lib/auth-context";
 import { createUser, getCurrentUser } from "@/lib/storage";
 import { LiquidParallax } from "@/components/ui/liquid-parallax";
 
-function sendWelcomeEmail(email: string, name: string) {
-  // In production, this would call an API endpoint to send email via backend
-  // For now, we'll log the email details (placeholder for actual implementation)
-  const welcomeEmailContent = {
-    from: "hellomedgate@gmail.com",
-    to: email,
-    subject: "Welcome to MedGate - Your Journey Begins Here",
-    body: `
-Dear ${name},
+async function sendWelcomeEmail(email: string, name: string) {
+  const res = await fetch("/api/send-onboarding-email", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, name, type: "welcome-student" }),
+  });
 
-Welcome to MedGate! 🎉
-
-Thank you for joining our platform as an early access member. We're excited to have you as part of the MedGate community.
-
-As a pilot phase member, you'll be among the first to:
-• Access clinical observership and elective opportunities in the UAE
-• Receive priority notifications when new programs are listed
-• Connect with leading healthcare institutions
-• Get updates on platform features and improvements
-
-What's Next?
-1. Complete your student profile when program listings go live
-2. Browse available opportunities across UAE medical facilities
-3. Submit applications directly through our platform
-4. Track your application status in real-time
-
-We're currently in the pilot phase, actively working with hospitals to bring you quality clinical training opportunities. You'll receive an email notification as soon as programs become available for application.
-
-If you have any questions or need assistance, feel free to reach out to us at hellomedgate@gmail.com.
-
-Best regards,
-The MedGate Team
-
----
-This is an automated message from MedGate. Please do not reply to this email.
-    `
-  };
-  
-  console.log("Welcome email would be sent:", welcomeEmailContent);
-  
-  // TODO: Implement actual email sending via API route
-  // Example: fetch('/api/send-email', { method: 'POST', body: JSON.stringify(welcomeEmailContent) })
+  if (!res.ok) {
+    throw new Error("Failed to send welcome email");
+  }
 }
 
 function getInitialRole(searchParams: ReturnType<typeof useSearchParams>) {
@@ -67,7 +35,7 @@ export default function LoginForm() {
   const { login } = useAuth();
   const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
@@ -92,12 +60,16 @@ export default function LoginForm() {
       }
 
       createUser({ email, role, name });
-      
+
       // Send welcome email for student accounts
       if (role === "student") {
-        sendWelcomeEmail(email, name);
+        try {
+          await sendWelcomeEmail(email, name);
+        } catch (err) {
+          console.error("Welcome email failed", err);
+        }
       }
-      
+
       const success = login(email, password);
       if (success) {
         const u = getCurrentUser();
