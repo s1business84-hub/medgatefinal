@@ -34,8 +34,23 @@ const navigation = [
     icon: Users,
   },
   {
+    name: "Mission",
+    href: "/mission",
+    icon: LayoutDashboard,
+  },
+  {
+    name: "Vision",
+    href: "/vision",
+    icon: LayoutDashboard,
+  },
+  {
     name: "For Hospitals",
     href: "/for-hospitals",
+    icon: Building2,
+  },
+  {
+    name: "Hospital Login",
+    href: "/hospital-login",
     icon: Building2,
   },
   {

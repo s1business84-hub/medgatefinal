@@ -23,6 +23,11 @@ export default function ForHospitalsPage() {
                 Hospital Login
               </Button>
             </Link>
+            <Link href="/hospital/create-account">
+              <Button variant="outline" size="sm" className="hover:scale-105 transition-transform">
+                Create Account
+              </Button>
+            </Link>
           </div>
         </div>
 
@@ -43,7 +48,12 @@ export default function ForHospitalsPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/hospital-login">
               <Button size="lg" className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 hover:shadow-lg hover:scale-105 transition-all text-white font-semibold">
-                Partner With Us
+                Hospital Login
+              </Button>
+            </Link>
+            <Link href="/hospital/create-account">
+              <Button size="lg" variant="outline" className="hover:bg-indigo-50 hover:border-indigo-300 hover:scale-105 transition-all font-semibold">
+                Create Account
               </Button>
             </Link>
             <Link href="/about">

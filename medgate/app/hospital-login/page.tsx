@@ -48,6 +48,14 @@ export default function HospitalLogin() {
           </div>
 
           {/* Content */}
+          <div className="px-8 pt-6">
+            <Button asChild variant="outline" className="w-full flex items-center justify-center gap-2">
+              <Link href="/hospital/create-account">
+                <UserPlus className="w-4 h-4" />
+                Create Hospital Account
+              </Link>
+            </Button>
+          </div>
           <form onSubmit={handleSubmit} className="p-8">
             {error && (
               <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
@@ -103,12 +111,6 @@ export default function HospitalLogin() {
 
           {/* Footer */}
           <div className="px-8 py-6 bg-gray-50 border-t border-gray-200 text-center space-y-3">
-            <Button asChild variant="outline" className="w-full flex items-center justify-center gap-2">
-              <Link href="/hospital/create-account">
-                <UserPlus className="w-4 h-4" />
-                Create Hospital Account
-              </Link>
-            </Button>
             <div>
               <p className="text-gray-600 text-sm mb-2">Not a hospital?</p>
               <Link

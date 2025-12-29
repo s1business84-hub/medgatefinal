@@ -112,17 +112,29 @@ export function FAQ() {
             <AnimatePresence mode="wait">
               {faqs.map((faq, index) => (
                 <motion.div key={index} variants={itemVariants} className="group">
+                  {/** Card with dynamic liquid color change when expanded **/}
                   <motion.div
-                    className="relative rounded-2xl border border-white/10 shadow-2xl hover:shadow-3xl transition-all duration-300 overflow-hidden backdrop-blur-xl bg-white/5"
+                    className={`relative rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 overflow-hidden backdrop-blur-xl ${openIndex === index ? "bg-white/10 border border-blue-300/30" : "bg-white/5 border border-white/10"}`}
                     whileHover={{ y: -4 }}
                   >
                     {/* Animated gradient background on hover */}
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-400/15 via-transparent to-purple-400/15 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                     {/* Liquid glass shine effect */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300">
+                    <div className={`absolute inset-0 transition-opacity duration-300 ${openIndex === index ? "opacity-25" : "opacity-0 group-hover:opacity-20"}`}>
                       <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-to-br from-white to-transparent rounded-full blur-xl" />
+                      <div className="absolute bottom-0 right-0 w-2/5 h-2/5 bg-gradient-to-tr from-blue-300/40 to-purple-300/40 rounded-full blur-xl" />
                     </div>
+
+                    {/* Active state gradient overlay */}
+                    {openIndex === index && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 via-indigo-400/10 to-purple-400/20"
+                      />
+                    )}
 
                     <button
                       onClick={() => setOpenIndex(openIndex === index ? null : index)}
