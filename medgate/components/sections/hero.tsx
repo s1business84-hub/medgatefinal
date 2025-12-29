@@ -81,7 +81,7 @@ export function Hero() {
             One-Click Solutions to Find Your
             <br />
             <span className="block">
-              <AnimatedGradientText>Best Clinical Observership</AnimatedGradientText>
+              <AnimatedGradientText>Best Clinical <br /> Observership</AnimatedGradientText>
             </span>
           </motion.h1>
 
