@@ -13,32 +13,32 @@ import { AnimatedGradientText } from "@/components/ui/animated-gradient-text"
 
 const features = [
   {
-    name: "Smart Program Matching",
-    description: "AI-powered recommendations based on your profile, preferences, and career goals.",
+    name: "Profile-Based Matching",
+    description: "Program suggestions based on your profile, preferences, and career goals (planned).",
     icon: Search,
     gradient: "from-blue-500 to-cyan-500",
   },
   {
-    name: "One-Click Applications",
-    description: "Streamlined application process with pre-filled forms and document uploads.",
+    name: "Streamlined Applications",
+    description: "Simplified application process with pre-filled forms and document uploads (planned).",
     icon: FileCheck,
     gradient: "from-green-500 to-emerald-500",
   },
   {
-    name: "Real-Time Tracking",
-    description: "Monitor your application status, interview schedules, and acceptance updates.",
+    name: "Application Dashboard",
+    description: "Track your application status, interview schedules, and acceptance updates (planned).",
     icon: Clock,
     gradient: "from-purple-500 to-pink-500",
   },
   {
     name: "Hospital Partnerships",
-    description: "Direct connections with accredited UAE hospitals and medical institutions.",
+    description: "Direct connections with accredited UAE hospitals and medical institutions (in development).",
     icon: Heart,
     gradient: "from-indigo-500 to-purple-500",
   },
   {
-    name: "Verified Reviews",
-    description: "Read authentic reviews from past participants and program alumni.",
+    name: "Program Insights",
+    description: "Detailed program information, requirements, and departmental details (in development).",
     icon: Award,
     gradient: "from-teal-500 to-green-500",
   },
@@ -93,8 +93,8 @@ export function Features() {
             viewport={{ once: true }}
             className="text-4xl sm:text-5xl font-bold tracking-tight"
           >
-            Everything you need <br />
-            <AnimatedGradientText>to succeed</AnimatedGradientText>
+            Designed to support <br />
+            <AnimatedGradientText>your training journey</AnimatedGradientText>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 24 }}
@@ -103,8 +103,8 @@ export function Features() {
             viewport={{ once: true }}
             className="mt-6 text-lg leading-8 text-slate-200"
           >
-            Comprehensive platform designed to streamline your medical training journey
-            from application to completion.
+            A comprehensive platform being built to streamline medical training applications
+            from discovery to completion.
           </motion.p>
         </div>
 

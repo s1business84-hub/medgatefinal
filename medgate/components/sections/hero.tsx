@@ -9,27 +9,27 @@ import { AnimatedGradientText } from "@/components/ui/animated-gradient-text"
 
 const stats = [
   {
-    label: "Medical Students",
-    value: "2,500+",
+    label: "Platform Vision",
+    value: "Pilot",
     icon: Users,
   },
   {
-    label: "Programs Available",
-    value: "150+",
+    label: "Target Coverage",
+    value: "UAE",
     icon: Award,
   },
   {
-    label: "Success Rate",
-    value: "98%",
+    label: "Development",
+    value: "Active",
     icon: CheckCircle,
   },
 ]
 
 const features = [
-  "One-Click Applications",
-  "Real-Time Tracking",
-  "Direct Hospital Partnerships",
-  "Instant Eligibility Matching",
+  "Streamlined applications (planned)",
+  "Application status dashboard (planned)",
+  "Institution onboarding workflows (in development)",
+  "Eligibility criteria logic (in development)",
 ]
 
 export function Hero() {
@@ -65,8 +65,8 @@ export function Hero() {
           >
             <span className="inline-flex items-center rounded-full bg-white/10 px-3 py-1 sm:px-4 sm:py-2 text-sm font-medium text-blue-300 ring-1 ring-inset ring-white/20 backdrop-blur-sm">
               <CheckCircle className="mr-2 h-4 w-4" />
-              <span className="hidden sm:inline">Trusted by 50+ UAE Hospitals</span>
-              <span className="sm:hidden">50+ UAE Hospitals</span>
+              <span className="hidden sm:inline">Built for UAE hospitals and medical students</span>
+              <span className="sm:hidden">Built for UAE</span>
             </span>
           </motion.div>
 
@@ -78,11 +78,12 @@ export function Hero() {
             viewport={{ once: true }}
             className="text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-white leading-tight"
           >
-            One-Click Solutions to Find Your
+            A centralized platform for
             <br />
             <span className="block">
-              Best Clinical <br />
-              <AnimatedGradientText>Observership</AnimatedGradientText>
+              <AnimatedGradientText>observerships and electives</AnimatedGradientText>
+              <br />
+              in the UAE
             </span>
           </motion.h1>
 
@@ -94,7 +95,7 @@ export function Hero() {
             viewport={{ once: true }}
             className="mt-4 sm:mt-6 text-base sm:text-lg lg:text-xl leading-7 sm:leading-8 text-blue-100 max-w-2xl mx-auto px-4"
           >
-            Discover the best clinical observerships across UAE hospitals. Streamline your applications with real-time tracking and direct hospital partnerships.
+            MedGate is being built to standardize eligibility, streamline applications, and improve visibility into program requirements and status—aligned with institutional workflows.
           </motion.p>
 
           {/* CTA Buttons */}
