@@ -93,7 +93,7 @@ export function Features() {
             viewport={{ once: true }}
             className="text-4xl sm:text-5xl font-bold tracking-tight"
           >
-            <AnimatedGradientText>Everything you need to succeed</AnimatedGradientText>
+            <AnimatedGradientText>Everything you need <br /> to succeed</AnimatedGradientText>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 24 }}
