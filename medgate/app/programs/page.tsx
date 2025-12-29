@@ -48,15 +48,18 @@ export default function ProgramsPage() {
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         {/* Header */}
         <div className="text-center mb-8 sm:mb-12 animate-fade-in">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-200 to-indigo-200 text-transparent mb-3 sm:mb-4">Available Programs</h1>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-200 to-indigo-200 text-transparent mb-3 sm:mb-4">Example Programs</h1>
           <p className="text-base sm:text-lg lg:text-xl text-slate-300 max-w-2xl mx-auto px-4">
-            Discover clinical training opportunities across UAE hospitals
+            Prototype listings for demonstration only
           </p>
           {/* Demo Data Banner */}
           <div className="mt-6 mx-auto max-w-3xl px-4">
             <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 backdrop-blur-xl p-4">
+              <p className="text-sm text-amber-200 mb-3">
+                <strong>Prototype Listings:</strong> The programs shown below are example listings for demonstration purposes only. Final observership and elective programs will be published by participating institutions during pilot onboarding.
+              </p>
               <p className="text-sm text-amber-200">
-                <strong>Demo Listings:</strong> Programs shown for prototype purposes. Final program details, fees, and schedules will be published by institutions during pilot onboarding. Requirements vary by institution.
+                <strong>Program Scope:</strong> MedGate supports formal, institution-approved observership and elective programs only. Internships, residency, and fellowship placements are not offered or facilitated through the platform.
               </p>
             </div>
           </div>

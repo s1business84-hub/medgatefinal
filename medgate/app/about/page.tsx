@@ -51,19 +51,10 @@ export default function AboutPage() {
             
             <div className="relative z-10">
               <p className="text-lg text-slate-300 leading-relaxed mb-6">
-                Founded in 2024, MedGate emerged from a simple observation: medical students in the UAE were struggling
-                to find quality clinical training opportunities. The process was fragmented, time-consuming, and often
-                frustrating for both students and healthcare institutions.
+                MedGate is an early-stage platform being developed to address long-standing challenges in accessing and managing medical observership and elective programs. Today, students often face fragmented information, unclear eligibility criteria, and slow, manual communication when seeking clinical exposure opportunities.
               </p>
               <p className="text-lg text-slate-300 leading-relaxed mb-6">
-                We set out to change this by creating a centralized platform that streamlines the entire process.
-                Our technology connects students directly with hospitals, eliminates paperwork bottlenecks, and ensures
-                fair, transparent application processes.
-              </p>
-              <p className="text-lg text-slate-300 leading-relaxed">
-                MedGate is in early development, preparing for pilot collaborations with UAE healthcare institutions.
-                Our focus is to standardize eligibility criteria, reduce back-and-forth communication, and improve
-                transparency for students and program administrators.
+                MedGate aims to standardize how institutions publish program requirements and how students engage with them—creating a clearer, more transparent process for both sides. The platform is currently preparing for pilot collaborations with UAE healthcare institutions.
               </p>
             </div>
           </div>
@@ -76,7 +67,7 @@ export default function AboutPage() {
               <AnimatedGradientText>What We Do</AnimatedGradientText>
             </h2>
             <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-              Three pillars of excellence that define our mission
+              Three core areas that guide our development
             </p>
           </div>
           
@@ -84,24 +75,24 @@ export default function AboutPage() {
             {[
               {
                 icon: Users,
-                title: 'Connect Students',
-                description: 'We match medical students with observerships, electives, and clinical training programs that align with their career goals and interests.',
+                title: 'Standardize Program Information',
+                description: 'We are building tools to help institutions clearly define eligibility criteria, documentation requirements, and intake limits for observership and elective programs.',
                 gradient: 'from-blue-500 to-cyan-500',
                 bgGradient: 'from-cyan-400/20 to-cyan-400/10',
                 number: '01'
               },
               {
                 icon: Target,
-                title: 'Streamline Applications',
-                description: 'Built to enable a simplified application process with application tracking, document management, and institutional communication workflows.',
+                title: 'Reduce Administrative Friction',
+                description: 'MedGate is designed to minimize repetitive communication by centralizing program details and application workflows.',
                 gradient: 'from-purple-500 to-pink-500',
                 bgGradient: 'from-fuchsia-400/20 to-pink-400/10',
                 number: '02'
               },
               {
                 icon: Award,
-                title: 'Enable Growth',
-                description: 'We provide the tools and support students need to succeed, from interview prep to onboarding and portfolio development.',
+                title: 'Support Institutional Governance',
+                description: 'The platform prioritizes institutional control, allowing hospitals to manage programs in line with their internal policies and capacity.',
                 gradient: 'from-indigo-500 to-blue-500',
                 bgGradient: 'from-indigo-400/20 to-blue-400/10',
                 number: '03'

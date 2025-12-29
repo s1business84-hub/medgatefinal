@@ -13,34 +13,28 @@ import { AnimatedGradientText } from "@/components/ui/animated-gradient-text"
 
 const features = [
   {
-    name: "Profile-Based Matching",
-    description: "Program suggestions based on your profile, preferences, and career goals (planned).",
+    name: "Structured Program Listings",
+    description: "Designed to present observership and elective programs with clearly defined eligibility criteria, documentation requirements, duration, and intake limits—set by participating institutions.",
     icon: Search,
     gradient: "from-blue-500 to-cyan-500",
   },
   {
-    name: "Streamlined Applications",
-    description: "Simplified application process with pre-filled forms and document uploads (planned).",
+    name: "Eligibility & Requirement Transparency",
+    description: "Built to reduce back-and-forth communication by allowing hospitals to publish clear eligibility standards and students to understand requirements upfront.",
     icon: FileCheck,
     gradient: "from-green-500 to-emerald-500",
   },
   {
-    name: "Application Dashboard",
-    description: "Track your application status, interview schedules, and acceptance updates (planned).",
+    name: "Application Workflow Management",
+    description: "Planned tools to support structured application submission, review stages, and status visibility aligned with institutional processes.",
     icon: Clock,
     gradient: "from-purple-500 to-pink-500",
   },
   {
-    name: "Hospital Partnerships",
-    description: "Direct connections with accredited UAE hospitals and medical institutions (in development).",
+    name: "Institution-First Design",
+    description: "Developed with hospital administrators in mind, prioritizing control, clarity, and governance over program intake and applicant review.",
     icon: Heart,
     gradient: "from-indigo-500 to-purple-500",
-  },
-  {
-    name: "Program Insights",
-    description: "Detailed program information, requirements, and departmental details (in development).",
-    icon: Award,
-    gradient: "from-teal-500 to-green-500",
   },
 ]
 
@@ -93,8 +87,8 @@ export function Features() {
             viewport={{ once: true }}
             className="text-4xl sm:text-5xl font-bold tracking-tight"
           >
-            Designed to support <br />
-            <AnimatedGradientText>your training journey</AnimatedGradientText>
+            What We're <br />
+            <AnimatedGradientText>Building</AnimatedGradientText>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 24 }}
@@ -103,8 +97,7 @@ export function Features() {
             viewport={{ once: true }}
             className="mt-6 text-lg leading-8 text-slate-200"
           >
-            A comprehensive platform being built to streamline medical training applications
-            from discovery to completion.
+            Developing a comprehensive platform to support observership and elective program management.
           </motion.p>
         </div>
 
@@ -115,7 +108,7 @@ export function Features() {
           viewport={{ once: true, amount: 0.2 }}
           variants={containerVariants}
         >
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-2">
             {features.map((feature, idx) => {
               const Icon = feature.icon
               return (

@@ -27,11 +27,10 @@ export default function ForHospitalsPage() {
             </div>
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-slate-100 mb-6">
-            Support Structured <span className="block"><AnimatedGradientText>Observership&nbsp;&nbsp;&&nbsp;&nbsp;Elective&nbsp;&nbsp;Programs</AnimatedGradientText></span>
+            Built to Support Hospital-Managed <span className="block"><AnimatedGradientText>Observership and Elective Programs</AnimatedGradientText></span>
           </h1>
           <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
-            MedGate is being developed to help healthcare institutions standardize, organize, and prepare for structured observership and elective program management. 
-            We are in early pilot preparation and welcome interest from institutions exploring improved program workflows.
+            MedGate is being developed to support healthcare institutions in managing formal observership and elective programs through structured intake, clear eligibility standards, and transparent application workflows.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/hospital-login">
@@ -58,36 +57,36 @@ export default function ForHospitalsPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             {[
               {
                 icon: Shield,
-                title: 'Designed for Institutional Governance',
-                description: 'Built to support hospitals in defining and publishing eligibility criteria and program requirements.',
+                title: 'Designed for Institutional Control',
+                description: 'Hospitals define eligibility criteria, documentation requirements, intake capacity, and review workflows—MedGate supports, not overrides, institutional processes.',
                 gradient: 'from-blue-600 to-cyan-600',
                 bgGradient: 'from-blue-50 to-cyan-50',
                 index: 0
               },
               {
                 icon: FileCheck,
-                title: 'Structured Intake Planning',
-                description: 'Intended to centralize program information and help reduce manual coordination.',
+                title: 'Standardized Intake',
+                description: 'Built to centralize program information and applications, reducing unstructured emails, calls, and ad-hoc requests.',
                 gradient: 'from-indigo-600 to-purple-600',
                 bgGradient: 'from-indigo-50 to-purple-50',
                 index: 1
               },
               {
                 icon: CheckCircle2,
-                title: 'Clear Program Criteria',
-                description: 'Designed to allow institutions to set specific documentation and eligibility standards for applicants.',
+                title: 'Clear Applicant Alignment',
+                description: 'Students apply based on published criteria, helping institutions receive applications aligned with their requirements.',
                 gradient: 'from-purple-600 to-pink-600',
                 bgGradient: 'from-purple-50 to-pink-50',
                 index: 2
               },
               {
                 icon: Shield,
-                title: 'Privacy-Focused Architecture',
-                description: 'Early development prioritizes secure data handling and role-based access.',
+                title: 'Privacy-First Architecture',
+                description: 'Designed with role-based access and data protection principles to support responsible handling of applicant information.',
                 gradient: 'from-green-600 to-emerald-600',
                 bgGradient: 'from-green-50 to-emerald-50',
                 index: 3
@@ -232,19 +231,19 @@ export default function ForHospitalsPage() {
             <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-cyan-400 to-indigo-400 rounded-full opacity-0 blur-3xl group-hover:opacity-20 transition-opacity duration-500" />
             
             <div className="relative z-10">
-              <h2 className="text-4xl font-bold text-slate-100 mb-6">Pilot Collaboration Opportunities</h2>
+              <h2 className="text-4xl font-bold text-slate-100 mb-6">Pilot Partner Intake</h2>
               <p className="text-lg text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-                MedGate is currently preparing for pilot collaborations with healthcare institutions. If your hospital is interested in shaping the development of structured program management tools for observerships and electives, contact us to learn more.
+                Healthcare institutions interested in participating in early pilot collaborations can request onboarding information.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/hospital-login">
                   <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-semibold shadow-lg">
-                    Request Pilot Information
+                    Request Onboarding Pack
                   </Button>
                 </Link>
                 <Link href="/about">
                   <Button size="lg" variant="outline" className="border-white/25 text-slate-100 hover:bg-white/10 font-semibold">
-                    Schedule a Pilot Intro Call
+                    Schedule Introductory Call
                   </Button>
                 </Link>
               </div>

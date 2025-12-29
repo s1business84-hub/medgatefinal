@@ -6,32 +6,20 @@ import * as React from "react"
 
 const faqs = [
   {
-    question: "How does the application process work?",
-    answer: "Simply browse available programs, submit your application with required documents, and track your status in real-time. Our platform handles communication with hospitals and provides updates throughout the process.",
+    question: "What programs does MedGate support?",
+    answer: "MedGate focuses on formal, institution-approved observership and elective programs.",
   },
   {
-    question: "What documents do I need to apply?",
-    answer: "You'll need your medical school transcripts, CV, recommendation letters, and valid Emirates ID. Specific requirements vary by program and hospital.",
+    question: "Does MedGate offer internships or residency placements?",
+    answer: "No. MedGate does not provide internships, residency, or fellowship placements.",
   },
   {
-    question: "Are the programs accredited?",
-    answer: "Yes, all programs listed on MedGate are offered by accredited UAE hospitals and medical institutions. We verify accreditation status regularly.",
+    question: "Is MedGate live yet?",
+    answer: "MedGate is currently in early development and preparing for pilot collaborations with healthcare institutions.",
   },
   {
-    question: "Can I apply to multiple programs?",
-    answer: "Absolutely! You can apply to as many programs as you'd like. Our platform helps you manage multiple applications efficiently.",
-  },
-  {
-    question: "What if I get accepted to multiple programs?",
-    answer: "Congratulations! You can choose which offer to accept. Our platform allows you to manage multiple acceptances and provides guidance on next steps.",
-  },
-  {
-    question: "How long does the application process take?",
-    answer: "Processing times vary by hospital and program, typically 2-4 weeks. You'll receive real-time updates through our platform.",
-  },
-  {
-    question: "Can international students apply?",
-    answer: "Yes! MedGate welcomes applications from international medical students. Some programs may have specific visa requirements.",
+    question: "Who can use MedGate?",
+    answer: "Medical students and institutions participating in approved pilot programs.",
   },
 ]
 

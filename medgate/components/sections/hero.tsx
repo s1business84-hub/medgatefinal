@@ -65,7 +65,7 @@ export function Hero() {
           >
             <span className="inline-flex items-center rounded-full bg-white/10 px-3 py-1 sm:px-4 sm:py-2 text-sm font-medium text-blue-300 ring-1 ring-inset ring-white/20 backdrop-blur-sm">
               <CheckCircle className="mr-2 h-4 w-4" />
-              <span className="hidden sm:inline">Built for UAE hospitals and medical students</span>
+              <span className="hidden sm:inline">Built for UAE hospitals and medical institutions</span>
               <span className="sm:hidden">Built for UAE</span>
             </span>
           </motion.div>
@@ -78,12 +78,10 @@ export function Hero() {
             viewport={{ once: true }}
             className="text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-white leading-tight"
           >
-            A centralized platform for
+            A Centralized Platform for
             <br />
             <span className="block">
-              <AnimatedGradientText>observerships and electives</AnimatedGradientText>
-              <br />
-              in the UAE
+              <AnimatedGradientText>Medical Observerships and Electives</AnimatedGradientText>
             </span>
           </motion.h1>
 
@@ -95,7 +93,7 @@ export function Hero() {
             viewport={{ once: true }}
             className="mt-4 sm:mt-6 text-base sm:text-lg lg:text-xl leading-7 sm:leading-8 text-blue-100 max-w-2xl mx-auto px-4"
           >
-            MedGate is being built to standardize eligibility, streamline applications, and improve visibility into program requirements and status—aligned with institutional workflows.
+            MedGate is being developed to help hospitals and medical students manage formal observership and elective programs through structured eligibility criteria, transparent requirements, and standardized application workflows.
           </motion.p>
 
           {/* CTA Buttons */}
