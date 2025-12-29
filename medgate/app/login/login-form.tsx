@@ -7,6 +7,50 @@ import { useAuth } from "@/lib/auth-context";
 import { createUser, getCurrentUser } from "@/lib/storage";
 import { LiquidParallax } from "@/components/ui/liquid-parallax";
 
+function sendWelcomeEmail(email: string, name: string) {
+  // In production, this would call an API endpoint to send email via backend
+  // For now, we'll log the email details (placeholder for actual implementation)
+  const welcomeEmailContent = {
+    from: "hellomedgate@gmail.com",
+    to: email,
+    subject: "Welcome to MedGate - Your Journey Begins Here",
+    body: `
+Dear ${name},
+
+Welcome to MedGate! 🎉
+
+Thank you for joining our platform as an early access member. We're excited to have you as part of the MedGate community.
+
+As a pilot phase member, you'll be among the first to:
+• Access clinical observership and elective opportunities in the UAE
+• Receive priority notifications when new programs are listed
+• Connect with leading healthcare institutions
+• Get updates on platform features and improvements
+
+What's Next?
+1. Complete your student profile when program listings go live
+2. Browse available opportunities across UAE medical facilities
+3. Submit applications directly through our platform
+4. Track your application status in real-time
+
+We're currently in the pilot phase, actively working with hospitals to bring you quality clinical training opportunities. You'll receive an email notification as soon as programs become available for application.
+
+If you have any questions or need assistance, feel free to reach out to us at hellomedgate@gmail.com.
+
+Best regards,
+The MedGate Team
+
+---
+This is an automated message from MedGate. Please do not reply to this email.
+    `
+  };
+  
+  console.log("Welcome email would be sent:", welcomeEmailContent);
+  
+  // TODO: Implement actual email sending via API route
+  // Example: fetch('/api/send-email', { method: 'POST', body: JSON.stringify(welcomeEmailContent) })
+}
+
 function getInitialRole(searchParams: ReturnType<typeof useSearchParams>) {
   const roleParam = searchParams?.get("role");
   return roleParam === "hospital" ? "hospital" : "student";
@@ -48,6 +92,12 @@ export default function LoginForm() {
       }
 
       createUser({ email, role, name });
+      
+      // Send welcome email for student accounts
+      if (role === "student") {
+        sendWelcomeEmail(email, name);
+      }
+      
       const success = login(email, password);
       if (success) {
         const u = getCurrentUser();
