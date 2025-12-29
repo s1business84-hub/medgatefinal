@@ -6,6 +6,7 @@ import { ArrowLeft, Heart, Eye, Lightbulb, Shield, Users } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { LiquidParallax } from "@/components/ui/liquid-parallax";
+import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
 
 export default function MissionPage() {
 
@@ -31,7 +32,7 @@ export default function MissionPage() {
         {/* Hero Section */}
         <div className="text-center mb-16 animate-fade-in" style={{ animationDelay: '0.1s' }}>
           <h1 className="text-4xl md:text-6xl font-bold text-slate-100 mb-6">
-            Our <span className="bg-gradient-to-r from-cyan-500 to-indigo-600 bg-clip-text text-transparent">Mission & Vision</span>
+            Our <AnimatedGradientText className="text-4xl md:text-6xl font-bold">Mission & Vision</AnimatedGradientText>
           </h1>
           <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
             Shaping the future of medical education in the UAE through innovation,
@@ -89,7 +90,11 @@ export default function MissionPage() {
 
         {/* Core Values - Carousel */}
         <section className="mb-16 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-          <h2 className="text-4xl font-bold text-slate-100 mb-6 text-center">Our Core Values</h2>
+          <div className="text-center mb-6">
+            <h2 className="text-4xl font-bold inline-block">
+              <AnimatedGradientText className="text-4xl font-bold">Our Core Values</AnimatedGradientText>
+            </h2>
+          </div>
           <div className="relative">
             <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory px-1 pb-2 -mx-1">
             {[
@@ -143,7 +148,11 @@ export default function MissionPage() {
 
         {/* Goals - Carousel */}
         <section className="mb-16 animate-fade-in" style={{ animationDelay: '0.7s' }}>
-          <h2 className="text-4xl font-bold text-slate-100 mb-6 text-center">Our Goals for 2025</h2>
+          <div className="text-center mb-6">
+            <h2 className="text-4xl font-bold inline-block">
+              <AnimatedGradientText className="text-4xl font-bold">Our Goals for 2025</AnimatedGradientText>
+            </h2>
+          </div>
           <div className="relative">
             <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory px-1 pb-2 -mx-1">
             {[

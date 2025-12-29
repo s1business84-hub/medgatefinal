@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowLeft, Eye, Lightbulb, Shield, Users, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LiquidParallax } from "@/components/ui/liquid-parallax";
+import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
 
 export default function VisionPage() {
   return (
@@ -25,7 +26,7 @@ export default function VisionPage() {
         {/* Hero Section */}
         <div className="text-center mb-16 animate-fade-in" style={{ animationDelay: '0.1s' }}>
           <h1 className="text-4xl md:text-6xl font-bold text-slate-100 mb-6">
-            Our <span className="bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">Vision</span>
+            Our <AnimatedGradientText className="text-4xl md:text-6xl font-bold">Vision</AnimatedGradientText>
           </h1>
           <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
             To become the leading platform for medical education in the Middle East,
@@ -65,7 +66,11 @@ export default function VisionPage() {
 
         {/* Vision Pillars - Carousel */}
         <section className="mb-16 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-          <h2 className="text-4xl font-bold text-slate-100 mb-6 text-center">Vision Pillars</h2>
+          <div className="text-center mb-6">
+            <h2 className="text-4xl font-bold inline-block">
+              <AnimatedGradientText className="text-4xl font-bold">Vision Pillars</AnimatedGradientText>
+            </h2>
+          </div>
           <div className="relative">
             <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory px-1 pb-2 -mx-1">
             {[

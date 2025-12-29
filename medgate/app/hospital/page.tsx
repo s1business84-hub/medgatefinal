@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useAuth } from "@/lib/auth-context";
 import { Button } from "@/components/ui/button";
 import { LiquidParallax } from "@/components/ui/liquid-parallax";
+import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
 import { getApplicationsByHospital, getStudents, updateApplicationStatus, createNotification } from "@/lib/storage";
 import { Application } from "@/lib/types";
 import { CheckCircle, XCircle, FileText, Users, Clock } from "lucide-react";
@@ -142,7 +143,9 @@ export default function HospitalPortal() {
         {/* Header */}
         <div className="flex items-center justify-between mb-8 animate-fade-in">
           <div>
-            <h1 className="text-3xl font-bold text-slate-100 mb-2">Hospital Portal</h1>
+            <h1 className="text-3xl font-bold mb-2">
+              <AnimatedGradientText className="text-3xl font-bold">Hospital Portal</AnimatedGradientText>
+            </h1>
             <p className="text-slate-300">Manage observership applications</p>
           </div>
           <div className="flex gap-4">
