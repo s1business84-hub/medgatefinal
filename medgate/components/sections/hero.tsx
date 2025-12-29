@@ -81,11 +81,10 @@ export function Hero() {
             A Centralized Platform for
             <br />
             <span className="block">
-              <AnimatedGradientText>Medical Observerships</AnimatedGradientText>
+              <AnimatedGradientText>Medical&nbsp;Observerships</AnimatedGradientText>
             </span>
-            <br />
             <span className="block">
-              <AnimatedGradientText>and Electives</AnimatedGradientText>
+              <AnimatedGradientText>and&nbsp;Electives</AnimatedGradientText>
             </span>
           </motion.h1>
 
