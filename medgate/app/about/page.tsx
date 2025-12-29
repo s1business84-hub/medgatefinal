@@ -61,9 +61,9 @@ export default function AboutPage() {
                 fair, transparent application processes.
               </p>
               <p className="text-lg text-slate-300 leading-relaxed">
-                Today, MedGate serves over 2,500 medical students and partners with 50+ leading healthcare institutions
-                across Dubai, Abu Dhabi, Sharjah, and beyond. We&apos;re just getting started on our mission to transform
-                medical education in the UAE.
+                MedGate is in early development, preparing for pilot collaborations with UAE healthcare institutions.
+                Our focus is to standardize eligibility criteria, reduce back-and-forth communication, and improve
+                transparency for students and program administrators.
               </p>
             </div>
           </div>
@@ -93,7 +93,7 @@ export default function AboutPage() {
               {
                 icon: Target,
                 title: 'Streamline Applications',
-                description: 'Our platform simplifies the application process with real-time tracking, automated document verification, and direct hospital communication.',
+                description: 'Built to enable a simplified application process with application tracking, document management, and institutional communication workflows.',
                 gradient: 'from-purple-500 to-pink-500',
                 bgGradient: 'from-fuchsia-400/20 to-pink-400/10',
                 number: '02'
@@ -155,46 +155,7 @@ export default function AboutPage() {
             ))}
           </div>
 
-          {/* Bottom highlight section */}
-          <div className="mt-12 rounded-2xl overflow-hidden backdrop-blur-xl bg-white/5 border border-white/10 p-8 animate-fade-in" style={{ animationDelay: '0.6s' }}>
-            <div className="grid md:grid-cols-3 gap-6 text-center">
-              <div>
-                <div className="text-3xl font-bold bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-300 text-transparent mb-2">500+</div>
-                <p className="text-slate-300 font-medium">Programs Managed</p>
-              </div>
-              <div>
-                <div className="text-3xl font-bold bg-clip-text bg-gradient-to-r from-indigo-400 to-indigo-300 text-transparent mb-2">10k+</div>
-                <p className="text-slate-300 font-medium">Applications Processed</p>
-              </div>
-              <div>
-                <div className="text-3xl font-bold bg-clip-text bg-gradient-to-r from-purple-400 to-purple-300 text-transparent mb-2">24/7</div>
-                <p className="text-slate-300 font-medium">Support Available</p>
-              </div>
-            </div>
-          </div>
-        </section>
 
-        {/* Our Impact */}
-        <section className="mb-16 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-          <h2 className="text-3xl font-bold text-slate-100 mb-8 text-center">
-            <AnimatedGradientText>Our Impact</AnimatedGradientText>
-          </h2>
-          <div className="bg-gradient-to-r from-cyan-600 to-indigo-600 rounded-2xl p-8 md:p-12 text-white">
-            <div className="grid md:grid-cols-3 gap-8 text-center">
-              <div>
-                <div className="text-4xl font-bold mb-2">2,500+</div>
-                <div className="text-cyan-100">Medical Students Served</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold mb-2">50+</div>
-                <div className="text-cyan-100">Partner Hospitals</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold mb-2">98%</div>
-                <div className="text-cyan-100">Success Rate</div>
-              </div>
-            </div>
-          </div>
         </section>
 
         {/* Call to Action */}
@@ -209,7 +170,7 @@ export default function AboutPage() {
               </div>
               <h3 className="text-xl font-semibold text-slate-100 mb-2">Kashish Devnani</h3>
               <p className="text-slate-300">Founder</p>
-              <p className="text-sm text-slate-400 mt-3">Visionary leader driving MedGate&apos;s mission to transform medical education</p>
+              <p className="text-sm text-slate-400 mt-3">Leading MedGate&apos;s mission to standardize and streamline medical training applications across the UAE</p>
             </div>
             
             <div className="rounded-2xl bg-white/5 border border-white/10 p-8 hover:bg-white/10 transition-all duration-300">
@@ -217,8 +178,8 @@ export default function AboutPage() {
                 <span className="text-white font-bold text-lg">SN</span>
               </div>
               <h3 className="text-xl font-semibold text-slate-100 mb-2">Sanskaar Nair</h3>
-              <p className="text-slate-300">Co-founder & Lead Developer</p>
-              <p className="text-sm text-slate-400 mt-3">Building and architecting the platform that powers MedGate</p>
+              <p className="text-slate-300">Co-founder & Lead Engineer</p>
+              <p className="text-sm text-slate-400 mt-3">Architecting and building the platform infrastructure that powers MedGate</p>
             </div>
           </div>
         </section>

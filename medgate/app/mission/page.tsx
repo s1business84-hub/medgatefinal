@@ -62,7 +62,7 @@ export default function MissionPage() {
               <p className="text-lg text-slate-300 leading-relaxed text-center max-w-3xl mx-auto">
                 To democratize access to high-quality clinical training opportunities for medical students
                 across the UAE by creating a transparent, efficient, and student-centered platform that
-                connects aspiring healthcare professionals with accredited medical institutions.
+                connects aspiring healthcare professionals with medical institutions.
               </p>
             </div>
           </div>
@@ -127,14 +127,13 @@ export default function MissionPage() {
           </div>
         </section>
 
-        {/* Goals - Carousel */}
+        {/* Pilot Roadmap - Carousel */}
         <section className="mb-24 animate-fade-in" style={{ animationDelay: '0.7s' }}>
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold inline-block mb-4">
-              Our Goals <br />
-              <AnimatedGradientText className="text-4xl md:text-5xl font-bold">for 2025</AnimatedGradientText>
+              <AnimatedGradientText className="text-4xl md:text-5xl font-bold">Pilot Roadmap</AnimatedGradientText>
             </h2>
-            <p className="text-slate-300 text-lg mt-4">Ambitious targets to drive growth and impact</p>
+            <p className="text-slate-300 text-lg mt-4">Key initiatives for our development phase</p>
           </div>
           <div className="relative">
             <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory px-1 pb-2 -mx-1">
@@ -150,16 +149,16 @@ export default function MissionPage() {
               {
                 number: 2,
                 icon: '🤖',
-                title: 'Launch Advanced Matching Algorithm',
-                description: 'Implement AI-powered matching that considers student preferences, career goals, and hospital requirements for optimal placement outcomes.',
+                title: 'Build Profile-Based Matching',
+                description: 'Develop matching logic that considers student preferences, career goals, and institutional requirements for optimal placement recommendations.',
                 gradient: 'from-indigo-600 to-purple-600',
                 bgGradient: 'from-indigo-400/20 to-purple-400/10'
               },
               {
                 number: 3,
                 icon: '🎯',
-                title: 'Achieve 5,000 Student Milestone',
-                description: 'Support 5,000 medical students in their clinical training journey, establishing MedGate as the go-to platform for medical education in the UAE.',
+                title: 'Launch Pilot Programs',
+                description: 'Partner with UAE institutions to pilot the platform, gather feedback, and refine workflows for students and program administrators.',
                 gradient: 'from-purple-600 to-pink-600',
                 bgGradient: 'from-fuchsia-400/20 to-pink-400/10'
               }
