@@ -44,8 +44,7 @@ export default function ForHospitalsPage() {
             </div>
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-slate-100 mb-6">
-            Empower Your <span className="block">Medical <br />
-            <AnimatedGradientText>Training</AnimatedGradientText></span>
+            Empower Your <span className="block"><AnimatedGradientText>Medical&nbsp;&nbsp;Training</AnimatedGradientText></span>
           </h1>
           <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
             Streamline your medical education programs with our comprehensive platform. 
