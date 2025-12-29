@@ -93,7 +93,7 @@ export default function StudentPortal() {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.45)] p-8">
+            <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-lg p-8">
               <h2 className="text-2xl font-bold text-slate-100 mb-6">Our Story</h2>
               <p className="text-lg text-slate-300 leading-relaxed mb-6">
                 Founded in 2024, MedGate emerged from a simple observation: medical students in the UAE were struggling
@@ -136,9 +136,9 @@ export default function StudentPortal() {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.45)] p-8">
+            <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-lg p-8">
               <div className="flex items-center justify-center mb-6">
-                <Heart className="w-16 h-16 text-cyan-200" />
+                <Heart className="w-16 h-16 text-cyan-300" />
               </div>
               <h2 className="text-2xl font-bold text-slate-100 mb-4 text-center">Our Mission</h2>
               <p className="text-lg text-slate-300 leading-relaxed text-center">
@@ -147,7 +147,7 @@ export default function StudentPortal() {
               </p>
             </div>
 
-            <div className="bg-linear-to-r from-cyan-500 via-indigo-600 to-purple-600 rounded-2xl p-8 text-white shadow-[0_20px_80px_rgba(0,0,0,0.5)] border border-white/10">
+            <div className="bg-gradient-to-r from-cyan-600 via-indigo-600 to-purple-600 rounded-2xl p-8 text-white shadow-lg border border-white/10">
               <div className="flex items-center justify-center mb-6">
                 <Eye className="w-16 h-16 text-white" />
               </div>
@@ -161,8 +161,8 @@ export default function StudentPortal() {
         )}
 
         {activeTab === 'apply' && (
-          <div className="text-center py-16">
-            <Upload className="w-24 h-24 text-cyan-200 mx-auto mb-6" />
+          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-lg p-12 text-center">
+            <Upload className="w-24 h-24 text-cyan-300 mx-auto mb-6" />
             <h2 className="text-3xl font-bold text-slate-100 mb-4">Ready to Apply?</h2>
             <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
               Join thousands of medical students who have found their perfect clinical training opportunity.
@@ -170,7 +170,7 @@ export default function StudentPortal() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/login">
-                <Button size="lg" className="bg-linear-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-lg">
+                <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-lg">
                   Login to Apply
                 </Button>
               </Link>
