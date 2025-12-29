@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, Building2, Users, FileCheck, BarChart3, Clock, Shield, Globe, TrendingUp, Zap, CheckCircle2, Star } from "lucide-react";
+import { ArrowLeft, Building2, Users, FileCheck, BarChart3, Shield, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LiquidParallax } from "@/components/ui/liquid-parallax";
 import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
@@ -27,26 +27,21 @@ export default function ForHospitalsPage() {
             </div>
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-slate-100 mb-6">
-            Empower Your <span className="block"><AnimatedGradientText>Medical&nbsp;&nbsp;Training</AnimatedGradientText></span>
+            Support Structured <span className="block"><AnimatedGradientText>Observership&nbsp;&nbsp;&&nbsp;&nbsp;Elective&nbsp;&nbsp;Programs</AnimatedGradientText></span>
           </h1>
           <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
-            Streamline your medical education programs with our comprehensive platform. 
-            Connect with top talent, manage applications efficiently, and build the future of healthcare.
+            MedGate is being developed to help healthcare institutions standardize, organize, and prepare for structured observership and elective program management. 
+            We are in early pilot preparation and welcome interest from institutions exploring improved program workflows.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/hospital-login">
               <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-semibold shadow-lg">
-                Hospital Login
-              </Button>
-            </Link>
-            <Link href="/hospital/create-account">
-              <Button size="lg" className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold shadow-lg">
-                Create Account
+                Request Pilot Information
               </Button>
             </Link>
             <Link href="/about">
               <Button size="lg" variant="outline" className="border-white/25 text-slate-100 hover:bg-white/10 font-semibold">
-                Learn More
+                Schedule a Pilot Intro Call
               </Button>
             </Link>
           </div>
@@ -59,59 +54,43 @@ export default function ForHospitalsPage() {
               <AnimatedGradientText>Why Choose MedGate?</AnimatedGradientText>
             </h2>
             <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-              Transform your medical training programs with our innovative platform
+              Designed to support observership and elective program management for healthcare institutions
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                icon: Users,
-                title: 'Access Top Talent',
-                description: 'Connect with pre-screened, qualified medical students from leading institutions across the UAE and beyond.',
+                icon: Shield,
+                title: 'Designed for Institutional Governance',
+                description: 'Built to support hospitals in defining and publishing eligibility criteria and program requirements.',
                 gradient: 'from-blue-600 to-cyan-600',
                 bgGradient: 'from-blue-50 to-cyan-50',
                 index: 0
               },
               {
                 icon: FileCheck,
-                title: 'Streamlined Management',
-                description: 'Manage applications, documentation, and schedules all in one centralized, easy-to-use platform.',
+                title: 'Structured Intake Planning',
+                description: 'Intended to centralize program information and help reduce manual coordination.',
                 gradient: 'from-indigo-600 to-purple-600',
                 bgGradient: 'from-indigo-50 to-purple-50',
                 index: 1
               },
               {
-                icon: BarChart3,
-                title: 'Data & Analytics',
-                description: 'Track program performance, student progress, and outcomes with comprehensive analytics tools.',
+                icon: CheckCircle2,
+                title: 'Clear Program Criteria',
+                description: 'Designed to allow institutions to set specific documentation and eligibility standards for applicants.',
                 gradient: 'from-purple-600 to-pink-600',
                 bgGradient: 'from-purple-50 to-pink-50',
                 index: 2
               },
               {
-                icon: Clock,
-                title: 'Save Time & Resources',
-                description: 'Designed to reduce admin overhead through standardized intake and document handling workflows.',
+                icon: Shield,
+                title: 'Privacy-Focused Architecture',
+                description: 'Early development prioritizes secure data handling and role-based access.',
                 gradient: 'from-green-600 to-emerald-600',
                 bgGradient: 'from-green-50 to-emerald-50',
                 index: 3
-              },
-              {
-                icon: Shield,
-                title: 'Privacy & Security',
-                description: 'Built with privacy-by-design and role-based access controls for secure data handling.',
-                gradient: 'from-orange-600 to-red-600',
-                bgGradient: 'from-orange-50 to-red-50',
-                index: 4
-              },
-              {
-                icon: Globe,
-                title: 'Global Reach',
-                description: 'Attract international talent and expand your institution\'s reputation worldwide.',
-                gradient: 'from-teal-600 to-cyan-600',
-                bgGradient: 'from-teal-50 to-cyan-50',
-                index: 5
               }
             ].map((benefit) => (
               <div 
@@ -152,16 +131,16 @@ export default function ForHospitalsPage() {
             <div className="absolute bottom-0 left-0 w-80 h-80 bg-white opacity-5 rounded-full blur-3xl -ml-40 -mb-40 group-hover:scale-110 transition-transform duration-500" />
             
             <div className="relative z-10">
-              <h2 className="text-4xl font-bold mb-8 text-center">Platform Features</h2>
+              <h2 className="text-4xl font-bold mb-8 text-center">Platform Capabilities (Planned)</h2>
               
               <div className="grid md:grid-cols-2 gap-6">
                 {[
-                  { icon: Zap, title: 'Instant Notifications', desc: 'Get real-time alerts for new applications and updates' },
-                  { icon: CheckCircle2, title: 'Eligibility Matching', desc: 'Designed to match student profiles to your published criteria' },
-                  { icon: TrendingUp, title: 'Performance Tracking', desc: 'Monitor and evaluate student progress throughout programs' },
-                  { icon: Star, title: 'Custom Branding', desc: 'Showcase your institution with customized program pages' },
-                  { icon: Shield, title: 'Document Verification', desc: 'Automated validation of credentials and certifications' },
-                  { icon: BarChart3, title: 'Reporting Dashboard', desc: 'Comprehensive insights into your training programs' }
+                  { icon: CheckCircle2, title: 'Eligibility Criteria & Program Requirements', desc: 'Define and publish program-specific eligibility and documentation standards' },
+                  { icon: FileCheck, title: 'Institution-Defined Intake Parameters', desc: 'Set custom requirements aligned with your institutional policies' },
+                  { icon: Users, title: 'Application Submission Interface (Planned)', desc: 'Central platform for receiving and organizing applications' },
+                  { icon: BarChart3, title: 'Status Visibility Tools (In Development)', desc: 'Dashboard to track application progress and program workflows' },
+                  { icon: Shield, title: 'Role-Based Access for Administrators', desc: 'Secure access controls for program coordinators and reviewers' },
+                  { icon: Shield, title: 'Secure Data Handling', desc: 'Privacy-focused architecture with encrypted data management' }
                 ].map((feature) => (
                   <div 
                     key={feature.title}
@@ -186,33 +165,33 @@ export default function ForHospitalsPage() {
         {/* How It Works */}
         <section className="mb-20 animate-fade-in" style={{ animationDelay: '0.6s' }}>
           <h2 className="text-4xl font-bold text-slate-100 mb-12 text-center">
-            <AnimatedGradientText>How It Works</AnimatedGradientText>
+            <AnimatedGradientText>How MedGate Is Designed to Support Hospitals</AnimatedGradientText>
           </h2>
           
           <div className="space-y-6">
             {[
               {
                 step: 1,
-                title: 'Register Your Institution',
-                description: 'Create your hospital profile and list available programs with specific requirements and dates.',
+                title: 'Define Program Criteria',
+                description: 'Hospitals set eligibility and documentation requirements specific to their observership and elective programs.',
                 icon: Building2
               },
               {
                 step: 2,
-                title: 'Receive Applications',
-                description: 'Receive applications aligned to your published eligibility criteria.',
-                icon: Users
-              },
-              {
-                step: 3,
-                title: 'Review & Select',
-                description: 'Evaluate candidates through our platform with all documentation readily available.',
+                title: 'Prepare Structured Publication',
+                description: 'Institutions plan and publish program details when ready, with clear requirements and expectations.',
                 icon: FileCheck
               },
               {
+                step: 3,
+                title: 'Receive & Review Applications (Planned)',
+                description: 'The platform will support aligned application submission and review dashboards for program coordinators.',
+                icon: Users
+              },
+              {
                 step: 4,
-                title: 'Manage & Track',
-                description: 'Oversee the entire training cycle from onboarding to completion with powerful tools.',
+                title: 'Manage Program Workflows (Under Development)',
+                description: 'Tools are being built to help manage program intake, status visibility, and applicant tracking.',
                 icon: BarChart3
               }
             ].map((step) => (
@@ -253,20 +232,19 @@ export default function ForHospitalsPage() {
             <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-cyan-400 to-indigo-400 rounded-full opacity-0 blur-3xl group-hover:opacity-20 transition-opacity duration-500" />
             
             <div className="relative z-10">
-              <h2 className="text-4xl font-bold text-slate-100 mb-6">Ready to Transform Your Programs?</h2>
+              <h2 className="text-4xl font-bold text-slate-100 mb-6">Pilot Collaboration Opportunities</h2>
               <p className="text-lg text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-                Join leading healthcare institutions using MedGate to streamline their medical education programs. 
-                Get started today and experience the difference.
+                MedGate is currently preparing for pilot collaborations with healthcare institutions. If your hospital is interested in shaping the development of structured program management tools for observerships and electives, contact us to learn more.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/hospital-login">
                   <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-semibold shadow-lg">
-                    Pilot Partner Intake
+                    Request Pilot Information
                   </Button>
                 </Link>
                 <Link href="/about">
                   <Button size="lg" variant="outline" className="border-white/25 text-slate-100 hover:bg-white/10 font-semibold">
-                    Request Onboarding Pack
+                    Schedule a Pilot Intro Call
                   </Button>
                 </Link>
               </div>
