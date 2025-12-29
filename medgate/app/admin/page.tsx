@@ -26,7 +26,7 @@ export default function AdminPage() {
   const [rejectReason, setRejectReason] = useState("");
   const [showRejectModal, setShowRejectModal] = useState(false);
   const [docName, setDocName] = useState("");
-  const [docType, setDocType] = useState<"Passport" | "Medical Certificate" | "Academic Transcript" | "Emirates ID" | "Medical Fitness Certificate" | "Police Clearance Certificate" | "Immunization Records" | "Nursing License" | "Specialty Certification" | "Other">("Other");
+  const [docType, setDocType] = useState<"Passport" | "Medical Certificate" | "Academic Transcript" | "Emirates ID" | "Police Clearance Certificate" | "Immunization Records" | "Nursing License" | "Specialty Certification" | "Other">("Other");
   const [showObsForm, setShowObsForm] = useState(false);
   const [obsForm, setObsForm] = useState({
     name: "",
@@ -293,7 +293,6 @@ export default function AdminPage() {
                           "Medical Certificate",
                           "Academic Transcript",
                           "Emirates ID",
-                          "Medical Fitness Certificate",
                           "Police Clearance Certificate",
                           "Immunization Records",
                           "Nursing License",
