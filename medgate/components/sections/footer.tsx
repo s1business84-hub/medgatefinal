@@ -18,13 +18,11 @@ const footerLinks = {
     { name: "Browse Programs", href: "/programs" },
     { name: "Student Portal", href: "/student" },
     { name: "For Hospitals", href: "/for-hospitals" },
-    { name: "API", href: "/api" },
   ],
   company: [
     { name: "About", href: "/about" },
     { name: "Mission", href: "/mission" },
     { name: "Vision", href: "/vision" },
-    { name: "Press", href: "/press" },
   ],
   support: [
     { name: "Help Center", href: "/help" },
