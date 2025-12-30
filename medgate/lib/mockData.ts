@@ -112,8 +112,14 @@ export const mockPrograms: Program[] = [
     id: "prog_1",
     hospitalId: "h1",
     name: "General Surgery Observership (Example Listing - Demo Data)",
-    description: "Observe surgical procedures and clinical workflows in a general surgery department",
-    requirements: ["Medical Student Status", "Government ID and residency/visa status (as applicable)", "English Proficiency", "Medical Fitness Certificate", "Academic Transcripts"],
+    description: "Observe surgical procedures, outpatient clinics, ward rounds, and day-to-day clinical workflows within a General Surgery department under an observership framework.",
+    requirements: [
+      "Medical Student Status: Must be currently enrolled in a recognized medical school.",
+      "Government ID: Valid government-issued identification and appropriate residency or visit visa, as required by hospital policy.",
+      "English Proficiency: Ability to understand and communicate in English within a clinical environment.",
+      "Medical Fitness Certificate: Medical fitness or health clearance may be required by the hosting institution prior to confirmation.",
+      "Academic Transcripts: Academic transcripts or proof of enrollment may be requested for verification purposes."
+    ],
     isActive: true,
   },
   {
@@ -308,11 +314,15 @@ export const programs = mockPrograms.map(p => {
     ...p,
     departmentName: p.name,
     programType,
-    eligibility: { yearOfStudyMin: 3, language: "English" },
-    requiredDocuments: ["Government ID", "CV", "Medical Certificate"] as const,
+    eligibility: { yearOfStudyMin: "Year 3 or above", language: "English" },
+    requiredDocuments: [
+      "Government ID: Passport or national ID for identity verification.",
+      "Curriculum Vitae (CV): Updated CV outlining academic background.",
+      "Medical Certificate: Proof of medical fitness or immunization status, if required."
+    ] as const,
     durationWeeksOptions,
     dailyHoursMax,
-    startDates: ["2024-01-01", "2024-02-01", "2024-03-01"],
+    startDates: ["01 January 2024", "01 February 2024", "01 March 2024"],
     seatsAvailable,
     handsOnLevel,
     certificateProvided: true,
