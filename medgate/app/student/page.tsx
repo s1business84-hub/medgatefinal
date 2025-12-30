@@ -105,7 +105,7 @@ export default function StudentPortal() {
         <div className="flex items-center justify-between mb-8 animate-fade-in">
           <div>
             <h1 className="text-3xl font-bold text-slate-100 mb-2">Student Portal</h1>
-            <p className="text-slate-300">Join Early Access for Observerships & Electives</p>
+            <p className="text-slate-300">Early Access Portal for Observerships and Electives</p>
           </div>
           {/* Desktop Navigation */}
           <div className="hidden sm:flex gap-4">
@@ -152,17 +152,15 @@ export default function StudentPortal() {
         {/* Early Access Section */}
         <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
           <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-lg p-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-100 mb-4">Join Early Access for Observerships & Electives</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-100 mb-4">Early Access Registration for Observerships and Electives</h2>
             <p className="text-lg text-slate-300 mb-6 leading-relaxed">
-              MedGate is preparing for pilot program listings of formal observership and elective opportunities 
-              with healthcare institutions. Create an account to join early access, stay informed, and be among 
-              the first to apply when programs go live.
+              MedGate is preparing pilot program listings for formal observership and elective opportunities in collaboration with healthcare institutions. By creating an account, students can register for early access, receive program updates, and be notified when applications become available.
             </p>
             
             {/* No Live Programs Notice */}
             <div className="mb-8 p-4 rounded-xl border border-amber-500/30 bg-amber-500/10 backdrop-blur-xl">
               <p className="text-sm text-amber-200">
-                <strong>Early Access:</strong> No observership or elective listings are live yet. Register now to receive updates and priority access when applications open.
+                <strong>Early Access:</strong> Observership and elective listings are currently in pilot preparation. Register to receive updates and priority access when applications open.
               </p>
             </div>
 
@@ -174,7 +172,7 @@ export default function StudentPortal() {
                   <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center shrink-0 mt-0.5">
                     <span className="text-cyan-400 text-sm">✓</span>
                   </div>
-                  <span className="text-slate-300">Early access to pilot observership & elective programs</span>
+                  <span className="text-slate-300">Early access to pilot observership and elective program listings</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center shrink-0 mt-0.5">
@@ -186,13 +184,13 @@ export default function StudentPortal() {
                   <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center shrink-0 mt-0.5">
                     <span className="text-cyan-400 text-sm">✓</span>
                   </div>
-                  <span className="text-slate-300">Direct updates from partner institutions</span>
+                  <span className="text-slate-300">Direct updates related to partner institutions and program availability</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center shrink-0 mt-0.5">
                     <span className="text-cyan-400 text-sm">✓</span>
                   </div>
-                  <span className="text-slate-300">Support materials & eligibility guidelines</span>
+                  <span className="text-slate-300">Support materials, eligibility guidelines, and application information</span>
                 </li>
               </ul>
             </div>

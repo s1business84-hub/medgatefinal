@@ -17,7 +17,7 @@ export default function LegalPage() {
             <section className="space-y-4">
               <h2 className="text-xl font-semibold text-slate-900">1. Platform Role & Disclaimer of Affiliation</h2>
               <p className="text-slate-700 leading-relaxed">
-                This platform is being developed to operate as an independent facilitation and application-management service for clinical observerships and electives in the United Arab Emirates.
+                This platform operates as an independent facilitation and application-management service for clinical observerships and electives in the United Arab Emirates.
               </p>
               <p className="text-slate-700 leading-relaxed">
                 We are not a hospital, clinic, university, or healthcare authority, and we do not provide medical training, certification, or licensure.
@@ -59,7 +59,7 @@ export default function LegalPage() {
                 <li>Processing timelines and availability are not guaranteed</li>
               </ul>
               <p className="text-slate-700 leading-relaxed">Applicants are responsible for ensuring that all submitted information and documents are accurate, complete, and up to date.</p>
-              <p className="text-slate-700 leading-relaxed">The platform is not liable for delays, rejections, or losses arising from incomplete, expired, or inaccurate submissions.</p>
+              <p className="text-slate-700 leading-relaxed">The platform is not liable for delays, rejections, losses, or missed opportunities arising from incomplete, expired, inaccurate, or institution-modified submissions.</p>
             </section>
 
             {/* 4. Health, Immunization & Clearance Responsibility */}
@@ -83,6 +83,7 @@ export default function LegalPage() {
                 <li>No hands-on patient care, procedures, or clinical decision-making is permitted unless explicitly authorized by the host institution</li>
                 <li>The platform does not authorize clinical activity</li>
               </ul>
+              <p className="text-slate-700 leading-relaxed">Any clinical permissions granted are solely at the discretion of the hosting institution and may be revoked at any time.</p>
               <p className="text-slate-700 leading-relaxed">Any breach of hospital policies, confidentiality rules, or professional conduct standards may result in immediate termination of the placement.</p>
             </section>
 
@@ -101,6 +102,7 @@ export default function LegalPage() {
                 <li>Access to documents is role-restricted</li>
                 <li>Documents are not publicly visible</li>
                 <li>Data is not sold or shared for marketing purposes</li>
+                <li>Data is processed in accordance with applicable UAE data protection regulations</li>
               </ul>
               <p className="text-slate-700 leading-relaxed">Despite reasonable security measures, no online platform can guarantee absolute security. Users acknowledge and accept this risk.</p>
             </section>
@@ -118,7 +120,7 @@ export default function LegalPage() {
                 <li>Cancellations or scheduling conflicts</li>
                 <li>Actions or decisions taken by hospitals or regulators</li>
               </ul>
-              <p className="text-slate-700 leading-relaxed">Use of this platform is entirely at the user&apos;s own risk.</p>
+              <p className="text-slate-700 leading-relaxed">Use of this platform is entirely at the user's own risk and discretion.</p>
             </section>
 
             {/* 8. User Obligations */}
@@ -144,8 +146,7 @@ export default function LegalPage() {
               <h2 className="text-xl font-semibold text-slate-900">9. Fees & Payments (If Applicable)</h2>
               <p className="text-slate-700 leading-relaxed">Any platform fees (where applicable):</p>
               <ul className="list-disc pl-6 text-slate-700 space-y-1">
-                <li>Cover administrative and facilitation services only</li>
-                <li>Are not hospital fees</li>
+                <li>Cover administrative and facilitation services only and do not constitute hospital or clinical fees</li>
                 <li>Do not guarantee placement</li>
               </ul>
               <p className="text-slate-700 leading-relaxed">Refund policies, if applicable, are governed by separate payment terms.</p>
@@ -161,13 +162,9 @@ export default function LegalPage() {
             {/* 11. Acceptance of Terms */}
             <section className="space-y-4">
               <h2 className="text-xl font-semibold text-slate-900">11. Acceptance of Terms</h2>
-              <p className="text-slate-700 leading-relaxed">By creating an account or submitting an application through this platform, users confirm that they have:</p>
-              <ul className="list-disc pl-6 text-slate-700 space-y-1">
-                <li>Read</li>
-                <li>Understood</li>
-                <li>Agreed to be bound by</li>
-              </ul>
-              <p className="text-slate-700 leading-relaxed">these Terms & Disclaimers in full.</p>
+              <p className="text-slate-700 leading-relaxed">
+                By creating an account, submitting an application, or otherwise using this platform, users confirm that they have read, understood, and agreed to be legally bound by these Terms & Disclaimers in full.
+              </p>
             </section>
           </div>
           <div className="px-6 sm:px-8 py-4 bg-slate-100 border-t border-slate-200 text-sm text-slate-600 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">

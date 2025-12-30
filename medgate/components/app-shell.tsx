@@ -34,13 +34,8 @@ const navigation = [
     icon: Users,
   },
   {
-    name: "Mission",
-    href: "/mission",
-    icon: LayoutDashboard,
-  },
-  {
-    name: "Vision",
-    href: "/vision",
+    name: "Purpose",
+    href: "/purpose",
     icon: LayoutDashboard,
   },
   {

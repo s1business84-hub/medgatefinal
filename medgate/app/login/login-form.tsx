@@ -211,6 +211,7 @@ export default function LoginForm() {
               Student: student@example.com / password<br />
               Hospital: hospital1@medgate.com / password
             </p>
+            <p className="text-xs text-slate-400 mt-3">Demo credentials are provided for preview purposes only.</p>
           </div>
         </div>
       </div>
