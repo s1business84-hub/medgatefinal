@@ -296,7 +296,7 @@ export const programs = mockPrograms.map(p => {
   }
 
   // Demo data - fees removed, replaced with TBD
-  let feeAed = 0; // TBD by institution
+  const feeAed = 0; // TBD by institution
   
   // Demo data - seats
   const hospital = mockHospitals.find(h => h.id === p.hospitalId);
@@ -308,7 +308,7 @@ export const programs = mockPrograms.map(p => {
   if (programType === "Elective") durationWeeksOptions = [2, 4];
 
   // Demo data - daily hours
-  let dailyHoursMax = programType === "Observership" ? 6 : 8;
+  const dailyHoursMax = programType === "Observership" ? 6 : 8;
 
   return {
     ...p,
