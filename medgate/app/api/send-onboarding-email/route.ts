@@ -1,6 +1,25 @@
 import { NextResponse } from "next/server"
+import nodemailer from "nodemailer"
 
 const FROM_EMAIL = "hellomedgate@gmail.com"
+
+function getTransporter() {
+  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_SECURE } = process.env
+
+  if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS) {
+    throw new Error("SMTP configuration is missing. Please set SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS.")
+  }
+
+  return nodemailer.createTransport({
+    host: SMTP_HOST,
+    port: Number(SMTP_PORT),
+    secure: SMTP_SECURE === "true" || Number(SMTP_PORT) === 465,
+    auth: {
+      user: SMTP_USER,
+      pass: SMTP_PASS,
+    },
+  })
+}
 
 function buildEmailContent(type: string, email: string, name?: string) {
   if (type === "welcome-student") {
@@ -69,14 +88,19 @@ export async function POST(req: Request) {
 
   const mail = buildEmailContent(type, email, name)
 
-  // Placeholder: integrate with real email service (e.g., Resend, SendGrid, SES)
-  console.log("Sending email", {
-    from: FROM_EMAIL,
-    to: email,
-    subject: mail.subject,
-    body: mail.body,
-    type,
-  })
+  try {
+    const transporter = getTransporter()
 
-  return NextResponse.json({ ok: true })
+    await transporter.sendMail({
+      from: FROM_EMAIL,
+      to: email,
+      subject: mail.subject,
+      text: mail.body,
+    })
+
+    return NextResponse.json({ ok: true })
+  } catch (error) {
+    console.error("Email send failed", error)
+    return NextResponse.json({ error: "Failed to send email" }, { status: 500 })
+  }
 }
