@@ -21,8 +21,7 @@ const footerLinks = {
   ],
   company: [
     { name: "About", href: "/about" },
-    { name: "Mission", href: "/mission" },
-    { name: "Vision", href: "/vision" },
+    { name: "Purpose + Focus", href: "/purpose-focus" },
   ],
   support: [
     { name: "Legal Disclaimer & Terms", href: "/legal" },
