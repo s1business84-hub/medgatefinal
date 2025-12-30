@@ -163,7 +163,7 @@ export default function AdminPage() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-slate-950 text-slate-100">
       <LiquidParallax />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
+      <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
 
       <div className="relative max-w-7xl mx-auto px-6 py-8">
         <div className="flex items-center justify-between mb-8">
@@ -174,7 +174,7 @@ export default function AdminPage() {
           <div className="flex gap-4 flex-wrap justify-end">
             <button
               onClick={() => setShowObsForm(true)}
-              className="px-6 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-indigo-600 text-white font-semibold shadow-lg hover:from-cyan-400 hover:to-indigo-500 transition-all"
+              className="px-6 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-indigo-600 text-white font-semibold shadow-lg hover:from-cyan-400 hover:to-indigo-500 transition-all"
             >
               + Add Observership
             </button>
@@ -263,15 +263,15 @@ export default function AdminPage() {
                   )}
                   {selectedApp.status === "Submitted" && (
                     <div className="pt-4 border-t border-white/10 space-y-2">
-                      <button onClick={() => handleIncludeInObservership(selectedApp.id)} disabled={actionInProgress} className="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-white font-semibold py-2 rounded-lg transition-colors disabled:opacity-50 flex items-center justify-center shadow-lg">
+                      <button onClick={() => handleIncludeInObservership(selectedApp.id)} disabled={actionInProgress} className="w-full bg-linear-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-white font-semibold py-2 rounded-lg transition-colors disabled:opacity-50 flex items-center justify-center shadow-lg">
                         <CheckCircle className="w-4 h-4 mr-2" />
                         Include in Observership
                       </button>
-                      <button onClick={() => handleWaitlist(selectedApp.id)} disabled={actionInProgress} className="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-white font-semibold py-2 rounded-lg transition-colors disabled:opacity-50 flex items-center justify-center shadow-lg">
+                      <button onClick={() => handleWaitlist(selectedApp.id)} disabled={actionInProgress} className="w-full bg-linear-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-white font-semibold py-2 rounded-lg transition-colors disabled:opacity-50 flex items-center justify-center shadow-lg">
                         <Clock className="w-4 h-4 mr-2" />
                         Add to Waitlist
                       </button>
-                      <button onClick={() => setShowRejectModal(true)} disabled={actionInProgress} className="w-full bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-500 hover:to-rose-600 text-white font-semibold py-2 rounded-lg transition-colors disabled:opacity-50 flex items-center justify-center shadow-lg">
+                      <button onClick={() => setShowRejectModal(true)} disabled={actionInProgress} className="w-full bg-linear-to-r from-rose-600 to-rose-700 hover:from-rose-500 hover:to-rose-600 text-white font-semibold py-2 rounded-lg transition-colors disabled:opacity-50 flex items-center justify-center shadow-lg">
                         <XCircle className="w-4 h-4 mr-2" />
                         Reject Application
                       </button>
@@ -291,8 +291,8 @@ export default function AdminPage() {
                         {[
                           "Passport",
                           "Medical Certificate",
-                          "Academic Transcript",
                           "Emirates ID",
+                          "Medical Fitness Certificate",
                           "Police Clearance Certificate",
                           "Immunization Records",
                           "Nursing License",
@@ -409,7 +409,7 @@ export default function AdminPage() {
               </button>
               <button
                 onClick={handleCreateObservership}
-                className="flex-1 px-4 py-2 bg-gradient-to-r from-cyan-500 to-indigo-600 text-white rounded-lg hover:from-cyan-400 hover:to-indigo-500 font-medium transition-colors shadow-lg"
+                className="flex-1 px-4 py-2 bg-linear-to-r from-cyan-500 to-indigo-600 text-white rounded-lg hover:from-cyan-400 hover:to-indigo-500 font-medium transition-colors shadow-lg"
               >
                 Create Observership
               </button>
@@ -430,7 +430,7 @@ export default function AdminPage() {
               <button onClick={() => { setShowRejectModal(false); setRejectReason(""); }} className="flex-1 px-4 py-2 border border-white/15 text-slate-100 rounded-lg hover:bg-white/10 font-medium transition-colors">
                 Cancel
               </button>
-              <button onClick={() => selectedApp && handleReject(selectedApp.id)} disabled={actionInProgress} className="flex-1 px-4 py-2 bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-500 hover:to-rose-600 text-white rounded-lg font-medium transition-colors disabled:opacity-50 shadow-lg">
+              <button onClick={() => selectedApp && handleReject(selectedApp.id)} disabled={actionInProgress} className="flex-1 px-4 py-2 bg-linear-to-r from-rose-600 to-rose-700 hover:from-rose-500 hover:to-rose-600 text-white rounded-lg font-medium transition-colors disabled:opacity-50 shadow-lg">
                 {actionInProgress ? "Processing..." : "Confirm Rejection"}
               </button>
             </div>
