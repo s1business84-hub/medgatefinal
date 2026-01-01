@@ -41,21 +41,123 @@ export default function PurposePage() {
 
         {/* Our Purpose Section */}
         <section className="mb-24 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-          <div className="bg-white/5 border border-white/10 rounded-3xl backdrop-blur-xl p-8 md:p-12 mb-12">
-            <h2 className="text-3xl font-bold text-slate-100 mb-6">Our Purpose</h2>
-            <p className="text-lg text-slate-300 leading-relaxed mb-6">
-              MedGate exists to simplify and standardize access to medical observerships and elective programs across the UAE.
-            </p>
-            <p className="text-lg text-slate-300 leading-relaxed mb-6">
-              Today, medical students often face fragmented information, unclear eligibility criteria, and slow, manual communication when seeking clinical exposure. At the same time, healthcare institutions lack a structured, policy-aligned way to publish programs and manage applications efficiently.
-            </p>
-            <p className="text-lg text-slate-300 leading-relaxed mb-6">
-              MedGate bridges this gap by providing a centralized platform where institutions define requirements clearly and students understand opportunities upfront—reducing administrative friction for both sides.
-            </p>
-            <p className="text-lg text-slate-300 leading-relaxed">
-              Our purpose is not to replace institutional processes, but to support them through clarity, structure, and transparency.
-            </p>
-          </div>
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className="group relative bg-white/5 border border-white/10 rounded-3xl backdrop-blur-xl p-8 md:p-12 mb-12 overflow-hidden hover:border-cyan-400/30 transition-all duration-500"
+          >
+            {/* Animated gradient background */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="absolute inset-0 bg-linear-to-br from-cyan-500/5 via-transparent to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
+            />
+            
+            {/* Floating particles effect */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              <motion.div
+                animate={{
+                  y: [0, -20, 0],
+                  x: [0, 10, 0],
+                  opacity: [0.3, 0.6, 0.3]
+                }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-10 right-20 w-32 h-32 bg-cyan-400/10 rounded-full blur-3xl"
+              />
+              <motion.div
+                animate={{
+                  y: [0, 30, 0],
+                  x: [0, -15, 0],
+                  opacity: [0.2, 0.5, 0.2]
+                }}
+                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute bottom-20 left-20 w-40 h-40 bg-indigo-400/10 rounded-full blur-3xl"
+              />
+            </div>
+
+            <div className="relative z-10">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="mb-6"
+              >
+                <div className="inline-flex items-center gap-3 mb-4">
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    className="w-12 h-12 bg-linear-to-br from-cyan-400 to-indigo-500 rounded-xl flex items-center justify-center shadow-lg"
+                  >
+                    <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </motion.div>
+                  <h2 className="text-3xl md:text-4xl font-bold bg-linear-to-r from-cyan-300 via-sky-200 to-indigo-300 bg-clip-text text-transparent">
+                    Our Purpose
+                  </h2>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                viewport={{ once: true }}
+                className="space-y-6"
+              >
+                <motion.p 
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                  viewport={{ once: true }}
+                  className="text-lg md:text-xl text-slate-200 leading-relaxed font-medium"
+                >
+                  MedGate exists to <span className="text-cyan-300 font-semibold">simplify and standardize</span> access to medical observerships and elective programs across the UAE.
+                </motion.p>
+                
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.6 }}
+                  viewport={{ once: true }}
+                  className="pl-4 border-l-2 border-cyan-400/50"
+                >
+                  <p className="text-lg text-slate-300 leading-relaxed">
+                    Today, medical students often face <span className="text-slate-200 font-medium">fragmented information</span>, unclear eligibility criteria, and slow, manual communication when seeking clinical exposure. At the same time, healthcare institutions lack a structured, policy-aligned way to publish programs and manage applications efficiently.
+                  </p>
+                </motion.div>
+                
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.7 }}
+                  viewport={{ once: true }}
+                  className="pl-4 border-l-2 border-indigo-400/50"
+                >
+                  <p className="text-lg text-slate-300 leading-relaxed">
+                    MedGate bridges this gap by providing a <span className="text-slate-200 font-medium">centralized platform</span> where institutions define requirements clearly and students understand opportunities upfront—reducing administrative friction for both sides.
+                  </p>
+                </motion.div>
+                
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 0.8 }}
+                  viewport={{ once: true }}
+                  className="mt-8 p-6 rounded-2xl bg-linear-to-r from-cyan-500/10 to-indigo-500/10 border border-cyan-400/20"
+                >
+                  <p className="text-lg text-cyan-100 leading-relaxed font-medium text-center">
+                    💡 Our purpose is not to replace institutional processes, but to <span className="text-cyan-300 font-bold">support them</span> through clarity, structure, and transparency.
+                  </p>
+                </motion.div>
+              </motion.div>
+            </div>
+          </motion.div>
         </section>
 
         {/* What We Are Building Section */}
