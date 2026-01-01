@@ -12,7 +12,7 @@ async function sendOnboardingEmail(email: string) {
   const res = await fetch("/api/send-onboarding-email", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, type: "onboarding" }),
+    body: JSON.stringify({ email, type: "onboarding-pack" }),
   });
 
   if (!res.ok) {

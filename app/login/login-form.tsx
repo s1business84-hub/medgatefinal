@@ -4,14 +4,16 @@ import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/lib/auth-context";
-import { createUser, getCurrentUser } from "@/lib/storage";
+import { createUser, getCurrentUser, findUserByEmail } from "@/lib/storage";
 import { LiquidParallax } from "@/components/ui/liquid-parallax";
 
-async function sendWelcomeEmail(email: string, name: string) {
+type WelcomeVariant = "welcome-student" | "welcome-hospital"
+
+async function sendWelcomeEmail(email: string, name: string, type: WelcomeVariant) {
   const res = await fetch("/api/send-onboarding-email", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, name, type: "welcome-student" }),
+    body: JSON.stringify({ email, name, type }),
   });
 
   if (!res.ok) {
@@ -59,16 +61,17 @@ export default function LoginForm() {
         return;
       }
 
-      createUser({ email, role, name });
-
-      // Send welcome email for student accounts
-      if (role === "student") {
-        try {
-          await sendWelcomeEmail(email, name);
-        } catch (err) {
-          console.error("Welcome email failed", err);
-        }
+      const existing = findUserByEmail(email);
+      if (existing) {
+        setError("An account with this email already exists. Please sign in.");
+        return;
       }
+
+      createUser({ email, role, name, password });
+
+      // Send welcome email for the selected role
+      const variant: WelcomeVariant = role === "hospital" ? "welcome-hospital" : "welcome-student"
+      sendWelcomeEmail(email, name || "", variant).catch((err) => console.error("Welcome email failed", err))
 
       const success = login(email, password);
       if (success) {

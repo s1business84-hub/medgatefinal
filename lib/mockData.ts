@@ -336,18 +336,21 @@ export const mockUsers = [
     email: "student@example.com",
     role: "student" as const,
     name: "John Smith",
+    password: "password",
   },
   {
     id: "u2",
     email: "admin@example.com",
     role: "admin" as const,
     name: "Dr. Sarah Johnson",
+    password: "password",
   },
   {
     id: "u3",
     email: "student2@example.com",
     role: "student" as const,
     name: "Maria Garcia",
+    password: "password",
   },
   {
     id: "h1_admin",
@@ -355,6 +358,7 @@ export const mockUsers = [
     role: "hospital" as const,
     name: "Hospital Administrator",
     hospitalId: "h1",
+    password: "password",
   },
   {
     id: "h2_admin",
@@ -362,6 +366,7 @@ export const mockUsers = [
     role: "hospital" as const,
     name: "Clinic Manager",
     hospitalId: "h2",
+    password: "password",
   },
   {
     id: "h3_admin",
@@ -369,5 +374,6 @@ export const mockUsers = [
     role: "hospital" as const,
     name: "Medical Director",
     hospitalId: "h3",
+    password: "password",
   },
 ];

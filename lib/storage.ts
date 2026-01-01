@@ -193,10 +193,17 @@ export function loginUser(email: string, password: string): User | null {
   // Simple password check - in real app, this would be hashed
   const users = getUsers();
   const user = users.find(u => u.email === email);
-  if (user && password === "password") { // Simple check for demo
+
+  if (!user) return null;
+
+  // Prefer stored password; fall back to legacy "password" for seeded users without password
+  const expectedPassword = user.password || "password";
+
+  if (password === expectedPassword) {
     writeJSON(KEYS.currentUser, user);
     return user;
   }
+
   return null;
 }
 

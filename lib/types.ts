@@ -63,6 +63,7 @@ export interface User {
   role: "student" | "admin" | "hospital";
   name: string;
   hospitalId?: string;
+  password?: string; // Stored locally for demo auth
 }
 
 export type Hospital = {

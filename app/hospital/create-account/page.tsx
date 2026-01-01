@@ -2,11 +2,16 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/lib/auth-context";
+import { createUser, findUserByEmail } from "@/lib/storage";
 import { Button } from "@/components/ui/button";
 import { LiquidParallax } from "@/components/ui/liquid-parallax";
 import { Building2, Mail, Lock, Phone, User, CheckCircle2 } from "lucide-react";
 
 export default function HospitalCreateAccount() {
+  const router = useRouter();
+  const { login } = useAuth();
   const [form, setForm] = useState({
     institutionName: "",
     contactName: "",
@@ -22,7 +27,7 @@ export default function HospitalCreateAccount() {
   const update = (key: string) => (e: React.ChangeEvent<HTMLInputElement>) =>
     setForm((f) => ({ ...f, [key]: e.target.value }));
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     setSuccess("");
@@ -42,11 +47,44 @@ export default function HospitalCreateAccount() {
 
     setLoading(true);
 
-    // Placeholder: simulate account creation
-    setTimeout(() => {
+    const existing = findUserByEmail(form.email);
+    if (existing) {
+      setError("An account with this email already exists. Please sign in instead.");
       setLoading(false);
-      setSuccess("Account created successfully. You can now sign in.");
-    }, 800);
+      return;
+    }
+
+    // Create hospital user and log them in
+    const hospitalId = `h_${Date.now().toString(16)}`;
+    createUser({
+      email: form.email,
+      role: "hospital",
+      name: form.contactName || form.institutionName,
+      hospitalId,
+      password: form.password,
+    });
+
+    // Fire-and-forget welcome email
+    fetch("/api/send-onboarding-email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: form.email,
+        name: form.institutionName || form.contactName,
+        type: "welcome-hospital",
+      }),
+    }).catch((err) => console.error("Hospital welcome email failed", err));
+
+    const loggedIn = login(form.email, form.password);
+    if (!loggedIn) {
+      setError("Registration failed. Please try again.");
+      setLoading(false);
+      return;
+    }
+
+    setSuccess("Account created successfully. Redirecting to dashboard...");
+    setLoading(false);
+    setTimeout(() => router.push("/hospital"), 600);
   };
 
   return (
