@@ -7,9 +7,6 @@ import {
   Mail,
   Phone,
   MapPin,
-  Twitter,
-  Linkedin,
-  Github,
   Heart
 } from "lucide-react"
 
@@ -25,11 +22,6 @@ const footerLinks = {
   ],
   support: [
     { name: "Legal Disclaimer & Terms", href: "/legal" },
-  ],
-  social: [
-    { name: "Twitter", href: "#", icon: Twitter },
-    { name: "LinkedIn", href: "#", icon: Linkedin },
-    { name: "GitHub", href: "#", icon: Github },
   ],
 }
 
@@ -162,23 +154,6 @@ export function Footer() {
               <button className="w-full bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 drop-shadow-[0_0_12px_rgba(34,211,238,0.4)] hover:drop-shadow-[0_0_16px_rgba(34,211,238,0.6)]">
                 Subscribe
               </button>
-            </div>
-
-            {/* Social Links */}
-            <div className="mt-6">
-              <h4 className="text-sm font-semibold text-indigo-300 mb-3 drop-shadow-[0_0_8px_rgba(129,140,248,0.5)]">Follow Us</h4>
-              <div className="flex space-x-4">
-                {footerLinks.social.map((social) => (
-                  <a
-                    key={social.name}
-                    href={social.href}
-                    className="text-slate-400 hover:text-cyan-300 transition-colors duration-200 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]"
-                  >
-                    <social.icon className="h-5 w-5" />
-                    <span className="sr-only">{social.name}</span>
-                  </a>
-                ))}
-              </div>
             </div>
           </motion.div>
         </div>
