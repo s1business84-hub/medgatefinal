@@ -74,64 +74,53 @@ export default function ForHospitalsPage() {
                 Join Us Now
               </Button>
             </Link>
-            <Link href="/about">
-              <Button size="lg" variant="outline" className="border-white/25 text-slate-100 hover:bg-white/10 font-semibold">
-                Schedule a Pilot Intro Call
-              </Button>
-            </Link>
-          </div>
-          
-          {/* Founder Contact Dropdown Button */}
-          <div className="mt-8 max-w-2xl mx-auto">
             <button
               onClick={() => setShowFounderContact(!showFounderContact)}
-              className="w-full flex items-center justify-between px-6 py-3 bg-white/5 border border-white/15 rounded-lg hover:bg-white/10 transition-all duration-300 text-left"
+              className="px-8 py-3 rounded-lg font-semibold text-white bg-white/10 border border-white/25 hover:bg-white/15 transition-all duration-300"
             >
-              <span className="text-slate-100 font-semibold">Contact our founders</span>
-              <motion.div
-                animate={{ rotate: showFounderContact ? 180 : 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <ChevronDown className="w-5 h-5 text-cyan-300" />
-              </motion.div>
+              Schedule a Pilot Intro Call
             </button>
-
-            {/* Founder Contact Card - Dropdown */}
-            <AnimatePresence>
-              {showFounderContact && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="mt-2 overflow-hidden"
-                >
-                  <div className="bg-gradient-to-br from-cyan-600/20 to-indigo-600/20 border border-cyan-500/30 rounded-lg backdrop-blur-xl p-6">
-                    <div className="space-y-4">
-                      <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <Phone className="w-6 h-6 text-cyan-300" />
-                        </div>
-                        <div>
-                          <p className="text-slate-100 font-semibold mb-1">Founder Kashish</p>
-                          <p className="text-cyan-300 font-mono text-lg">+971 054 453 0209</p>
-                        </div>
+          </div>
+          
+          {/* Founder Contact Dropdown Card - Shows when Schedule button clicked */}
+          <AnimatePresence>
+            {showFounderContact && (
+              <motion.div
+                initial={{ opacity: 0, y: -20, height: 0 }}
+                animate={{ opacity: 1, y: 0, height: "auto" }}
+                exit={{ opacity: 0, y: -20, height: 0 }}
+                transition={{ duration: 0.3 }}
+                className="mt-6 max-w-2xl mx-auto overflow-hidden"
+              >
+                <div className="bg-gradient-to-br from-cyan-600/20 to-indigo-600/20 border border-cyan-500/30 rounded-xl backdrop-blur-xl p-8">
+                  <h3 className="text-2xl font-bold text-slate-100 mb-6">Contact our founders</h3>
+                  <div className="space-y-4 mb-6">
+                    <div className="flex items-start gap-4 pb-4 border-b border-white/10">
+                      <div className="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Phone className="w-6 h-6 text-cyan-300" />
                       </div>
-                      <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 bg-indigo-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <Phone className="w-6 h-6 text-indigo-300" />
-                        </div>
-                        <div>
-                          <p className="text-slate-100 font-semibold mb-1">Co-founder Sanskaar Nair</p>
-                          <p className="text-indigo-300 font-mono text-lg">+971 056 906 9315</p>
-                        </div>
+                      <div>
+                        <p className="text-slate-100 font-semibold mb-1">Founder Kashish</p>
+                        <p className="text-cyan-300 font-mono text-lg">+971 054 453 0209</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 bg-indigo-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Phone className="w-6 h-6 text-indigo-300" />
+                      </div>
+                      <div>
+                        <p className="text-slate-100 font-semibold mb-1">Co-founder Sanskaar Nair</p>
+                        <p className="text-indigo-300 font-mono text-lg">+971 056 906 9315</p>
                       </div>
                     </div>
                   </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+                  <p className="text-slate-300 text-sm">
+                    Ready to bring MedGate to your institution? Get in touch to discuss pilot collaboration opportunities.
+                  </p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         {/* Benefits Section */}
