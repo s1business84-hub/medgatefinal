@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import {
@@ -26,6 +27,46 @@ const footerLinks = {
 }
 
 export function Footer() {
+  const [email, setEmail] = useState("")
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
+  const [message, setMessage] = useState("")
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault()
+    
+    if (!email || !email.includes("@")) {
+      setStatus("error")
+      setMessage("Please enter a valid email address")
+      return
+    }
+
+    setStatus("loading")
+    
+    try {
+      const response = await fetch("/api/subscribe-newsletter", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setStatus("success")
+        setMessage(data.message)
+        setEmail("")
+      } else {
+        setStatus("error")
+        setMessage(data.error || "Something went wrong")
+      }
+    } catch (error) {
+      setStatus("error")
+      setMessage("Failed to subscribe. Please try again.")
+    }
+  }
+
   return (
     <footer className="relative text-white overflow-hidden">
       <div className="absolute inset-0 -z-10 bg-slate-950/70 backdrop-blur-xl" />
@@ -42,10 +83,10 @@ export function Footer() {
             className="lg:col-span-1"
           >
             <div className="flex items-center space-x-3 mb-4">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-r from-cyan-500 to-indigo-500">
-              <Stethoscope className="h-5 w-5 text-white" />
-            </div>
-            <span className="text-xl font-bold bg-linear-to-r from-cyan-300 to-indigo-300 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(34,211,238,0.4)]">MedGate</span>
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-r from-cyan-500 to-indigo-500">
+                <Stethoscope className="h-5 w-5 text-white" />
+              </div>
+              <span className="text-xl font-bold bg-linear-to-r from-cyan-300 to-indigo-300 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(34,211,238,0.4)]">MedGate</span>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
               Connecting medical students with clinical training opportunities
@@ -145,16 +186,34 @@ export function Footer() {
             <p className="text-sm text-slate-400 mb-4">
               Get the latest updates on new programs and features.
             </p>
-            <div className="space-y-3">
+            <form onSubmit={handleSubscribe} className="space-y-3">
               <input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
-                className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
+                disabled={status === "loading" || status === "success"}
+                className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed transition-all"
               />
-              <button className="w-full bg-linear-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 drop-shadow-[0_0_12px_rgba(34,211,238,0.4)] hover:drop-shadow-[0_0_16px_rgba(34,211,238,0.6)]">
-                Subscribe
+              <button
+                type="submit"
+                disabled={status === "loading" || status === "success"}
+                className="w-full bg-linear-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 drop-shadow-[0_0_12px_rgba(34,211,238,0.4)] hover:drop-shadow-[0_0_16px_rgba(34,211,238,0.6)] disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {status === "loading" ? "Subscribing..." : status === "success" ? "Subscribed ✓" : "Subscribe"}
               </button>
-            </div>
+              {message && (
+                <motion.p
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`text-xs ${
+                    status === "success" ? "text-green-400" : "text-red-400"
+                  }`}
+                >
+                  {message}
+                </motion.p>
+              )}
+            </form>
           </motion.div>
         </div>
 
