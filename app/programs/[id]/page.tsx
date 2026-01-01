@@ -14,7 +14,7 @@ function ProgramContent({ id }: { id: string }) {
   if (!program) return (
     <main className="relative min-h-screen overflow-hidden bg-slate-950 text-slate-100 flex items-center justify-center">
       <LiquidParallax />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
+      <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
       <div className="relative text-center animate-fade-in">
         <h1 className="text-2xl font-bold text-slate-100 mb-2">Program not found</h1>
         <Link href="/programs" className="inline-flex items-center justify-center px-5 py-3 rounded-xl border border-white/15 bg-white/5 text-slate-100 font-semibold hover:bg-white/10 transition-all hover-scale">← Back to Programs</Link>
@@ -27,7 +27,7 @@ function ProgramContent({ id }: { id: string }) {
   return (
     <main className="relative min-h-screen overflow-hidden bg-slate-950 text-slate-100">
       <LiquidParallax />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
+      <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
       <div className="relative max-w-4xl mx-auto px-6 py-12">
         {/* Back Button */}
         <div className="mb-8 animate-fade-in">
@@ -283,7 +283,7 @@ function ProgramContent({ id }: { id: string }) {
         <div className="text-center animate-fade-in" style={{ animationDelay: '0.7s' }}>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="text-lg px-8 py-4 hover-scale rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 text-white font-semibold shadow-lg hover:from-cyan-400 hover:to-indigo-500 transition-all duration-300"
+            className="text-lg px-8 py-4 hover-scale rounded-xl bg-linear-to-r from-cyan-500 to-indigo-600 text-white font-semibold shadow-lg hover:from-cyan-400 hover:to-indigo-500 transition-all duration-300"
           >
             Apply for this Program →
           </button>

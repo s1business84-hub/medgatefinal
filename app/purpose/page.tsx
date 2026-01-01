@@ -17,8 +17,8 @@ export default function PurposePage() {
       
       {/* Animated gradient background */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-600/0 via-indigo-600/10 to-emerald-600/0 animate-pulse" />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
+        <div className="absolute inset-0 bg-linear-to-r from-cyan-600/0 via-indigo-600/10 to-emerald-600/0 animate-pulse" />
+        <div className="absolute inset-0 bg-linear-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-cyan-500/15 rounded-full blur-3xl animate-[float_8s_ease-in-out_infinite]" />
         <div className="absolute bottom-1/3 left-1/3 w-80 h-80 bg-indigo-500/15 rounded-full blur-3xl animate-[float_10s_ease-in-out_infinite_2s]" />
       </div>
@@ -90,7 +90,7 @@ export default function PurposePage() {
         </section>
         {/* Our Focus Today Section */}
         <section className="mb-24 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-          <div className="bg-gradient-to-br from-cyan-600/20 to-indigo-600/20 border border-cyan-500/30 rounded-3xl backdrop-blur-xl p-8 md:p-12">
+          <div className="bg-linear-to-br from-cyan-600/20 to-indigo-600/20 border border-cyan-500/30 rounded-3xl backdrop-blur-xl p-8 md:p-12">
             <h2 className="text-3xl font-bold text-slate-100 mb-6">Our Focus Today</h2>
             <p className="text-lg text-slate-300 leading-relaxed mb-8">
               MedGate is currently in early development and preparing for pilot collaborations with healthcare institutions across the UAE.
@@ -98,19 +98,19 @@ export default function PurposePage() {
             <p className="text-lg text-slate-300 leading-relaxed mb-6">Our immediate focus is to:</p>
             <ul className="space-y-3 mb-8">
               <li className="flex items-start">
-                <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-cyan-500/30 mr-3 mt-1 flex-shrink-0">
+                <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-cyan-500/30 mr-3 mt-1 shrink-0">
                   <Zap className="w-4 h-4 text-cyan-300" />
                 </span>
                 <span className="text-lg text-slate-300">Launch pilot programs with select institutions</span>
               </li>
               <li className="flex items-start">
-                <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-indigo-500/30 mr-3 mt-1 flex-shrink-0">
+                <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-indigo-500/30 mr-3 mt-1 shrink-0">
                   <Zap className="w-4 h-4 text-indigo-300" />
                 </span>
                 <span className="text-lg text-slate-300">Validate workflows with real users</span>
               </li>
               <li className="flex items-start">
-                <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/30 mr-3 mt-1 flex-shrink-0">
+                <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/30 mr-3 mt-1 shrink-0">
                   <Zap className="w-4 h-4 text-emerald-300" />
                 </span>
                 <span className="text-lg text-slate-300">Refine eligibility logic and application processes</span>
@@ -148,7 +148,7 @@ export default function PurposePage() {
                 onClick={() => setActiveCard("students")}
                 className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
                   activeCard === "students"
-                    ? "bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-lg"
+                    ? "bg-linear-to-r from-cyan-600 to-blue-600 text-white shadow-lg"
                     : "bg-white/10 text-slate-300 hover:bg-white/15"
                 }`}
               >
@@ -158,7 +158,7 @@ export default function PurposePage() {
                 onClick={() => setActiveCard("hospitals")}
                 className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
                   activeCard === "hospitals"
-                    ? "bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg"
+                    ? "bg-linear-to-r from-emerald-600 to-teal-600 text-white shadow-lg"
                     : "bg-white/10 text-slate-300 hover:bg-white/15"
                 }`}
               >
@@ -177,7 +177,7 @@ export default function PurposePage() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}
-                  className="absolute inset-0 bg-gradient-to-br from-cyan-600/30 to-blue-600/30 border border-cyan-500/50 rounded-3xl backdrop-blur-xl p-8 md:p-12 shadow-2xl overflow-hidden group"
+                  className="absolute inset-0 bg-linear-to-br from-cyan-600/30 to-blue-600/30 border border-cyan-500/50 rounded-3xl backdrop-blur-xl p-8 md:p-12 shadow-2xl overflow-hidden group"
                 >
                   <div className="absolute -top-40 -right-40 w-80 h-80 bg-cyan-400/20 rounded-full blur-3xl group-hover:scale-110 transition-transform duration-500" />
                   <div className="relative z-10">
@@ -199,7 +199,7 @@ export default function PurposePage() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}
-                  className="absolute inset-0 bg-gradient-to-br from-emerald-600/30 to-teal-600/30 border border-emerald-500/50 rounded-3xl backdrop-blur-xl p-8 md:p-12 shadow-2xl overflow-hidden group"
+                  className="absolute inset-0 bg-linear-to-br from-emerald-600/30 to-teal-600/30 border border-emerald-500/50 rounded-3xl backdrop-blur-xl p-8 md:p-12 shadow-2xl overflow-hidden group"
                 >
                   <div className="absolute -top-40 -right-40 w-80 h-80 bg-emerald-400/20 rounded-full blur-3xl group-hover:scale-110 transition-transform duration-500" />
                   <div className="relative z-10">

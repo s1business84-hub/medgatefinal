@@ -8,7 +8,7 @@ export default function AboutPage() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-slate-950 text-slate-100">
       <LiquidParallax />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
+      <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
       
       <div className="relative max-w-4xl mx-auto px-6 py-16">
         {/* Header */}
@@ -41,11 +41,11 @@ export default function AboutPage() {
           </h2>
           <div className="rounded-2xl shadow-lg overflow-hidden group backdrop-blur-xl bg-white/5 border border-white/10 hover:shadow-2xl transition-all duration-300 p-8 md:p-12">
             {/* Animated gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/10 via-transparent to-indigo-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-linear-to-r from-cyan-400/10 via-transparent to-indigo-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             
             {/* Liquid glass shine effect */}
             <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300">
-              <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-to-br from-white to-transparent rounded-full blur-xl" />
+              <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-linear-to-br from-white to-transparent rounded-full blur-xl" />
             </div>
             
             <div className="relative z-10">
@@ -106,11 +106,11 @@ export default function AboutPage() {
                 style={{ animationDelay: `${0.3 + index * 0.1}s` }}
               >
                 {/* Animated gradient overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${item.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                <div className={`absolute inset-0 bg-linear-to-br ${item.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                 
                 {/* Liquid glass shine effect */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-300">
-                  <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-to-br from-white to-transparent rounded-full blur-xl" />
+                  <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-linear-to-br from-white to-transparent rounded-full blur-xl" />
                 </div>
 
                 {/* Number badge */}
@@ -122,7 +122,7 @@ export default function AboutPage() {
                 <div className="relative z-10">
                   {/* Icon Container */}
                   <div className="mb-6 inline-block">
-                    <div className={`p-4 rounded-xl bg-gradient-to-br ${item.gradient} shadow-lg group-hover:shadow-xl transform group-hover:scale-110 transition-all duration-300`}>
+                    <div className={`p-4 rounded-xl bg-linear-to-br ${item.gradient} shadow-lg group-hover:shadow-xl transform group-hover:scale-110 transition-all duration-300`}>
                       <item.icon className="w-8 h-8 text-white" />
                     </div>
                   </div>
@@ -138,7 +138,7 @@ export default function AboutPage() {
                   </p>
 
                   {/* Accent line */}
-                  <div className={`mt-6 h-1 bg-gradient-to-r ${item.gradient} rounded-full transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500`} />
+                  <div className={`mt-6 h-1 bg-linear-to-r ${item.gradient} rounded-full transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500`} />
                 </div>
 
                 {/* Floating elements for visual interest */}
@@ -158,7 +158,7 @@ export default function AboutPage() {
           </h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
             <div className="rounded-2xl bg-white/5 border border-white/10 p-8 hover:bg-white/10 transition-all duration-300">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-r from-cyan-500 to-indigo-600 mx-auto mb-4 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-full bg-linear-to-r from-cyan-500 to-indigo-600 mx-auto mb-4 flex items-center justify-center">
                 <span className="text-white font-bold text-lg">KD</span>
               </div>
               <h3 className="text-xl font-semibold text-slate-100 mb-2">Kashish Devnani</h3>
@@ -167,7 +167,7 @@ export default function AboutPage() {
             </div>
             
             <div className="rounded-2xl bg-white/5 border border-white/10 p-8 hover:bg-white/10 transition-all duration-300">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto mb-4 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-full bg-linear-to-r from-indigo-600 to-purple-600 mx-auto mb-4 flex items-center justify-center">
                 <span className="text-white font-bold text-lg">SN</span>
               </div>
               <h3 className="text-xl font-semibold text-slate-100 mb-2">Sanskaar Nair</h3>
@@ -187,7 +187,7 @@ export default function AboutPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/programs">
-              <Button size="lg" className="bg-gradient-to-r from-cyan-600 to-indigo-600 hover:from-cyan-700 hover:to-indigo-700">
+              <Button size="lg" className="bg-linear-to-r from-cyan-600 to-indigo-600 hover:from-cyan-700 hover:to-indigo-700">
                 Browse Programs
               </Button>
             </Link>

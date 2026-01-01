@@ -38,7 +38,7 @@ body {
 
 /* Button Styles */
 .btn-primary {
-  @apply bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
+  @apply bg-linear-to-r from-blue-600 to-indigo-600 text-white font-medium px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
 }
 
 .btn-secondary {
@@ -46,7 +46,7 @@ body {
 }
 
 .btn-success {
-  @apply bg-gradient-to-r from-green-500 to-emerald-600 text-white font-medium px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
+  @apply bg-linear-to-r from-green-500 to-emerald-600 text-white font-medium px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
 }
 
 /* Card Styles */

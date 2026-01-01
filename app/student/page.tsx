@@ -18,13 +18,13 @@ export default function StudentPortal() {
     return (
       <div className="relative min-h-screen overflow-hidden bg-slate-950 text-slate-100">
         <LiquidParallax />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
+        <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
 
         <div className="relative max-w-7xl mx-auto px-6 py-8">
           {/* Header */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 animate-fade-in gap-4">
             <div>
-              <h1 className="text-3xl sm:text-4xl font-bold bg-clip-text bg-gradient-to-r from-slate-900 via-blue-800 to-slate-900 text-transparent mb-2">Student Portal</h1>
+              <h1 className="text-3xl sm:text-4xl font-bold bg-clip-text bg-linear-to-r from-slate-900 via-blue-800 to-slate-900 text-transparent mb-2">Student Portal</h1>
               <p className="text-slate-300">Welcome back, {user.name}!</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
@@ -77,7 +77,7 @@ export default function StudentPortal() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/programs">
-                  <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-lg">
+                  <Button size="lg" className="bg-linear-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-lg">
                     Browse More Programs
                   </Button>
                 </Link>
@@ -98,7 +98,7 @@ export default function StudentPortal() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-slate-950 text-slate-100">
       <LiquidParallax />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
+      <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
 
       <div className="relative max-w-7xl mx-auto px-6 py-8">
         {/* Header */}
@@ -109,7 +109,7 @@ export default function StudentPortal() {
           </div>
           {/* Desktop Navigation */}
           <div className="hidden sm:flex gap-4">
-            <Link href="/login" className="inline-flex items-center px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-medium transition-all">
+            <Link href="/login" className="inline-flex items-center px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-medium transition-all">
               Join Early Access
             </Link>
             <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg border border-white/25 text-slate-100 hover:bg-white/10 font-medium transition-all">
@@ -135,7 +135,7 @@ export default function StudentPortal() {
             <Link 
               href="/login" 
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-medium transition-all"
+              className="w-full inline-flex items-center justify-center px-4 py-2 rounded-lg bg-linear-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-medium transition-all"
             >
               Get Notified
             </Link>
@@ -198,7 +198,7 @@ export default function StudentPortal() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/login">
-                <Button size="lg" className="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-lg">
+                <Button size="lg" className="w-full sm:w-auto bg-linear-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-lg">
                   Join Early Access
                 </Button>
               </Link>

@@ -97,9 +97,9 @@ export function ReminderModal({
             transition={{ duration: 0.3 }}
             className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-md mx-4"
           >
-            <div className="rounded-2xl shadow-2xl overflow-hidden backdrop-blur-xl bg-gradient-to-br from-white/60 via-white/40 to-white/20 border border-white/40">
+            <div className="rounded-2xl shadow-2xl overflow-hidden backdrop-blur-xl bg-linear-to-br from-white/60 via-white/40 to-white/20 border border-white/40">
               {/* Animated gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-400/10 via-transparent to-purple-400/10" />
+              <div className="absolute inset-0 bg-linear-to-br from-blue-400/10 via-transparent to-purple-400/10" />
 
               {/* Header */}
               <div className="relative border-b border-white/20 px-6 py-6">

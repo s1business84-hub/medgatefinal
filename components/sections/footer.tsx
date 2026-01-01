@@ -42,10 +42,10 @@ export function Footer() {
             className="lg:col-span-1"
           >
             <div className="flex items-center space-x-3 mb-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-r from-cyan-500 to-indigo-500">
-                <Stethoscope className="h-5 w-5 text-white" />
-              </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-cyan-300 to-indigo-300 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(34,211,238,0.4)]">MedGate</span>
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-r from-cyan-500 to-indigo-500">
+              <Stethoscope className="h-5 w-5 text-white" />
+            </div>
+            <span className="text-xl font-bold bg-linear-to-r from-cyan-300 to-indigo-300 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(34,211,238,0.4)]">MedGate</span>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
               Connecting medical students with clinical training opportunities
@@ -151,7 +151,7 @@ export function Footer() {
                 placeholder="Enter your email"
                 className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
               />
-              <button className="w-full bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 drop-shadow-[0_0_12px_rgba(34,211,238,0.4)] hover:drop-shadow-[0_0_16px_rgba(34,211,238,0.6)]">
+              <button className="w-full bg-linear-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 drop-shadow-[0_0_12px_rgba(34,211,238,0.4)] hover:drop-shadow-[0_0_16px_rgba(34,211,238,0.6)]">
                 Subscribe
               </button>
             </div>

@@ -34,7 +34,7 @@ export function Header() {
               </defs>
             </svg>
             <div>
-              <span className="text-lg sm:text-xl font-bold bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent">MedGate</span>
+              <span className="text-lg sm:text-xl font-bold bg-linear-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent">MedGate</span>
               <p className="text-xs text-slate-400 font-medium hidden sm:block">Your Gateway</p>
             </div>
           </Link>
@@ -74,7 +74,7 @@ export function Header() {
                         : "/student"
                   }
                 >
-                  <Button size="sm" className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white">
+                  <Button size="sm" className="bg-linear-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white">
                     Dashboard
                   </Button>
                 </Link>
@@ -82,7 +82,7 @@ export function Header() {
             ) : (
               <>
                 <Link href="/login">
-                  <Button size="sm" className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white">
+                  <Button size="sm" className="bg-linear-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white">
                     Login
                   </Button>
                 </Link>
@@ -94,7 +94,7 @@ export function Header() {
           <div className="flex lg:hidden items-center space-x-2">
             {!user && (
               <Link href="/login">
-                <Button size="sm" className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white">
+                <Button size="sm" className="bg-linear-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white">
                   Login
                 </Button>
               </Link>
@@ -109,7 +109,7 @@ export function Header() {
                       : "/student"
                 }
               >
-                <Button size="sm" className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white">
+                <Button size="sm" className="bg-linear-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white">
                   Dashboard
                 </Button>
               </Link>

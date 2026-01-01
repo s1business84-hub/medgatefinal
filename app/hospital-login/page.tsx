@@ -35,7 +35,7 @@ export default function HospitalLogin() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-slate-950 text-slate-100 flex items-center justify-center p-4">
       <LiquidParallax />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
+      <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
       <div className="w-full max-w-md">
         {/* Card */}
         <div className="backdrop-blur-xl bg-white/10 border border-white/15 rounded-2xl shadow-2xl overflow-hidden">

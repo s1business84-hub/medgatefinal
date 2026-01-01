@@ -202,7 +202,7 @@ export function ProgramFilters({ onFilterChange }: ProgramFiltersProps) {
           </div>
 
           {/* Notice */}
-          <div className="mt-6 p-4 rounded-xl bg-gradient-to-r from-cyan-500/10 to-indigo-500/10 border border-cyan-400/30">
+          <div className="mt-6 p-4 rounded-xl bg-linear-to-r from-cyan-500/10 to-indigo-500/10 border border-cyan-400/30">
             <p className="text-sm text-slate-200">
               <strong>Note:</strong> Filters help you explore programs. Final eligibility is determined by each institution during their review process.
             </p>
@@ -217,7 +217,7 @@ export function ProgramFilters({ onFilterChange }: ProgramFiltersProps) {
             >
               <button
                 onClick={() => setIsOpen(false)}
-                className="flex-1 px-4 py-2.5 rounded-lg bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-semibold transition-all shadow-lg"
+                className="flex-1 px-4 py-2.5 rounded-lg bg-linear-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-semibold transition-all shadow-lg"
               >
                 Apply Filters ({activeFilterCount})
               </button>

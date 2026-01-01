@@ -126,7 +126,7 @@ export default function HospitalPortal() {
     return (
       <div className="relative min-h-screen overflow-hidden bg-slate-950 text-slate-100 flex items-center justify-center">
         <LiquidParallax />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
+        <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
         <div className="relative text-center">
           <div className="w-12 h-12 border-4 border-indigo-400/40 border-t-indigo-400 rounded-full animate-spin mx-auto mb-4" />
           <p className="text-slate-300">Loading applications...</p>
@@ -138,7 +138,7 @@ export default function HospitalPortal() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-slate-950 text-slate-100">
       <LiquidParallax />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
+      <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
       <div className="relative max-w-7xl mx-auto px-6 py-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-8 animate-fade-in">

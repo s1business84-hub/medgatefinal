@@ -77,7 +77,7 @@ export function FAQ() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="text-4xl sm:text-5xl font-bold tracking-tight text-white bg-clip-text bg-gradient-to-r from-white via-blue-200 to-purple-200"
+            className="text-4xl sm:text-5xl font-bold tracking-tight text-white bg-clip-text bg-linear-to-r from-white via-blue-200 to-purple-200"
           >
             Frequently asked questions
           </motion.h2>
@@ -110,12 +110,12 @@ export function FAQ() {
                     whileHover={{ y: -4 }}
                   >
                     {/* Animated gradient background on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-400/15 via-transparent to-purple-400/15 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-linear-to-r from-blue-400/15 via-transparent to-purple-400/15 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                     {/* Liquid glass shine effect */}
                     <div className={`absolute inset-0 transition-opacity duration-300 ${openIndex === index ? "opacity-25" : "opacity-0 group-hover:opacity-20"}`}>
-                      <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-to-br from-white to-transparent rounded-full blur-xl" />
-                      <div className="absolute bottom-0 right-0 w-2/5 h-2/5 bg-gradient-to-tr from-blue-300/40 to-purple-300/40 rounded-full blur-xl" />
+                      <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-linear-to-br from-white to-transparent rounded-full blur-xl" />
+                      <div className="absolute bottom-0 right-0 w-2/5 h-2/5 bg-linear-to-tr from-blue-300/40 to-purple-300/40 rounded-full blur-xl" />
                     </div>
 
                     {/* Active state gradient overlay */}
@@ -124,7 +124,7 @@ export function FAQ() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 via-indigo-400/10 to-purple-400/20"
+                        className="absolute inset-0 bg-linear-to-br from-cyan-400/20 via-indigo-400/10 to-purple-400/20"
                       />
                     )}
 
@@ -136,7 +136,7 @@ export function FAQ() {
                         <motion.div
                           animate={{ rotate: openIndex === index ? 360 : 0 }}
                           transition={{ duration: 0.1 }}
-                          className="flex-shrink-0"
+                          className="shrink-0"
                         >
                             <MessageCircle className="h-5 w-5 text-blue-200" />
                         </motion.div>
@@ -147,7 +147,7 @@ export function FAQ() {
                       <motion.div
                         animate={{ rotate: openIndex === index ? 180 : 0 }}
                         transition={{ duration: 0.1 }}
-                        className="flex-shrink-0"
+                        className="shrink-0"
                       >
                           <ChevronDown className="h-5 w-5 text-slate-200" />
                       </motion.div>

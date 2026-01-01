@@ -39,7 +39,7 @@ export function EligibilityChecker() {
         ))}
       </div>
 
-      <div className="mt-6 p-4 rounded-xl bg-gradient-to-r from-cyan-500/10 to-indigo-500/10 border border-cyan-400/30 text-sm text-slate-200">
+      <div className="mt-6 p-4 rounded-xl bg-linear-to-r from-cyan-500/10 to-indigo-500/10 border border-cyan-400/30 text-sm text-slate-200">
         <strong>Note:</strong> Requirements vary by institution. Each program sets its own eligibility criteria, documentation needs, and approval process. Academic transcripts, vaccinations, and screenings are required by some programs but not all.
       </div>
     </motion.div>

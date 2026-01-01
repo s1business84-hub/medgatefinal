@@ -91,7 +91,7 @@ export function Pricing() {
   }, [])
 
   return (
-    <section className="py-16 sm:py-24 bg-gradient-to-b from-slate-50 via-white to-slate-50 relative overflow-hidden">
+    <section className="py-16 sm:py-24 bg-linear-to-b from-slate-50 via-white to-slate-50 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute top-0 left-0 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 animate-pulse" />
       <div className="absolute top-1/2 right-0 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 animate-pulse" style={{ animationDelay: '2s' }} />
@@ -129,16 +129,16 @@ export function Pricing() {
               viewport={{ once: true }}
               className={`relative rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group ${
                 plan.popular
-                  ? "border border-white/40 backdrop-blur-xl bg-gradient-to-br from-white/50 via-white/30 to-white/20"
-                  : "border border-white/30 backdrop-blur-xl bg-gradient-to-br from-white/40 via-white/20 to-white/10"
+                  ? "border border-white/40 backdrop-blur-xl bg-linear-to-br from-white/50 via-white/30 to-white/20"
+                  : "border border-white/30 backdrop-blur-xl bg-linear-to-br from-white/40 via-white/20 to-white/10"
               }`}
             >
               {/* Animated gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-400/10 via-transparent to-purple-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-linear-to-br from-blue-400/10 via-transparent to-purple-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               
               {/* Liquid glass shine effect */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300">
-                <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-to-br from-white to-transparent rounded-full blur-xl" />
+                <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-linear-to-br from-white to-transparent rounded-full blur-xl" />
               </div>
 
               {plan.popular && (

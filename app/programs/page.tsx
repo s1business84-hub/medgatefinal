@@ -43,12 +43,12 @@ export default function ProgramsPage() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-slate-950 text-slate-100">
       <LiquidParallax />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
+      <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         {/* Header */}
         <div className="text-center mb-8 sm:mb-12 animate-fade-in">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-200 to-indigo-200 text-transparent mb-3 sm:mb-4">Example Programs</h1>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-clip-text bg-linear-to-r from-cyan-300 via-sky-200 to-indigo-200 text-transparent mb-3 sm:mb-4">Example Programs</h1>
           <p className="text-base sm:text-lg lg:text-xl text-slate-300 max-w-2xl mx-auto px-4">
             Prototype listings for demonstration only
           </p>
@@ -95,9 +95,9 @@ export default function ProgramsPage() {
                 className="group relative rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.5)] transition-all duration-500 overflow-hidden animate-slide-in p-6 sm:p-8 hover:-translate-y-1 hover:shadow-[0_25px_110px_rgba(0,0,0,0.55)]"
                 style={{ animationDelay: `${0.3 + index * 0.1}s` }}
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/10 via-transparent to-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-linear-to-r from-cyan-400/10 via-transparent to-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-25 transition-opacity duration-500">
-                  <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-to-br from-white/70 to-transparent rounded-full blur-3xl" />
+                  <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-linear-to-br from-white/70 to-transparent rounded-full blur-3xl" />
                 </div>
 
                 {/* Program Header */}
@@ -164,7 +164,7 @@ export default function ProgramsPage() {
                     
                     <button
                       onClick={() => toggleProgramExpansion(p.id)}
-                      className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-gradient-to-r from-cyan-500 to-indigo-600 text-white rounded-lg hover:from-cyan-400 hover:to-indigo-500 transition-colors text-sm shadow-lg"
+                      className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-linear-to-r from-cyan-500 to-indigo-600 text-white rounded-lg hover:from-cyan-400 hover:to-indigo-500 transition-colors text-sm shadow-lg"
                     >
                       {isExpanded ? (
                         <>
@@ -269,7 +269,7 @@ export default function ProgramsPage() {
                     <div className="flex flex-col sm:flex-row gap-3 mt-6 pt-6 border-t border-white/10">
                       <button
                         onClick={() => handleApplyClick(p, h!)}
-                        className="flex-1 text-center hover-scale rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 text-white py-3 font-semibold shadow-lg hover:from-cyan-400 hover:to-indigo-500 transition-all duration-300"
+                        className="flex-1 text-center hover-scale rounded-xl bg-linear-to-r from-cyan-500 to-indigo-600 text-white py-3 font-semibold shadow-lg hover:from-cyan-400 hover:to-indigo-500 transition-all duration-300"
                       >
                         Apply for this Program →
                       </button>

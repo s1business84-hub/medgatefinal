@@ -43,19 +43,19 @@ export function LiquidParallax({ className, depth = 18 }: LiquidParallaxProps) {
         className="absolute inset-0"
       >
         <motion.div
-          className="absolute -left-32 top-0 w-[26rem] h-[26rem] bg-[radial-gradient(circle_at_30%_30%,rgba(56,189,248,0.35),transparent_55%)] blur-3xl"
+          className="absolute -left-32 top-0 w-104 h-104 bg-[radial-gradient(circle_at_30%_30%,rgba(56,189,248,0.35),transparent_55%)] blur-3xl"
           style={{ translateZ: "-140px" }}
           animate={{ y: [0, -40, 0], scale: [1, 1.05, 1] }}
           transition={{ duration: 16, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute right-[-10%] top-1/3 w-[28rem] h-[28rem] bg-[radial-gradient(circle_at_70%_40%,rgba(99,102,241,0.4),transparent_55%)] blur-3xl"
+          className="absolute right-[-10%] top-1/3 w-md h-112 bg-[radial-gradient(circle_at_70%_40%,rgba(99,102,241,0.4),transparent_55%)] blur-3xl"
           style={{ translateZ: "-180px" }}
           animate={{ y: [0, 30, 0], scale: [1.05, 0.95, 1.05] }}
           transition={{ duration: 18, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute left-1/4 bottom-[-8%] w-[30rem] h-[30rem] bg-[radial-gradient(circle_at_50%_50%,rgba(14,165,233,0.28),transparent_60%)] blur-3xl"
+          className="absolute left-1/4 bottom-[-8%] w-120 h-120 bg-[radial-gradient(circle_at_50%_50%,rgba(14,165,233,0.28),transparent_60%)] blur-3xl"
           style={{ translateZ: "-200px" }}
           animate={{ y: [0, -30, 0], scale: [0.98, 1.05, 0.98], rotate: [0, 3, -3, 0] }}
           transition={{ duration: 20, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
