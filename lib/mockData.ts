@@ -3,7 +3,7 @@ import type { Student, Program, Application, Document, Payment, AuditLog, Hospit
 export const mockHospitals: Hospital[] = [
   {
     id: "h1",
-    name: "MedGate Partner Hospital",
+    name: "Dubai Medical Center",
     emirate: "Dubai",
     city: "Al Barsha",
     type: "Hospital",
@@ -35,7 +35,7 @@ export const mockHospitals: Hospital[] = [
     type: "Hospital",
     accreditation: "DOH",
     departments: ["Cardiology", "Orthopedics", "Oncology"],
-    programTypes: ["Observership", "Hands-on", "Residency"],
+    programTypes: ["Observership", "Elective"],
     maxStudentsPerPeriod: 15,
     approvalSlaDays: 5,
     status: "Active",
@@ -48,7 +48,7 @@ export const mockHospitals: Hospital[] = [
     type: "Hospital",
     accreditation: "DHA",
     departments: ["Emergency Medicine", "Radiology", "ICU"],
-    programTypes: ["Observership", "Internship"],
+    programTypes: ["Observership"],
     maxStudentsPerPeriod: 12,
     approvalSlaDays: 8,
     status: "Active",
@@ -87,7 +87,7 @@ export const mockHospitals: Hospital[] = [
     type: "Hospital",
     accreditation: "MOH",
     departments: ["Surgery", "Internal Medicine", "Anesthesiology"],
-    programTypes: ["Observership", "Internship"],
+    programTypes: ["Observership"],
     maxStudentsPerPeriod: 10,
     approvalSlaDays: 9,
     status: "Active",
@@ -111,105 +111,71 @@ export const mockPrograms: Program[] = [
   {
     id: "prog_1",
     hospitalId: "h1",
-    name: "Medical Residency Program - DHA Accredited",
-    description: "Comprehensive medical residency training program accredited by Dubai Health Authority",
-    requirements: ["Medical Degree", "Valid DHA License", "English Proficiency (IELTS 7.0+)", "Emirates ID", "Medical Fitness Certificate", "Academic Transcripts", "Police Clearance Certificate"],
+    name: "General Surgery Observership (Example Listing - Demo Data)",
+    description: "Observe surgical procedures, outpatient clinics, ward rounds, and day-to-day clinical workflows within a General Surgery department under an observership framework.",
+    requirements: [
+      "Must be currently enrolled in a recognized medical school.",
+      "Valid government-issued identification and appropriate residency or visit visa, as required by hospital policy.",
+      "Ability to understand and communicate in English within a clinical environment.",
+      "Medical fitness or health clearance may be required by the hosting institution prior to confirmation.",
+      "Academic transcripts or proof of enrollment may be requested for verification purposes."
+    ],
     isActive: true,
   },
   {
     id: "prog_2",
     hospitalId: "h2",
-    name: "Nursing Internship - MOH Approved",
-    description: "Professional nursing internship program approved by Ministry of Health UAE",
-    requirements: ["Nursing Degree", "CPR Certification", "Background Check", "Emirates ID", "Medical Fitness Certificate", "Nursing License", "Immunization Records"],
+    name: "Internal Medicine Observership (Example Listing - Demo Data)",
+    description: "Clinical observation in internal medicine department focusing on patient care and diagnostics",
+    requirements: ["Medical Student Status", "Government ID and residency/visa status (as applicable)", "English Proficiency", "Medical Fitness Certificate", "Academic Transcripts"],
     isActive: true,
   },
   {
     id: "prog_3",
     hospitalId: "h3",
-    name: "Cardiology Observership - DOH Certified",
-    description: "Advanced cardiology training and observation program certified by Department of Health Abu Dhabi",
-    requirements: ["Medical Degree", "ECG Knowledge", "English Proficiency (TOEFL 550+)", "Emirates ID", "Medical Fitness Certificate", "Academic Transcripts"],
+    name: "Cardiology Observership (Example Listing - Demo Data)",
+    description: "Advanced cardiology observation program focusing on cardiac diagnostics and interventions",
+    requirements: ["Medical Student Status", "Government ID and residency/visa status (as applicable)", "English Proficiency", "Medical Fitness Certificate", "Academic Transcripts", "ECG Knowledge Preferred"],
     isActive: true,
   },
   {
     id: "prog_4",
     hospitalId: "h3",
-    name: "Orthopedic Surgery Fellowship - DHA Accredited",
-    description: "Hands-on orthopedic surgery training program accredited by Dubai Health Authority",
-    requirements: ["Medical Degree", "Surgery Experience", "Valid DHA License", "Emirates ID", "Medical Fitness Certificate", "Specialty Certification"],
+    name: "Orthopedic Surgery Elective (Example Listing - Demo Data)",
+    description: "Elective rotation in orthopedic surgery with hands-on learning opportunities",
+    requirements: ["Medical Student Status", "Government ID and residency/visa status (as applicable)", "English Proficiency", "Medical Fitness Certificate", "Academic Transcripts", "Surgery Interest"],
     isActive: true,
   },
   {
     id: "prog_5",
     hospitalId: "h4",
-    name: "Emergency Medicine Training - DHA Approved",
-    description: "Intensive emergency medicine observation program approved by Dubai Health Authority",
-    requirements: ["Medical Degree", "ACLS Certification", "English Proficiency (IELTS 6.5+)", "Emirates ID", "Medical Fitness Certificate", "Academic Transcripts"],
+    name: "Emergency Medicine Observership (Example Listing - Demo Data)",
+    description: "Observe emergency medicine procedures and acute care management",
+    requirements: ["Medical Student Status", "Government ID and residency/visa status (as applicable)", "English Proficiency", "Medical Fitness Certificate", "Academic Transcripts"],
     isActive: true,
   },
   {
     id: "prog_6",
     hospitalId: "h4",
-    name: "Radiology Elective - DOH Certified",
-    description: "Diagnostic imaging and radiology training certified by Department of Health Abu Dhabi",
-    requirements: ["Medical Degree", "Radiology Interest", "English Proficiency (TOEFL 500+)", "Emirates ID", "Medical Fitness Certificate", "Academic Transcripts"],
+    name: "Radiology Elective (Example Listing - Demo Data)",
+    description: "Diagnostic imaging and radiology training elective",
+    requirements: ["Medical Student Status", "Government ID and residency/visa status (as applicable)", "English Proficiency", "Medical Fitness Certificate", "Academic Transcripts"],
     isActive: true,
   },
   {
     id: "prog_7",
     hospitalId: "h5",
-    name: "Neurology Observership - DOH Accredited",
-    description: "Clinical neurology and neurodiagnostics training accredited by Department of Health Abu Dhabi",
-    requirements: ["Medical Degree", "Neurology Background", "English Proficiency (IELTS 7.0+)", "Emirates ID", "Medical Fitness Certificate", "Academic Transcripts"],
+    name: "Neurology Observership (Example Listing - Demo Data)",
+    description: "Clinical neurology observation focusing on neurological diagnostics",
+    requirements: ["Medical Student Status", "Government ID and residency/visa status (as applicable)", "English Proficiency", "Medical Fitness Certificate", "Academic Transcripts"],
     isActive: true,
   },
   {
     id: "prog_8",
     hospitalId: "h5",
-    name: "Dermatology Elective - DHA Certified",
-    description: "Dermatological disorders and treatments training certified by Dubai Health Authority",
-    requirements: ["Medical Degree", "Skin Care Interest", "English Proficiency (TOEFL 550+)", "Emirates ID", "Medical Fitness Certificate", "Academic Transcripts"],
-    isActive: true,
-  },
-  {
-    id: "prog_9",
-    hospitalId: "h6",
-    name: "Family Medicine Rotation - MOH Approved",
-    description: "Comprehensive primary care training program approved by Ministry of Health UAE",
-    requirements: ["Medical Degree", "Community Health Interest", "English Proficiency (IELTS 6.0+)", "Emirates ID", "Medical Fitness Certificate", "Academic Transcripts"],
-    isActive: true,
-  },
-  {
-    id: "prog_10",
-    hospitalId: "h7",
-    name: "General Surgery Internship - MOH Accredited",
-    description: "Hands-on surgical training and experience accredited by Ministry of Health UAE",
-    requirements: ["Medical Degree", "Surgery Interest", "Valid MOH License", "Emirates ID", "Medical Fitness Certificate", "Academic Transcripts"],
-    isActive: true,
-  },
-  {
-    id: "prog_11",
-    hospitalId: "h7",
-    name: "Anesthesiology Training - DHA Certified",
-    description: "Perioperative medicine and anesthesia care certified by Dubai Health Authority",
-    requirements: ["Medical Degree", "Anatomy Knowledge", "English Proficiency (TOEFL 600+)", "Emirates ID", "Medical Fitness Certificate", "Academic Transcripts"],
-    isActive: true,
-  },
-  {
-    id: "prog_12",
-    hospitalId: "h8",
-    name: "Ophthalmology Observership - DOH Accredited",
-    description: "Eye care and ophthalmic surgery observation accredited by Department of Health Abu Dhabi",
-    requirements: ["Medical Degree", "Eye Health Interest", "English Proficiency (IELTS 6.5+)", "Emirates ID", "Medical Fitness Certificate", "Academic Transcripts"],
-    isActive: true,
-  },
-  {
-    id: "prog_13",
-    hospitalId: "h8",
-    name: "ENT Specialty Training - DHA Approved",
-    description: "Ear, Nose, and Throat disorders training approved by Dubai Health Authority",
-    requirements: ["Medical Degree", "ENT Interest", "English Proficiency (TOEFL 550+)", "Emirates ID", "Medical Fitness Certificate", "Academic Transcripts"],
+    name: "Dermatology Elective (Example Listing - Demo Data)",
+    description: "Dermatological disorders and treatments elective rotation",
+    requirements: ["Medical Student Status", "Government ID and residency/visa status (as applicable)", "English Proficiency", "Medical Fitness Certificate", "Academic Transcripts"],
     isActive: true,
   },
 ];
@@ -302,7 +268,7 @@ export const mockAuditLogs: AuditLog[] = [
     id: "aud_1",
     userId: "stu_1",
     action: "Application Submitted",
-    details: "Submitted application for Medical Residency Program",
+    details: "Submitted application for General Surgery Observership",
     timestamp: "2024-02-01T09:00:00Z",
   },
   {
@@ -314,61 +280,49 @@ export const mockAuditLogs: AuditLog[] = [
   },
 ];
 
-// For backward compatibility with previous shape
+// For backward compatibility
 export const hospitals = mockHospitals;
-export const programs = mockPrograms.map((p) => {
+export const programs = mockPrograms.map(p => {
   // Determine program type based on name/content
   let programType: "Observership" | "Hands-on" | "Internship" | "Residency" | "Elective" = "Observership";
-  if (p.name.toLowerCase().includes("fellowship") || p.name.toLowerCase().includes("residency")) {
-    programType = "Residency";
-  } else if (p.name.toLowerCase().includes("internship") || p.name.toLowerCase().includes("training")) {
-    programType = "Internship";
-  } else if (p.name.toLowerCase().includes("hands-on") || p.name.toLowerCase().includes("elective")) {
+  if (p.name.toLowerCase().includes('elective')) {
     programType = "Elective";
   }
 
   // Determine hands-on level
   let handsOnLevel: "observe" | "assist" | "supervised" | "independent" = "observe";
-  if (
-    p.name.toLowerCase().includes("fellowship") ||
-    p.name.toLowerCase().includes("residency") ||
-    p.name.toLowerCase().includes("internship")
-  ) {
-    handsOnLevel = "supervised";
-  } else if (p.name.toLowerCase().includes("hands-on")) {
+  if (p.name.toLowerCase().includes('elective')) {
     handsOnLevel = "assist";
   }
 
-  // Determine fee based on program complexity and type
-  let feeAed = 2000; // Base fee
-  if (programType === "Residency" || programType === "Internship") feeAed = 5000;
-  else if (programType === "Elective") feeAed = 3500;
-  else if (p.name.toLowerCase().includes("surgery") || p.name.toLowerCase().includes("cardiology")) feeAed = 4500;
-
-  // Determine seats available based on hospital capacity
-  const hospital = mockHospitals.find((h) => h.id === p.hospitalId);
+  // Demo data - fees removed, replaced with TBD
+  let feeAed = 0; // TBD by institution
+  
+  // Demo data - seats
+  const hospital = mockHospitals.find(h => h.id === p.hospitalId);
   const maxStudents = hospital?.maxStudentsPerPeriod || 5;
   const seatsAvailable = Math.floor(Math.random() * maxStudents) + 1;
 
-  // Determine duration based on program type
+  // Demo data - duration
   let durationWeeksOptions = [4];
-  if (programType === "Residency" || programType === "Internship") durationWeeksOptions = [8, 12];
-  else if (programType === "Elective") durationWeeksOptions = [2, 4];
+  if (programType === "Elective") durationWeeksOptions = [2, 4];
 
-  // Determine daily hours
-  let dailyHoursMax = 8;
-  if (programType === "Residency" || programType === "Internship") dailyHoursMax = 10;
-  else if (programType === "Observership") dailyHoursMax = 6;
+  // Demo data - daily hours
+  let dailyHoursMax = programType === "Observership" ? 6 : 8;
 
   return {
     ...p,
     departmentName: p.name,
     programType,
-    eligibility: { yearOfStudyMin: programType === "Residency" ? 4 : 3, language: "English" },
-    requiredDocuments: ["EmiratesID/Passport", "CV", "Medical Certificate"] as const,
+    eligibility: { yearOfStudyMin: "Year 3 or above", language: "English" },
+    requiredDocuments: [
+      "Government ID: Passport or national ID for identity verification.",
+      "Curriculum Vitae (CV): Updated CV outlining academic background.",
+      "Medical Certificate: Proof of medical fitness or immunization status, if required."
+    ] as const,
     durationWeeksOptions,
     dailyHoursMax,
-    startDates: ["2024-01-01", "2024-02-01", "2024-03-01"],
+    startDates: ["01 January 2024", "01 February 2024", "01 March 2024"],
     seatsAvailable,
     handsOnLevel,
     certificateProvided: true,
@@ -394,5 +348,26 @@ export const mockUsers = [
     email: "student2@example.com",
     role: "student" as const,
     name: "Maria Garcia",
+  },
+  {
+    id: "h1_admin",
+    email: "hospital1@medgate.com",
+    role: "hospital" as const,
+    name: "Hospital Administrator",
+    hospitalId: "h1",
+  },
+  {
+    id: "h2_admin",
+    email: "hospital2@medgate.com",
+    role: "hospital" as const,
+    name: "Clinic Manager",
+    hospitalId: "h2",
+  },
+  {
+    id: "h3_admin",
+    email: "hospital3@medgate.com",
+    role: "hospital" as const,
+    name: "Medical Director",
+    hospitalId: "h3",
   },
 ];

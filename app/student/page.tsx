@@ -1,457 +1,216 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { createStudent, getStudents, createApplication, getApplications, addDocument, getDocuments, createPayment, getPayments } from "@/lib/storage";
-import { mockPrograms } from "@/lib/mockData";
-import type { Student, Document } from "@/lib/types";
+import { useAuth } from "@/lib/auth-context";
+import { Button } from "@/components/ui/button";
+import { Heart, Users, CheckCircle, Upload, Menu, X } from "lucide-react";
+import { LiquidParallax } from "@/components/ui/liquid-parallax";
 
 export default function StudentPortal() {
-  const [students, setStudents] = useState<Student[]>(getStudents());
-  const [applications, setApplications] = useState(getApplications());
-  const [documents, setDocuments] = useState(getDocuments());
-  const [payments, setPayments] = useState(getPayments());
+  const { user, logout } = useAuth();
+  const router = useRouter();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const [showStudentForm, setShowStudentForm] = useState(false);
-  const [showApplicationForm, setShowApplicationForm] = useState(false);
-  const [showDocumentForm, setShowDocumentForm] = useState(false);
+  // If user is logged in and is a student, show full portal
+  if (user && user.role === "student") {
+    return (
+      <div className="relative min-h-screen overflow-hidden bg-slate-950 text-slate-100">
+        <LiquidParallax />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
 
-  const [studentForm, setStudentForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    nationality: "",
-    university: "",
-    yearOfStudy: 1,
-  });
+        <div className="relative max-w-7xl mx-auto px-6 py-8">
+          {/* Header */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 animate-fade-in gap-4">
+            <div>
+              <h1 className="text-3xl sm:text-4xl font-bold bg-clip-text bg-gradient-to-r from-slate-900 via-blue-800 to-slate-900 text-transparent mb-2">Student Portal</h1>
+              <p className="text-slate-300">Welcome back, {user.name}!</p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+              <button
+                onClick={() => {
+                  logout();
+                  router.push("/");
+                }}
+                className="btn-secondary hover-scale px-4 sm:px-6 py-2 sm:py-3 rounded-lg backdrop-blur-md border-white/30 bg-white/40"
+              >
+                Logout
+              </button>
+              <Link href="/" className="btn-secondary hover-scale px-4 sm:px-6 py-2 sm:py-3 rounded-lg backdrop-blur-md border-white/30 bg-white/40">
+                ← Back to Home
+              </Link>
+            </div>
+          </div>
 
-  const [applicationForm, setApplicationForm] = useState({
-    studentId: "",
-    programId: "",
-  });
+          <div className="space-y-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <div className="text-center mb-12">
+              <h1 className="text-4xl font-bold text-slate-100 mb-4">Welcome to Your Dashboard</h1>
+              <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+                Manage your applications and track your progress towards your dream clinical training opportunity.
+              </p>
+            </div>
 
-  const [documentForm, setDocumentForm] = useState({
-    applicationId: "",
-    type: "Passport" as Document["type"],
-    fileName: "",
-    fileUrl: "",
-  });
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.45)] p-6 text-center">
+                <Users className="w-12 h-12 text-cyan-200 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-slate-100 mb-2">Pilot Platform</h3>
+                <p className="text-slate-300">Preparing for UAE pilot collaborations</p>
+              </div>
+              <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.45)] p-6 text-center">
+                <CheckCircle className="w-12 h-12 text-emerald-200 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-slate-100 mb-2">UAE Coverage</h3>
+                <p className="text-slate-300">Targeting major healthcare institutions</p>
+              </div>
+              <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.45)] p-6 text-center">
+                <Heart className="w-12 h-12 text-rose-200 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-slate-100 mb-2">Active Development</h3>
+                <p className="text-slate-300">Platform features in progress</p>
+              </div>
+            </div>
 
-  const [paymentForm, setPaymentForm] = useState({
-    applicationId: "",
-    amount: 0,
-  });
+            <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-lg p-12 text-center">
+              <Upload className="w-24 h-24 text-cyan-300 mx-auto mb-6" />
+              <h2 className="text-3xl font-bold text-slate-100 mb-4">Manage Your Applications</h2>
+              <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
+                View and manage your submitted applications, track statuses, and prepare for upcoming interviews.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href="/programs">
+                  <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-lg">
+                    Browse More Programs
+                  </Button>
+                </Link>
+                <Link href="/">
+                  <Button variant="outline" size="lg" className="border-white/25 text-slate-100 hover:bg-white/10">
+                    Back to Home
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
-  const handleCreateStudent = () => {
-    const student = createStudent(studentForm);
-    setStudents([...students, student]);
-    setShowStudentForm(false);
-    setStudentForm({ name: "", email: "", phone: "", nationality: "", university: "", yearOfStudy: 1 });
-  };
-
-  const handleCreateApplication = () => {
-    const app = createApplication(applicationForm);
-    setApplications([...applications, app]);
-    setShowApplicationForm(false);
-    setApplicationForm({ studentId: "", programId: "" });
-  };
-
-  const handleAddDocument = () => {
-    const doc = addDocument(documentForm);
-    setDocuments([...documents, doc]);
-    setShowDocumentForm(false);
-    setDocumentForm({ applicationId: "", type: "Passport", fileName: "", fileUrl: "" });
-  };
-
-  const handleCreatePayment = () => {
-    const payment = createPayment(paymentForm);
-    setPayments([...payments, payment]);
-    setPaymentForm({ applicationId: "", amount: 0 });
-  };
-
+  // Public content for non-logged-in users
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
-      <div className="max-w-7xl mx-auto px-6 py-8">
+    <div className="relative min-h-screen overflow-hidden bg-slate-950 text-slate-100">
+      <LiquidParallax />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
+
+      <div className="relative max-w-7xl mx-auto px-6 py-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-8 animate-fade-in">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Student Portal</h1>
-            <p className="text-gray-600">Manage your medical training applications</p>
+            <h1 className="text-3xl font-bold text-slate-100 mb-2">Student Portal</h1>
+            <p className="text-slate-300">Early Access Portal for Observerships and Electives</p>
           </div>
-          <Link href="/" className="btn-secondary hover-scale">
-            ← Back to Home
-          </Link>
+          {/* Desktop Navigation */}
+          <div className="hidden sm:flex gap-4">
+            <Link href="/login" className="inline-flex items-center px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-medium transition-all">
+              Join Early Access
+            </Link>
+            <Link href="/" className="inline-flex items-center px-4 py-2 rounded-lg border border-white/25 text-slate-100 hover:bg-white/10 font-medium transition-all">
+              ← Back to Home
+            </Link>
+          </div>
+          {/* Mobile Hamburger */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="sm:hidden p-2 rounded-lg border border-white/25 text-slate-100 hover:bg-white/10 transition-all"
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
 
-        {/* Quick Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-          <div className="card hover-lift">
-            <div className="flex items-center">
-              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-4">
-                <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-gray-900">{students.length}</div>
-                <div className="text-sm text-gray-600">Students</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="card hover-lift">
-            <div className="flex items-center">
-              <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mr-4">
-                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-gray-900">{applications.length}</div>
-                <div className="text-sm text-gray-600">Applications</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="card hover-lift">
-            <div className="flex items-center">
-              <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mr-4">
-                <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-gray-900">{documents.length}</div>
-                <div className="text-sm text-gray-600">Documents</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="card hover-lift">
-            <div className="flex items-center">
-              <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mr-4">
-                <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-                </svg>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-gray-900">{payments.length}</div>
-                <div className="text-sm text-gray-600">Payments</div>
-              </div>
-            </div>
+        {/* Mobile Menu with Animation */}
+        <div
+          className={`sm:hidden overflow-hidden transition-all duration-300 ease-in-out mb-8 ${
+            mobileMenuOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
+          }`}
+        >
+          <div className="flex flex-col gap-3 bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-4">
+            <Link 
+              href="/login" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-medium transition-all"
+            >
+              Get Notified
+            </Link>
+            <Link 
+              href="/" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full inline-flex items-center justify-center px-4 py-2 rounded-lg border border-white/25 text-slate-100 hover:bg-white/10 font-medium transition-all"
+            >
+              Back to Home
+            </Link>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Students Section */}
-          <section className="card animate-slide-in" style={{ animationDelay: '0.3s' }}>
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-semibold text-gray-900">Students</h2>
-              <button
-                onClick={() => setShowStudentForm(!showStudentForm)}
-                className="btn-primary text-sm px-4 py-2 hover-scale"
-              >
-                {showStudentForm ? "Cancel" : "+ Add Student"}
-              </button>
+        {/* Early Access Section */}
+        <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
+          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-lg p-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-100 mb-4">Early Access Registration for Observerships and Electives</h2>
+            <p className="text-lg text-slate-300 mb-6 leading-relaxed">
+              MedGate is preparing pilot program listings for formal observership and elective opportunities in collaboration with healthcare institutions. By creating an account, students can register for early access, receive program updates, and be notified when applications become available.
+            </p>
+            
+            {/* No Live Programs Notice */}
+            <div className="mb-8 p-4 rounded-xl border border-amber-500/30 bg-amber-500/10 backdrop-blur-xl">
+              <p className="text-sm text-amber-200">
+                <strong>Early Access:</strong> Observership and elective listings are currently in pilot preparation. Register to receive updates and priority access when applications open.
+              </p>
             </div>
 
-            {showStudentForm && (
-              <div className="border border-gray-200 rounded-lg p-6 mb-6 animate-scale-in bg-gray-50">
-                <h3 className="text-lg font-medium mb-4">Add New Student</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <input
-                    type="text"
-                    placeholder="Full Name"
-                    value={studentForm.name}
-                    onChange={(e) => setStudentForm({ ...studentForm, name: e.target.value })}
-                    className="form-input"
-                  />
-                  <input
-                    type="email"
-                    placeholder="Email Address"
-                    value={studentForm.email}
-                    onChange={(e) => setStudentForm({ ...studentForm, email: e.target.value })}
-                    className="form-input"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Phone Number"
-                    value={studentForm.phone}
-                    onChange={(e) => setStudentForm({ ...studentForm, phone: e.target.value })}
-                    className="form-input"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Nationality"
-                    value={studentForm.nationality}
-                    onChange={(e) => setStudentForm({ ...studentForm, nationality: e.target.value })}
-                    className="form-input"
-                  />
-                  <input
-                    type="text"
-                    placeholder="University"
-                    value={studentForm.university}
-                    onChange={(e) => setStudentForm({ ...studentForm, university: e.target.value })}
-                    className="form-input"
-                  />
-                  <input
-                    type="number"
-                    placeholder="Year of Study"
-                    value={studentForm.yearOfStudy}
-                    onChange={(e) => setStudentForm({ ...studentForm, yearOfStudy: parseInt(e.target.value) })}
-                    className="form-input"
-                  />
-                </div>
-                <button onClick={handleCreateStudent} className="btn-primary mt-6 w-full hover-scale">
-                  Create Student
-                </button>
-              </div>
-            )}
-
-            <div className="space-y-4">
-              {students.map((student, index) => (
-                <div key={student.id} className="border border-gray-200 rounded-lg p-4 hover-lift animate-fade-in" style={{ animationDelay: `${0.1 * index}s` }}>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center">
-                      <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                        <span className="text-blue-600 font-semibold text-sm">
-                          {student.name.split(' ').map(n => n[0]).join('').toUpperCase()}
-                        </span>
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-gray-900">{student.name}</h3>
-                        <p className="text-sm text-gray-600">{student.email}</p>
-                      </div>
-                    </div>
-                    <span className={`status-badge ${
-                      student.complianceStatus === "Complete" ? "status-complete" :
-                      student.complianceStatus === "Incomplete" ? "status-incomplete" :
-                      "status-pending"
-                    }`}>
-                      {student.complianceStatus}
-                    </span>
+            {/* Benefits List */}
+            <div className="mb-8">
+              <h3 className="text-lg font-semibold text-slate-100 mb-4">What You'll Get:</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center shrink-0 mt-0.5">
+                    <span className="text-cyan-400 text-sm">✓</span>
                   </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Applications Section */}
-          <section className="card animate-slide-in" style={{ animationDelay: '0.4s' }}>
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-semibold text-gray-900">Applications</h2>
-              <button
-                onClick={() => setShowApplicationForm(!showApplicationForm)}
-                className="btn-primary text-sm px-4 py-2 hover-scale"
-              >
-                {showApplicationForm ? "Cancel" : "+ New Application"}
-              </button>
-            </div>
-
-            {showApplicationForm && (
-              <div className="border border-gray-200 rounded-lg p-6 mb-6 animate-scale-in bg-gray-50">
-                <h3 className="text-lg font-medium mb-4">Submit New Application</h3>
-                <div className="grid grid-cols-1 gap-4">
-                  <select
-                    value={applicationForm.studentId}
-                    onChange={(e) => setApplicationForm({ ...applicationForm, studentId: e.target.value })}
-                    className="form-select"
-                  >
-                    <option value="">Select Student</option>
-                    {students.map((s) => (
-                      <option key={s.id} value={s.id}>{s.name}</option>
-                    ))}
-                  </select>
-                  <select
-                    value={applicationForm.programId}
-                    onChange={(e) => setApplicationForm({ ...applicationForm, programId: e.target.value })}
-                    className="form-select"
-                  >
-                    <option value="">Select Program</option>
-                    {mockPrograms.map((p) => (
-                      <option key={p.id} value={p.id}>{p.name}</option>
-                    ))}
-                  </select>
-                </div>
-                <button onClick={handleCreateApplication} className="btn-primary mt-6 w-full hover-scale">
-                  Submit Application
-                </button>
-              </div>
-            )}
-
-            <div className="space-y-4">
-              {applications.map((app, index) => {
-                const student = students.find(s => s.id === app.studentId);
-                const program = mockPrograms.find(p => p.id === app.programId);
-                return (
-                  <div key={app.id} className="border border-gray-200 rounded-lg p-4 hover-lift animate-fade-in" style={{ animationDelay: `${0.1 * index}s` }}>
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <h3 className="font-semibold text-gray-900">{program?.name}</h3>
-                        <p className="text-sm text-gray-600">Student: {student?.name}</p>
-                        <p className="text-sm text-gray-600">Submitted: {new Date(app.submissionDate).toLocaleDateString()}</p>
-                      </div>
-                      <span className={`status-badge ${
-                        app.status === "Approved" ? "status-approved" :
-                        app.status === "Rejected" ? "status-rejected" :
-                        app.status === "Under Review" ? "status-pending" :
-                        app.status === "Submitted" ? "status-submitted" :
-                        "status-draft"
-                      }`}>
-                        {app.status}
-                      </span>
-                    </div>
+                  <span className="text-slate-300">Early access to pilot observership and elective program listings</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center shrink-0 mt-0.5">
+                    <span className="text-cyan-400 text-sm">✓</span>
                   </div>
-                );
-              })}
-            </div>
-          </section>
-
-          {/* Documents Section */}
-          <section className="card animate-slide-in" style={{ animationDelay: '0.5s' }}>
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-semibold text-gray-900">Documents</h2>
-              <button
-                onClick={() => setShowDocumentForm(!showDocumentForm)}
-                className="btn-primary text-sm px-4 py-2 hover-scale"
-              >
-                {showDocumentForm ? "Cancel" : "+ Upload Document"}
-              </button>
-            </div>
-
-            {showDocumentForm && (
-              <div className="border border-gray-200 rounded-lg p-6 mb-6 animate-scale-in bg-gray-50">
-                <h3 className="text-lg font-medium mb-4">Upload Document</h3>
-                <div className="grid grid-cols-1 gap-4">
-                  <select
-                    value={documentForm.applicationId}
-                    onChange={(e) => setDocumentForm({ ...documentForm, applicationId: e.target.value })}
-                    className="form-select"
-                  >
-                    <option value="">Select Application</option>
-                    {applications.map((a) => (
-                      <option key={a.id} value={a.id}>App {a.id}</option>
-                    ))}
-                  </select>
-                  <select
-                    value={documentForm.type}
-                    onChange={(e) => setDocumentForm({ ...documentForm, type: e.target.value as Document["type"] })}
-                    className="form-select"
-                  >
-                    <option value="Passport">Passport</option>
-                    <option value="Medical Certificate">Medical Certificate</option>
-                    <option value="Academic Transcript">Academic Transcript</option>
-                    <option value="Other">Other</option>
-                  </select>
-                  <input
-                    type="text"
-                    placeholder="File Name"
-                    value={documentForm.fileName}
-                    onChange={(e) => setDocumentForm({ ...documentForm, fileName: e.target.value })}
-                    className="form-input"
-                  />
-                  <input
-                    type="text"
-                    placeholder="File URL"
-                    value={documentForm.fileUrl}
-                    onChange={(e) => setDocumentForm({ ...documentForm, fileUrl: e.target.value })}
-                    className="form-input"
-                  />
-                </div>
-                <button onClick={handleAddDocument} className="btn-primary mt-6 w-full hover-scale">
-                  Upload Document
-                </button>
-              </div>
-            )}
-
-            <div className="space-y-4">
-              {documents.map((doc, index) => (
-                <div key={doc.id} className="border border-gray-200 rounded-lg p-4 hover-lift animate-fade-in" style={{ animationDelay: `${0.1 * index}s` }}>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center">
-                      <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
-                        <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-gray-900">{doc.type}</h3>
-                        <p className="text-sm text-gray-600">{doc.fileName}</p>
-                        <p className="text-sm text-gray-600">Uploaded: {new Date(doc.uploadedAt).toLocaleDateString()}</p>
-                      </div>
-                    </div>
-                    <span className={`status-badge ${
-                      doc.validationStatus === "Validated" ? "status-validated" :
-                      doc.validationStatus === "Rejected" ? "status-rejected" :
-                      "status-pending"
-                    }`}>
-                      {doc.validationStatus}
-                    </span>
+                  <span className="text-slate-300">Priority notifications when applications open</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center shrink-0 mt-0.5">
+                    <span className="text-cyan-400 text-sm">✓</span>
                   </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Payments Section */}
-          <section className="card animate-slide-in" style={{ animationDelay: '0.6s' }}>
-            <h2 className="text-xl font-semibold text-gray-900 mb-6">Payments</h2>
-
-            <div className="border border-gray-200 rounded-lg p-6 mb-6 bg-gray-50">
-              <h3 className="text-lg font-medium mb-4">Create Payment</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <select
-                  value={paymentForm.applicationId}
-                  onChange={(e) => setPaymentForm({ ...paymentForm, applicationId: e.target.value })}
-                  className="form-select"
-                >
-                  <option value="">Select Application</option>
-                  {applications.map((a) => (
-                    <option key={a.id} value={a.id}>App {a.id}</option>
-                  ))}
-                </select>
-                <input
-                  type="number"
-                  placeholder="Amount (AED)"
-                  value={paymentForm.amount}
-                  onChange={(e) => setPaymentForm({ ...paymentForm, amount: parseInt(e.target.value) })}
-                  className="form-input"
-                />
-              </div>
-              <button onClick={handleCreatePayment} className="btn-primary mt-6 w-full hover-scale">
-                Create Payment
-              </button>
-            </div>
-
-            <div className="space-y-4">
-              {payments.map((payment, index) => (
-                <div key={payment.id} className="border border-gray-200 rounded-lg p-4 hover-lift animate-fade-in" style={{ animationDelay: `${0.1 * index}s` }}>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center">
-                      <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mr-3">
-                        <svg className="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-gray-900">Payment for App {payment.applicationId}</h3>
-                        <p className="text-sm text-gray-600">Amount: {payment.amount} {payment.currency}</p>
-                        <p className="text-sm text-gray-600">Created: {new Date(payment.createdAt).toLocaleDateString()}</p>
-                      </div>
-                    </div>
-                    <span className={`status-badge ${
-                      payment.paymentStatus === "Paid" ? "status-paid" :
-                      "status-unpaid"
-                    }`}>
-                      {payment.paymentStatus}
-                    </span>
+                  <span className="text-slate-300">Direct updates related to partner institutions and program availability</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center shrink-0 mt-0.5">
+                    <span className="text-cyan-400 text-sm">✓</span>
                   </div>
-                </div>
-              ))}
+                  <span className="text-slate-300">Support materials, eligibility guidelines, and application information</span>
+                </li>
+              </ul>
             </div>
-          </section>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href="/login">
+                <Button size="lg" className="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white shadow-lg">
+                  Join Early Access
+                </Button>
+              </Link>
+              <Link href="/programs">
+                <Button size="lg" variant="outline" className="w-full sm:w-auto border-white/25 text-slate-100 hover:bg-white/10">
+                  View Demo Listings
+                </Button>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

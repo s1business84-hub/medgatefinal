@@ -1,4 +1,4 @@
-import type { Student, Application, Document, Payment, AuditLog, User } from "./types";
+import type { Student, Application, Document, Payment, AuditLog, User, Notification, ProgramReminder } from "./types";
 
 const KEYS = {
   students: "medgate_students",
@@ -8,6 +8,9 @@ const KEYS = {
   audit: "medgate_audit",
   users: "medgate_users",
   currentUser: "medgate_current_user",
+  notifications: "medgate_notifications",
+  reminders: "medgate_reminders",
+  programCriteria: "medgate_program_criteria",
 };
 
 function readJSON<T>(key: string, fallback: T): T {
@@ -21,6 +24,7 @@ function readJSON<T>(key: string, fallback: T): T {
 }
 
 function writeJSON<T>(key: string, value: T) {
+  if (typeof window === "undefined") return;
   window.localStorage.setItem(key, JSON.stringify(value));
 }
 
@@ -64,10 +68,32 @@ export function getApplications(): Application[] {
   return readJSON<Application[]>(KEYS.applications, []);
 }
 
-export function updateApplicationStatus(applicationId: string, status: Application["status"]) {
+export function updateApplicationStatus(applicationId: string, status: Application["status"], notes?: string): Application | null {
   const applications = readJSON<Application[]>(KEYS.applications, []);
-  const next = applications.map((a) => (a.id === applicationId ? { ...a, status } : a));
-  writeJSON(KEYS.applications, next);
+  const appIndex = applications.findIndex(a => a.id === applicationId);
+  
+  if (appIndex === -1) return null;
+  
+  const updated = {
+    ...applications[appIndex],
+    status,
+    notes: notes || applications[appIndex].notes,
+  };
+  
+  applications[appIndex] = updated;
+  writeJSON(KEYS.applications, applications);
+  
+  return updated;
+}
+
+export function deleteApplication(applicationId: string): boolean {
+  const applications = readJSON<Application[]>(KEYS.applications, []);
+  const next = applications.filter(a => a.id !== applicationId);
+  const removed = next.length !== applications.length;
+  if (removed) {
+    writeJSON(KEYS.applications, next);
+  }
+  return removed;
 }
 
 /* DOCUMENTS */
@@ -136,6 +162,12 @@ export function getAudit(): AuditLog[] {
   return readJSON<AuditLog[]>(KEYS.audit, []);
 }
 
+/* HOSPITAL-SPECIFIC FUNCTIONS */
+export function getApplicationsByHospital(hospitalId: string): Application[] {
+  const applications = readJSON<Application[]>(KEYS.applications, []);
+  return applications.filter(app => app.hospitalId === hospitalId);
+}
+
 /* USERS */
 export function createUser(input: Omit<User, "id">): User {
   const users = readJSON<User[]>(KEYS.users, []);
@@ -154,13 +186,14 @@ export function getUsers(): User[] {
 
 export function findUserByEmail(email: string): User | undefined {
   const users = getUsers();
-  return users.find((user) => user.email === email);
+  return users.find(user => user.email === email);
 }
 
 export function loginUser(email: string, password: string): User | null {
+  // Simple password check - in real app, this would be hashed
   const users = getUsers();
-  const user = users.find((u) => u.email === email);
-  if (user && password === "password") {
+  const user = users.find(u => u.email === email);
+  if (user && password === "password") { // Simple check for demo
     writeJSON(KEYS.currentUser, user);
     return user;
   }
@@ -175,4 +208,82 @@ export function logoutUser() {
 
 export function getCurrentUser(): User | null {
   return readJSON<User | null>(KEYS.currentUser, null);
+}
+
+/* NOTIFICATIONS */
+export function createNotification(input: Omit<Notification, "id" | "isRead" | "createdAt">): Notification {
+  const notifications = readJSON<Notification[]>(KEYS.notifications, []);
+  const notification: Notification = {
+    id: newId("notif"),
+    isRead: false,
+    createdAt: new Date().toISOString(),
+    ...input,
+  };
+  notifications.push(notification);
+  writeJSON(KEYS.notifications, notifications);
+  return notification;
+}
+
+export function getNotifications(): Notification[] {
+  return readJSON<Notification[]>(KEYS.notifications, []);
+}
+
+export function getUserNotifications(userId: string): Notification[] {
+  const notifications = getNotifications();
+  return notifications.filter(n => n.userId === userId);
+}
+
+export function markNotificationAsRead(notificationId: string): void {
+  const notifications = getNotifications();
+  const notification = notifications.find(n => n.id === notificationId);
+  if (notification) {
+    notification.isRead = true;
+    writeJSON(KEYS.notifications, notifications);
+  }
+}
+
+/* PROGRAM REMINDERS */
+export function createReminder(input: Omit<ProgramReminder, "id" | "createdAt" | "isActive">): ProgramReminder {
+  const reminders = readJSON<ProgramReminder[]>(KEYS.reminders, []);
+  const reminder: ProgramReminder = {
+    id: newId("rem"),
+    createdAt: new Date().toISOString(),
+    isActive: true,
+    ...input,
+  };
+  reminders.push(reminder);
+  writeJSON(KEYS.reminders, reminders);
+  return reminder;
+}
+
+export function getReminders(): ProgramReminder[] {
+  return readJSON<ProgramReminder[]>(KEYS.reminders, []);
+}
+
+export function getRemindersByProgram(programId: string): ProgramReminder[] {
+  const reminders = getReminders();
+  return reminders.filter(r => r.programId === programId && r.isActive);
+}
+
+export function removeReminder(reminderId: string): void {
+  const reminders = getReminders();
+  const reminder = reminders.find(r => r.id === reminderId);
+  if (reminder) {
+    reminder.isActive = false;
+    writeJSON(KEYS.reminders, reminders);
+  }
+}
+
+/* PROGRAM CRITERIA */
+type ProgramCriteriaMap = Record<string, string[]>;
+
+export function getProgramCriteria(programId: string): string[] {
+  const map = readJSON<ProgramCriteriaMap>(KEYS.programCriteria, {});
+  return map[programId] || [];
+}
+
+export function setProgramCriteria(programId: string, criteria: string[]): void {
+  const map = readJSON<ProgramCriteriaMap>(KEYS.programCriteria, {});
+  map[programId] = criteria;
+  writeJSON(KEYS.programCriteria, map);
 }

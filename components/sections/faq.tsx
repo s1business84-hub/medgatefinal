@@ -1,66 +1,92 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { ChevronDown } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
+import { ChevronDown, MessageCircle, HelpCircle } from "lucide-react"
 import * as React from "react"
 
 const faqs = [
   {
-    question: "How does the application process work?",
-    answer: "Simply browse available programs, submit your application with required documents, and track your status in real-time. Our platform handles communication with hospitals and provides updates throughout the process.",
+    question: "Is MedGate a placement or recruitment service?",
+    answer: "No. MedGate does not place students or guarantee acceptance. The platform supports observership and elective program discovery and application workflows as defined by participating institutions.",
   },
   {
-    question: "What documents do I need to apply?",
-    answer: "Typically, you'll need your medical school transcripts, CV, recommendation letters, and proof of medical insurance. Specific requirements vary by program and hospital.",
+    question: "What programs does MedGate support?",
+    answer: "MedGate focuses on formal, institution-approved observership and elective programs.",
   },
   {
-    question: "Are the programs accredited?",
-    answer: "Yes, all programs listed on MedGate are offered by accredited UAE hospitals and medical institutions. We verify accreditation status regularly.",
+    question: "Does MedGate offer internships or residency placements?",
+    answer: "No. MedGate does not provide internships, residency, or fellowship placements.",
   },
   {
-    question: "Can I apply to multiple programs?",
-    answer: "Absolutely! You can apply to as many programs as you'd like. Our platform helps you manage multiple applications efficiently.",
+    question: "Is MedGate live yet?",
+    answer: "MedGate is currently in early development and preparing for pilot collaborations with healthcare institutions.",
   },
   {
-    question: "What if I get accepted to multiple programs?",
-    answer: "Congratulations! You can choose which offer to accept. Our platform allows you to manage multiple acceptances and provides guidance on next steps.",
-  },
-  {
-    question: "Is there a fee for using MedGate?",
-    answer: "Basic browsing and applications are free. We offer premium features for enhanced support, priority applications, and document review services.",
-  },
-  {
-    question: "How long does the application process take?",
-    answer: "Processing times vary by hospital and program, typically 2-4 weeks. You'll receive real-time updates through our platform.",
-  },
-  {
-    question: "Can international students apply?",
-    answer: "Yes! MedGate welcomes applications from international medical students. Some programs may have specific visa requirements.",
+    question: "Who can use MedGate?",
+    answer: "Medical students and institutions participating in approved pilot programs.",
   },
 ]
 
 export function FAQ() {
   const [openIndex, setOpenIndex] = React.useState<number | null>(null)
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.2,
+      },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5 },
+    },
+  }
+
   return (
-    <section id="faq" className="py-24 sm:py-32 bg-white">
-      <div className="mx-auto max-w-4xl px-6 lg:px-8">
+    <section
+      id="faq"
+      className="py-24 sm:py-32 relative overflow-hidden text-slate-50"
+    >
+      {/* Decorative Elements */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-400/25 rounded-full mix-blend-screen filter blur-3xl opacity-60 -z-10" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-400/25 rounded-full mix-blend-screen filter blur-3xl opacity-60 -z-10" />
+
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center justify-center gap-2 mb-6"
+          >
+            <HelpCircle className="w-6 h-6 text-blue-200" />
+            <span className="text-sm font-semibold text-blue-200 uppercase tracking-wider">Questions & Answers</span>
+          </motion.div>
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl"
+            className="text-4xl sm:text-5xl font-bold tracking-tight text-white bg-clip-text bg-gradient-to-r from-white via-blue-200 to-purple-200"
           >
             Frequently asked questions
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="mt-6 text-lg leading-8 text-slate-600"
+            className="mt-6 text-lg leading-8 text-slate-200"
           >
             Everything you need to know about getting started with MedGate.
             Can&apos;t find the answer you&apos;re looking for? Reach out to our support team.
@@ -68,79 +94,89 @@ export function FAQ() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={containerVariants}
           className="mx-auto mt-16 max-w-3xl"
         >
           <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className="rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-200 hover:shadow-md"
-              >
-                <button
-                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                  className="flex w-full items-center justify-between p-6 text-left"
-                >
-                  <h3 className="text-lg font-medium text-slate-900">{faq.question}</h3>
-                  <ChevronDown
-                    className={`h-5 w-5 text-slate-500 transition-transform duration-200 ${
-                      openIndex === index ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-                {openIndex === index && (
+            <AnimatePresence mode="wait">
+              {faqs.map((faq, index) => (
+                <motion.div key={index} variants={itemVariants} className="group">
+                  {/** Card with dynamic liquid color change when expanded **/}
                   <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="px-6 pb-6"
+                    className={`relative rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 overflow-hidden backdrop-blur-xl ${openIndex === index ? "bg-white/10 border border-blue-300/30" : "bg-white/5 border border-white/10"}`}
+                    whileHover={{ y: -4 }}
                   >
-                    <p className="text-slate-600 leading-relaxed">{faq.answer}</p>
-                  </motion.div>
-                )}
-              </div>
-            ))}
-          </div>
-        </motion.div>
+                    {/* Animated gradient background on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-400/15 via-transparent to-purple-400/15 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-        {/* Contact CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="mt-16 text-center"
-        >
-          <div className="rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 p-8">
-            <h3 className="text-lg font-semibold text-slate-900 mb-2">
-              Still have questions?
-            </h3>
-            <p className="text-slate-600 mb-6">
-              Our support team is here to help you succeed in your medical training journey.
-            </p>
-            <div className="mb-6 text-slate-700">
-              <p className="font-semibold mb-2">Contact our founders:</p>
-              <p>Founder Kashish: +971 054 453 0209</p>
-              <p>Co-founder Sanskaar Nair: +971 056 906 9315</p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="mailto:support@medgate.com"
-                className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-3 text-sm font-medium text-white shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                Contact Support
-              </a>
-              <a
-                href="#"
-                className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all duration-300"
-              >
-                Schedule a Call
-              </a>
-            </div>
+                    {/* Liquid glass shine effect */}
+                    <div className={`absolute inset-0 transition-opacity duration-300 ${openIndex === index ? "opacity-25" : "opacity-0 group-hover:opacity-20"}`}>
+                      <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-to-br from-white to-transparent rounded-full blur-xl" />
+                      <div className="absolute bottom-0 right-0 w-2/5 h-2/5 bg-gradient-to-tr from-blue-300/40 to-purple-300/40 rounded-full blur-xl" />
+                    </div>
+
+                    {/* Active state gradient overlay */}
+                    {openIndex === index && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 via-indigo-400/10 to-purple-400/20"
+                      />
+                    )}
+
+                    <button
+                      onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                        className="relative flex w-full items-center justify-between px-6 py-5 text-left cursor-pointer z-10"
+                    >
+                      <div className="flex items-center gap-4 flex-1">
+                        <motion.div
+                          animate={{ rotate: openIndex === index ? 360 : 0 }}
+                          transition={{ duration: 0.1 }}
+                          className="flex-shrink-0"
+                        >
+                            <MessageCircle className="h-5 w-5 text-blue-200" />
+                        </motion.div>
+                          <h3 className="text-lg font-semibold text-white group-hover:text-blue-200 transition-colors">
+                          {faq.question}
+                        </h3>
+                      </div>
+                      <motion.div
+                        animate={{ rotate: openIndex === index ? 180 : 0 }}
+                        transition={{ duration: 0.1 }}
+                        className="flex-shrink-0"
+                      >
+                          <ChevronDown className="h-5 w-5 text-slate-200" />
+                      </motion.div>
+                    </button>
+
+                    <AnimatePresence>
+                      {openIndex === index && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.1, ease: "easeInOut" }}
+                          className="relative border-t border-white/10 px-6 py-4 z-10"
+                        >
+                          <motion.p
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.01, duration: 0.1 }}
+                            className="text-slate-200 leading-relaxed"
+                          >
+                            {faq.answer}
+                          </motion.p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
         </motion.div>
       </div>

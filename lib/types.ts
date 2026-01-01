@@ -1,5 +1,3 @@
-// Types for MedGate MVP
-
 export interface Student {
   id: string;
   name: string;
@@ -25,7 +23,8 @@ export interface Application {
   id: string;
   studentId: string;
   programId: string;
-  status: "Draft" | "Submitted" | "Under Review" | "Approved" | "Rejected";
+  hospitalId?: string;
+  status: "Draft" | "Submitted" | "Under Review" | "Approved" | "Rejected" | "Waitlisted";
   submissionDate: string;
   notes?: string;
 }
@@ -61,8 +60,9 @@ export interface AuditLog {
 export interface User {
   id: string;
   email: string;
-  role: "student" | "admin";
+  role: "student" | "admin" | "hospital";
   name: string;
+  hospitalId?: string;
 }
 
 export type Hospital = {
@@ -78,3 +78,23 @@ export type Hospital = {
   approvalSlaDays: number;
   status: "Active" | "Paused";
 };
+
+export interface Notification {
+  id: string;
+  userId: string;
+  type: "approval" | "rejection" | "submission" | "update";
+  title: string;
+  message: string;
+  isRead: boolean;
+  createdAt: string;
+  relatedApplicationId?: string;
+}
+
+export interface ProgramReminder {
+  id: string;
+  programId: string;
+  email: string;
+  notificationChannels: ("email" | "sms" | "whatsapp")[];
+  createdAt: string;
+  isActive: boolean;
+}
