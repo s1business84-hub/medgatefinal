@@ -343,19 +343,7 @@ export default function ForHospitalsPage() {
                 </p>
               )}
               <div className="mt-6 text-sm text-slate-300">
-                We send onboarding steps from <span className="text-cyan-200">hellomedgate@gmail.com</span>. You can also schedule an intro call if preferred.
-                <div className="mt-4 mb-3 text-slate-200">
-                  <p className="font-semibold mb-1">Contact our founders:</p>
-                  <p>Founder Kashish: +971 054 453 0209</p>
-                  <p>Co-founder Sanskaar Nair: +971 056 906 9315</p>
-                </div>
-                <div className="mt-3">
-                  <Link href="/about">
-                    <Button size="sm" variant="outline" className="border-white/25 text-slate-100 hover:bg-white/10 font-semibold">
-                      Schedule Introductory Call
-                    </Button>
-                  </Link>
-                </div>
+                We send onboarding steps from <span className="text-cyan-200">hellomedgate@gmail.com</span>.
               </div>
             </div>
           </div>
