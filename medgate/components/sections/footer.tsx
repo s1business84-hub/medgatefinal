@@ -66,7 +66,7 @@ export function Footer() {
               </div>
               <div className="flex items-center">
                 <Phone className="h-4 w-4 mr-2 text-cyan-300 drop-shadow-[0_0_5px_rgba(34,211,238,0.3)]" />
-                +971 50 123 4567 (Founder)
+                +971 54 453 0209 (Founder)
               </div>
               <div className="flex items-center">
                 <MapPin className="h-4 w-4 mr-2 text-cyan-300 drop-shadow-[0_0_5px_rgba(34,211,238,0.3)]" />
