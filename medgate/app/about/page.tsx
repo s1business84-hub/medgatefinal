@@ -30,8 +30,7 @@ export default function AboutPage() {
             <AnimatedGradientText>About MedGate</AnimatedGradientText>
           </h1>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            Connecting medical students with life-changing clinical training opportunities across the UAE.
-            We&apos;re building the future of medical education through innovation and partnership.
+            MedGate is being developed to connect medical students with structured clinical observership and elective opportunities across the UAE. The platform focuses on improving transparency, standardization, and communication between students and healthcare institutions.
           </p>
         </div>
 
@@ -51,10 +50,13 @@ export default function AboutPage() {
             
             <div className="relative z-10">
               <p className="text-lg text-slate-300 leading-relaxed mb-6">
-                MedGate is an early-stage platform being developed to address long-standing challenges in accessing and managing medical observership and elective programs. Today, students often face fragmented information, unclear eligibility criteria, and slow, manual communication when seeking clinical exposure opportunities.
+                MedGate is an early-stage platform being developed to address long-standing challenges in accessing and managing medical observership and elective programs.
               </p>
               <p className="text-lg text-slate-300 leading-relaxed mb-6">
-                MedGate aims to standardize how institutions publish program requirements and how students engage with them, creating a clearer, more transparent process for both sides. The platform is currently preparing for pilot collaborations with UAE healthcare institutions.
+                Today, students often encounter fragmented information, unclear eligibility criteria, and slow, manual communication when seeking clinical exposure. At the same time, healthcare institutions lack standardized tools to publish requirements and manage applicant workflows efficiently.
+              </p>
+              <p className="text-lg text-slate-300 leading-relaxed mb-6">
+                MedGate aims to standardize how institutions define and publish program requirements, and how students discover and engage with them—creating a clearer, more transparent process for both sides. The platform is currently preparing for pilot collaborations with healthcare institutions in the UAE.
               </p>
             </div>
           </div>
@@ -84,7 +86,7 @@ export default function AboutPage() {
               {
                 icon: Target,
                 title: 'Reduce Administrative Friction',
-                description: 'MedGate is designed to minimize repetitive communication by centralizing program details and application workflows.',
+                description: 'MedGate is designed to reduce repetitive back-and-forth by centralizing program information and application workflows.',
                 gradient: 'from-purple-500 to-pink-500',
                 bgGradient: 'from-fuchsia-400/20 to-pink-400/10',
                 number: '02'
@@ -161,7 +163,7 @@ export default function AboutPage() {
               </div>
               <h3 className="text-xl font-semibold text-slate-100 mb-2">Kashish Devnani</h3>
               <p className="text-slate-300">Founder & Program Director</p>
-              <p className="text-sm text-slate-400 mt-3">Directs MedGate&apos;s institutional onboarding and clinical program framework, coordinating with hospitals to operationalize eligibility criteria, intake parameters, and approval workflows for observership and elective programs.</p>
+              <p className="text-sm text-slate-400 mt-3">Leads MedGate&apos;s platform direction and institutional collaboration strategy, working closely with healthcare institutions to translate program requirements into structured, transparent workflows within the platform.</p>
             </div>
             
             <div className="rounded-2xl bg-white/5 border border-white/10 p-8 hover:bg-white/10 transition-all duration-300">
@@ -170,7 +172,7 @@ export default function AboutPage() {
               </div>
               <h3 className="text-xl font-semibold text-slate-100 mb-2">Sanskaar Nair</h3>
               <p className="text-slate-300">Co-Founder & Lead Engineer</p>
-              <p className="text-sm text-slate-400 mt-3">Architects and engineers the MedGate platform, owning system design, backend infrastructure, and application workflows that support hospital onboarding, program management, and secure applicant tracking.</p>
+              <p className="text-sm text-slate-400 mt-3">Architects and engineers the MedGate platform, overseeing system design, backend infrastructure, and application workflows that support institutional onboarding and secure applicant management.</p>
             </div>
           </div>
         </section>
@@ -181,7 +183,7 @@ export default function AboutPage() {
             <AnimatedGradientText>Ready to Start Your Journey?</AnimatedGradientText>
           </h2>
           <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-            Join thousands of medical students who have found their perfect clinical training opportunity through MedGate.
+            Explore structured observership and elective opportunities and stay informed as MedGate prepares for pilot collaborations across the UAE.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/programs">
