@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, Building2, Users, FileCheck, BarChart3, Shield, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, Building2, Users, FileCheck, BarChart3, Shield, CheckCircle2, Phone, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LiquidParallax } from "@/components/ui/liquid-parallax";
 import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
+import { motion, AnimatePresence } from "framer-motion";
 
 async function sendOnboardingEmail(email: string) {
   const res = await fetch("/api/send-onboarding-email", {
@@ -23,6 +24,7 @@ export default function ForHospitalsPage() {
   const [onboardingEmail, setOnboardingEmail] = useState("");
   const [onboardingStatus, setOnboardingStatus] = useState<"idle" | "sent" | "error">("idle");
   const [onboardingError, setOnboardingError] = useState("");
+  const [showFounderContact, setShowFounderContact] = useState(false);
 
   const handleSendOnboarding = (e: React.FormEvent) => {
     e.preventDefault();
@@ -79,11 +81,56 @@ export default function ForHospitalsPage() {
             </Link>
           </div>
           
-          {/* Founder Contact Info */}
-          <div className="mt-8 text-center text-slate-300">
-            <p className="font-semibold mb-3">Contact our founders:</p>
-            <p className="text-lg">Founder Kashish: <span className="text-cyan-300 font-semibold">+971 054 453 0209</span></p>
-            <p className="text-lg">Co-founder Sanskaar Nair: <span className="text-cyan-300 font-semibold">+971 056 906 9315</span></p>
+          {/* Founder Contact Dropdown Button */}
+          <div className="mt-8 max-w-2xl mx-auto">
+            <button
+              onClick={() => setShowFounderContact(!showFounderContact)}
+              className="w-full flex items-center justify-between px-6 py-3 bg-white/5 border border-white/15 rounded-lg hover:bg-white/10 transition-all duration-300 text-left"
+            >
+              <span className="text-slate-100 font-semibold">Contact our founders</span>
+              <motion.div
+                animate={{ rotate: showFounderContact ? 180 : 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <ChevronDown className="w-5 h-5 text-cyan-300" />
+              </motion.div>
+            </button>
+
+            {/* Founder Contact Card - Dropdown */}
+            <AnimatePresence>
+              {showFounderContact && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="mt-2 overflow-hidden"
+                >
+                  <div className="bg-gradient-to-br from-cyan-600/20 to-indigo-600/20 border border-cyan-500/30 rounded-lg backdrop-blur-xl p-6">
+                    <div className="space-y-4">
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <Phone className="w-6 h-6 text-cyan-300" />
+                        </div>
+                        <div>
+                          <p className="text-slate-100 font-semibold mb-1">Founder Kashish</p>
+                          <p className="text-cyan-300 font-mono text-lg">+971 054 453 0209</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 bg-indigo-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <Phone className="w-6 h-6 text-indigo-300" />
+                        </div>
+                        <div>
+                          <p className="text-slate-100 font-semibold mb-1">Co-founder Sanskaar Nair</p>
+                          <p className="text-indigo-300 font-mono text-lg">+971 056 906 9315</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
 
