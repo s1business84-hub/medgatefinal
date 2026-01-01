@@ -72,16 +72,18 @@ export default function ForHospitalsPage() {
                 Join Us Now
               </Button>
             </Link>
-            <div className="text-sm text-slate-300 mb-4">
-              <p className="font-semibold mb-2">Contact our founders:</p>
-              <p>Founder Kashish: +971 054 453 0209</p>
-              <p>Co-founder Sanskaar Nair: +971 056 906 9315</p>
-            </div>
             <Link href="/about">
               <Button size="lg" variant="outline" className="border-white/25 text-slate-100 hover:bg-white/10 font-semibold">
                 Schedule a Pilot Intro Call
               </Button>
             </Link>
+          </div>
+          
+          {/* Founder Contact Info */}
+          <div className="mt-8 text-center text-slate-300">
+            <p className="font-semibold mb-3">Contact our founders:</p>
+            <p className="text-lg">Founder Kashish: <span className="text-cyan-300 font-semibold">+971 054 453 0209</span></p>
+            <p className="text-lg">Co-founder Sanskaar Nair: <span className="text-cyan-300 font-semibold">+971 056 906 9315</span></p>
           </div>
         </div>
 
