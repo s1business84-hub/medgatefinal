@@ -1,12 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, Heart, Eye, Lightbulb, Shield, Users, Target } from "lucide-react";
+import { ArrowLeft, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LiquidParallax } from "@/components/ui/liquid-parallax";
 import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function PurposePage() {
+  const [activeCard, setActiveCard] = useState<"students" | "hospitals">("students");
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-slate-950 text-slate-100">
       <LiquidParallax />
@@ -17,7 +21,6 @@ export default function PurposePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-950/50 to-black/70" />
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-cyan-500/15 rounded-full blur-3xl animate-[float_8s_ease-in-out_infinite]" />
         <div className="absolute bottom-1/3 left-1/3 w-80 h-80 bg-indigo-500/15 rounded-full blur-3xl animate-[float_10s_ease-in-out_infinite_2s]" />
-        <div className="absolute top-1/2 right-0 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl animate-[float_12s_ease-in-out_infinite_4s]" />
       </div>
 
       <div className="relative max-w-4xl mx-auto px-6 py-16">
@@ -30,220 +33,189 @@ export default function PurposePage() {
         </div>
 
         {/* Hero Section */}
-        <div className="text-center mb-24 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+        <div className="text-center mb-20 animate-fade-in" style={{ animationDelay: '0.1s' }}>
           <h1 className="text-5xl md:text-7xl font-bold text-slate-100 mb-8">
             Our <AnimatedGradientText className="text-5xl md:text-7xl font-bold">Purpose</AnimatedGradientText>
           </h1>
-          <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-4">
-            Shaping the future of medical education through innovation, accessibility, 
-            and excellence in clinical training.
-          </p>
         </div>
 
-        {/* Combined Mission & Vision Statement */}
+        {/* Our Purpose Section */}
         <section className="mb-24 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
-            {/* Mission */}
-            <div className="group relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl shadow-lg hover:shadow-2xl p-8 transition-all duration-300 overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-200 to-transparent rounded-full opacity-0 group-hover:opacity-10 blur-3xl transition-all duration-500 group-hover:top-0 group-hover:right-0" />
-              
-              <div className="relative z-10">
-                <div className="flex items-center justify-center mb-6">
-                  <div className="w-20 h-20 bg-white/10 backdrop-blur-xl rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <Heart className="w-10 h-10 text-cyan-300" />
-                  </div>
-                </div>
-                <h2 className="text-3xl font-bold text-slate-100 mb-4 text-center">Our Mission</h2>
-                <p className="text-base text-slate-300 leading-relaxed text-center">
-                  To democratize access to high-quality clinical training opportunities for medical students
-                  across the UAE by creating a transparent, efficient, and student-centered platform that
-                  connects aspiring healthcare professionals with medical institutions.
-                </p>
-              </div>
+          <div className="bg-white/5 border border-white/10 rounded-3xl backdrop-blur-xl p-8 md:p-12 mb-12">
+            <h2 className="text-3xl font-bold text-slate-100 mb-6">Our Purpose</h2>
+            <p className="text-lg text-slate-300 leading-relaxed mb-6">
+              MedGate exists to simplify and standardize access to medical observerships and elective programs across the UAE.
+            </p>
+            <p className="text-lg text-slate-300 leading-relaxed mb-6">
+              Today, medical students often face fragmented information, unclear eligibility criteria, and slow, manual communication when seeking clinical exposure. At the same time, healthcare institutions lack a structured, policy-aligned way to publish programs and manage applications efficiently.
+            </p>
+            <p className="text-lg text-slate-300 leading-relaxed mb-6">
+              MedGate bridges this gap by providing a centralized platform where institutions define requirements clearly and students understand opportunities upfront—reducing administrative friction for both sides.
+            </p>
+            <p className="text-lg text-slate-300 leading-relaxed">
+              Our purpose is not to replace institutional processes, but to support them through clarity, structure, and transparency.
+            </p>
+          </div>
+        </section>
+
+        {/* What We Are Building Section */}
+        <section className="mb-24 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+          <h2 className="text-3xl font-bold text-slate-100 mb-4">What We Are Building</h2>
+          <p className="text-lg text-slate-300 leading-relaxed mb-12">
+            MedGate is being developed as a program management and discovery platform designed around real institutional workflows and student needs. We focus on three core areas:
+          </p>
+          
+          <div className="space-y-6">
+            <div className="bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl p-8 hover:bg-white/10 transition-all duration-300">
+              <h3 className="text-2xl font-bold text-cyan-300 mb-3">1. Program Standardization</h3>
+              <p className="text-lg text-slate-300 leading-relaxed">
+                We help hospitals and clinics publish observership and elective programs with clearly defined eligibility criteria, documentation requirements, duration, and intake limits—set entirely by the institution.
+              </p>
             </div>
 
-            {/* Vision */}
-            <div className="group relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl shadow-lg hover:shadow-2xl p-8 transition-all duration-300 overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-emerald-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-green-200 to-transparent rounded-full opacity-0 group-hover:opacity-10 blur-3xl transition-all duration-500 group-hover:top-0 group-hover:right-0" />
-              
-              <div className="relative z-10">
-                <div className="flex items-center justify-center mb-6">
-                  <div className="w-20 h-20 bg-white/10 backdrop-blur-xl rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <Eye className="w-10 h-10 text-emerald-300" />
-                  </div>
-                </div>
-                <h2 className="text-3xl font-bold text-slate-100 mb-4 text-center">Our Vision</h2>
-                <p className="text-base text-slate-300 leading-relaxed text-center">
-                  To create a platform where every aspiring medical professional has the opportunity to achieve
-                  their dreams, regardless of geographical or socioeconomic barriers, through innovative,
-                  accessible, and comprehensive educational solutions.
-                </p>
-              </div>
+            <div className="bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl p-8 hover:bg-white/10 transition-all duration-300">
+              <h3 className="text-2xl font-bold text-indigo-300 mb-3">2. Administrative Efficiency</h3>
+              <p className="text-lg text-slate-300 leading-relaxed">
+                By centralizing program information and application workflows, MedGate reduces repetitive back-and-forth communication and improves visibility for students and administrators alike.
+              </p>
             </div>
-          </div>
-          
-          {/* Core Purpose Statement */}
-          <div className="bg-gradient-to-br from-cyan-600 via-indigo-600 to-emerald-600 rounded-3xl p-8 md:p-12 text-white text-center overflow-hidden relative group">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-white opacity-5 rounded-full blur-3xl -mr-48 -mt-48 group-hover:scale-125 transition-transform duration-500" />
-            <div className="relative z-10">
-              <p className="text-xl md:text-2xl font-semibold italic leading-relaxed">
-                &quot;Empowering healthcare professionals through accessible, quality medical education 
-                and transformative clinical training opportunities.&quot;
+
+            <div className="bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl p-8 hover:bg-white/10 transition-all duration-300">
+              <h3 className="text-2xl font-bold text-emerald-300 mb-3">3. Institutional Control & Governance</h3>
+              <p className="text-lg text-slate-300 leading-relaxed">
+                MedGate is built institution-first. Hospitals retain full control over program approvals, intake capacity, and internal policies while benefiting from a structured digital interface.
               </p>
             </div>
           </div>
         </section>
-
-        {/* Core Values */}
+        {/* Our Focus Today Section */}
         <section className="mb-24 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold inline-block mb-4">
-              <AnimatedGradientText className="text-4xl md:text-5xl font-bold">Core Values & Pillars</AnimatedGradientText>
-            </h2>
-            <p className="text-slate-300 text-lg mt-4">The principles that guide everything we do</p>
-          </div>
-          <div className="relative">
-            <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory px-1 pb-2 -mx-1">
-            {[
-              {
-                icon: Shield,
-                title: 'Excellence',
-                description: 'We maintain the highest standards in everything we do, from platform reliability to partner selection and student support.',
-                gradient: 'from-green-600 to-emerald-600',
-                bgGradient: 'from-emerald-400/20 to-emerald-400/10',
-              },
-              {
-                icon: Users,
-                title: 'Accessibility',
-                description: 'Breaking down barriers to quality medical education, ensuring that talent and dedication, not geography or finances, determine success.',
-                gradient: 'from-blue-600 to-cyan-600',
-                bgGradient: 'from-cyan-400/20 to-cyan-400/10',
-              },
-              {
-                icon: Lightbulb,
-                title: 'Innovation',
-                description: 'Advancing healthcare education through cutting-edge technology and modern learning methodologies that prepare students for the future of medicine.',
-                gradient: 'from-purple-600 to-pink-600',
-                bgGradient: 'from-fuchsia-400/20 to-pink-400/10',
-              },
-              {
-                icon: Heart,
-                title: 'Community',
-                description: 'Building a network of healthcare professionals who collaborate, learn, and grow together to improve healthcare outcomes worldwide.',
-                gradient: 'from-indigo-600 to-purple-600',
-                bgGradient: 'from-indigo-400/20 to-purple-400/10',
-              }
-            ].map((value) => (
-              <div
-                key={value.title}
-                className="snap-start shrink-0 w-[85%] sm:w-[70%] md:w-[45%] lg:w-[30%] group relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-300"
-              >
-                <div className={`absolute inset-0 bg-gradient-to-br ${value.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
-                <div className="relative z-10 p-8 text-center">
-                  <div className={`w-20 h-20 bg-gradient-to-br ${value.gradient} rounded-xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
-                    <value.icon className="w-10 h-10 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-slate-100 mb-4">
-                    {value.title}
-                  </h3>
-                  <p className="text-slate-300 group-hover:text-slate-200 transition-colors leading-relaxed">
-                    {value.description}
-                  </p>
-                  <div className={`mt-6 h-1 bg-gradient-to-r ${value.gradient} rounded-full`} />
-                </div>
-              </div>
-            ))}
-            </div>
+          <div className="bg-gradient-to-br from-cyan-600/20 to-indigo-600/20 border border-cyan-500/30 rounded-3xl backdrop-blur-xl p-8 md:p-12">
+            <h2 className="text-3xl font-bold text-slate-100 mb-6">Our Focus Today</h2>
+            <p className="text-lg text-slate-300 leading-relaxed mb-8">
+              MedGate is currently in early development and preparing for pilot collaborations with healthcare institutions across the UAE.
+            </p>
+            <p className="text-lg text-slate-300 leading-relaxed mb-6">Our immediate focus is to:</p>
+            <ul className="space-y-3 mb-8">
+              <li className="flex items-start">
+                <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-cyan-500/30 mr-3 mt-1 flex-shrink-0">
+                  <Zap className="w-4 h-4 text-cyan-300" />
+                </span>
+                <span className="text-lg text-slate-300">Launch pilot programs with select institutions</span>
+              </li>
+              <li className="flex items-start">
+                <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-indigo-500/30 mr-3 mt-1 flex-shrink-0">
+                  <Zap className="w-4 h-4 text-indigo-300" />
+                </span>
+                <span className="text-lg text-slate-300">Validate workflows with real users</span>
+              </li>
+              <li className="flex items-start">
+                <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/30 mr-3 mt-1 flex-shrink-0">
+                  <Zap className="w-4 h-4 text-emerald-300" />
+                </span>
+                <span className="text-lg text-slate-300">Refine eligibility logic and application processes</span>
+              </li>
+            </ul>
+            <p className="text-lg text-slate-300 leading-relaxed">
+              This phased approach ensures the platform is aligned with institutional standards and regulatory expectations from the start.
+            </p>
           </div>
         </section>
 
-        {/* Our Impact & Commitment */}
+        {/* Looking Ahead Section */}
+        <section className="mb-24 animate-fade-in" style={{ animationDelay: '0.5s' }}>
+          <div className="bg-white/5 border border-white/10 rounded-3xl backdrop-blur-xl p-8 md:p-12">
+            <h2 className="text-3xl font-bold text-slate-100 mb-6">Looking Ahead</h2>
+            <p className="text-lg text-slate-300 leading-relaxed">
+              As the platform evolves, MedGate aims to expand coverage across all UAE emirates and continue improving how clinical training opportunities are accessed and managed—without compromising institutional autonomy or academic standards.
+            </p>
+          </div>
+        </section>
+
+        {/* Swappable Apple-Style CTA Cards */}
         <section className="mb-24 animate-fade-in" style={{ animationDelay: '0.6s' }}>
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold inline-block mb-4">
-              <AnimatedGradientText className="text-4xl md:text-5xl font-bold">Our Impact & Commitment</AnimatedGradientText>
+            <h2 className="text-3xl font-bold text-slate-100 mb-6">
+              Join <AnimatedGradientText>MedGate</AnimatedGradientText>
             </h2>
-            <p className="text-slate-300 text-lg mt-4">Creating lasting change in medical education</p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                icon: Target,
-                title: 'Student Empowerment',
-                description: 'We believe every aspiring healthcare professional deserves clear pathways, transparent processes, and fair access to quality clinical training regardless of background or connections.',
-                gradient: 'from-blue-600 to-cyan-600',
-                bgGradient: 'from-cyan-400/20 to-cyan-400/10'
-              },
-              {
-                icon: Shield,
-                title: 'Institutional Excellence',
-                description: 'We partner with healthcare institutions to streamline their observership programs, maintain rigorous standards, and identify passionate students who will contribute meaningfully to their mission.',
-                gradient: 'from-indigo-600 to-purple-600',
-                bgGradient: 'from-indigo-400/20 to-purple-400/10'
-              },
-              {
-                icon: Heart,
-                title: 'Healthcare Advancement',
-                description: 'By facilitating quality clinical exposure, we help shape competent, compassionate healthcare professionals who will improve patient outcomes and advance medical practice worldwide.',
-                gradient: 'from-purple-600 to-pink-600',
-                bgGradient: 'from-fuchsia-400/20 to-pink-400/10'
-              },
-              {
-                icon: Users,
-                title: 'Community Building',
-                description: 'We foster a supportive ecosystem where students, educators, and institutions collaborate, share knowledge, and collectively elevate the standard of medical education.',
-                gradient: 'from-emerald-600 to-teal-600',
-                bgGradient: 'from-emerald-400/20 to-teal-400/10'
-              }
-            ].map((impact) => (
-              <div
-                key={impact.title}
-                className="group relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-300"
-              >
-                <div className={`absolute inset-0 bg-gradient-to-br ${impact.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
-                <div className="relative z-10 p-8">
-                  <div className={`w-16 h-16 bg-gradient-to-br ${impact.gradient} rounded-xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                    <impact.icon className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-slate-100 mb-4">
-                    {impact.title}
-                  </h3>
-                  <p className="text-slate-300 group-hover:text-slate-200 transition-colors leading-relaxed">
-                    {impact.description}
-                  </p>
-                  <div className={`mt-6 h-1 bg-gradient-to-r ${impact.gradient} rounded-full`} />
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+            <p className="text-lg text-slate-300 mb-8">
+              Whether you are a medical student seeking structured clinical exposure or a healthcare institution looking to streamline program management, MedGate is being built with you in mind.
+            </p>
 
-        {/* Call to Action */}
-        <section className="text-center animate-fade-in" style={{ animationDelay: '0.8s' }}>
-          <div className="relative bg-gradient-to-br from-white via-blue-50/50 to-emerald-50 rounded-3xl shadow-2xl p-8 md:p-12 border border-blue-200/50 overflow-hidden group">
-            <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-blue-400 to-emerald-400 rounded-full opacity-0 blur-3xl group-hover:opacity-10 transition-opacity duration-500" />
-            
-            <div className="relative z-10">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">Join Our Purpose</h2>
-              <p className="text-lg text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-                Be part of the movement to transform medical education. Whether you&apos;re a student or a healthcare institution, 
-                we welcome you to our community.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/student">
-                  <Button size="lg" className="bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700 hover:shadow-lg hover:scale-105 transition-all text-white font-semibold">
-                    Get Started Today
-                  </Button>
-                </Link>
-                <Link href="/about">
-                  <Button size="lg" variant="outline" className="hover:bg-blue-50 hover:border-blue-300 hover:scale-105 transition-all font-semibold">
-                    Learn More About Us
-                  </Button>
-                </Link>
-              </div>
+            {/* Toggle Buttons */}
+            <div className="flex justify-center gap-3 mb-8">
+              <button
+                onClick={() => setActiveCard("students")}
+                className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
+                  activeCard === "students"
+                    ? "bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-lg"
+                    : "bg-white/10 text-slate-300 hover:bg-white/15"
+                }`}
+              >
+                For Students
+              </button>
+              <button
+                onClick={() => setActiveCard("hospitals")}
+                className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
+                  activeCard === "hospitals"
+                    ? "bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg"
+                    : "bg-white/10 text-slate-300 hover:bg-white/15"
+                }`}
+              >
+                For Hospitals
+              </button>
             </div>
+          </div>
+
+          {/* Swappable Card Container */}
+          <div className="relative h-80 md:h-72">
+            <AnimatePresence mode="wait">
+              {activeCard === "students" ? (
+                <motion.div
+                  key="students"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute inset-0 bg-gradient-to-br from-cyan-600/30 to-blue-600/30 border border-cyan-500/50 rounded-3xl backdrop-blur-xl p-8 md:p-12 shadow-2xl overflow-hidden group"
+                >
+                  <div className="absolute -top-40 -right-40 w-80 h-80 bg-cyan-400/20 rounded-full blur-3xl group-hover:scale-110 transition-transform duration-500" />
+                  <div className="relative z-10">
+                    <h3 className="text-3xl font-bold text-white mb-6">Browse Programs</h3>
+                    <p className="text-lg text-cyan-100 leading-relaxed mb-8">
+                      Discover structured observership and elective opportunities across the UAE. Explore programs that match your interests and eligibility, with clear requirements and transparent timelines.
+                    </p>
+                    <Link href="/programs">
+                      <Button size="lg" className="bg-white text-cyan-600 hover:bg-cyan-50 font-semibold shadow-lg hover:shadow-xl">
+                        Explore Programs
+                      </Button>
+                    </Link>
+                  </div>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="hospitals"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute inset-0 bg-gradient-to-br from-emerald-600/30 to-teal-600/30 border border-emerald-500/50 rounded-3xl backdrop-blur-xl p-8 md:p-12 shadow-2xl overflow-hidden group"
+                >
+                  <div className="absolute -top-40 -right-40 w-80 h-80 bg-emerald-400/20 rounded-full blur-3xl group-hover:scale-110 transition-transform duration-500" />
+                  <div className="relative z-10">
+                    <h3 className="text-3xl font-bold text-white mb-6">For Hospitals</h3>
+                    <p className="text-lg text-emerald-100 leading-relaxed mb-8">
+                      Streamline your observership and elective program management. Publish clear eligibility criteria, manage applications efficiently, and connect with qualified students—all while maintaining institutional control.
+                    </p>
+                    <Link href="/for-hospitals">
+                      <Button size="lg" className="bg-white text-emerald-600 hover:bg-emerald-50 font-semibold shadow-lg hover:shadow-xl">
+                        Learn More
+                      </Button>
+                    </Link>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </section>
       </div>
