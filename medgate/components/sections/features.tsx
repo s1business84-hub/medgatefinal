@@ -5,7 +5,6 @@ import {
   Search,
   FileCheck,
   Clock,
-  Award,
   Heart,
   Zap
 } from "lucide-react"
@@ -14,7 +13,7 @@ import { AnimatedGradientText } from "@/components/ui/animated-gradient-text"
 const features = [
   {
     name: "Structured Program Listings",
-    description: "Designed to present observership and elective programs with clearly defined eligibility criteria, documentation requirements, duration, and intake limits—set by participating institutions.",
+    description: "Designed to present observership and elective programs with clearly defined eligibility criteria, documentation requirements, duration, and intake limits set by participating institutions.",
     icon: Search,
     gradient: "from-blue-500 to-cyan-500",
   },
@@ -87,7 +86,7 @@ export function Features() {
             viewport={{ once: true }}
             className="text-4xl sm:text-5xl font-bold tracking-tight"
           >
-            What We're <br />
+            What We&apos;re <br />
             <AnimatedGradientText>Building</AnimatedGradientText>
           </motion.h2>
           <motion.p
@@ -128,12 +127,12 @@ export function Features() {
                   >
                     {/* Animated gradient overlay */}
                     <div
-                      className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
+                      className={`absolute inset-0 bg-linear-to-br ${feature.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
                     />
 
                     {/* Animated accent line */}
                     <motion.div
-                      className={`absolute top-0 left-0 h-1 bg-gradient-to-r ${feature.gradient}`}
+                      className={`absolute top-0 left-0 h-1 bg-linear-to-r ${feature.gradient}`}
                       initial={{ width: 0 }}
                       whileHover={{ width: "100%" }}
                       transition={{ duration: 0.4 }}
@@ -145,18 +144,18 @@ export function Features() {
                       whileHover={{ scale: 1.15, rotate: 4 }}
                       transition={{ type: "spring", stiffness: 400, damping: 14 }}
                     >
-                      <div className={`inline-flex rounded-xl bg-gradient-to-br ${feature.gradient} p-3 shadow-lg group-hover:shadow-2xl transition-all duration-300`}>
+                      <div className={`inline-flex rounded-xl bg-linear-to-br ${feature.gradient} p-3 shadow-lg group-hover:shadow-2xl transition-all duration-300`}>
                         <Icon className="h-6 w-6 text-white" />
                       </div>
                       {/* Glow effect */}
                       <div
-                        className={`absolute inset-0 rounded-xl bg-gradient-to-br ${feature.gradient} opacity-0 blur group-hover:opacity-40 transition-opacity duration-300`}
+                        className={`absolute inset-0 rounded-xl bg-linear-to-br ${feature.gradient} opacity-0 blur group-hover:opacity-40 transition-opacity duration-300`}
                       />
                     </motion.div>
 
                     {/* Content */}
                     <motion.h3
-                      className="relative text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r transition-all duration-300"
+                      className="relative text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-linear-to-r transition-all duration-300"
                       style={{
                         backgroundImage: `linear-gradient(to right, ${"var(--color)"})`,
                       }}
@@ -169,7 +168,7 @@ export function Features() {
 
                     {/* Bottom accent */}
                     <motion.div
-                      className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent"
+                      className="absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-blue-400 to-transparent"
                       initial={{ opacity: 0, scaleX: 0 }}
                       whileHover={{ opacity: 1, scaleX: 1 }}
                       transition={{ duration: 0.3 }}

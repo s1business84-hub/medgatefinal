@@ -72,6 +72,11 @@ export default function ForHospitalsPage() {
                 Join Us Now
               </Button>
             </Link>
+            <div className="text-sm text-slate-300 mb-4">
+              <p className="font-semibold mb-2">Contact our founders:</p>
+              <p>Founder Kashish: +971 054 453 0209</p>
+              <p>Co-founder Sanskaar Nair: +971 056 906 9315</p>
+            </div>
             <Link href="/about">
               <Button size="lg" variant="outline" className="border-white/25 text-slate-100 hover:bg-white/10 font-semibold">
                 Schedule a Pilot Intro Call
@@ -96,7 +101,7 @@ export default function ForHospitalsPage() {
               {
                 icon: Shield,
                 title: 'Designed for Institutional Control',
-                description: 'Hospitals define eligibility criteria, documentation requirements, intake capacity, and review workflows—MedGate supports, not overrides, institutional processes.',
+                description: 'Hospitals define eligibility criteria, documentation requirements, intake capacity, and review workflows. MedGate supports, not overrides, institutional processes.',
                 gradient: 'from-blue-600 to-cyan-600',
                 bgGradient: 'from-blue-50 to-cyan-50',
                 index: 0
@@ -301,6 +306,11 @@ export default function ForHospitalsPage() {
               )}
               <div className="mt-6 text-sm text-slate-300">
                 We send onboarding steps from <span className="text-cyan-200">hellomedgate@gmail.com</span>. You can also schedule an intro call if preferred.
+                <div className="mt-4 mb-3 text-slate-200">
+                  <p className="font-semibold mb-1">Contact our founders:</p>
+                  <p>Founder Kashish: +971 054 453 0209</p>
+                  <p>Co-founder Sanskaar Nair: +971 056 906 9315</p>
+                </div>
                 <div className="mt-3">
                   <Link href="/about">
                     <Button size="sm" variant="outline" className="border-white/25 text-slate-100 hover:bg-white/10 font-semibold">

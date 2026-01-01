@@ -159,73 +159,64 @@ export default function PurposePage() {
           </div>
         </section>
 
-        {/* Development Roadmap */}
+        {/* Our Impact & Commitment */}
         <section className="mb-24 animate-fade-in" style={{ animationDelay: '0.6s' }}>
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold inline-block mb-4">
-              <AnimatedGradientText className="text-4xl md:text-5xl font-bold">Development Roadmap</AnimatedGradientText>
+              <AnimatedGradientText className="text-4xl md:text-5xl font-bold">Our Impact & Commitment</AnimatedGradientText>
             </h2>
-            <p className="text-slate-300 text-lg mt-4">Key initiatives for our pilot phase and beyond</p>
+            <p className="text-slate-300 text-lg mt-4">Creating lasting change in medical education</p>
           </div>
-          <div className="relative">
-            <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory px-1 pb-2 -mx-1">
+          <div className="grid md:grid-cols-2 gap-8">
             {[
               {
-                number: 1,
-                icon: '🌍',
-                title: 'Expand Across UAE',
-                description: 'Extend our network to include hospitals in all seven emirates, providing comprehensive coverage across the entire UAE.',
+                icon: Target,
+                title: 'Student Empowerment',
+                description: 'We believe every aspiring healthcare professional deserves clear pathways, transparent processes, and fair access to quality clinical training regardless of background or connections.',
                 gradient: 'from-blue-600 to-cyan-600',
                 bgGradient: 'from-cyan-400/20 to-cyan-400/10'
               },
               {
-                number: 2,
-                icon: '🤖',
-                title: 'Build Smart Matching',
-                description: 'Develop matching logic that considers student preferences, career goals, and institutional requirements for optimal placement recommendations.',
+                icon: Shield,
+                title: 'Institutional Excellence',
+                description: 'We partner with healthcare institutions to streamline their observership programs, maintain rigorous standards, and identify passionate students who will contribute meaningfully to their mission.',
                 gradient: 'from-indigo-600 to-purple-600',
                 bgGradient: 'from-indigo-400/20 to-purple-400/10'
               },
               {
-                number: 3,
-                icon: '🎯',
-                title: 'Launch Pilot Programs',
-                description: 'Partner with UAE institutions to pilot the platform, gather feedback, and refine workflows for students and program administrators.',
+                icon: Heart,
+                title: 'Healthcare Advancement',
+                description: 'By facilitating quality clinical exposure, we help shape competent, compassionate healthcare professionals who will improve patient outcomes and advance medical practice worldwide.',
                 gradient: 'from-purple-600 to-pink-600',
                 bgGradient: 'from-fuchsia-400/20 to-pink-400/10'
               },
               {
-                number: 4,
-                icon: '📊',
-                title: 'Structured Tracking',
-                description: 'Build longitudinal tracking for clinical exposure history to help students and institutions monitor progress over time.',
+                icon: Users,
+                title: 'Community Building',
+                description: 'We foster a supportive ecosystem where students, educators, and institutions collaborate, share knowledge, and collectively elevate the standard of medical education.',
                 gradient: 'from-emerald-600 to-teal-600',
                 bgGradient: 'from-emerald-400/20 to-teal-400/10'
               }
-            ].map((goal) => (
+            ].map((impact) => (
               <div
-                key={goal.number}
-                className="snap-start shrink-0 w-[85%] sm:w-[70%] md:w-[55%] lg:w-[40%] group relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl shadow-lg overflow-hidden transition-all duration-300"
+                key={impact.title}
+                className="group relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-300"
               >
-                <div className={`absolute inset-0 bg-gradient-to-r ${goal.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
-                <div className="relative z-10 p-6 md:p-8">
-                  <div className="flex items-start">
-                    <div className={`w-12 h-12 rounded-full flex items-center justify-center mr-6 mt-1 flex-shrink-0 bg-gradient-to-br ${goal.gradient} shadow-md group-hover:scale-110 transition-transform duration-300`}>
-                      <span className="text-white font-bold text-lg">{goal.number}</span>
-                    </div>
-                    <div className="flex-grow">
-                      <h3 className="text-2xl font-bold text-slate-100 mb-3">
-                        {goal.title}
-                      </h3>
-                      <p className="text-slate-300 group-hover:text-slate-200 transition-colors leading-relaxed">
-                        {goal.description}
-                      </p>
-                    </div>
+                <div className={`absolute inset-0 bg-gradient-to-br ${impact.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                <div className="relative z-10 p-8">
+                  <div className={`w-16 h-16 bg-gradient-to-br ${impact.gradient} rounded-xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                    <impact.icon className="w-8 h-8 text-white" />
                   </div>
+                  <h3 className="text-2xl font-bold text-slate-100 mb-4">
+                    {impact.title}
+                  </h3>
+                  <p className="text-slate-300 group-hover:text-slate-200 transition-colors leading-relaxed">
+                    {impact.description}
+                  </p>
+                  <div className={`mt-6 h-1 bg-gradient-to-r ${impact.gradient} rounded-full`} />
                 </div>
               </div>
             ))}
-            </div>
           </div>
         </section>
 

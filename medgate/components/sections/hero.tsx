@@ -9,24 +9,24 @@ import { AnimatedGradientText } from "@/components/ui/animated-gradient-text"
 
 const stats = [
   {
-    label: "Vision",
-    value: "Medical Ecosystem",
+    label: "Infrastructure",
+    value: "Core Platform Foundation",
     icon: Users,
   },
   {
-    label: "Target Coverage",
-    value: "UAE",
+    label: "UAE",
+    value: "Target Coverage",
     icon: Award,
   },
   {
-    label: "Development",
-    value: "Active",
+    label: "Active",
+    value: "Development Phase",
     icon: CheckCircle,
   },
 ]
 
 const features = [
-  "Streamlined applications (planned)",
+  "Streamlined application workflows (planned)",
   "Application status dashboard (planned)",
   "Institution onboarding workflows (in development)",
   "Eligibility criteria logic (in development)",
@@ -96,7 +96,7 @@ export function Hero() {
             viewport={{ once: true }}
             className="mt-4 sm:mt-6 text-base sm:text-lg lg:text-xl leading-7 sm:leading-8 text-blue-100 max-w-2xl mx-auto px-4"
           >
-            MedGate is being developed to help hospitals and medical students manage formal observership and elective programs through structured eligibility criteria, transparent requirements, and standardized application workflows.
+            MedGate is being developed to help hospitals and medical students manage formal observership and elective programs through structured eligibility criteria, transparent requirements, and standardized workflows.
           </motion.p>
 
           {/* Pilot Phase Disclaimer */}
@@ -108,7 +108,7 @@ export function Hero() {
             className="mt-4 sm:mt-5 px-4 inline-block"
           >
             <span className="text-xs sm:text-sm text-blue-200/80 bg-blue-500/10 border border-blue-400/30 rounded-full px-3 py-1 inline-block">
-              🔄 Pilot Phase — Platform in early development
+              🔄 Pilot Phase: Platform in early development
             </span>
           </motion.div>
 

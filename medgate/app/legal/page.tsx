@@ -120,7 +120,7 @@ export default function LegalPage() {
                 <li>Cancellations or scheduling conflicts</li>
                 <li>Actions or decisions taken by hospitals or regulators</li>
               </ul>
-              <p className="text-slate-700 leading-relaxed">Use of this platform is entirely at the user's own risk and discretion.</p>
+              <p className="text-slate-700 leading-relaxed">Use of this platform is entirely at the user&apos;s own risk and discretion.</p>
             </section>
 
             {/* 8. User Obligations */}

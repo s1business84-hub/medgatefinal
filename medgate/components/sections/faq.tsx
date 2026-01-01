@@ -6,6 +6,10 @@ import * as React from "react"
 
 const faqs = [
   {
+    question: "Is MedGate a placement or recruitment service?",
+    answer: "No. MedGate does not place students or guarantee acceptance. The platform supports observership and elective program discovery and application workflows as defined by participating institutions.",
+  },
+  {
     question: "What programs does MedGate support?",
     answer: "MedGate focuses on formal, institution-approved observership and elective programs.",
   },

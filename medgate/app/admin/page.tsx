@@ -26,7 +26,7 @@ export default function AdminPage() {
   const [rejectReason, setRejectReason] = useState("");
   const [showRejectModal, setShowRejectModal] = useState(false);
   const [docName, setDocName] = useState("");
-  const [docType, setDocType] = useState<"Passport" | "Medical Certificate" | "Academic Transcript" | "Emirates ID" | "Police Clearance Certificate" | "Immunization Records" | "Nursing License" | "Specialty Certification" | "Other">("Other");
+  const [docType, setDocType] = useState<"Passport" | "Medical Certificate" | "Emirates ID" | "Medical Fitness Certificate" | "Police Clearance Certificate" | "Immunization Records" | "Nursing License" | "Specialty Certification" | "Other">("Other");
   const [showObsForm, setShowObsForm] = useState(false);
   const [obsForm, setObsForm] = useState({
     name: "",
@@ -301,7 +301,7 @@ export default function AdminPage() {
                         ].map(t => <option key={t} value={t}>{t}</option>)}
                       </select>
                       <input value={docName} onChange={(e) => setDocName(e.target.value)} placeholder="Document name" className="flex-1 border border-white/15 bg-white/5 text-slate-100 rounded-lg px-3 py-2 text-sm" />
-                      <button onClick={handleUploadDocument} className="px-3 py-2 bg-gradient-to-r from-cyan-500 to-indigo-600 text-white rounded-lg text-sm shadow-lg">Upload</button>
+                      <button onClick={handleUploadDocument} className="px-3 py-2 bg-linear-to-r from-cyan-500 to-indigo-600 text-white rounded-lg text-sm shadow-lg">Upload</button>
                     </div>
                   </div>
                 </div>

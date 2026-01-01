@@ -122,6 +122,11 @@ export function FAQ() {
             <p className="text-slate-600 mb-6">
               Our support team is here to help you succeed in your medical training journey.
             </p>
+            <div className="mb-6 text-slate-700">
+              <p className="font-semibold mb-2">Contact our founders:</p>
+              <p>Founder Kashish: +971 054 453 0209</p>
+              <p>Co-founder Sanskaar Nair: +971 056 906 9315</p>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="mailto:support@medgate.com"

@@ -54,7 +54,7 @@ export default function AboutPage() {
                 MedGate is an early-stage platform being developed to address long-standing challenges in accessing and managing medical observership and elective programs. Today, students often face fragmented information, unclear eligibility criteria, and slow, manual communication when seeking clinical exposure opportunities.
               </p>
               <p className="text-lg text-slate-300 leading-relaxed mb-6">
-                MedGate aims to standardize how institutions publish program requirements and how students engage with them—creating a clearer, more transparent process for both sides. The platform is currently preparing for pilot collaborations with UAE healthcare institutions.
+                MedGate aims to standardize how institutions publish program requirements and how students engage with them, creating a clearer, more transparent process for both sides. The platform is currently preparing for pilot collaborations with UAE healthcare institutions.
               </p>
             </div>
           </div>
